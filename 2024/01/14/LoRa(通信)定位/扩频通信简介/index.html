@@ -1,0 +1,334 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>扩频通信简介 | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="本篇文章涉及通信原理知识，需要掌握一定通信原理基础，了解基带调制，频带调制，相干解调，码元(符号)传输速率，Power Spectrum Density 等  有三种基本的扩频方式：  跳频扩频(Frequency-hopping speread spectrum) 直接序列扩频(Direct-sequence spread spectrum) 啁啾扩频&#x2F;线性调频扩频(Chirp Spread S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="扩频通信简介">
+<meta property="og:url" content="https://www.kaysonz.top/2024/01/14/LoRa(%E9%80%9A%E4%BF%A1)%E5%AE%9A%E4%BD%8D/%E6%89%A9%E9%A2%91%E9%80%9A%E4%BF%A1%E7%AE%80%E4%BB%8B/index.html">
+<meta property="og:site_name" content="風">
+<meta property="og:description" content="本篇文章涉及通信原理知识，需要掌握一定通信原理基础，了解基带调制，频带调制，相干解调，码元(符号)传输速率，Power Spectrum Density 等  有三种基本的扩频方式：  跳频扩频(Frequency-hopping speread spectrum) 直接序列扩频(Direct-sequence spread spectrum) 啁啾扩频&#x2F;线性调频扩频(Chirp Spread S">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.kaysonz.top/img/avatar.jpg">
+<meta property="article:published_time" content="2024-01-14T15:03:26.000Z">
+<meta property="article:modified_time" content="2024-01-16T04:53:16.237Z">
+<meta property="article:author" content="栞风">
+<meta property="article:tag" content="通信系统的调制与解调技术">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.kaysonz.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://www.kaysonz.top/2024/01/14/LoRa(%E9%80%9A%E4%BF%A1)%E5%AE%9A%E4%BD%8D/%E6%89%A9%E9%A2%91%E9%80%9A%E4%BF%A1%E7%AE%80%E4%BB%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '扩频通信简介',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-16 12:53:16'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/notice.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">扩频通信简介</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-14T15:03:26.000Z" title="发表于 2024-01-14 23:03:26">2024-01-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-16T04:53:16.237Z" title="更新于 2024-01-16 12:53:16">2024-01-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/LoRa%E5%AE%9A%E4%BD%8D%E5%BC%80%E5%8F%91/">LoRa定位开发</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note warning simple"><p>本篇文章涉及通信原理知识，需要掌握一定通信原理基础，了解基带调制，频带调制，相干解调，码元(符号)传输速率，Power Spectrum Density 等</p>
+</div>
+<p><strong>有三种基本的扩频方式：</strong></p>
+<ul>
+<li>跳频扩频(Frequency-hopping speread spectrum)</li>
+<li>直接序列扩频(Direct-sequence spread spectrum)</li>
+<li>啁啾扩频/线性调频扩频(Chirp Spread Spectrum)</li>
+</ul>
+<h1 id="跳频技术-FHSS"><a href="#跳频技术-FHSS" class="headerlink" title="跳频技术(FHSS)"></a>跳频技术(FHSS)</h1><p>传统的无线通信系统，发射机和接收机工作在单次通信过程中，载频一般是保持不变；例如通信频率是900MHz, 那么通信将一直使用这个频率进行。</p>
+<p>跳频（Frequency Hopping)系统则在单次通信中，载频在多个频率上跳变。如901MHz, 902MHz etc.</p>
+<h2 id="跳频系统的调制与解调"><a href="#跳频系统的调制与解调" class="headerlink" title="跳频系统的调制与解调"></a>跳频系统的调制与解调</h2><p>跳频的调制发生在频带调制之前。如下图所示，原始数据D(t)经过信息调制器后变成基带信号；同时产生一个伪随机序列来控制载波信号按照一定的规律跳变。接收端需要使用产生本振信号(local oscillator)进行相干，产生一个中频信号，中频信号再进行检波/解调。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240114232032360.png" alt="image-20240114232032360"></p>
+<p>伪随机序列控制下的载波频率如下图所示，在不同频段间跳跃，这个图被称为跳频图案，通信双方可根据实时参数及密钥推算得到当前跳频图案</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240114233026923.png" alt="image-20240114233026923" style="zoom:50%;" /></p>
+<p>对于产生跳频，有如下要求：</p>
+<ul>
+<li>(同一跳频图案具有良好的自相关性(类似冲激函数)</li>
+<li>不同跳频图案具有良好的互相关性(相关值趋近于0</li>
+<li>跳频图案具有良好的随机性，足够大的线性复杂度(抗截获和抗破译)</li>
+<li>周期长和图案多(减小系统中各用户间的频点碰撞概率</li>
+</ul>
+<p>跳频可以分为快跳频和慢跳频：</p>
+<ul>
+<li><p><strong>快跳频</strong>：跳频周期小于符号周期(是Ts的约数)，一个符号传输需要多个频率</p>
+</li>
+<li><p><strong>慢跳频</strong>：跳频周期大于符号周期(是Ts的倍数)，一个频率传输多个符号</p>
+</li>
+</ul>
+<p><strong>跳频通信可以带来很强的抗干扰能力的原因：</strong></p>
+<ul>
+<li>在同一时刻，干扰信号频率只有与跳频信号所在<strong>频率相同</strong>，且干扰信号能量足够大时，才能造成严重的影响</li>
+<li>由于跳频图案具有<strong>伪随机性，其周期可长达数十年甚至更长</strong>，跳变的频率可达成千上万个，因此可以有效地躲避干扰。因此除非破译跳频图案，否则仅在某一频率或<strong>某几个频率上长时间施放干扰是无济于事的</strong>。而在整个频段长时间施放干扰难度很大</li>
+</ul>
+<h2 id="多址通信"><a href="#多址通信" class="headerlink" title="多址通信"></a>多址通信</h2><p> 多址技术是指把处于不同地点的多个用户接入一个公共传输媒质，实现各用户之间通信的技术。</p>
+<p>例如，常见的多址技术有频分多址（<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/FDMA?fromModule=lemma_inlink">FDMA</a>）、时分多址（<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/TDMA?fromModule=lemma_inlink">TDMA</a>）、码分多址（<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/CDMA?fromModule=lemma_inlink">CDMA</a>）。</p>
+<ul>
+<li>FDMA：不同用户使用不同的频率</li>
+<li>TDMA：不同用户发送时刻不同，以不同时隙实现通信</li>
+<li>CDMA：以不同的代码序列来实现通信，码分多址的基本思想是靠不同的地址码来区分的地址。每个配有不同的地址码，用户所发射的载波既受基带数字信号调制，又受地址码调制。</li>
+</ul>
+<p><strong>跳频技术可以实现跳频多址：</strong>不同的用户使用不同的跳频图案，这样可以实现共享频段资源进行通信。下图就是不同用户以不同图案通信时的跳频图案。跳频有一定几率碰撞(两个发射器使用了同一个频率)，就是下图绿色的点点。通过对伪随机码进行设计，可以把跳频碰撞的概率控制得很小。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240114234609263.png" alt="image-20240114234609263" style="zoom:80%;" /></p>
+<hr>
+<h1 id="直接序列扩频-（DSSS）"><a href="#直接序列扩频-（DSSS）" class="headerlink" title="直接序列扩频 （DSSS）"></a>直接序列扩频 （DSSS）</h1><h2 id="DSSS信号的调制与解调"><a href="#DSSS信号的调制与解调" class="headerlink" title="DSSS信号的调制与解调"></a>DSSS信号的调制与解调</h2><p>直接序列扩频使用扩频码(又称扩频序列、PN序列)，直接对基带信号进行频域扩宽。如下图就是一个对Bipolar NRZ信号扩频调制的例子。绿色的是频率更高的扩频码，由扩频序列产生器产生。讲基带信号与扩频码相乘，即可得到扩频信号。解调时，在本振信号相干得到中频信号后，再使用同样的扩频信号相干（这个过程称为解扩），即可恢复基带信号。</p>
+<table>
+    <tr>
+        <td><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240114235653121.png"></td>
+        <td><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240114235840911.png"></td>
+    </tr>
+</table>
+
+<p>一个完整的扩频、解扩过程如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240115000300778.png" alt="image-20240115000300778"></p>
+<h2 id="扩频增益-扩频因子-Spreading-Factor"><a href="#扩频增益-扩频因子-Spreading-Factor" class="headerlink" title="扩频增益/扩频因子  Spreading Factor"></a>扩频增益/扩频因子  Spreading Factor</h2><p>下列定义式中，Rc为直扩码速率；Rb为信息码速率。T是其对应单的持续时间（$T=1/f$）。</p>
+<script type="math/tex; mode=display">
+G=10lg(\frac{扩频后的信号频率}{原始信号频率})=10lg(\frac{R_C}{R_b})=10lg(\frac{T_b}{T_C})</script><p><strong>G就是扩频增益。Rc/Rb即为扩频因子也称扩频码长度、带宽扩展因子</strong></p>
+<p>例如，原始信号频率为1MHz，扩频后为128MHz，则扩频因子$SF=128$ <em>(<strong>部分地方直接认为扩频因子就是增益G</strong>，其实就是是否取对数的区别)</em></p>
+<p>一般来说，扩频序列越长，扩频倍数越大，扩频增益越大</p>
+<h2 id="直扩信号优点和及其原理"><a href="#直扩信号优点和及其原理" class="headerlink" title="直扩信号优点和及其原理"></a>直扩信号优点和及其原理</h2><h3 id="直扩通信抗窄带干扰的原理"><a href="#直扩通信抗窄带干扰的原理" class="headerlink" title="直扩通信抗窄带干扰的原理"></a>直扩通信抗窄带干扰的原理</h3><ul>
+<li><p>一个原始的窄带信号，在经历扩频序列扩频之后，其能量不变(频域面积不变)，而频域展宽。</p>
+</li>
+<li><p>在传输时叠加了窄带噪声信号（例如来自其他通信系统的通信信号）</p>
+</li>
+<li>解调时再次用扩频码相干，延展频域扩频信号的恢复成窄带信号，而对叠加的窄带噪声信号，则是进行了一个扩频的过程。</li>
+<li>在经历Bandpass filter的时候，噪声信号大部分功率可被滤除掉</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/1705249284302.jpg" alt="1705249284302" style="zoom:50%;" /></p>
+<h3 id="直扩通信抗多径效应的原理"><a href="#直扩通信抗多径效应的原理" class="headerlink" title="直扩通信抗多径效应的原理"></a>直扩通信抗多径效应的原理</h3><p>受多径效应影响，接受到的信号由多个不同时延和相位的原始信号构成（来自不同传输路径）</p>
+<ul>
+<li>在单一解扩支路的情况下，通过调整解扩码的同步，可以只解扩振幅最强的一路信号，其他路径的信号在通过滤波器时就会被滤除</li>
+<li>在多个解扩支路的情况下，接收端解扩码分别和来自不同路径的信号对齐，将其解扩分离。最后再将解扩出的多路信号相位时延对齐后叠加，恢复原始信号。</li>
+</ul>
+<h3 id="直扩信号抗劫获的原理"><a href="#直扩信号抗劫获的原理" class="headerlink" title="直扩信号抗劫获的原理"></a>直扩信号抗劫获的原理</h3><p>直扩信号频带很宽，功率谱密度很低。如果在接收机输入端，直扩信号的功率谱密度低于或与接收机热噪声功率谱密度相当，则接收机一般发现不了直扩信号(隐藏在噪声中)。</p>
+<h3 id="直扩信号的保密性"><a href="#直扩信号的保密性" class="headerlink" title="直扩信号的保密性"></a>直扩信号的保密性</h3><p>接收端只有采用与发射端相同且同步的扩频序列，才能实现对直扩信号的解扩，恢复出发送信号而扩频序列具有随机特性，破译难度大直接序列扩频技术首先应用于军事通信</p>
+<h2 id="直接序列扩频下的码分多址"><a href="#直接序列扩频下的码分多址" class="headerlink" title="直接序列扩频下的码分多址"></a>直接序列扩频下的码分多址</h2><p>不同用户采用不同的扩频序列，<strong>而这个扩频序列恰好就充当了码分多址里面地址码的作用。对某一个用户来说，他的接收机只能解扩对应扩频序列的信号，而其他用户的信号因为扩频序列不同，无法解扩，类似噪声。</strong>所以虽然看起来直扩通信每个用户看似占用频率很宽，但由于是共享不是独享，所以频谱利用率也很高的</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240115004032089.png" alt="image-20240115004032089"></p>
+<h2 id="扩频序列（扩频码）"><a href="#扩频序列（扩频码）" class="headerlink" title="扩频序列（扩频码）"></a>扩频序列（扩频码）</h2><p>由前面介绍的直扩信号可以看出，我们希望扩频序列：</p>
+<ul>
+<li>近似于随机信号有良好的自相关特性（可有效提取自身信号），很小的互相关特性（不同扩频序列间干扰小）</li>
+<li>有尽可能多的码(序列个数，就是不重复的码长度)<br>下面是常见的扩频序列</li>
+</ul>
+<h3 id="m序列"><a href="#m序列" class="headerlink" title="m序列"></a>m序列</h3><p>m序列又称<strong>最长线性反馈移位寄存器序列</strong>，它是由<strong>多级移位寄存器</strong>通过线性反馈(就是下图这些摩尔加的抽头)产生的最长的码序列</p>
+<p><strong>对于n级的移位寄存器发生器所能产生的最大长度的码序列为$2^n -1$位</strong>（没有全0状态，因为一旦去了全0状态就无法游动到其他状态）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240115005914227.png" alt="image-20240115005914227"></p>
+<p><strong>不同初始状态的移位寄存器，只会产生不同相位的扩频序列，无法产生不同的扩频序列；不同的扩频序列需要通过改变抽头结构来产生。</strong>而且并不是所有抽头组合都能产生m序列，只有特殊的组合才可以。</p>
+<p><strong>m序列有良好的自相关性，较小的互相关性的优点</strong></p>
+<p>对于n位的m序列，它能产生的序列个数可由如下公式计算：(其中$\Phi$是欧拉数)</p>
+<script type="math/tex; mode=display">
+\frac{\Phi(2^n-1)}{n}</script><p>计算可以发现，5级移位寄存器产生的$2^5 -1=31$位长度的m序列，只有6个。</p>
+<p>因此，<strong>m序列具有数量较少的缺点</strong></p>
+<center><strong>总结：m序列，优点：有良好的自相关性，较小的互相关性；缺点：m序列具有数量较少的缺点</strong></center>
+
+<h3 id="M序列"><a href="#M序列" class="headerlink" title="M序列"></a>M序列</h3><p>m序列又称<strong>最长非线性反馈移位寄存器序列</strong>。M序列在m序列的基础上，加入了全0状态检测器，使其离开全0状态。</p>
+<p>对于n个移位寄存器，可以产生$2^n$位的M序列</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240115011351277.png" alt="image-20240115011351277"></p>
+<p>n级M序列的个数可以用如下公式来计算</p>
+<script type="math/tex; mode=display">
+2^{2^{n-1}-n}</script><p>在同为5级的时候，M序列可以产生2048个。<strong>因此M序列序列数量远大于m序列，但M序列的自相关性和互相关性又不如m序列</strong></p>
+<h3 id="Gold序列"><a href="#Gold序列" class="headerlink" title="Gold序列"></a>Gold序列</h3><p>Gold序列将两个m序列作为优选对，把两个m序列的输出结果进行摩尔加。</p>
+<p><strong>它具有良好的自相关性，不明显的互相关性，构造简单</strong>因此获得广泛应用</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240115011757069.png" alt="image-20240115011757069"></p>
+<hr>
+<h1 id="啁啾扩频-线性调频扩频-CSS"><a href="#啁啾扩频-线性调频扩频-CSS" class="headerlink" title="啁啾扩频/线性调频扩频(CSS)"></a>啁啾扩频/线性调频扩频(CSS)</h1><h2 id="啁啾-zh-overline-ou-ji-overline-u"><a href="#啁啾-zh-overline-ou-ji-overline-u" class="headerlink" title="啁啾($zh\overline ou ji\overline u$)"></a>啁啾($zh\overline ou ji\overline u$)</h2><p>啁啾是频率随时间增加（up-chirp）或减少（down-chirp）的信号，其基本定义式如下：</p>
+<script type="math/tex; mode=display">
+x(t)=sin(\phi(t))</script><p>可以看到啁啾使用相位的移动来控制震荡频率，其相位是一个与 $t$ 有关的函数。在这个表达式下，瞬时角频率 $\omega$ 也就成了$\phi$ 的变化速率，即对$\phi(t)$求导。</p>
+<script type="math/tex; mode=display">
+\omega(t)=\frac{d\phi(t)}{dt}</script><p>再根据 $\omega$ 和 $f$ 的关系，可以写出频率表达式：</p>
+<script type="math/tex; mode=display">
+f(t)=\frac{\omega(t)}{2\pi}</script><p>类似于“角加速度”的概念，定义一个瞬时角啁啾系数(instantaneous angular chirpyness) $\gamma(t)$，单位：$rad/s^2$</p>
+<script type="math/tex; mode=display">
+\gamma(t)=\frac{d^2\phi(t)}{dt}=\frac{d\omega(t)}{dt}</script><p>instantaneous angular chirpyness 定义的是瞬时角频率的变化率，将角频率转化为频率，就得到的 instantaneous ordinary chirpyness $c(t)$ (定义为瞬时频率的变化率)</p>
+<script type="math/tex; mode=display">
+c(t)=\frac{\gamma(t)}{2\pi}=\frac{df(t)}{2\pi}</script><h3 id="线性啁啾"><a href="#线性啁啾" class="headerlink" title="线性啁啾"></a>线性啁啾</h3><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240116114246398.png" alt="image-20240116114246398"></p>
+<p>线性啁啾是指的瞬时频率$f(t)$随时间呈线性变化，下式中c是啁啾率(chirp rate)，是一个常数，表达式为$c=\frac{f_1-f_0}{T}=\frac{\Delta f}{\Delta t}$</p>
+<script type="math/tex; mode=display">
+f(t)=ct+f_0</script><p>转化成基本定义式中的相位的表达形式:</p>
+<script type="math/tex; mode=display">
+\phi(t)=\phi_0+2\pi\int_0^tf(\tau)d\tau=\phi_0+2\pi(\frac{c}{2}t^2+f_0t)</script><p>其中$\phi_0$表示初始相位</p>
+<h3 id="指数啁啾"><a href="#指数啁啾" class="headerlink" title="指数啁啾"></a>指数啁啾</h3><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240116120520930.png" alt="image-20240116120520930"></p>
+<p>指数啁啾的定义为：</p>
+<script type="math/tex; mode=display">
+f(t)=f_0k^{\frac{t}{T}}</script><p>它具有如果$t_1$和$t_2$间时间间隔$T=t_2-t_1$是常数，$f_2(t)/f_1(t)$也是常数的性质。</p>
+<p>相位表达式如下：</p>
+<script type="math/tex; mode=display">
+\phi(t)=\phi_0+2\pi\int_0^tf(\tau)d\tau=\phi_0+2\pi f_0(\frac{k^{\frac{t}{T}}-1}{ln(k)})</script><h3 id="双曲啁啾"><a href="#双曲啁啾" class="headerlink" title="双曲啁啾"></a>双曲啁啾</h3><p>双曲啁啾定义为：</p>
+<script type="math/tex; mode=display">
+f(t)=\frac{f_0f_1T}{(f_0-f_1)t+f_1T}</script><p>其相位表达式为：</p>
+<script type="math/tex; mode=display">
+\phi(t)=\phi_0+2\pi\int_0^tf(\tau)d\tau=\phi_0+2\pi \frac{-f_0f_1T}{f_1-f_0}ln(1-\frac{f_1-f_0}{f_1T}t)</script><p>除此之外，还有对数啁啾，二次(^2)啁啾等，都是指的其频率的变化呈现对数、二次的关系。</p>
+<h2 id="啁啾扩频"><a href="#啁啾扩频" class="headerlink" title="啁啾扩频"></a>啁啾扩频</h2><p>由上方啁啾信号得知，啁啾信号频率随时间变化，也就是说，在频域来看，这个信号自带“扫频/扩频” 的特性。</p>
+<p><strong>如果说使用这个信号来作为载波，调制信号，那么这么信号的带宽也就被扩宽了。这就是啁啾扩频的原理。</strong>啁啾扩频利用了其频率在整个带宽上线性变化的正弦脉冲信号来传输信息，因此不需要任何伪随机序列。</p>
+<p>举个例子，下图这个调制模块（802.15.4a中定义的超带宽UWB调制，Chirp-UWB）：二进制信号先转化为差分信号，再对差分信号进行QPSK进行啁啾调制。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240116124709497.png" alt="image-20240116124709497"></p>
+<p>调后的一个啁啾符号（Chirp Symbol）由4个啁啾脉冲（subchirp）构成，每个啁啾脉冲又可以调制一个基带QPSK信号。从而一个Chirp符号可以编码4个基带QPSK码字。</p>
+<hr>
+<center> ---CHAPTER END--- </center>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/2024/01/14/LoRa(%E9%80%9A%E4%BF%A1)%E5%AE%9A%E4%BD%8D/%E6%89%A9%E9%A2%91%E9%80%9A%E4%BF%A1%E7%AE%80%E4%BB%8B/">https://www.kaysonz.top/2024/01/14/LoRa(%E9%80%9A%E4%BF%A1)%E5%AE%9A%E4%BD%8D/%E6%89%A9%E9%A2%91%E9%80%9A%E4%BF%A1%E7%AE%80%E4%BB%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83%E6%8A%80%E6%9C%AF/">通信系统的调制与解调技术</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%B3%E9%A2%91%E6%8A%80%E6%9C%AF-FHSS"><span class="toc-number">1.</span> <span class="toc-text">跳频技术(FHSS)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%B3%E9%A2%91%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83"><span class="toc-number">1.1.</span> <span class="toc-text">跳频系统的调制与解调</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%9D%80%E9%80%9A%E4%BF%A1"><span class="toc-number">1.2.</span> <span class="toc-text">多址通信</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%BA%8F%E5%88%97%E6%89%A9%E9%A2%91-%EF%BC%88DSSS%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">直接序列扩频 （DSSS）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DSSS%E4%BF%A1%E5%8F%B7%E7%9A%84%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83"><span class="toc-number">2.1.</span> <span class="toc-text">DSSS信号的调制与解调</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E9%A2%91%E5%A2%9E%E7%9B%8A-%E6%89%A9%E9%A2%91%E5%9B%A0%E5%AD%90-Spreading-Factor"><span class="toc-number">2.2.</span> <span class="toc-text">扩频增益&#x2F;扩频因子  Spreading Factor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%89%A9%E4%BF%A1%E5%8F%B7%E4%BC%98%E7%82%B9%E5%92%8C%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86"><span class="toc-number">2.3.</span> <span class="toc-text">直扩信号优点和及其原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%89%A9%E9%80%9A%E4%BF%A1%E6%8A%97%E7%AA%84%E5%B8%A6%E5%B9%B2%E6%89%B0%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">2.3.1.</span> <span class="toc-text">直扩通信抗窄带干扰的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%89%A9%E9%80%9A%E4%BF%A1%E6%8A%97%E5%A4%9A%E5%BE%84%E6%95%88%E5%BA%94%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">2.3.2.</span> <span class="toc-text">直扩通信抗多径效应的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%89%A9%E4%BF%A1%E5%8F%B7%E6%8A%97%E5%8A%AB%E8%8E%B7%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">2.3.3.</span> <span class="toc-text">直扩信号抗劫获的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%89%A9%E4%BF%A1%E5%8F%B7%E7%9A%84%E4%BF%9D%E5%AF%86%E6%80%A7"><span class="toc-number">2.3.4.</span> <span class="toc-text">直扩信号的保密性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%BA%8F%E5%88%97%E6%89%A9%E9%A2%91%E4%B8%8B%E7%9A%84%E7%A0%81%E5%88%86%E5%A4%9A%E5%9D%80"><span class="toc-number">2.4.</span> <span class="toc-text">直接序列扩频下的码分多址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E9%A2%91%E5%BA%8F%E5%88%97%EF%BC%88%E6%89%A9%E9%A2%91%E7%A0%81%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">扩频序列（扩频码）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#m%E5%BA%8F%E5%88%97"><span class="toc-number">2.5.1.</span> <span class="toc-text">m序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#M%E5%BA%8F%E5%88%97"><span class="toc-number">2.5.2.</span> <span class="toc-text">M序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gold%E5%BA%8F%E5%88%97"><span class="toc-number">2.5.3.</span> <span class="toc-text">Gold序列</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%95%81%E5%95%BE%E6%89%A9%E9%A2%91-%E7%BA%BF%E6%80%A7%E8%B0%83%E9%A2%91%E6%89%A9%E9%A2%91-CSS"><span class="toc-number">3.</span> <span class="toc-text">啁啾扩频&#x2F;线性调频扩频(CSS)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%95%81%E5%95%BE-zh-overline-ou-ji-overline-u"><span class="toc-number">3.1.</span> <span class="toc-text">啁啾($zh\overline ou ji\overline u$)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%95%81%E5%95%BE"><span class="toc-number">3.1.1.</span> <span class="toc-text">线性啁啾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E6%95%B0%E5%95%81%E5%95%BE"><span class="toc-number">3.1.2.</span> <span class="toc-text">指数啁啾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E6%9B%B2%E5%95%81%E5%95%BE"><span class="toc-number">3.1.3.</span> <span class="toc-text">双曲啁啾</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%95%81%E5%95%BE%E6%89%A9%E9%A2%91"><span class="toc-number">3.2.</span> <span class="toc-text">啁啾扩频</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
