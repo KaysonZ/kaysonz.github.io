@@ -1,0 +1,273 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Part1-Filter | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="滤波器基本参数 上图展示了滤波器通带、阻带、过渡带。 特征角频率和特征频率($f_0&#x2F;f_n$) pole frequency&#x2F; nature frequency它只与滤波用的电阻和电容元件的参数有关，通常对于带通(带阻）滤波器，称为带通(带阻）滤波器的中心角频率或中心频率$f_0$，是通带(阻带）内电压增益最大(最小）点的频率。滤波器的截止频率（$f_c$）cut-off frequency 滤">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Part1-Filter">
+<meta property="og:url" content="https://www.kaysonz.top/2024/02/26/%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/Part1-Filter/index.html">
+<meta property="og:site_name" content="風">
+<meta property="og:description" content="滤波器基本参数 上图展示了滤波器通带、阻带、过渡带。 特征角频率和特征频率($f_0&#x2F;f_n$) pole frequency&#x2F; nature frequency它只与滤波用的电阻和电容元件的参数有关，通常对于带通(带阻）滤波器，称为带通(带阻）滤波器的中心角频率或中心频率$f_0$，是通带(阻带）内电压增益最大(最小）点的频率。滤波器的截止频率（$f_c$）cut-off frequency 滤">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.kaysonz.top/img/avatar.jpg">
+<meta property="article:published_time" content="2024-02-26T09:39:21.000Z">
+<meta property="article:modified_time" content="2024-02-26T10:16:17.975Z">
+<meta property="article:author" content="栞风">
+<meta property="article:tag" content="滤波器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.kaysonz.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://www.kaysonz.top/2024/02/26/%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/Part1-Filter/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Part1-Filter',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-26 18:16:17'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/notice.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Part1-Filter</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-26T09:39:21.000Z" title="发表于 2024-02-26 17:39:21">2024-02-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-26T10:16:17.975Z" title="更新于 2024-02-26 18:16:17">2024-02-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/">电子系统</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="滤波器基本参数"><a href="#滤波器基本参数" class="headerlink" title="滤波器基本参数"></a>滤波器基本参数</h1><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226174510849.png" alt="image-20240226174510849"></p>
+<p>上图展示了滤波器通带、阻带、过渡带。</p>
+<h3 id="特征角频率和特征频率-f-0-f-n-pole-frequency-nature-frequency"><a href="#特征角频率和特征频率-f-0-f-n-pole-frequency-nature-frequency" class="headerlink" title="特征角频率和特征频率($f_0/f_n$) pole frequency/ nature frequency"></a>特征角频率和特征频率($f_0/f_n$) pole frequency/ nature frequency</h3><p>它只与滤波用的电阻和电容元件的参数有关，通常对于带通(带阻）滤波器，称为带通(带阻）滤波器的中心角频率或中心频率$f_0$，是通带(阻带）内电压增益最大(最小）点的频率。<br>滤波器的截止频率（$f_c$）cut-off frequency</p>
+<h3 id="滤波器的截止频率（-f-c-）cut-off-frequency"><a href="#滤波器的截止频率（-f-c-）cut-off-frequency" class="headerlink" title="滤波器的截止频率（$f_c$）cut-off frequency"></a>滤波器的截止频率（$f_c$）cut-off frequency</h3><p>一般地是指幅度响应比通带低3 dB时的频率。无论是什么样的滤波器，截止频率一般都是指-3db的位置，也就是说从滤波器的通带的增益算起，下降-3db的位置。</p>
+<p><strong>Chenqiao原话：但是一些文献里面认为$f_0$就是截止频率$ f_c $，截止频率不一定需要在-3dB point。这里需要根据实际情况讨论。</strong></p>
+<hr>
+<h1 id="无源滤波器-Passive-Filter"><a href="#无源滤波器-Passive-Filter" class="headerlink" title="无源滤波器(Passive Filter)"></a>无源滤波器(Passive Filter)</h1><p>电容、电抗和阻抗的关系：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226174753964.png" alt="image-20240226174753964"></p>
+<p>所有滤波器的公式都是将电容和电抗表现成阻抗的形式，代入电路得出的。</p>
+<h2 id="一阶无源滤波器"><a href="#一阶无源滤波器" class="headerlink" title="一阶无源滤波器"></a>一阶无源滤波器</h2><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226174630689.png" alt="image-20240226174630689"></p>
+<h3 id="低通"><a href="#低通" class="headerlink" title="低通:"></a>低通:</h3><p>一阶低通滤波器：输出的电压等于夸在电容两端的电压，输出信号的相位</p>
+<script type="math/tex; mode=display">
+\psi=\phi_0-arctan⁡(R/X_C )=\phi_0-arctan⁡(2πfRC)。</script><p><strong>因此，当到达截止频率$X_C=R$时，相位移动为-45°</strong></p>
+<h3 id="高通："><a href="#高通：" class="headerlink" title="高通："></a>高通：</h3><p>输出的电压等于夸在电阻两端的电压，相位：</p>
+<script type="math/tex; mode=display">
+\psi=\phi_0+π/2-arctan⁡(2πfRC)</script><p><strong>因此，当到达截止频率$X_C=R$时，相位移动为+45°</strong></p>
+<h2 id="二阶滤波器"><a href="#二阶滤波器" class="headerlink" title="二阶滤波器"></a>二阶滤波器</h2><p>对于高阶滤波器，可以看成多个一阶串联，因此相位移动是叠加的。例如二阶高通滤波器截止频率的相位移动就是+90°</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226175143051.png" alt="image-20240226175143051"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226175159970.png" alt="image-20240226175159970"></p>
+<h3 id="增益下降slope比较"><a href="#增益下降slope比较" class="headerlink" title="增益下降slope比较"></a>增益下降slope比较</h3><p>二阶滤波器可以看做两个一阶滤波器串联。因此假设对于某一频率，一个二阶滤波器由两个同样的一阶滤波器串联而成。一阶滤波器的slope=-20dB/Decade, 那么二阶滤波器slope就是一阶滤波器的平方也就是-40dB/ Decade. (Decade=f/fc(3dB))</p>
+<p>对于二阶带通滤波器而言，两端的slope是两个独立的一阶滤波器，因此还是-20dB/ Decade.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226175308020.png" alt="image-20240226175308020"></p>
+<hr>
+<h1 id="有源滤波器-Active-Filter"><a href="#有源滤波器-Active-Filter" class="headerlink" title="有源滤波器(Active Filter)"></a>有源滤波器(Active Filter)</h1><p>有源滤波器带有运放，因此可以实现增益大于1（0dB）。且提供更好的输入输出阻抗。</p>
+<h2 id="有源低通滤波器"><a href="#有源低通滤波器" class="headerlink" title="有源低通滤波器"></a>有源低通滤波器</h2><table>
+    <tr>
+        <td><center><img src= "https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226175432892.png"></center></td>
+            <td><center><img src= "https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226175447274.png"></center></td>
+</table>
+
+<p>其截止频率$f=1/2πRC$, </p>
+<p>增益$DC Gain=(1+R_2/R_1 )$,</p>
+<p>如果把低通滤波器的电阻放在反馈电阻上，同样能通过影响不同频率的放大倍数进行滤波。这样可以得到更好的输入阻抗。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226175650304.png" alt="image-20240226175650304"></p>
+<p>一阶有源HPF只需要把电容更换位置，放在信号输入端即可（也就是R1前面）。</p>
+<h2 id="有源高通滤波器-二阶"><a href="#有源高通滤波器-二阶" class="headerlink" title="有源高通滤波器(二阶)"></a><strong>有源高通滤波器(二阶)</strong></h2><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226175821801.png" alt="image-20240226175821801"></p>
+<p>同无源滤波器分析的一样，有源一阶滤波器的slope斜率为-20dB/Decade, 二阶为-40dB/Decade.</p>
+<h2 id="有源带通滤波器-二阶"><a href="#有源带通滤波器-二阶" class="headerlink" title="有源带通滤波器(二阶)"></a><strong>有源带通滤波器(二阶)</strong></h2><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226175903538.png" alt="image-20240226175903538"></p>
+<h2 id="有源带阻滤波器"><a href="#有源带阻滤波器" class="headerlink" title="有源带阻滤波器"></a><strong>有源带阻滤波器</strong></h2><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226175930196.png" alt="image-20240226175930196"></p>
+<p>相当于是一个有源加法器，输入信号为一个高通的输出和一个低通的输出。增益-频率响应为高通和低通的叠加。<br>有源的二阶带通和带阻中心频率计算公式都是</p>
+<script type="math/tex; mode=display">
+f_0=\sqrt{(f_L⋅f_H)}</script><p>陷波滤波器(Notch Filter) 是带阻滤波器的一种，只不过阻带很窄。（好像不是重点，没考过）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226180019446.png" alt="image-20240226180019446"></p>
+<hr>
+<h1 id="Sallen-Key-滤波器（五星级）"><a href="#Sallen-Key-滤波器（五星级）" class="headerlink" title="Sallen-Key 滤波器（五星级）"></a>Sallen-Key 滤波器（五星级）</h1><p>Sallen-key是设计有源滤波器设计的一种拓扑结构，VCVS（Voltage-controlled voltage-source）滤波器的变种，由麻省理工学院林肯实验室的R. P. Sallen and E. L. Key 在1955所提出。</p>
+<h2 id="Q-Factor"><a href="#Q-Factor" class="headerlink" title="Q Factor"></a>Q Factor</h2><p>用频率定义Q：电路发生谐振的频率 ω0 称为谐振频率谐振峰两边 I ＝ （1/2） Im 处的频率值ω2j 和 ω1j 之间宽度定义为通频带宽度 BW，衡量一个谐振器在电路中性能的好坏。常用品质因数 Q ＝ ω0/ω2j －ω1j 来描述，Q 的物理意义是在谐振频率ω0 附近将具有更强的频率响应；对于偏离 ω0 较远的频率，则响应很弱或不响</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226180243570.png" alt="image-20240226180243570"></p>
+<p>对低通和高通滤波器而言,<strong>Q值等于滤波器电路电压增益（截止频率对应处的增益）模$|A_u |$与通带增益的模之比 $|A_{up}|$；对带通(带阻）滤波器而言，Q值等于中心角频率与通带(阻带）宽度bw之比。</strong></p>
+<h2 id="S-K滤波器的整体模型"><a href="#S-K滤波器的整体模型" class="headerlink" title="S-K滤波器的整体模型"></a>S-K滤波器的整体模型</h2><p>图中电阻根据低通、带通、高通不同要求替换成电容。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226180316035.png" alt="image-20240226180316035"></p>
+<p>计算通式为：</p>
+<script type="math/tex; mode=display">
+\frac{V_{out}}{V_{in}}=\frac{Z_3\times Z_4}{Z_1\times Z_2 + Z_2\times Z_3 +Z_3 \times Z_4 +Z_1 \times Z_3}</script><h2 id="S-K低通-amp-高通滤波器"><a href="#S-K低通-amp-高通滤波器" class="headerlink" title="S-K低通&amp;高通滤波器"></a>S-K低通&amp;高通滤波器</h2><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226180514237.png" alt="image-20240226180514237"></p>
+<p>以低通滤波器为例：</p>
+<script type="math/tex; mode=display">
+Z_1=R_1,Z_2=R_2,Z_3=\frac{1}{(sC_1 )},Z_4=\frac{1}{(sC_2 )}, 其中 s=jω</script><script type="math/tex; mode=display">
+A=\frac{\frac{1}{sC_1}\times \frac{1}{sC_2}}{R_1R_2+R_2\frac{1}{sC_1}+\frac{1}{sC_1}\times \frac{1}{sC_2}+R_1\frac{1}{sC_1}}</script><script type="math/tex; mode=display">
+=  \frac {1}{R_ {1}R_ {2}C_ {1}C_ {2}s^ {2}+R_ {2}C_ {2}s+1+R_ {1}C_ {2}s}</script><script type="math/tex; mode=display">
+=  \frac {1}{R_ {1}R_ {2}C_ {1}C_ {2}s^ {2}+C_ {2}s(R_ {1}+R_ {2})+1}</script><h3 id="特征频率"><a href="#特征频率" class="headerlink" title="特征频率:"></a>特征频率:</h3><p>（有时候认为$f_n=f_c$，$f_c$不在-3dB点，所以截止频率也是这个，具体要看题目）</p>
+<script type="math/tex; mode=display">
+f_n=\frac{1}{(2\pi\sqrt{(R_1 R_2 C_1 C_2 )}}</script><h3 id="品质因子Q："><a href="#品质因子Q：" class="headerlink" title="品质因子Q："></a>品质因子Q：</h3><script type="math/tex; mode=display">
+Q=\frac{1}{R_1+R_2}(\sqrt{R_1 R_2 \frac{C_1}{C_2} })</script><p>当$R_1=R_2, C_1=C_2$ 时，Q 有：</p>
+<script type="math/tex; mode=display">
+Q=\frac{1}{3-A}</script><p>其中A为放大电路的放大倍数。</p>
+<h2 id="设计S-K滤波器的例题"><a href="#设计S-K滤波器的例题" class="headerlink" title="设计S-K滤波器的例题"></a>设计S-K滤波器的例题</h2><p>设计一个具有以下特性的二阶高通Sallen-Key滤波器电路：$f_C=200Hz，Q=3$。</p>
+<p>解：</p>
+<p>为简化计算，认为$R_1=R_2,C_1=C_2$</p>
+<p>$f_c=1/2πRC=200Hz$, 选择c=100nF继续计算， R=7957Ω。（这道题认为$f_c=f_0$，PPT上举例原题）</p>
+<script type="math/tex; mode=display">
+Q=3=\frac{1}{3-A},A=\frac{3Q-1}{Q}=2.667</script><p>所以放大电阻分别取10K和6K</p>
+<h2 id="设计S-K滤波器生成类型的判定："><a href="#设计S-K滤波器生成类型的判定：" class="headerlink" title="设计S-K滤波器生成类型的判定："></a>设计S-K滤波器生成类型的判定：</h2><p>滤波器的类型是看 $\omega_0$ 处有没有bump来判定的，因此使用品质因素Q来判定</p>
+<p>巴特沃夫滤波器没有bump,因此Q<1
+贝塞尔滤波器Q≈1
+切比雪夫滤波器Q>1</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240226181523677.png" alt="image-20240226181523677"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/2024/02/26/%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/Part1-Filter/">https://www.kaysonz.top/2024/02/26/%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/Part1-Filter/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%BB%A4%E6%B3%A2%E5%99%A8/">滤波器</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%9F%BA%E6%9C%AC%E5%8F%82%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">滤波器基本参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E8%A7%92%E9%A2%91%E7%8E%87%E5%92%8C%E7%89%B9%E5%BE%81%E9%A2%91%E7%8E%87-f-0-f-n-pole-frequency-nature-frequency"><span class="toc-number">1.0.1.</span> <span class="toc-text">特征角频率和特征频率($f_0&#x2F;f_n$) pole frequency&#x2F; nature frequency</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E6%88%AA%E6%AD%A2%E9%A2%91%E7%8E%87%EF%BC%88-f-c-%EF%BC%89cut-off-frequency"><span class="toc-number">1.0.2.</span> <span class="toc-text">滤波器的截止频率（$f_c$）cut-off frequency</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A0%E6%BA%90%E6%BB%A4%E6%B3%A2%E5%99%A8-Passive-Filter"><span class="toc-number">2.</span> <span class="toc-text">无源滤波器(Passive Filter)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%98%B6%E6%97%A0%E6%BA%90%E6%BB%A4%E6%B3%A2%E5%99%A8"><span class="toc-number">2.1.</span> <span class="toc-text">一阶无源滤波器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8E%E9%80%9A"><span class="toc-number">2.1.1.</span> <span class="toc-text">低通:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E9%80%9A%EF%BC%9A"><span class="toc-number">2.1.2.</span> <span class="toc-text">高通：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%98%B6%E6%BB%A4%E6%B3%A2%E5%99%A8"><span class="toc-number">2.2.</span> <span class="toc-text">二阶滤波器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E7%9B%8A%E4%B8%8B%E9%99%8Dslope%E6%AF%94%E8%BE%83"><span class="toc-number">2.2.1.</span> <span class="toc-text">增益下降slope比较</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%89%E6%BA%90%E6%BB%A4%E6%B3%A2%E5%99%A8-Active-Filter"><span class="toc-number">3.</span> <span class="toc-text">有源滤波器(Active Filter)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E6%BA%90%E4%BD%8E%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8"><span class="toc-number">3.1.</span> <span class="toc-text">有源低通滤波器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E6%BA%90%E9%AB%98%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8-%E4%BA%8C%E9%98%B6"><span class="toc-number">3.2.</span> <span class="toc-text">有源高通滤波器(二阶)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E6%BA%90%E5%B8%A6%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8-%E4%BA%8C%E9%98%B6"><span class="toc-number">3.3.</span> <span class="toc-text">有源带通滤波器(二阶)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E6%BA%90%E5%B8%A6%E9%98%BB%E6%BB%A4%E6%B3%A2%E5%99%A8"><span class="toc-number">3.4.</span> <span class="toc-text">有源带阻滤波器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sallen-Key-%E6%BB%A4%E6%B3%A2%E5%99%A8%EF%BC%88%E4%BA%94%E6%98%9F%E7%BA%A7%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">Sallen-Key 滤波器（五星级）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Q-Factor"><span class="toc-number">4.1.</span> <span class="toc-text">Q Factor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S-K%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E6%95%B4%E4%BD%93%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.2.</span> <span class="toc-text">S-K滤波器的整体模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S-K%E4%BD%8E%E9%80%9A-amp-%E9%AB%98%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8"><span class="toc-number">4.3.</span> <span class="toc-text">S-K低通&amp;高通滤波器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E9%A2%91%E7%8E%87"><span class="toc-number">4.3.1.</span> <span class="toc-text">特征频率:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%81%E8%B4%A8%E5%9B%A0%E5%AD%90Q%EF%BC%9A"><span class="toc-number">4.3.2.</span> <span class="toc-text">品质因子Q：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1S-K%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E4%BE%8B%E9%A2%98"><span class="toc-number">4.4.</span> <span class="toc-text">设计S-K滤波器的例题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1S-K%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%94%9F%E6%88%90%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%88%A4%E5%AE%9A%EF%BC%9A"><span class="toc-number">4.5.</span> <span class="toc-text">设计S-K滤波器生成类型的判定：</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
