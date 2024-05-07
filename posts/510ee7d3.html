@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>移动通信-Ch2-无线信道 | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="基础信号传播模型为什么需要信号传播模型？无线信道模型用于仿真和预测电磁波在传播介质中传播的情况，来预测在某一位置接收时，信号的状态。 信号传播的机制 信号在自由空间中沿直线传播  在LOS模型中，接收信号功率认为是$1&#x2F;d$，但实际值要低得多  接收到的信号功率还可以被如下因素影响：  阴影（shadowing）: 阴影效应是指在无线通信系统中，移动台在运动的情况下，由于大型建筑物和其他物体对电波">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动通信-Ch2-无线信道">
+<meta property="og:url" content="https://www.kaysonz.top/posts/510ee7d3">
+<meta property="og:site_name" content="風">
+<meta property="og:description" content="基础信号传播模型为什么需要信号传播模型？无线信道模型用于仿真和预测电磁波在传播介质中传播的情况，来预测在某一位置接收时，信号的状态。 信号传播的机制 信号在自由空间中沿直线传播  在LOS模型中，接收信号功率认为是$1&#x2F;d$，但实际值要低得多  接收到的信号功率还可以被如下因素影响：  阴影（shadowing）: 阴影效应是指在无线通信系统中，移动台在运动的情况下，由于大型建筑物和其他物体对电波">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.kaysonz.top/img/avatar.jpg">
+<meta property="article:published_time" content="2024-03-12T16:10:15.000Z">
+<meta property="article:modified_time" content="2024-05-07T12:59:19.954Z">
+<meta property="article:author" content="栞风">
+<meta property="article:tag" content="通信网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.kaysonz.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://www.kaysonz.top/posts/510ee7d3"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '移动通信-Ch2-无线信道',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-07 20:59:19'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/notice.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/private/"><i class="fa-fw fas fa-newspaper"></i><span> 阿尔戈の攻略</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/private/"><i class="fa-fw fas fa-newspaper"></i><span> 阿尔戈の攻略</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">移动通信-Ch2-无线信道</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-12T16:10:15.000Z" title="发表于 2024-03-13 00:10:15">2024-03-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-07T12:59:19.954Z" title="更新于 2024-05-07 20:59:19">2024-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/">移动通信</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="基础信号传播模型"><a href="#基础信号传播模型" class="headerlink" title="基础信号传播模型"></a>基础信号传播模型</h1><h2 id="为什么需要信号传播模型？"><a href="#为什么需要信号传播模型？" class="headerlink" title="为什么需要信号传播模型？"></a>为什么需要信号传播模型？</h2><p>无线信道模型用于仿真和预测电磁波在传播介质中传播的情况，来预测在某一位置接收时，信号的状态。</p>
+<h2 id="信号传播的机制"><a href="#信号传播的机制" class="headerlink" title="信号传播的机制"></a>信号传播的机制</h2><ol>
+<li><p>信号在自由空间中沿直线传播</p>
+</li>
+<li><p>在LOS模型中，接收信号功率认为是$1/d$，但实际值要低得多</p>
+</li>
+<li><p>接收到的信号功率还可以被如下因素影响：</p>
+<ul>
+<li>阴影（shadowing）: 阴影效应是指在无线通信系统中，移动台在运动的情况下，由于大型建筑物和其他物体对电波的传输路径的阻挡而在传播接收区域上形成半盲区，从而形成电磁场阴影，这种随移动台位置的不断变化而引起的接收点场强中值的起伏变化叫做阴影效应。阴影效应是产生慢衰落的主要原因。</li>
+<li>大型障碍物反射</li>
+<li>折射（与障碍物密度有关）</li>
+<li>小型障碍物散射</li>
+<li>边缘造成衍射</li>
+</ul>
+</li>
+</ol>
+<h2 id="信号衰落"><a href="#信号衰落" class="headerlink" title="信号衰落"></a>信号衰落</h2><p>   衰落有两套区分方法：快衰落&lt;-&gt;慢衰落；大尺度衰落&lt;-&gt;小尺度衰落</p>
+<h3 id="大尺度衰落"><a href="#大尺度衰落" class="headerlink" title="大尺度衰落"></a>大尺度衰落</h3><p>  从宏观上描述大范围运动产生的平均功率衰减或路径损耗。多受发射和接收机间的主要地貌的影响。</p>
+<h3 id="小尺度衰落"><a href="#小尺度衰落" class="headerlink" title="小尺度衰落"></a>小尺度衰落</h3><p>   小尺度衰落，<strong>是指接收机与发射机间空间距离的小变化（如半波长）引起信号幅度和相位的急剧变化</strong>，主要由信号的多径传播（multipath effect）和收发两端的相对运动引起。通常使用信号的延时拓展和信道的时间变化来描述。</p>
+<h3 id="慢衰落"><a href="#慢衰落" class="headerlink" title="慢衰落"></a>慢衰落</h3><p>   在无线通信中把由于 <strong>距离</strong> 和 <strong>遮挡形成的阴影</strong> 引起的衰落成为慢衰落，属于大尺度衰落。</p>
+<h3 id="快衰落-："><a href="#快衰落-：" class="headerlink" title="快衰落 ："></a>快衰落 ：</h3><p>   <strong>主要由于多径效应和多普勒效应引起。</strong>体现为接收信号功率随小幅度距离变化较大。其接收到的信号具有一定统计学特征：</p>
+<ul>
+<li>对于NLOS信道，接受到的信号服用瑞利分布（Reayleigh Dis.）</li>
+<li>对于LOS信号，接收的信号服从莱斯分布（Rice Dis.）</li>
+</ul>
+<h2 id="噪声"><a href="#噪声" class="headerlink" title="噪声"></a>噪声</h2><p>噪声可以粗略分为以下三类：</p>
+<ul>
+<li>大气噪声的</li>
+</ul>
+<p>（这一部分照着610笔记后续补完一下吧）</p>
+<h2 id="路径损耗模型-Path-loss-model"><a href="#路径损耗模型-Path-loss-model" class="headerlink" title="路径损耗模型(Path loss model)"></a>路径损耗模型(Path loss model)</h2><h3 id="数种建立路径损耗模型的方法"><a href="#数种建立路径损耗模型的方法" class="headerlink" title="数种建立路径损耗模型的方法"></a>数种建立路径损耗模型的方法</h3><ul>
+<li>Maxwell 方程组：因为其本身过于复杂，因此对于实际工程组网意义不大，但是它是一切模型的底层基础。</li>
+<li>自由空间传播模型(Free space model)：过于简单，无法很好建模现实情况</li>
+<li>经验模型(Empirical models): 通过数据统计和拟合生成的模型，其精度有限。</li>
+<li>半经验模型(Semi-empirical models): 通过数据统计和统计学模型合成生成的模型，精度仍有限</li>
+<li>确定性（射线追踪）模型(Deterministic (ray-tracing) models)：特定场地，通过场地的大量几何信息计算的模型，是最准确的模型</li>
+</ul>
+<p>Maxwell方程组（不重要，只是给你看一下，摘自维基百科）：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240320114233368.png" alt="image-20240320114233368" style="zoom: 33%;" /></p>
+<p>麦克斯韦方程在分析基本的传输元件（比如不同类型的天线和传输线）有助于了解电磁波在其中具体的传播情况，对于实际工程而言过于复杂。[摘自mirror]:(<a target="_blank" rel="noopener" href="https://l61012345.top/2022/05/18/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/2.%E7%A7%BB%E5%8A%A8%E4%BF%A1%E9%81%93/">https://l61012345.top/2022/05/18/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/2.%E7%A7%BB%E5%8A%A8%E4%BF%A1%E9%81%93/</a>)</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/posts/510ee7d3">https://www.kaysonz.top/posts/510ee7d3</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C/">通信网络</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E4%BF%A1%E5%8F%B7%E4%BC%A0%E6%92%AD%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">基础信号传播模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%BF%A1%E5%8F%B7%E4%BC%A0%E6%92%AD%E6%A8%A1%E5%9E%8B%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">为什么需要信号传播模型？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E4%BC%A0%E6%92%AD%E7%9A%84%E6%9C%BA%E5%88%B6"><span class="toc-number">1.2.</span> <span class="toc-text">信号传播的机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E8%A1%B0%E8%90%BD"><span class="toc-number">1.3.</span> <span class="toc-text">信号衰落</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E5%B0%BA%E5%BA%A6%E8%A1%B0%E8%90%BD"><span class="toc-number">1.3.1.</span> <span class="toc-text">大尺度衰落</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E5%B0%BA%E5%BA%A6%E8%A1%B0%E8%90%BD"><span class="toc-number">1.3.2.</span> <span class="toc-text">小尺度衰落</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%85%A2%E8%A1%B0%E8%90%BD"><span class="toc-number">1.3.3.</span> <span class="toc-text">慢衰落</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E8%A1%B0%E8%90%BD-%EF%BC%9A"><span class="toc-number">1.3.4.</span> <span class="toc-text">快衰落 ：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%99%AA%E5%A3%B0"><span class="toc-number">1.4.</span> <span class="toc-text">噪声</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E6%A8%A1%E5%9E%8B-Path-loss-model"><span class="toc-number">1.5.</span> <span class="toc-text">路径损耗模型(Path loss model)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%A7%8D%E5%BB%BA%E7%AB%8B%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.1.</span> <span class="toc-text">数种建立路径损耗模型的方法</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>电信传输理论-CH2-DataTransmission | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="传输技术简介数据传输是以电磁波为数据载体，在发射器和接收器之间通过传播介质进行传播。这种传播可以被分为:  有引导（guided wave）:将波束引导至一个特定的物理路径 无引导（unguided wave）  能够将电磁波导向的传播介质称为 guided media, 例如双绞线，同轴线，光纤等，波导（Wave guide）等。在讨论传输的时候，会有一个名词叫“介质波导”，它通常是指的有别于导">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电信传输理论-CH2-DataTransmission">
+<meta property="og:url" content="https://www.kaysonz.top/posts/5b823d72">
+<meta property="og:site_name" content="風">
+<meta property="og:description" content="传输技术简介数据传输是以电磁波为数据载体，在发射器和接收器之间通过传播介质进行传播。这种传播可以被分为:  有引导（guided wave）:将波束引导至一个特定的物理路径 无引导（unguided wave）  能够将电磁波导向的传播介质称为 guided media, 例如双绞线，同轴线，光纤等，波导（Wave guide）等。在讨论传输的时候，会有一个名词叫“介质波导”，它通常是指的有别于导">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.kaysonz.top/img/avatar.jpg">
+<meta property="article:published_time" content="2024-03-11T06:55:35.000Z">
+<meta property="article:modified_time" content="2024-05-07T12:59:19.941Z">
+<meta property="article:author" content="栞风">
+<meta property="article:tag" content="通信网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.kaysonz.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://www.kaysonz.top/posts/5b823d72"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '电信传输理论-CH2-DataTransmission',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-07 20:59:19'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/notice.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/private/"><i class="fa-fw fas fa-newspaper"></i><span> 阿尔戈の攻略</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/private/"><i class="fa-fw fas fa-newspaper"></i><span> 阿尔戈の攻略</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">电信传输理论-CH2-DataTransmission</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-11T06:55:35.000Z" title="发表于 2024-03-11 14:55:35">2024-03-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-07T12:59:19.941Z" title="更新于 2024-05-07 20:59:19">2024-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%B5%E4%BF%A1%E4%BC%A0%E8%BE%93%E7%90%86%E8%AE%BA%E4%B8%8E%E5%B7%A5%E7%A8%8B/">电信传输理论与工程</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="传输技术简介"><a href="#传输技术简介" class="headerlink" title="传输技术简介"></a>传输技术简介</h1><p>数据传输是以电磁波为数据载体，在发射器和接收器之间通过传播介质进行传播。这种传播可以被分为:</p>
+<ul>
+<li>有引导（guided wave）:将波束引导至一个特定的物理路径</li>
+<li>无引导（unguided wave）</li>
+</ul>
+<p>能够将电磁波导向的传播介质称为 guided media, 例如双绞线，同轴线，光纤等，波导（Wave guide）等。在讨论传输的时候，会有一个名词叫“介质波导”，它通常是指的有别于导体的波导介质，如光纤。</p>
+<p>无法对电磁波进行导向的传播介质成为unguided media, 也称为 wireless（无线）, 例如空气，真空，海水等。</p>
+<div class="note info flat"><p>太熟悉了不想写了（｀Δ´）ゞ，讲点不知道的东西吧！！！</p>
+<p>姑且列举一下下面还包括了哪些东西吧</p>
+<p>频率，频谱和带宽;</p>
+<p>模拟信号和数字信号;</p>
+<p>频谱和频率是什么（一般取大于半功率点的部分作为主频分量）;</p>
+<p>数据速率(Data Rate)和带宽(Bandwidth) 的关系（这个关系其实就是通信原理里面那些，这里简单说了一下，特别强调了一下数字信号带宽和波形的影响（参考通信原理讲耐奎斯特带宽那节）；</p>
+<p>$\uarr$ 这些内容都属于基础必备知识，前面的课程都已经涉及太多太多遍了，这里就不写了。要是有不记得的去百度一下$\uarr$</p>
+</div>
+<hr>
+<h1 id="一些传输术语"><a href="#一些传输术语" class="headerlink" title="一些传输术语"></a>一些传输术语</h1><ul>
+<li><p>signaling: 这个单词可以 1.表达物理层面的传播; 2. 表示发送一个信令（部分文献写作signalling来强调信令）; <strong>在这门课程中，它表示物理上的电磁波传播</strong></p>
+</li>
+<li><p>propagation：这个单词指物理层，电磁波层面的传播</p>
+</li>
+<li>Transmission：这个单词指数据层面的传输</li>
+</ul>
+<hr>
+<h1 id="数据和信号"><a href="#数据和信号" class="headerlink" title="数据和信号"></a>数据和信号</h1><h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p><strong>模拟数据：</strong> 模拟数据是由数据源产生的，在某个区间内连续的值。例如语音，温度，压力等。</p>
+<p><strong>数字数据</strong>：数据数据时离散值，例如文本或是字符串（离散二进制编码如ASCII，部分编码还包含校验码）。</p>
+<h2 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h2><p>在通信系统中，数据通过信号进行传输</p>
+<h3 id="模拟信号"><a href="#模拟信号" class="headerlink" title="模拟信号:"></a>模拟信号:</h3><p>模拟信号是连续的可以通过各种介质传播的变化的电磁波。例如光纤内传播的信号，无线信号等。</p>
+<ul>
+<li>典型：语音信号的标准频谱范围：300-3400Hz。这是在保真和带宽成本间取的平衡值（原始语音频谱大约在300-7kHz）。</li>
+</ul>
+<h3 id="数字信号："><a href="#数字信号：" class="headerlink" title="数字信号："></a>数字信号：</h3><p>数字信号是通过线缆传播的一串电压脉冲(Voltage Pulses)。例如用低电平表示0，高电平表示1</p>
+<ul>
+<li><p>一个数字信号失真的例子</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240314165920255.png" alt="image-20240314165920255" style="zoom:50%;" /></p>
+</li>
+</ul>
+<h3 id="相互转换"><a href="#相互转换" class="headerlink" title="相互转换"></a>相互转换</h3><p>上面提及的模拟数据，数字数据，模拟信号，数字信号之间是可以相互装换的。模拟信号可以承载模拟数据，也可以承载数字数据；同样地，数字信号也可以承载模拟数据或数字数据。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240314170833680.png" alt="image-20240314170833680" style="zoom: 33%;" /></p>
+<p><em>一个拓展：modem（调制解调器）</em></p>
+<p><em>以前会去运营商办我网络会接一个电modem，现在普遍时光modem，又称光猫。其作用就是为光信号做调制解调</em></p>
+<h2 id="模拟和数字传输"><a href="#模拟和数字传输" class="headerlink" title="模拟和数字传输"></a>模拟和数字传输</h2><p>模拟传输是将模拟数据调制成想要的形式的信号（如AM）后发射。信号模拟信号在长途传输过程中需要引入放大器来解决衰减。但放大器会连噪声一起放大。而数字传输则可使用repeater讲通信信息解码后重新调制无损发出，因此模拟传输相较于数字传输，有“不适配再生”的劣势。</p>
+<hr>
+<h1 id="传输损伤-五星级"><a href="#传输损伤-五星级" class="headerlink" title="传输损伤(五星级)"></a>传输损伤(五星级)</h1><div class="note danger flat"><p>下面这段五星级，但是私以为这一段的PPT就是百度百科的英文版，可以搜索“传输损伤”的百度百科看看…</p>
+<p>传送门: <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BC%A0%E8%BE%93%E6%8D%9F%E4%BC%A4/6118208#3">百度百科</a></p>
+</div>
+<p>对于任何通信系统，由于各种传输损伤，所接收的信号可能与所发送的信号不同。对于模拟信号，这些损伤会降低信号质量。对于数字信号，可以引入比特误差，使得二进制1被转换为二进制0，反之亦然。</p>
+<p>最显著的三个损伤：</p>
+<ul>
+<li>衰减(Attenuation)和衰减失真(Attenuation distortion)</li>
+<li>延迟失真(Delay distortion)</li>
+<li>噪声(Noise)</li>
+</ul>
+<h2 id="衰减-Attenuation"><a href="#衰减-Attenuation" class="headerlink" title="衰减(Attenuation)"></a>衰减(Attenuation)</h2><p>在任何传输介质上，信号的强度都会随着距离的推移而下降。对于guided media，这种衰减通常是指数级的，因此通常表示为每单位距离的恒定分贝数。对于unguided media，衰减更大</p>
+<p>衰减的损伤会作用于三个层面：</p>
+<ul>
+<li>信号的强度</li>
+<li>信噪比降低</li>
+<li>非线性失真(不同频段衰减程度不一样，attenuation various with frequency)</li>
+</ul>
+<p>强度的衰减和信噪比问题都可以通过放大器或中继器( amplifiers or repeaters)来解决。<strong>而非线性失真需要用均衡器来解决（equalizing），均衡器可以给不同的频段给予不同强度的补偿</strong>，这也就是音乐发烧友常说的”调eq”。</p>
+<h2 id="延迟失真-Delay-distortion"><a href="#延迟失真-Delay-distortion" class="headerlink" title="延迟失真(Delay distortion)"></a>延迟失真(Delay distortion)</h2><div class="note info flat"><p>在通信系统中，有两种延迟：delay和latency ; latency强调是一个信号输入一个系统，系统处理造成的延迟。delay则是下文介绍的</p>
+</div>
+<p>时延失真的产生是由于在导向媒体上信号传播速度随频率的不同而改变。对频带有限的信号来说，在靠近中心频率的地方其传播速度趋于最快，而越靠近频带的两侧，传播速度越慢。因此，信号的不同频率成分到达接收器的时间也不同，从而导致了不同频率之间的相移。</p>
+<p>也就是说，时延失真是接收到的信号因其频率成分延迟的不同而产生了失真。时延失真对数字信号尤为严重。不管用的是模拟信号还是数字信号来传输一个比特串，由于延迟失真的存在，某个比特的一些频率成分会溢出到其他比特上，因此会产生<strong>码间串扰</strong>。它是传输信道上最高比特速率受限的一个主要因素。</p>
+<h2 id="噪声-Noise"><a href="#噪声-Noise" class="headerlink" title="噪声(Noise)"></a>噪声(Noise)</h2><p>噪声主要可分为：</p>
+<ul>
+<li>热噪声（Thermal noise）:</li>
+<li>互调噪声（Intermodulation noise）</li>
+<li>串扰（Crosstalk）</li>
+<li>冲激噪声（Impulse noise）</li>
+</ul>
+<h3 id="热噪声"><a href="#热噪声" class="headerlink" title="热噪声"></a>热噪声</h3><p><strong>热噪声（thermal noise）</strong>是由电子的热运动造成的。热噪声存在于所有的电子设备和传输媒体中，并且是温度的函数。热噪声均匀地分布在通信系统常用的频率范围内，因此它通常称为<strong>白噪声</strong>。热噪声是无法消除的，这就为通信系统的性能带来一个上限。由于卫星地面接收到的信号本来就很弱，因此热噪声对卫星通信的影响最为严重。</p>
+<p>在任何设备和导体中，1Hz带宽内存在的热噪声的值都是：</p>
+<script type="math/tex; mode=display">
+N_0=kT(W/Hz)</script><p>其中：</p>
+<p>$N_0$ =每1Hz的噪声功率密度</p>
+<p>k=玻尔兹曼常数$1.38\times 10^{-23}J/k$</p>
+<p>T =开氏温度</p>
+<p><em>举个例子</em></p>
+<p><em>在17摄氏度（290K）的房间内，每1Hz噪声功率密度是：</em></p>
+<script type="math/tex; mode=display">
+N_0=(1.38\times 10^{-23}\times 290=4\times10^{-21}W/Hz</script><p>有了单位密度，乘上带宽即可得到频带内的白噪声功率$N$</p>
+<script type="math/tex; mode=display">
+N=kTB</script><p>写成dB形式就是（单位:dBW）</p>
+<script type="math/tex; mode=display">
+N=10logK+10logT+10logB</script><p><em>举个例子：</em></p>
+<p><em>温度为294K, 带宽为10Mhz时，接收器热噪声为：</em></p>
+<script type="math/tex; mode=display">
+N=-228.6dBW+10log(294)+10log(10^7)</script><h3 id="互调噪声（intermodulation-noise）"><a href="#互调噪声（intermodulation-noise）" class="headerlink" title="互调噪声（intermodulation noise）"></a>互调噪声（intermodulation noise）</h3><p>当不同频率的信号共享同一传输媒体时，可能会产生<strong>互调噪声（intermodulation noise）</strong>。互调噪声带来的影响是产生了额外的信号，其频率为两个原频率之和或差，也可能是若干倍的原频率。例如，将频率分别为f1和f2的信号混合在一起，就有可能产生频率为f1+f2的能量。这一生成信号有可能会干扰频率为f1+f2的正常信号</p>
+<p>互调噪声的产生由于在发送器、接收器中存在非线性因素，或者是传输系统受到干扰。理想情况下，这些系统组成器件以线性系统方式工作，就是说，输出等于输入的常倍数。然而在任何实际系统中，输出是输入的较复杂函数。过度非线性的产生可能是由于元器件发生了故障或加载的信号过强。也正是在这些情况下会出现频率相加或相减的情况。</p>
+<p><strong>串扰（crosstalk）</strong></p>
+<p>如果你曾经在打电话时听到过别人的对话，那么你对<strong>串扰（crosstalk）</strong>已经有过亲身经历。它是我们不希望看到的信号通道之间的耦合现象。它的产生是由于载有多路信号的相邻双绞线之间发生电耦合，有时在同轴电缆之间也会发生，不过很少见。当微波天线收到不需要的信号时也可能发生串扰现象。</p>
+<p><strong>冲激噪声（impulse noise）</strong></p>
+<p>以上讨论的所有类型的噪声都是可预测的，并有着比较固定的强度。因此在设计传输系统时有可能妥善处理这些问题。然而是非连续的，由不规则的脉冲或持续时间短而振幅大的噪声尖峰组成。它的产生有多种原因，包括外部电磁波干扰（如雷电）以及通信系统本身的故障和缺陷。</p>
+<p>通常对模拟数据来说，冲激噪声引起的麻烦并不大。例如，话音传输可能被短暂的咔嚓声打扰，但并不影响对话音的理解。然而，在数字数据通信中，冲激噪声是差错的主要原因。例如，一个持续时间为0.01s的能量尖峰不会破坏任何话音数据，但有可能会毁掉560bits的以56kbps速率传输的数字数据。</p>
+<hr>
+<h1 id="信道容量-五星级，但是不是难点"><a href="#信道容量-五星级，但是不是难点" class="headerlink" title="信道容量(五星级，但是不是难点)"></a>信道容量(五星级，但是不是难点)</h1><p>定义：道能无错误传送的最大信息率。对于只有一个信源和一个信宿的单用户信道，它是一个数，单位是比特每秒或比特每符号。</p>
+<p>信道容量与：1.数据速率；2.带宽; 3.噪声 4. 误码率 有关，这里ppt和课都像排泄物，recall一下通信原理那边的ppt吧。</p>
+<h2 id="耐奎斯特带宽："><a href="#耐奎斯特带宽：" class="headerlink" title="耐奎斯特带宽："></a>耐奎斯特带宽：</h2><p>奈氏准则指出在带宽有限下，<strong>码元传输</strong>的速率是受限的。详见通信原理，就是理论最大符号率2B</p>
+<p>（注意！这里不是信息传输速率，而是码元，可以通过增加调制的电平数量，也就是每个码元包含的比特数量来提高信息传输速率）</p>
+<p><em>举个例子：</em></p>
+<p><em>假设一个经过modem调制的数字语音信号，带宽为3100Hz, 那么耐奎斯特信道容量就是2B=6200Baud，假设使用M=8的调制（不理解复习通信原理数字信号频带调制部分，例如QPSK M=4, 8PSK M=8）那么信道最大比特速率就是18600bps</em></p>
+<h2 id="香农信道容量公式"><a href="#香农信道容量公式" class="headerlink" title="香农信道容量公式"></a>香农信道容量公式</h2><p>香农公式带宽受限且有高斯白噪声干扰的信道极限、无差错的<strong>信息传输速率</strong>。公式为：</p>
+<script type="math/tex; mode=display">
+C=Blog_2(1+SNR)</script><p>从这门课的角度来看，香农公式考虑的噪声主要是热噪声，而缺失了串扰，冲击噪声等。因此香浓噪声其实也是一个较为理想的上限容量（在考虑香农公式时，耐奎斯带宽是纯纯的理想容量）。</p>
+<p><em>举个例子：</em></p>
+<p><em>假设信道始于3MHz止于4Mhz, SNR=24dB(二进制信道，M=2)</em></p>
+<script type="math/tex; mode=display">
+带宽B=4-3=1Mhz,SNR=10^{2.4}=251</script><p><em>香农容量下：</em></p>
+<script type="math/tex; mode=display">
+C=10^6 \times log_2(1+251)=10^6\times 8=8Mbps</script><p><em>这个是该噪声环境下的极限容量，耐奎斯特带宽指出了一定带宽下无噪声的码元速率，那么一个码元需要包含多少比特才能达到香农公式指出的极限比特速率呢？</em></p>
+<script type="math/tex; mode=display">
+C=2Blog_2M=8\times10^6</script><p>因此，M=16。也就是需要16电位等级的调制，来达到香农传输带宽上限。</p>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/posts/5b823d72">https://www.kaysonz.top/posts/5b823d72</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C/">通信网络</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E6%8A%80%E6%9C%AF%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">传输技术简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E4%BC%A0%E8%BE%93%E6%9C%AF%E8%AF%AD"><span class="toc-number">2.</span> <span class="toc-text">一些传输术语</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%92%8C%E4%BF%A1%E5%8F%B7"><span class="toc-number">3.</span> <span class="toc-text">数据和信号</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE"><span class="toc-number">3.1.</span> <span class="toc-text">数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7"><span class="toc-number">3.2.</span> <span class="toc-text">信号</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7"><span class="toc-number">3.2.1.</span> <span class="toc-text">模拟信号:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%EF%BC%9A"><span class="toc-number">3.2.2.</span> <span class="toc-text">数字信号：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.2.3.</span> <span class="toc-text">相互转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E5%92%8C%E6%95%B0%E5%AD%97%E4%BC%A0%E8%BE%93"><span class="toc-number">3.3.</span> <span class="toc-text">模拟和数字传输</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E6%8D%9F%E4%BC%A4-%E4%BA%94%E6%98%9F%E7%BA%A7"><span class="toc-number">4.</span> <span class="toc-text">传输损伤(五星级)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%B0%E5%87%8F-Attenuation"><span class="toc-number">4.1.</span> <span class="toc-text">衰减(Attenuation)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%B6%E8%BF%9F%E5%A4%B1%E7%9C%9F-Delay-distortion"><span class="toc-number">4.2.</span> <span class="toc-text">延迟失真(Delay distortion)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%99%AA%E5%A3%B0-Noise"><span class="toc-number">4.3.</span> <span class="toc-text">噪声(Noise)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%AD%E5%99%AA%E5%A3%B0"><span class="toc-number">4.3.1.</span> <span class="toc-text">热噪声</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%92%E8%B0%83%E5%99%AA%E5%A3%B0%EF%BC%88intermodulation-noise%EF%BC%89"><span class="toc-number">4.3.2.</span> <span class="toc-text">互调噪声（intermodulation noise）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E9%81%93%E5%AE%B9%E9%87%8F-%E4%BA%94%E6%98%9F%E7%BA%A7%EF%BC%8C%E4%BD%86%E6%98%AF%E4%B8%8D%E6%98%AF%E9%9A%BE%E7%82%B9"><span class="toc-number">5.</span> <span class="toc-text">信道容量(五星级，但是不是难点)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%90%E5%A5%8E%E6%96%AF%E7%89%B9%E5%B8%A6%E5%AE%BD%EF%BC%9A"><span class="toc-number">5.1.</span> <span class="toc-text">耐奎斯特带宽：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A6%99%E5%86%9C%E4%BF%A1%E9%81%93%E5%AE%B9%E9%87%8F%E5%85%AC%E5%BC%8F"><span class="toc-number">5.2.</span> <span class="toc-text">香农信道容量公式</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>

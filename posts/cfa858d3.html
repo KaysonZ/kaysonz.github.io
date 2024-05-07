@@ -1,0 +1,287 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>现代通信网络-Ch1-Overview | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="[施工中]… 三个时代基础知识：拓补结构三个时代（这一部分讲了2个星期 -&gt; _ -&gt;） 横向对比     Generation-1 Generation-2 Generation-3     描述 仅又很少的终端，能够接入网络的用户有限。采用模拟信号，Qos不太好 终端的价格开始逐渐下降（经历了一段时间才降下来），用户可以承担。但服务的费用很高，用户安装了终端却不舍得用。开始采用数字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="现代通信网络-Ch1-Overview">
+<meta property="og:url" content="https://www.kaysonz.top/posts/cfa858d3">
+<meta property="og:site_name" content="風">
+<meta property="og:description" content="[施工中]… 三个时代基础知识：拓补结构三个时代（这一部分讲了2个星期 -&gt; _ -&gt;） 横向对比     Generation-1 Generation-2 Generation-3     描述 仅又很少的终端，能够接入网络的用户有限。采用模拟信号，Qos不太好 终端的价格开始逐渐下降（经历了一段时间才降下来），用户可以承担。但服务的费用很高，用户安装了终端却不舍得用。开始采用数字">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.kaysonz.top/img/avatar.jpg">
+<meta property="article:published_time" content="2024-03-08T06:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-07T13:01:09.132Z">
+<meta property="article:author" content="栞风">
+<meta property="article:tag" content="通信网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.kaysonz.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://www.kaysonz.top/posts/cfa858d3"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '现代通信网络-Ch1-Overview',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-07 21:01:09'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/notice.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/private/"><i class="fa-fw fas fa-newspaper"></i><span> 阿尔戈の攻略</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/private/"><i class="fa-fw fas fa-newspaper"></i><span> 阿尔戈の攻略</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">现代通信网络-Ch1-Overview</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-08T06:00:00.000Z" title="发表于 2024-03-08 14:00:00">2024-03-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-07T13:01:09.132Z" title="更新于 2024-05-07 21:01:09">2024-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%8E%B0%E4%BB%A3%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C/">现代通信网络</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>[施工中]…</p>
+<h1 id="三个时代"><a href="#三个时代" class="headerlink" title="三个时代"></a>三个时代</h1><h2 id="基础知识：拓补结构"><a href="#基础知识：拓补结构" class="headerlink" title="基础知识：拓补结构"></a>基础知识：拓补结构</h2><h2 id="三个时代-1"><a href="#三个时代-1" class="headerlink" title="三个时代"></a>三个时代</h2><p>（这一部分讲了2个星期 -&gt; _ -&gt;）</p>
+<h3 id="横向对比"><a href="#横向对比" class="headerlink" title="横向对比"></a>横向对比</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">Generation-1</th>
+<th style="text-align:center">Generation-2</th>
+<th style="text-align:center">Generation-3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>描述</td>
+<td style="text-align:center">仅又很少的终端，能够接入网络的用户有限。采用模拟信号，Qos不太好</td>
+<td style="text-align:center">终端的价格开始逐渐下降（经历了一段时间才降下来），用户可以承担。但服务的费用很高，用户安装了终端却不舍得用。开始采用数字信号。在技术层面遇到了频率容量(capacity) 和 交移 (handover) 问题</td>
+<td style="text-align:center">传统电信业务的资费下降，用户可以承受。要继续扩大市场就需要发展更多的服务</td>
+</tr>
+<tr>
+<td>关注的技术</td>
+<td style="text-align:center">Transmission</td>
+<td style="text-align:center">Switching</td>
+<td style="text-align:center">Soft-switch</td>
+</tr>
+<tr>
+<td>关键词</td>
+<td style="text-align:center">Reachability</td>
+<td style="text-align:center">Accessibility</td>
+<td style="text-align:center">Realizability</td>
+</tr>
+<tr>
+<td>拓补结构</td>
+<td style="text-align:center">mesh</td>
+<td style="text-align:center">star</td>
+<td style="text-align:center">hybrid (mesh + star)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="第二时代存在的两个问题的解释"><a href="#第二时代存在的两个问题的解释" class="headerlink" title="第二时代存在的两个问题的解释"></a>第二时代存在的两个问题的解释</h3><ul>
+<li>Handover:</li>
+</ul>
+<p>当你处于两个基站的覆盖交界地带时，在基站与基站间的切换存在问题。这个在2G的网络网络技术基础上无法解决。</p>
+<ul>
+<li>Capacity</li>
+</ul>
+<p>相同频率间存在干扰，可使用的频段容量不足，一旦遇到人员密集区域，网络会直接被拖崩溃，这是第二阶段衍生至第三阶段的关键原因。为解决这个问题，产生了DSMA (Space Division Multiple Access, 空分复用) 技术</p>
+<h3 id="第三时代的网络拓补"><a href="#第三时代的网络拓补" class="headerlink" title="第三时代的网络拓补"></a>第三时代的网络拓补</h3><p>正如第三个阶段中 hybrid 这个拓补结构所言，在第三个时代中传输网络被分为了接入网（Access Network, AN）和骨干网（Core Network, CN）。</p>
+<h1 id="广域网（Wide-Area-Networks-WAN）"><a href="#广域网（Wide-Area-Networks-WAN）" class="headerlink" title="广域网（Wide Area Networks WAN）"></a>广域网（Wide Area Networks WAN）</h1><h2 id="基本交换技术"><a href="#基本交换技术" class="headerlink" title="基本交换技术"></a>基本交换技术</h2><p>交换技术有很多种，但是基本都基于电路交换和分组交换这两种。</p>
+<h3 id="电路交换（circuit-switching）"><a href="#电路交换（circuit-switching）" class="headerlink" title="电路交换（circuit switching）"></a>电路交换（circuit switching）</h3><p>电路交换(circuit switching)是指使用专用物理通信路径连接通信终端的交换技术。连接建立开始时，通信系统分配给它的资源（通道、带宽、时隙、码字等等），通信活动的整个过程中，这个连接将始终占用着。电路交换总体可以分为这三步：</p>
+<ol>
+<li><strong>建立连接：</strong>分配通信资源。即在使用电路交换打电话前，必须先拨号请求<strong>建立连接</strong>。当被叫用户听到电话交换机送来的拨号音并摘机后，从主叫端建立连接，即一条<strong>专用的物理通路</strong>。线路一旦被分配，在未释放之前，其他站点将无法使用，即使某一时刻线路上并没有数据传输。</li>
+<li><strong>通话：</strong>一直占用通信资源。</li>
+<li><strong>释放连接：</strong>归还通信资源</li>
+</ol>
+<p>在要求数据按先后顺序且以恒定速率快速传输的情况下，使用电路交换是较为理想的选择。因此，当传输实时数据时，诸如音频和视频；或当服务质量（QOS）要求较高时，通常使用电路交换网络。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240315145652897.png" alt="image-20240315145652897"></p>
+<p>那么这个物理线路在实际电话通信上是如何体现的呢？以TDM举例，就是分配一个 Ts 给你。例如上图电话①被分配了Ts1,那么在这个通信结束之前，Ts1永远属于它。</p>
+<p>物理通路将不同的终端连接，如上图节点与节点之间的连线，这就是”Logical channel dedicated on each link”的意思。</p>
+<p>这个物理通路又被分为Ts0-Ts31个逻辑信道，每个终端只从物理信道传输的信号中提取中属于自己的逻辑信道的东西。例如下图电话①提取Ts1，电话②提取Ts31，这就是”Logical channel dedicated on each link”的意思</p>
+<p><strong>这种交换方式数据接收到的顺序和实时性都能保证</strong></p>
+<p><em>电路交换最常见的例子是电话网络，但时至今日，电话通信背后的交换技术已经更新了。</em></p>
+<h3 id="分组交换（packet-switching）"><a href="#分组交换（packet-switching）" class="headerlink" title="分组交换（packet switching）"></a>分组交换（packet switching）</h3><p>分组交换（packet switching）是将数据打包成分组（Packets）进行传输、交换。数据包包含标头(Header)，和负载(Payload)。标头包含分组的基本信息，例如地址信息，管理信息等，类似于快递上  “收货地址：重庆邮电大学” 和 备注的 “买家要求保密发货” ；负载即是数据，也就是包裹内”保密发货”的东西。</p>
+<p>分组通过最优路径（取决于 路由算法）路由到目标。两个主机之间传送的分组不一定要沿着相同的路径传送，即，你的巨型手办可能头发一个包裹，身体发一个包裹，腿又是一个包裹，三个包裹沿着不同路径送过来。๑乛◡乛๑</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240315151346721.png" alt="image-20240315151346721"></p>
+<p>在这样的交换技术下物理通路上的不同设备共享该通路上的资源，且仅当有通信发生时，才占用资源。</p>
+<p>分组交换又可以拓展两种网络：虚电路(Virtual Ciruit)和数据报（Datagram）</p>
+<p><em>这两种网络后续会结合协议深入阐述</em></p>
+<ul>
+<li><strong>虚电路（VC）</strong>:属于一条虚电路的分组将在它的首部携带一个 VC 号。因为一条虚电路在每条链路上可能具有不同的VC号，所以每台中间路由器必须用一个新的VC号替代每个传输分组的VC号。 这个新的 VC 号从转发表中获得。VC连接下，会确保信息已经送达。</li>
+<li><strong>数据报（Datagram）</strong>:在数据报网络中，每当一个端系统要发送分组时，它就为该分组加上目的地端系统的地址，然后将该分组推进网络中。数据报网络没有虚电路的概念，分组从源向目的地传输通过一系列路由器。路由器中的每个都使用该分组的目的地址来转发该分组。路由器有一个将目的地址映射到链路接口的转发表，当分组到达路由器时，该路由器使 用该分组的目的地址在该转发表中查找适当的输出链路接口。然后，路由器有意识地将该分 组向该输出链路接口转发。数据报连接下，数据是否送达不会被确认。</li>
+</ul>
+<p><strong>这种交换方式可以更高效地利用资源</strong></p>
+<h3 id="电路交换和分组交换的对比"><a href="#电路交换和分组交换的对比" class="headerlink" title="电路交换和分组交换的对比"></a>电路交换和分组交换的对比</h3><ul>
+<li>电路交换：一个连接双方的恒定的物理上的管道已经存在，只需要朝这个塞数据即可传达给对方。</li>
+<li>分组交换：每一个数据包都需要检查它需要去哪里，该朝哪里转发，并为其选择路径。</li>
+</ul>
+<p><em>这也就是之前的电话都是按分钟计费（资源一直分配给你），但是网络却是按流量计费（有包才占用资源）的的原因</em></p>
+<h2 id="帧中继（frame-relay）"><a href="#帧中继（frame-relay）" class="headerlink" title="帧中继（frame relay）"></a>帧中继（frame relay）</h2><p>帧中继（frame relay）采用的是分组交换（Packet Switching），它将数据放在可变大小的“帧”内。帧除分组交换必须的地址外，还包含一些纠错信息。网络在传送过程中对帧结构、传送差错等情况进行检查，同时，通过对帧中地址段（DLCI）识别，实现用户信息的统计复用。</p>
+<ul>
+<li>其可以在在一对一或者一对多的应用中快速而低廉的传输数位信息。</li>
+<li>它可以使用于语音、数据通信，既可用于局域网（LAN）也可用于广域网（WAN）的通信</li>
+</ul>
+<h2 id="异步传输模式（-Asynchronous-Transfer-Mode-ATM）"><a href="#异步传输模式（-Asynchronous-Transfer-Mode-ATM）" class="headerlink" title="异步传输模式（ Asynchronous Transfer Mode, ATM）"></a><strong>异步传输模式</strong>（ Asynchronous Transfer Mode, ATM）</h2><div class="note warning flat"><p>ATM这里是重点</p>
+</div>
+<p>异步传输模式（ATM）是指一种采用异步时分复用，是<strong>电路交换和分组交换</strong>的融合，以<strong>信元</strong>（cell）为单位的通信方式，信元在这里就对应分组交换中的packet. </p>
+<h1 id="局域网-城域网-因特网"><a href="#局域网-城域网-因特网" class="headerlink" title="局域网/城域网/因特网"></a>局域网/城域网/因特网</h1><div class="note info flat"><p>这一部分不是重点，有基本认知即可。无需刻意记忆</p>
+</div>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/posts/cfa858d3">https://www.kaysonz.top/posts/cfa858d3</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C/">通信网络</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E6%97%B6%E4%BB%A3"><span class="toc-number">1.</span> <span class="toc-text">三个时代</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%9A%E6%8B%93%E8%A1%A5%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">基础知识：拓补结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E6%97%B6%E4%BB%A3-1"><span class="toc-number">1.2.</span> <span class="toc-text">三个时代</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%AA%E5%90%91%E5%AF%B9%E6%AF%94"><span class="toc-number">1.2.1.</span> <span class="toc-text">横向对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%97%B6%E4%BB%A3%E5%AD%98%E5%9C%A8%E7%9A%84%E4%B8%A4%E4%B8%AA%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="toc-number">1.2.2.</span> <span class="toc-text">第二时代存在的两个问题的解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%97%B6%E4%BB%A3%E7%9A%84%E7%BD%91%E7%BB%9C%E6%8B%93%E8%A1%A5"><span class="toc-number">1.2.3.</span> <span class="toc-text">第三时代的网络拓补</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B9%BF%E5%9F%9F%E7%BD%91%EF%BC%88Wide-Area-Networks-WAN%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">广域网（Wide Area Networks WAN）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF"><span class="toc-number">2.1.</span> <span class="toc-text">基本交换技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2%EF%BC%88circuit-switching%EF%BC%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">电路交换（circuit switching）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%EF%BC%88packet-switching%EF%BC%89"><span class="toc-number">2.1.2.</span> <span class="toc-text">分组交换（packet switching）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2%E5%92%8C%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">2.1.3.</span> <span class="toc-text">电路交换和分组交换的对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%A7%E4%B8%AD%E7%BB%A7%EF%BC%88frame-relay%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">帧中继（frame relay）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E4%BC%A0%E8%BE%93%E6%A8%A1%E5%BC%8F%EF%BC%88-Asynchronous-Transfer-Mode-ATM%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">异步传输模式（ Asynchronous Transfer Mode, ATM）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B1%80%E5%9F%9F%E7%BD%91-%E5%9F%8E%E5%9F%9F%E7%BD%91-%E5%9B%A0%E7%89%B9%E7%BD%91"><span class="toc-number">3.</span> <span class="toc-text">局域网&#x2F;城域网&#x2F;因特网</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>

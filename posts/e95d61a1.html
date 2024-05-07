@@ -1,0 +1,319 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>STM32的中断(Register) | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="NVIC不同于普通单片机的软中断（单一入口，软件识别flag）或硬中断（不同入口）会在多个中断同时发生时挂起后发生的，STM32支持对中断的优先级进行编程，在中断中触发中断。用于管理这一优先级的系统被称为NVIC。  NVIC：Nested vectoredinterrupt controller，嵌套向量中断控制器，属于内核 (M3&#x2F;4&#x2F;7)。NVIC支持256个中断(16个内核中断+240个外">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32的中断(Register)">
+<meta property="og:url" content="https://www.kaysonz.top/posts/e95d61a1">
+<meta property="og:site_name" content="風">
+<meta property="og:description" content="NVIC不同于普通单片机的软中断（单一入口，软件识别flag）或硬中断（不同入口）会在多个中断同时发生时挂起后发生的，STM32支持对中断的优先级进行编程，在中断中触发中断。用于管理这一优先级的系统被称为NVIC。  NVIC：Nested vectoredinterrupt controller，嵌套向量中断控制器，属于内核 (M3&#x2F;4&#x2F;7)。NVIC支持256个中断(16个内核中断+240个外">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.kaysonz.top/img/avatar.jpg">
+<meta property="article:published_time" content="2024-02-02T06:19:32.000Z">
+<meta property="article:modified_time" content="2024-05-07T12:59:19.932Z">
+<meta property="article:author" content="栞风">
+<meta property="article:tag" content="嵌入式开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.kaysonz.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://www.kaysonz.top/posts/e95d61a1"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'STM32的中断(Register)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-07 20:59:19'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/notice.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/private/"><i class="fa-fw fas fa-newspaper"></i><span> 阿尔戈の攻略</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/private/"><i class="fa-fw fas fa-newspaper"></i><span> 阿尔戈の攻略</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">STM32的中断(Register)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-02T06:19:32.000Z" title="发表于 2024-02-02 14:19:32">2024-02-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-07T12:59:19.932Z" title="更新于 2024-05-07 20:59:19">2024-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/STM32/">STM32</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="NVIC"><a href="#NVIC" class="headerlink" title="NVIC"></a>NVIC</h1><p>不同于普通单片机的软中断（单一入口，软件识别flag）或硬中断（不同入口）会在多个中断同时发生时挂起后发生的，STM32支持对中断的优先级进行编程，在中断中触发中断。用于管理这一优先级的系统被称为NVIC。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240202143753489.png" alt="image-20240202143753489"></p>
+<p>NVIC：Nested vectoredinterrupt controller，嵌套向量中断控制器，属于内核 (M3/4/7)。NVIC支持256个中断(16个内核中断+240个外部中断)，内核支持256个中断优先级。ST公司把256个优先级裁切为了<strong>16个优先级</strong>（所有系列都是如此）。对于F407xx系列芯片，有10个内核中断，82个外部中断。</p>
+<p>STM32的中断优先级又分为几类：抢占式优先级、响应式优先级、自然优先级。<strong>在STM32中，优先级设置的数值越小，其优先级越高</strong></p>
+<ul>
+<li>抢占式优先级：当两个中断同时发生时，优先执行抢占式优先级高的中断，可形成中断嵌套(在执行某低优先级中断中被高优先级再次中断，先执行高的再回来继续执行低的)</li>
+<li>响应式优先级：当两个同抢占式优先级的中断同时发生时，优先响应 响应式优先级 高的中断，另一个被挂起。响应式优先级无法打断执行过程中的中断。</li>
+<li>自然优先级：由startup文件决定，当设置的抢占优先级和响应优先级相同时，先执行自然优先级高的中断。</li>
+</ul>
+<h2 id="中断向量表"><a href="#中断向量表" class="headerlink" title="中断向量表"></a>中断向量表</h2><p>中断向量表用于存放各个中断服务函数的首地址，每一个地址有4 byte （32位MCU）。在sartup文件中，中断向量表被定义在__Vectors中。CPU在上电后默认运行main，但一旦有中断触发，就调用对用的Handler。下方代码就是F4系列Startup文件中定义的10个内核中断：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">__Vectors       DCD     __initial_sp               ; Top of Stack</span><br><span class="line">                DCD     Reset_Handler              ; Reset Handler</span><br><span class="line">                DCD     NMI_Handler                ; NMI Handler</span><br><span class="line">                DCD     HardFault_Handler          ; Hard Fault Handler</span><br><span class="line">                DCD     MemManage_Handler          ; MPU Fault Handler</span><br><span class="line">                DCD     BusFault_Handler           ; Bus Fault Handler</span><br><span class="line">                DCD     UsageFault_Handler         ; Usage Fault Handler</span><br><span class="line">                DCD     0                          ; Reserved</span><br><span class="line">                DCD     0                          ; Reserved</span><br><span class="line">                DCD     0                          ; Reserved</span><br><span class="line">                DCD     0                          ; Reserved</span><br><span class="line">                DCD     SVC_Handler                ; SVCall Handler</span><br><span class="line">                DCD     DebugMon_Handler           ; Debug Monitor Handler</span><br><span class="line">                DCD     0                          ; Reserved</span><br><span class="line">                DCD     PendSV_Handler             ; PendSV Handler</span><br><span class="line">                DCD     SysTick_Handler            ; SysTick Handler</span><br></pre></td></tr></table></figure>
+<p>如上代码定义的就是中断函数的接口，也就是说，不像其他单片机那样触发中断调用的函数是interrupt()，stm32不同的中断会调用不同的函数，这些函数的名字就是如上定义的这些，而非interrupt。</p>
+<p>在startup文件中，调用中断向量表的Handler时，会天然地决定中断判定和执行的顺序，即自然优先级。例如复位(Reset)被为-3，是自然优先级最高的中断。NMI被定义为-2，硬件失效(HardFault)定义为-1。</p>
+<h2 id="NVIC相关寄存器"><a href="#NVIC相关寄存器" class="headerlink" title="NVIC相关寄存器"></a>NVIC相关寄存器</h2><h3 id="ISER寄存器"><a href="#ISER寄存器" class="headerlink" title="ISER寄存器"></a>ISER寄存器</h3><p>ISER：Interrupt Set Enable Registers，用于控制中断使能。Cortex内核中ISER有 ISER0～ISER7 共8个，每个32位。ISER的每一个位控制一个中断，所以每一个中断使能寄存器可以控制 32 个中断，共256个。<strong>不过，由于 STM32F407 的 可屏蔽中断只有 82 个，所以对我们来说，实际用到的 ISER 只有 3 个（ISER[0]～ISER[2]）。</strong> 不同芯片ISER寄存器对应控制的中断不同，需参考芯片手册。<strong>要对某个中断使能，只需朝ISER中对应位写入1即可</strong></p>
+<p>因为其内存地址连续，所以可以直接定义uint_32类型数组ISER[n]来控制。</p>
+<h3 id="ICER寄存器"><a href="#ICER寄存器" class="headerlink" title="ICER寄存器"></a>ICER寄存器</h3><p>与ISER相对， ICER(Interrupt Clear Enable Registers)，用于中断失能控制。<strong>要对某个中断失能，只需朝ICER中对应位写入1即可</strong></p>
+<h3 id="IPR寄存器"><a href="#IPR寄存器" class="headerlink" title="IPR寄存器"></a>IPR寄存器</h3><p> Cortex-M4 内核可屏蔽中断有240个，每一个有256档优先级可以设置(需要8bit 寄存器进行配置)，因此内核规定IPR有60个，每个32bit （$60\times32bit=240\times8bit$）。在编程时，同样定义为数组来处理。<strong>由于 STM32F407 只用到了 Cortex-M4 的 82 个可屏蔽中断，故数组也只用了其中的元素 IP[0]～IP[81]。STM32F407 也并没有用到 IP 数组元素中的全部 8bit 来配置中断优先级，而是只使用了其中的高4位（对应16个优先级）</strong></p>
+<h3 id="中断优先级的分组和AIRCR寄存器"><a href="#中断优先级的分组和AIRCR寄存器" class="headerlink" title="中断优先级的分组和AIRCR寄存器"></a>中断优先级的分组和AIRCR寄存器</h3><p>前面我们已知，STM32中中断优先级有16个，也就是需要IPR中的4个bit来表示，这16个又可以被分为抢占优先级和响应优先级。<strong>那么这4bit哪些用于控制响应优先级，哪些用于控制抢占优先级呢？这是通过设置AICRC寄存器实现的。</strong></p>
+<p>AICRC： Application Interrupt and Reset Control Register，即应用程序中断及复位控制寄存器。该寄存器有32位，功能定义如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240203183209909.png" alt="image-20240203183209909"></p>
+<p>可以看到，第8-10位被用于中断优先级的分组，这个分组有五种，用于控制PIR中4个bit控制抢占优先级还是响应优先级。如下图所示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240202150050747.png" alt="image-20240202150050747"></p>
+<p>bit8-10的值和对应的组别如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240203182224262.png" alt="image-20240203182224262" style="zoom: 50%;" /></p>
+<h3 id="设置步骤"><a href="#设置步骤" class="headerlink" title="设置步骤"></a>设置步骤</h3><p>总的来说，要启用某一个中断，需要<strong>对NVIC进行的配置步骤如下：</strong></p>
+<ul>
+<li>设置中断分组(AIRCR寄存器)</li>
+<li>设置中断优先级(IPR寄存器[7:4])</li>
+<li>使能中断(ISER)</li>
+</ul>
+<hr>
+<h1 id="外部中断-事件-控制器EXTI"><a href="#外部中断-事件-控制器EXTI" class="headerlink" title="外部中断(事件)控制器EXTI"></a>外部中断(事件)控制器EXTI</h1><p>EXTI：External Interrupt/Event Controller。EXTI线含边缘检测器，可以接受外部的中断信号，来触发中断或是事件。各系列芯片的支持的EXTI线如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240203203004878.png" alt="image-20240203203004878"></p>
+<p><strong>每条EXTI线都可以单独配置：1.选择其触发中断或是事件，2.选择触发方式(上沿、下沿、双边沿)、3.软件触发、4.设置使能/失能、5.存储中断挂起状态</strong></p>
+<p>对于F4系列芯片，有23个EXTI线。详情需查询对应芯片的手册。</p>
+<p><strong>中断和事件的区别</strong></p>
+<ul>
+<li><p>中断：要进入NVIC，触发后由CPU调用对应的中断函数来执行中断程序</p>
+</li>
+<li><p>事件：不进入NVIC，本质上就是一个触发信号，是用来触发特定的外设模块或核心本身(唤醒)仅用于内部硬件自动控制。事件不需要软件参与，所以响应速度也更快。事件可作为中断的触发源。</p>
+</li>
+</ul>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240204162635225.png" alt="image-20240204162635225"></p>
+<p>整个电路框图如上图所示。输入线接受外部信号，通过配置EXTI_RTSR和EXTI_FTSR来设置边沿检测电路对上沿或下沿响应。EXTI_SWIER允许我们通过程序控制就可以启动中断/事件线，也就是在某些时候让中断或事件以软件作为触发源，而非外部输入的硬件信号。后续是事件屏蔽器，用于enable和disable是否产生事件脉冲。同时EXTI_PR会存储有中断请求发生，这里就是作中断flag。当EXTI_IMR被使能时，中断信号进入NVIC，触发中断。</p>
+<h2 id="EXTI相关寄存器"><a href="#EXTI相关寄存器" class="headerlink" title="EXTI相关寄存器"></a>EXTI相关寄存器</h2><h3 id="EXTI-IMR（中断屏蔽寄存器）"><a href="#EXTI-IMR（中断屏蔽寄存器）" class="headerlink" title="EXTI_IMR（中断屏蔽寄存器）"></a>EXTI_IMR（中断屏蔽寄存器）</h3><p>该寄存器总共有32位，但因为F4系列只有23个EXTI线，所以只有0-22位被使用。<strong>该寄存器写1位enable中断，写0为disable；复位值为全0，即所有中断disable</strong>。bit0对应EXTI0，bit1对应EXTI1，以此类推。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240204162947090.png" alt="image-20240204162947090"></p>
+<h3 id="EXTI-EMR（事件屏蔽寄存器）"><a href="#EXTI-EMR（事件屏蔽寄存器）" class="headerlink" title="EXTI_EMR（事件屏蔽寄存器）"></a>EXTI_EMR（事件屏蔽寄存器）</h3><p>该寄存器同EXTI_IMR，复位全0，写0屏蔽，写1使能。该寄存器用于控制是否产生事件脉冲。</p>
+<h3 id="EXTI-RTSR（上沿触发选择寄存器）"><a href="#EXTI-RTSR（上沿触发选择寄存器）" class="headerlink" title="EXTI_RTSR（上沿触发选择寄存器）"></a>EXTI_RTSR（上沿触发选择寄存器）</h3><p>该寄存器也是32位，但仅有23个bit被使用。bit0对应EXTI0，bit1对应EXTI1，以此类推。<strong>写0表示禁止上沿触发，写1表示使能上沿触发，复位值全0</strong></p>
+<h3 id="EXTI-FTSR-下降沿触发选择寄存器"><a href="#EXTI-FTSR-下降沿触发选择寄存器" class="headerlink" title="EXTI_FTSR(下降沿触发选择寄存器)"></a>EXTI_FTSR(下降沿触发选择寄存器)</h3><p>同上沿触发寄存器。如果上沿下沿触发都被enable，那么任意边沿都可唤起中断。如果在设置极性的同时产生了中断，那么中断请求会被忽略。</p>
+<h3 id="EXTI-PR-（挂起请求寄存器）"><a href="#EXTI-PR-（挂起请求寄存器）" class="headerlink" title="EXTI_PR （挂起请求寄存器）"></a>EXTI_PR （挂起请求寄存器）</h3><p>当在外部中断线上发生了选择的边沿事件，该位被置“1”。在此位中<strong>写入“1”可以清除它（注意这里不是写0）</strong>，在改变边沿检测的极性时，该位也会自动被清除。</p>
+<h3 id="EXTI-SWIER（软件中断寄存器）"><a href="#EXTI-SWIER（软件中断寄存器）" class="headerlink" title="EXTI_SWIER（软件中断寄存器）"></a>EXTI_SWIER（软件中断寄存器）</h3><p>当该位为“0”时，写“1”将设置 EXTI_PR 中相应的挂起位。如果在 EXTI_IMR 和 EXTI_EMR  中允许产生该中断，则产生中断请求。通过清除 EXTI_PR（挂起寄存器） 的对应位（写入“1”），可以清除该位为“0”，即处理中断flag时自动清除该位。</p>
+<h2 id="EXTI和IO口的映射"><a href="#EXTI和IO口的映射" class="headerlink" title="EXTI和IO口的映射"></a>EXTI和IO口的映射</h2><h3 id="AFIO（功能复用寄存器）配置-对于F1单片机"><a href="#AFIO（功能复用寄存器）配置-对于F1单片机" class="headerlink" title="AFIO（功能复用寄存器）配置(对于F1单片机)"></a>AFIO（功能复用寄存器）配置(对于F1单片机)</h3><p>对F1系列单片机，此处不做过多介绍，参考芯片手册即可。</p>
+<h3 id="SYSCFG（系统配置寄存器）配置（对于F4-F7-H7单片机）"><a href="#SYSCFG（系统配置寄存器）配置（对于F4-F7-H7单片机）" class="headerlink" title="SYSCFG（系统配置寄存器）配置（对于F4/F7/H7单片机）"></a>SYSCFG（系统配置寄存器）配置（对于F4/F7/H7单片机）</h3><p>EXTIn线可以映射到GPIOn上，例如EXTI0这条线，就可以映射至所有端口(如PA，PB等)的GPIO0这个口,EXTI15这条线，可映射至所有端口的GPIO15。一条EXTI线同一时间仅可以和一个GPIO相连。</p>
+<table>
+    <tr>
+        <td><center><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240204170054912.png"></center></td>
+        <td><center><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240204171730480.png" alt="image-20240204171730480" style="zoom:78%;" /></center></td>
+        </tr>
+</table>
+
+<p>在SYSCFG寄存器组中，有SYSCFG_EXTICR1~4 4组用于配置EXTI映射的寄存器，用于控制EXTI线和哪一个端口相连。，每组寄存器都是32位，但仅使用16位，使用的16位又被分为4组（每4bit一组），一组控制一条EXTI线。可映射至GPIO的EXTI线共有16条，4组SYSCFG_EXTICR寄存器，每组控制4条，刚好与16条契合。下图展示SYSCFG_EXTICR1寄存器的bit构成，2-4同理：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240204171226010.png" alt="image-20240204171226010"></p>
+<p>4bit和端口的值对应关系如下(对于F4)：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数值（Binary）</th>
+<th style="text-align:center">对应端口</th>
+<th style="text-align:center">数值（Binary）</th>
+<th style="text-align:center">对应端口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0000</td>
+<td style="text-align:center">PA</td>
+<td style="text-align:center">0101</td>
+<td style="text-align:center">PF</td>
+</tr>
+<tr>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">PB</td>
+<td style="text-align:center">0110</td>
+<td style="text-align:center">PG</td>
+</tr>
+<tr>
+<td style="text-align:center">0010</td>
+<td style="text-align:center">PC</td>
+<td style="text-align:center">0111</td>
+<td style="text-align:center">PH</td>
+</tr>
+<tr>
+<td style="text-align:center">0011</td>
+<td style="text-align:center">PD</td>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">PI</td>
+</tr>
+<tr>
+<td style="text-align:center">0100</td>
+<td style="text-align:center">PE</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>设置寄存器前，需要对SYSCFG时钟进行使能(<em>HAL库提供宏：__HAL_RCC_SYSCFG_CLK_ENABLE()</em>)</p>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h2><p>要在STM32芯片上使用某一中断功能，需要遵循如下步骤配置</p>
+<ul>
+<li>使能GPIO时钟</li>
+<li>设置GPIO模式（输入、是否上拉等），如果使用片上外设中断，可跳过这一步</li>
+<li>使能SYSCFG/APIO时钟，如果使用片上外设中断，可跳过这一步</li>
+<li>设置EXTI和GPIO的映射关系（设置APIO或STYSCFG寄存器），如果使用片上外设中断，可跳过这一步</li>
+<li>设置边沿触发模式(RTSR,FTSR)、enbale中断(IMR/EMR)，如果使用片上外设中断，可跳过这一步</li>
+<li>（对于其他片上外设，中断会直接进入NVIC，无需配置EXTI相关设置）</li>
+<li>设置NVIC（包含优先级分组，优先级，使能中断，详见NVIC配置步骤）</li>
+<li>编写中断服务函数（服务函数内需清除中断标志）</li>
+</ul>
+<h2 id="服务函数注意事项"><a href="#服务函数注意事项" class="headerlink" title="服务函数注意事项"></a>服务函数注意事项</h2><p>在STM32中，EXTI0-4有5个独立的中断服务函数；EXTI9-5共用一个中断服务函数；EXTI15-10共用一个中断服务函数。也就是总共有7个中断服务函数。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/posts/e95d61a1">https://www.kaysonz.top/posts/e95d61a1</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">嵌入式开发</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NVIC"><span class="toc-number">1.</span> <span class="toc-text">NVIC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E8%A1%A8"><span class="toc-number">1.1.</span> <span class="toc-text">中断向量表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NVIC%E7%9B%B8%E5%85%B3%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.2.</span> <span class="toc-text">NVIC相关寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ISER%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">ISER寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ICER%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">ICER寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IPR%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.2.3.</span> <span class="toc-text">IPR寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E4%BC%98%E5%85%88%E7%BA%A7%E7%9A%84%E5%88%86%E7%BB%84%E5%92%8CAIRCR%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.2.4.</span> <span class="toc-text">中断优先级的分组和AIRCR寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.2.5.</span> <span class="toc-text">设置步骤</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD-%E4%BA%8B%E4%BB%B6-%E6%8E%A7%E5%88%B6%E5%99%A8EXTI"><span class="toc-number">2.</span> <span class="toc-text">外部中断(事件)控制器EXTI</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EXTI%E7%9B%B8%E5%85%B3%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.2.</span> <span class="toc-text">EXTI相关寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#EXTI-IMR%EF%BC%88%E4%B8%AD%E6%96%AD%E5%B1%8F%E8%94%BD%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%89"><span class="toc-number">2.2.1.</span> <span class="toc-text">EXTI_IMR（中断屏蔽寄存器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EXTI-EMR%EF%BC%88%E4%BA%8B%E4%BB%B6%E5%B1%8F%E8%94%BD%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">EXTI_EMR（事件屏蔽寄存器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EXTI-RTSR%EF%BC%88%E4%B8%8A%E6%B2%BF%E8%A7%A6%E5%8F%91%E9%80%89%E6%8B%A9%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%89"><span class="toc-number">2.2.3.</span> <span class="toc-text">EXTI_RTSR（上沿触发选择寄存器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EXTI-FTSR-%E4%B8%8B%E9%99%8D%E6%B2%BF%E8%A7%A6%E5%8F%91%E9%80%89%E6%8B%A9%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.2.4.</span> <span class="toc-text">EXTI_FTSR(下降沿触发选择寄存器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EXTI-PR-%EF%BC%88%E6%8C%82%E8%B5%B7%E8%AF%B7%E6%B1%82%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%89"><span class="toc-number">2.2.5.</span> <span class="toc-text">EXTI_PR （挂起请求寄存器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EXTI-SWIER%EF%BC%88%E8%BD%AF%E4%BB%B6%E4%B8%AD%E6%96%AD%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%89"><span class="toc-number">2.2.6.</span> <span class="toc-text">EXTI_SWIER（软件中断寄存器）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EXTI%E5%92%8CIO%E5%8F%A3%E7%9A%84%E6%98%A0%E5%B0%84"><span class="toc-number">2.3.</span> <span class="toc-text">EXTI和IO口的映射</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AFIO%EF%BC%88%E5%8A%9F%E8%83%BD%E5%A4%8D%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%89%E9%85%8D%E7%BD%AE-%E5%AF%B9%E4%BA%8EF1%E5%8D%95%E7%89%87%E6%9C%BA"><span class="toc-number">2.3.1.</span> <span class="toc-text">AFIO（功能复用寄存器）配置(对于F1单片机)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SYSCFG%EF%BC%88%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%89%E9%85%8D%E7%BD%AE%EF%BC%88%E5%AF%B9%E4%BA%8EF4-F7-H7%E5%8D%95%E7%89%87%E6%9C%BA%EF%BC%89"><span class="toc-number">2.3.2.</span> <span class="toc-text">SYSCFG（系统配置寄存器）配置（对于F4&#x2F;F7&#x2F;H7单片机）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.1.</span> <span class="toc-text">配置步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%87%BD%E6%95%B0%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">3.2.</span> <span class="toc-text">服务函数注意事项</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>

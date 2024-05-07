@@ -1,0 +1,453 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>STM32的UART通信(Register) | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="基本工作原理(F4系列)F4的USART模块支持可编程字长、自定义波特率、单线半双工模式（RX，TX使用一条线，半双工收发）、唤醒MCU、可编程的停止位长度、可启用&#x2F;禁用&#x2F;设置模式的就校验位。其硬件模块如下 F4系列的USART模块还支持IRDA和LIN，这里不会详细介绍  USART硬件系统可以被拆分成如下几个重要部分： 控制初始化工作部分  使能USART：由CR1寄存器UE位(bit13)进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32的UART通信(Register)">
+<meta property="og:url" content="https://www.kaysonz.top/posts/7c92a281">
+<meta property="og:site_name" content="風">
+<meta property="og:description" content="基本工作原理(F4系列)F4的USART模块支持可编程字长、自定义波特率、单线半双工模式（RX，TX使用一条线，半双工收发）、唤醒MCU、可编程的停止位长度、可启用&#x2F;禁用&#x2F;设置模式的就校验位。其硬件模块如下 F4系列的USART模块还支持IRDA和LIN，这里不会详细介绍  USART硬件系统可以被拆分成如下几个重要部分： 控制初始化工作部分  使能USART：由CR1寄存器UE位(bit13)进">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.kaysonz.top/img/avatar.jpg">
+<meta property="article:published_time" content="2024-02-04T16:42:28.000Z">
+<meta property="article:modified_time" content="2024-05-07T12:59:19.933Z">
+<meta property="article:author" content="栞风">
+<meta property="article:tag" content="嵌入式开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.kaysonz.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://www.kaysonz.top/posts/7c92a281"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'STM32的UART通信(Register)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-07 20:59:19'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/notice.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/private/"><i class="fa-fw fas fa-newspaper"></i><span> 阿尔戈の攻略</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/private/"><i class="fa-fw fas fa-newspaper"></i><span> 阿尔戈の攻略</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">STM32的UART通信(Register)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-04T16:42:28.000Z" title="发表于 2024-02-05 00:42:28">2024-02-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-07T12:59:19.933Z" title="更新于 2024-05-07 20:59:19">2024-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/STM32/">STM32</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="基本工作原理-F4系列"><a href="#基本工作原理-F4系列" class="headerlink" title="基本工作原理(F4系列)"></a>基本工作原理(F4系列)</h1><p>F4的USART模块支持可编程字长、自定义波特率、单线半双工模式（RX，TX使用一条线，半双工收发）、唤醒MCU、可编程的停止位长度、可启用/禁用/设置模式的就校验位。其硬件模块如下</p>
+<p>F4系列的USART模块还支持IRDA和LIN，这里不会详细介绍</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240205011104190.png" alt="image-20240205011104190"  /></p>
+<p>USART硬件系统可以被拆分成如下几个重要部分：</p>
+<p>控制初始化工作部分</p>
+<ul>
+<li>使能USART：由CR1寄存器UE位(bit13)进行控制，使能后USART模块才会开始工作，不用时失能减少功耗；</li>
+<li>设置数据字长：F4系列支持8bit和9bit两种长度，通过对CR1寄存器M位(bit12)配置进行控制；</li>
+<li>设置波特率：波特率生成器负责生成控制发送速率的时钟，由USART_BRR寄存器控制。</li>
+<li>设置停止位长度：由CR2寄存器中bit[12:13]控制，支持0.5 / 1 / 1.5 / 2四种停止位长度</li>
+<li>设置奇偶校验：CR1寄存器PCE位（bit10）控制。</li>
+</ul>
+<p>控制收发工作部分</p>
+<ul>
+<li>DR(数据寄存器)：用于寄存要发送的数据或者收到的数据。发送时，该寄存器内的值会被逐个读取至TDR，并通过移位寄存器逐个bit发送；接受时，RDR寄存器内的数值会逐个写入该寄存器。TDR和RDR寄存器用户不可交互，仅可以操作DR。</li>
+<li>开始发送：当CR1寄存器中发送使能位（bit4）控制。当置 1 时，发送移位寄存器中的数据在 TX 引脚输出</li>
+<li>在发送开始后，TDR寄存器内的数据会被传输到发送移位寄存器，开始自动传输。</li>
+<li>在发送数据开始时，SCLK会产生时钟脉冲，以兼容同步通信。</li>
+</ul>
+<p>状态指示器部分</p>
+<ul>
+<li>TC(Transmission Complete)：当发送完成，且无新的数据被写入待发送时(即，TXE位为1，且没有新数据写入DR使得TXE置0)，TC位将会被置1表示发送完成；否则由硬件置0。该位可以CR1寄存器配置中断</li>
+<li>TXE：DR寄存器和TDR寄存器均已完成数据交接，现数据在发送移位寄存起内准备发送；DR寄存器支持写入新的数据；<strong>TXE寄存器由硬件置位，超DR寄存器写入来清零</strong>。该位可由CR1寄存器配置中断。</li>
+<li>RXNE：类似于TXE，用于指示接收输入已经传到RDR，接收移位寄存器可以接收下一帧数据。</li>
+</ul>
+<p>中断控制器部分</p>
+<ul>
+<li>中断使能分布在CR寄存器中，可在完成单次接收、完成单次发送、完成传输、出现错误、侦测到空闲等时候触发中断</li>
+</ul>
+<p>硬件流控部分</p>
+<ul>
+<li>nRTS：如果使能 RTS 流控制 (RTSE=1)，只要 USART 接收器准备好接收新数据，便会将 nRTS 变  为有效（输出低电平）。当接收寄存器已满时，会将 nRTS 变为无效（高电平）。</li>
+<li>nCTS：如果使能 CTS 流控制 (CTSE=1)，则发送器会在发送下一帧前检查nCTS。如果 nCTS 有效（收到低电平），则会发送下一数据（假设数据已准备好发送，即 TXE=0）；否则不会进行发送。如果在发送过程中 nCTS 变为无效，则当前发送完成之后，发送器停止。</li>
+</ul>
+<h1 id="UART（F4系列）"><a href="#UART（F4系列）" class="headerlink" title="UART（F4系列）"></a>UART（F4系列）</h1><h2 id="计算波特率和波特率寄存器"><a href="#计算波特率和波特率寄存器" class="headerlink" title="计算波特率和波特率寄存器"></a>计算波特率和波特率寄存器</h2><p>在工作原理图的下方发送器时钟框图部分可以看出，串口时钟信号$f_{ck}$首先经过USARTDIV分频，然后再经过$8\times(2-OVER8)$分频产生，因此波特率计算公式如下：</p>
+<script type="math/tex; mode=display">
+Baud=\frac{f_{ck}}{8\times(2-OVER8)\times USARTDIV}</script><p>其中USARTDIV这个常数是通过USART_BRR寄存器配置得到的，计算公式在左下角，这里面的OVER8是超采样的配置（通过USART_CR1寄存器配置，后续介绍），F1系列没有(F1系列默认16倍)。OVER8: “1”=8倍过采样； “0”=16倍过采样。</p>
+<script type="math/tex; mode=display">
+USARTDIV=DIV\_Mantissa+(DIV\_Fraction/8\times(2-OVER8))</script><p>因此，在已知Baud时，可以算出USARTDIV，又可以根据USARTDIV算出配置USART_BRR寄存器的DIV_Mantissa和DIV_Fraction (整数和小数)部分的值。USART_BRR寄存器结构如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240205175018208.png" alt="image-20240205175018208"></p>
+<p><strong>它本身有32位，但仅使用16位，高16位保持复位值（全0）。USART的整数部分写入15-4位，小数部分写入3-0位。当过采样设置为8倍（i.e., OVER8=1）时，小数仅使用2-0位，DIV_Fraction3 必须保持为0</strong></p>
+<p>举个例子：要设置波特率为115200，OVER8=0, 串口总线频率$f_{ck}=72MHz$</p>
+<script type="math/tex; mode=display">
+USARTDIV=\frac{72M}{16\times115200}=39.0625</script><script type="math/tex; mode=display">
+DIV\_Mantissa=39 (直接取整数部分即可)</script><script type="math/tex; mode=display">
+DIV\_Fraction=(USARTDIV-DIV\_Mantissa)\times16=0.625\times16=10</script><p>在计算DIV_Fraction部分时，计算出的结果不一定全部是整数，因此需要进行四舍五入。因为是以整形数据进行存储，所以计算出的结果会进行直接去小数操作。因此直接在DIV_Fraction计算值后面+0.5来进行四舍五入。</p>
+<p>设置代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> fck=72000000</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> Baud=115200</span></span><br><span class="line"><span class="type">uint16_t</span> mantissa;</span><br><span class="line"><span class="type">uint16_t</span> fraction;</span><br><span class="line">mantissa=fck/(<span class="number">16</span>*Baud);</span><br><span class="line">fraction=(fck%(<span class="number">16</span>*Baud))*<span class="number">16</span>+<span class="number">0.5</span>;</span><br><span class="line">USART-&gt;BRR=(mantissa&lt;&lt;<span class="number">4</span>)+fraction;</span><br></pre></td></tr></table></figure>
+<p>不难看出，因为小数部分进行了舍入操作，所以部分波特率会有误差。典型$f_{ck}$下设置波特率的误差在不同芯片的芯片手册中有详细介绍</p>
+<h2 id="F4系列UART常用功能"><a href="#F4系列UART常用功能" class="headerlink" title="F4系列UART常用功能"></a>F4系列UART常用功能</h2><h3 id="奇偶校验控制"><a href="#奇偶校验控制" class="headerlink" title="奇偶校验控制"></a>奇偶校验控制</h3><p>通过配置CR1寄存器PCE和PS位，可控制奇偶校验使能和模式。启用奇偶校验后，会占用一个数据位填入奇偶校验位。假设数据字长设置为8bit，那么现在7bit是数据位，1bit是奇偶校验位。假设数据字长为9bit，那么8bit是数据位，1bit是就校验位。奇偶校验位填充在原MSB的位置。</p>
+<h3 id="硬件流控制"><a href="#硬件流控制" class="headerlink" title="硬件流控制"></a>硬件流控制</h3><p>分别向 USART_CR3 寄存器中的 RTSE 位和 CTSE 位写入 1，可以分别使能 RTS 和 CTS 流  控制。</p>
+<p>CTS：如果在发送数据时使  nCTS 输入无效，会在停止之前完成发送。如果使 nCTS 有效时数据已写入数据寄存器，则将延迟发送，直到 nCTS 有效。</p>
+<p>RTS：只要 USART 接收器准备好接收新数据，便会将 nRTS 变  为有效（连接到低电平）。当接收寄存器已满时，会将 nRTS 变为无效，表明发送过程会在当前帧结束后停止。</p>
+<h3 id="USART支持的中断事件"><a href="#USART支持的中断事件" class="headerlink" title="USART支持的中断事件"></a>USART支持的中断事件</h3><p>通过配置对应的使能寄存器，在以下事件产生时，可以触发USART中断。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240206232412336.png" alt="image-20240206232412336"></p>
+<h2 id="UART（不含USART-LIDAR-LIN）关键寄存器"><a href="#UART（不含USART-LIDAR-LIN）关键寄存器" class="headerlink" title="UART（不含USART,LIDAR,LIN）关键寄存器"></a>UART（不含USART,LIDAR,LIN）关键寄存器</h2><h3 id="状态寄存器（USART-SR）指示的状态"><a href="#状态寄存器（USART-SR）指示的状态" class="headerlink" title="状态寄存器（USART_SR）指示的状态"></a>状态寄存器（USART_SR）指示的状态</h3><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240206220951514.png" alt="image-20240206220951514"></p>
+<ul>
+<li><p><strong>位 9 CTS</strong>：CTS 标志 (CTS flag) </p>
+<p>​    如果 CTSE 位置 1，当 nCTS 输入变换时，此位由硬件置 1。0：nCTS 状态线上未发生变化  1：nCTS 状态线上发生变化</p>
+<p>​    通过软件将该位清零（通过向 该位中写入 0）。</p>
+<p>​    如果 USART_CR3 寄存器中 CTSIE=1，则会生成中断。  （<em>注：F4系列UART4、5不适用</em>）</p>
+</li>
+<li><p><strong>位 7 TXE：</strong>发送数据寄存器为空 (Transmit data register empty) </p>
+<p>​    当 TDR 寄存器的内容已传输到移位寄存器时，该位由硬件置 1。0：数据未传输到移位寄存器 1：数据传输到移位寄存器</p>
+<p>​    如果 USART_CR1 寄存器  中 TXEIE 位 = 1，则会生成中断。</p>
+<p>​    通过对 USART_DR 寄存器执行写入操作将该位清零。 </p>
+</li>
+<li><p><strong>位 6 TC</strong>：发送完成 (Transmission complete) </p>
+<p>​    如果已完成对包含数据的帧的发送并且 TXE 置 1，则该位由硬件置 1。 0：传送未完成 1：传送已完成</p>
+<p>​    如果 USART_CR1 寄存  器中 TCIE = 1，则会生成中断。</p>
+<p>​    该位由软件序列清零（读取 USART_SR 寄存器，然后写入  USART_DR 寄存器）。TC 位也可以通过向该位写入‘0’来清零。建议仅在多缓冲区通信  时使用此清零序列。</p>
+</li>
+<li><p><strong>位 5 RXNE：</strong>读取数据寄存器不为空 (Read data register not empty) </p>
+<p>​    当 RDR 移位寄存器的内容已传输到 USART_DR 寄存器时，该位由硬件置 1。0：未接收到数据 1：已准备好读取接收到的数据</p>
+<p>​    如果  USART_CR1 寄存器中 RXNEIE = 1，则会生成中断。</p>
+<p>​    通过对 USART_DR 寄存器执行读入  操作将该位清零。RXNE 标志也可以通过向该位写入零来清零。建议仅在多缓冲区通信时使  用此清零序列。 </p>
+</li>
+<li><p><strong>位 4 IDLE：</strong>检测到空闲线路 (IDLE line detected)</p>
+<p>​     检测到空闲线路时，该位由硬件置 1。0：未检测到空闲线路 1：检测到空闲线路</p>
+<p>​    如果 USART_CR1 寄存器中 IDLEIE = 1，则会生成中 断。</p>
+<p>​    该位由软件序列清零（读入 USART_SR 寄存器，然后读入 USART_DR 寄存器）。 </p>
+<p>​    <em>注意：直到 RXNE 位本身已置 1 时（即，当出现新的空闲线路时）IDLE 位才会被再次置 1。</em></p>
+</li>
+<li><p><strong>位 3 ORE：</strong>上溢错误 (Overrun error)</p>
+<p>​     在 RXNE = 1 的情况下，当移位寄存器中当前正在接收的字准备好传输到 RDR 寄存器时，该  位由硬件置 1。 0：无上溢错误 1：检测到上溢错误</p>
+<p>​    如果 USART_CR1 寄存器中 RXNEIE = 1，则会生成中断。该位由软件序列清零（读入 USART_SR 寄存器，然后读入 USART_DR 寄存器。</p>
+<p>​    <em>注意：当该位置 1 时，RDR 寄存器的内容不会丢失，但移位寄存器会被覆盖。如果 EIE 位置 1，  则在进行多缓冲区通信时会对 ORE 标志生成一个中断。</em></p>
+</li>
+<li><p><strong>位 2 NF：</strong>检测到噪声标志 (Noise detected flag) </p>
+<p>​    当在接收的帧上检测到噪声时，该位由硬件置 1。 0：未检测到噪声  1：检测到噪声</p>
+<p>​    该位由软件序列清零（读入 USART_SR 寄  存器，然后读入 USART_DR 寄存器。</p>
+<p>​     <em>注意：如果 EIE 位置 1，则在进行多缓冲区通信时，该位不会生成中断，因为该位出现的时间与  本身生成中断的 RXNE 位因 NF 标志而生成的时间相同。</em></p>
+<p>​    <em>注意：当线路无噪声时，可以通过将 ONEBIT 位编程为 1 提高 USART 对偏差的容差来禁止  NF 标志</em></p>
+</li>
+<li><p><strong>位 1 FE：</strong>帧错误 (Framing error) </p>
+<p>​    当检测到去同步化、过度的噪声或中断字符时，该位由硬件置 1。0：未检测到帧错误 1：检测到帧错误或中断字符</p>
+<p>​    该位由软件序列清零（读入  USART_SR 寄存器，然后读入 USART_DR 寄存器）。</p>
+<p>​    <em>注意：该位不会生成中断，因为该位出现的时间与本身生成中断的 RXNE 位出现的时间相同。  如果当前正在传输的字同时导致帧错误和上溢错误，则会传输该字，且仅有 ORE 位被  置 1。 如果 EIE 位置 1，则在进行多缓冲区通信时会对 FE 标志生成一个中断。</em></p>
+</li>
+<li><p><strong>位 0 PE：</strong>奇偶校验错误 (Parity error) </p>
+<p>​    当在接收器模式下发生奇偶校验错误时，该位由硬件置 1。0：无奇偶校验错误  1：奇偶校验错误</p>
+<p>​    该位由软件序列清零（读取状态寄存器，然后对 USART_DR 数据寄存器执行读或写访问。</p>
+<p>​    将 PE 位清零前软件必须等待  RXNE 标志被置 1。  如果 USART_CR1 寄存器中 PEIE = 1，则会生成中断。 </p>
+</li>
+</ul>
+<h3 id="数据寄存器-USART-DR"><a href="#数据寄存器-USART-DR" class="headerlink" title="数据寄存器(USART_DR)"></a>数据寄存器(USART_DR)</h3><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240206223126595.png" alt="image-20240206223126595"></p>
+<p>该寄存器有32位，但<strong>[31:9]位保留，[8:0]为用于存放待发送或接受的9位或8位数据（9位或8位由设置的字长决定）</strong>这个寄存器其实由TDR和RDR两个寄存器组成，访问的是那个寄存器由读写操作决定。如果是写要发送的数据，则访问的是TDR寄存器。如果是要读已接收的数据，则访问的是RDR寄存器。</p>
+<p>在使能奇偶校验位的情况下（USART_CR1 寄存器中的 PCE 位被置 1）进行发送时，由于  MSB 的写入值（位 7 或位 8，具体取决于数据长度）会被奇偶校验位所取代，因此该值不起任何作用。</p>
+<h3 id="控制寄存器1-USART-CR1"><a href="#控制寄存器1-USART-CR1" class="headerlink" title="控制寄存器1(USART_CR1)"></a>控制寄存器1(USART_CR1)</h3><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240206223222420.png" alt="image-20240206223222420"></p>
+<ul>
+<li><p><strong>位 15 OVER8：过采样模式 (Oversampling mode)</strong>（F1系列没有这一位）</p>
+<p>​    0：16 倍过采样;  1：8 倍过采样</p>
+</li>
+<li><p><strong>位 13 UE：USART 使能 (USART enable) </strong></p>
+<p>​    0：禁止 USART 预分频器和输出 1：使能 USART</p>
+<p>​    该位清零后，USART 预分频器和输出将停止，并会结束当前字节传输以降低功耗。</p>
+<p>​    此位由软  件置 1 和清零。 </p>
+</li>
+<li><p><strong>位 12 M：字长 (Word length)</strong>。该位决定了字长。该位由软件置 1 或清零</p>
+<p>​    0：8 数据位； 1：9 数据位</p>
+<p>​    <em>注意：在数据传输（发送和接收）期间不得更改 M 位</em></p>
+</li>
+<li><p><strong>位 10 PCE：奇偶校验控制使能 (Parity control enable)</strong></p>
+<p>​    0：禁止奇偶校验控制；1：使能奇偶校验控制</p>
+</li>
+<li><p><strong>位 9 PS：奇偶校验选择 (Parity selection)</strong></p>
+<p>​    0：偶校验； 1：奇校验</p>
+</li>
+<li><p><strong>位 8 PEIE：奇偶校验错误中断使能 (PE interrupt enable)</strong></p>
+<p>​    0：禁止中断； 1：当 USART_SR 寄存器中 PE=1 时，生成 USART 中断</p>
+</li>
+<li><p><strong>位 7 TXEIE：发送寄存器空中断使能 (TXE interrupt enable)</strong></p>
+<p>​    0：禁止中断； 1：当 USART_SR 寄存器中 TXE=1 时(i.e., 当 TDR 寄存器的内容已传输到移位寄存器时)，生成 USART 中断</p>
+</li>
+<li><p><strong>位 6 TCIE：传送完成中断使能 (Transmission complete interrupt enable)</strong></p>
+<p>​    0：禁止中断； 1：当 USART_SR 寄存器中 TC=1 时，生成 USART 中断</p>
+</li>
+<li><p><strong>位 3 TE：发送器使能 (Transmitter enable)</strong></p>
+<p>​    0：禁止发送器；1：使能发送器</p>
+</li>
+<li><p><strong>位 2 RE：接收器使能 (Receiver enable)</strong></p>
+<p>​    0：禁止接收器；1：使能接收器并开始搜索起始位</p>
+</li>
+</ul>
+<h3 id="控制寄存器2-USART-CR2"><a href="#控制寄存器2-USART-CR2" class="headerlink" title="控制寄存器2(USART_CR2)"></a>控制寄存器2(USART_CR2)</h3><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240206224629997.png" alt="image-20240206224629997"></p>
+<ul>
+<li><p><strong>位 13:12 STOP：停止位配置 (STOP bit)</strong></p>
+<p>​    00：1 个停止位</p>
+<p>​    01：0.5 个停止位</p>
+<p>​    10：2 个停止位</p>
+<p>​    11：1.5 个停止位</p>
+<p>​    <em>注意：0.5 个停止位和 1.5 个停止位不适用于 UART4 和 UART5</em></p>
+</li>
+</ul>
+<h3 id="控制寄存器3-USART-CR3"><a href="#控制寄存器3-USART-CR3" class="headerlink" title="控制寄存器3(USART_CR3)"></a>控制寄存器3(USART_CR3)</h3><p>  <img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240206225157524.png" alt="image-20240206225157524"></p>
+<ul>
+<li><p><strong>位 11 ONEBIT：一个采样位方法使能 (One sample bit method enable)</strong></p>
+<p>​    0：三个采样位方法 ；1：一个采样位方法（将禁止噪声检测标志 (NF)）</p>
+</li>
+<li><p><strong>位 10 CTSIE：CTS 中断使能 (CTS interrupt enable)</strong></p>
+<p>​    0：禁止中断；1：当 USART_SR 寄存器中 CTS = 1 时，生成中断</p>
+<p>​    <em>注意：该位不适用于 UART4 和 UART5。</em></p>
+</li>
+<li><p><strong>位 9 CTSE： CTS 使能 (CTS enable)</strong></p>
+<p>​    0：禁止 CTS 硬件流控制；1：使能 CTS 模式，仅当 nCTS 输入有效 （连接到 0）时才发送数据。</p>
+</li>
+<li><p><strong>位 8 RTSE： RTS 使能 (RTS enable)</strong></p>
+<p>​    0：禁止 RTS 硬件流控制；1：使能 RTS 中断，仅当接收缓冲区中有空间时才会请求数据。可以接收数据时使 nRTS 输出有效 （连接到 0）。</p>
+</li>
+<li><p><strong>位 7 DMAT： DMA 使能发送器 (DMA enable transmitter)</strong></p>
+<p>​    1：针对发送使能 DMA 模式 ；0：针对发送禁止 DMA 模式</p>
+</li>
+<li><p><strong>位 6 DMAR： DMA 使能接收器 (DMA enable receiver)</strong></p>
+<p>​    1：针对接收使能 DMA 模式 ；0：针对接收禁止 DMA 模式</p>
+</li>
+</ul>
+<h2 id="常用功能对应寄存器总表"><a href="#常用功能对应寄存器总表" class="headerlink" title="常用功能对应寄存器总表"></a>常用功能对应寄存器总表</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">寄存器</th>
+<th style="text-align:center">配置</th>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">寄存器</th>
+<th style="text-align:center">配置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">使能USART</td>
+<td style="text-align:center">USART_CR1 UE（位13）</td>
+<td style="text-align:center">0：失能；1：使能</td>
+<td style="text-align:center">设置数据字长</td>
+<td style="text-align:center">USART_CR1  M（位12）</td>
+<td style="text-align:center">0：8数据位；1：9数据位</td>
+</tr>
+<tr>
+<td style="text-align:center">设置波特率</td>
+<td style="text-align:center">USART_BRR [15:4]&amp;[3:0]</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">奇偶校验使能</td>
+<td style="text-align:center">USART_CR1 PCE（位10）</td>
+<td style="text-align:center">0：失能；1：使能</td>
+</tr>
+<tr>
+<td style="text-align:center">奇偶校验模式选择</td>
+<td style="text-align:center">USART_CR1 PS（位9）</td>
+<td style="text-align:center">0：偶校验；1：奇校验</td>
+<td style="text-align:center">发送器使能</td>
+<td style="text-align:center">USART_CR1 TE（位3）</td>
+<td style="text-align:center">0：失能；1：使能</td>
+</tr>
+<tr>
+<td style="text-align:center">接收器使能</td>
+<td style="text-align:center">USART_CR1 RE（位2）</td>
+<td style="text-align:center">0：失能；1：使能</td>
+<td style="text-align:center">设置停止位</td>
+<td style="text-align:center">USART_CR2 STOP（位[13:12]）</td>
+<td style="text-align:center">00：1个;  01：0.5个；<br>10：2个；  11：1.5个</td>
+</tr>
+<tr>
+<td style="text-align:center">DMA 使能发送器</td>
+<td style="text-align:center">USART_CR3 DMAT（位7）</td>
+<td style="text-align:center">0：失能；1：使能</td>
+<td style="text-align:center">DMA 使能接收器</td>
+<td style="text-align:center">USART_CR3 DMAR（位6）</td>
+<td style="text-align:center">0：失能；1：使能</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="使用UART通信的配置步骤"><a href="#使用UART通信的配置步骤" class="headerlink" title="使用UART通信的配置步骤"></a>使用UART通信的配置步骤</h2><p>设置GPIO的复用模式</p>
+<ul>
+<li>设置为复用-推挽模式</li>
+<li>无上拉、下拉</li>
+<li>设置GPIO时钟（通常设置成高速）</li>
+<li>通过配置GPIO-&gt;AFR寄存器，将USART1复用至GPIO</li>
+</ul>
+<p>设置NVIC（如果要使用中断串口，则需要设置NVIC）</p>
+<ul>
+<li>设置中断分组(AIRCR寄存器)</li>
+<li>设置中断优先级(IPR寄存器[7:4])</li>
+<li>使能对应的中断(ISER)</li>
+</ul>
+<p>设置串口通信相关参数</p>
+<ul>
+<li>使能串口挂在总线的时钟</li>
+<li>对USART-&gt;BRR寄存器写入，设置波特率</li>
+<li>通过对USART-&gt;CR1寄存器写入设置OVER8过采样模式。</li>
+<li>通过对USART-&gt;CR2寄存器写入，设置STOP位长度</li>
+<li>通过对USART-&gt;CR1寄存器写入，设置奇偶校验使能和模式</li>
+<li>如需使用中断，则使能相关中断</li>
+<li>如需使用DMA，则使能DMA</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/posts/7c92a281">https://www.kaysonz.top/posts/7c92a281</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">嵌入式开发</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-F4%E7%B3%BB%E5%88%97"><span class="toc-number">1.</span> <span class="toc-text">基本工作原理(F4系列)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UART%EF%BC%88F4%E7%B3%BB%E5%88%97%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">UART（F4系列）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%B3%A2%E7%89%B9%E7%8E%87%E5%92%8C%E6%B3%A2%E7%89%B9%E7%8E%87%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.1.</span> <span class="toc-text">计算波特率和波特率寄存器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F4%E7%B3%BB%E5%88%97UART%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD"><span class="toc-number">2.2.</span> <span class="toc-text">F4系列UART常用功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C%E6%8E%A7%E5%88%B6"><span class="toc-number">2.2.1.</span> <span class="toc-text">奇偶校验控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%B5%81%E6%8E%A7%E5%88%B6"><span class="toc-number">2.2.2.</span> <span class="toc-text">硬件流控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#USART%E6%94%AF%E6%8C%81%E7%9A%84%E4%B8%AD%E6%96%AD%E4%BA%8B%E4%BB%B6"><span class="toc-number">2.2.3.</span> <span class="toc-text">USART支持的中断事件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UART%EF%BC%88%E4%B8%8D%E5%90%ABUSART-LIDAR-LIN%EF%BC%89%E5%85%B3%E9%94%AE%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.3.</span> <span class="toc-text">UART（不含USART,LIDAR,LIN）关键寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%88USART-SR%EF%BC%89%E6%8C%87%E7%A4%BA%E7%9A%84%E7%8A%B6%E6%80%81"><span class="toc-number">2.3.1.</span> <span class="toc-text">状态寄存器（USART_SR）指示的状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AF%84%E5%AD%98%E5%99%A8-USART-DR"><span class="toc-number">2.3.2.</span> <span class="toc-text">数据寄存器(USART_DR)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%AF%84%E5%AD%98%E5%99%A81-USART-CR1"><span class="toc-number">2.3.3.</span> <span class="toc-text">控制寄存器1(USART_CR1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%AF%84%E5%AD%98%E5%99%A82-USART-CR2"><span class="toc-number">2.3.4.</span> <span class="toc-text">控制寄存器2(USART_CR2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%AF%84%E5%AD%98%E5%99%A83-USART-CR3"><span class="toc-number">2.3.5.</span> <span class="toc-text">控制寄存器3(USART_CR3)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E5%AF%B9%E5%BA%94%E5%AF%84%E5%AD%98%E5%99%A8%E6%80%BB%E8%A1%A8"><span class="toc-number">2.4.</span> <span class="toc-text">常用功能对应寄存器总表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8UART%E9%80%9A%E4%BF%A1%E7%9A%84%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.5.</span> <span class="toc-text">使用UART通信的配置步骤</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
