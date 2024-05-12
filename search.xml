@@ -4,33 +4,6 @@
   
     
     <entry>
-      <title>test1</title>
-      <link href="/posts/8ab2dce2.html"/>
-      <url>/posts/8ab2dce2.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> private </category>
-          
-          <category> test </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> default </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>STM32的SPI控制器</title>
       <link href="/posts/a3cf4757.html"/>
       <url>/posts/a3cf4757.html</url>
