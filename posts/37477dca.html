@@ -1,0 +1,272 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Part1-CH3-数字电路的化简 | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="最小化策略基本概念包含名词：  Literal: 字符，也就是有几个输入变量  Implicant: 蕴含项，输入变量的不同组合,也就是卡诺图里面的圈，一个圈就是一种蕴含项。  Prime implicant: 质蕴含项就是不能与其它蕴含项合并的蕴含项, 也就是，这个卡诺图的圈无法被更大的圈包裹.  Cover: cover是不同implicant的组合，就是不同卡诺图的圈组合成的完整的表达式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Part1-CH3-数字电路的化简">
+<meta property="og:url" content="https://www.kaysonz.top/posts/37477dca">
+<meta property="og:site_name" content="風">
+<meta property="og:description" content="最小化策略基本概念包含名词：  Literal: 字符，也就是有几个输入变量  Implicant: 蕴含项，输入变量的不同组合,也就是卡诺图里面的圈，一个圈就是一种蕴含项。  Prime implicant: 质蕴含项就是不能与其它蕴含项合并的蕴含项, 也就是，这个卡诺图的圈无法被更大的圈包裹.  Cover: cover是不同implicant的组合，就是不同卡诺图的圈组合成的完整的表达式。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.kaysonz.top/img/avatar.jpg">
+<meta property="article:published_time" content="2024-01-14T11:17:28.000Z">
+<meta property="article:modified_time" content="2024-06-06T16:22:13.475Z">
+<meta property="article:author" content="栞风">
+<meta property="article:tag" content="数字电路">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.kaysonz.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://www.kaysonz.top/posts/37477dca"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":8,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Part1-CH3-数字电路的化简',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-07 00:22:13'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/notice.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">14</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Part1-CH3-数字电路的化简</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-14T11:17:28.000Z" title="发表于 2024-01-14 19:17:28">2024-01-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-06T16:22:13.475Z" title="更新于 2024-06-07 00:22:13">2024-06-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8A/">大三上</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%8F%AF%E9%9D%A0%E6%80%A7%E5%B7%A5%E7%A8%8B/">数字电路设计与可靠性工程</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="最小化策略"><a href="#最小化策略" class="headerlink" title="最小化策略"></a>最小化策略</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><strong>包含名词：</strong></p>
+<ul>
+<li><p><strong>Literal:</strong> 字符，也就是有几个输入变量</p>
+</li>
+<li><p><strong>Implicant:</strong> 蕴含项，输入变量的不同组合,也就是卡诺图里面的圈，一个圈就是一种蕴含项。</p>
+</li>
+<li><p><strong>Prime implicant:</strong> 质蕴含项就是不能与其它蕴含项合并的蕴含项, 也就是，这个卡诺图的圈无法被更大的圈包裹.</p>
+</li>
+<li><p><strong>Cover:</strong> cover是不同implicant的组合，就是不同卡诺图的圈组合成的完整的表达式。</p>
+</li>
+<li><p><strong>Cost:</strong> 电路中所有 门的数量 + 门的输入信号的数量</p>
+</li>
+<li><p><strong>Essential prime implicant:</strong>  若函数的一个质蕴涵项包含有不被函数的其他任何质蕴涵项所包含的最小项，则此质蕴涵项被称为必要质蕴涵项。</p>
+</li>
+</ul>
+<p><em>举个例子：</em></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240114192019432.png" alt="image-20240114192019432"  /></p>
+<p>$\overline x_2  x_3$就是一个essential prime implicant, 因为$m_{11}$没有被其他任何质蕴涵项包含。同理还有$x_3 \overline x_4$ 和$x_2 \overline x_3 x_4$.<br>在最少的cost的布尔方程里面，必要质蕴涵项是必须被包含的。写出必要质蕴涵项之后，发现$m_7$还没有被包含到。$m_7$可以被$\overline x_1  x_3$或者$\overline x_1  x_2 x_4$包含，取其最小成本$\overline x_1 x_3$,所以这个布尔函数最小cost是：</p>
+<script type="math/tex; mode=display">
+f=\overline x_2  x_3 + x_3 \overline x_4+x_2 \overline x_3 x_4+\overline x_1 x_3</script><p><strong><em>因此，寻找最小cost电路的步骤是：</em></strong></p>
+<ol>
+<li><strong>写出$f$的所有质蕴含项*</strong></li>
+<li><strong><em>找到所有必要质蕴涵项</em></strong></li>
+<li><strong><em>如果必要质蕴含项就包含了函数的所有1状态，那这就是最小cost，如果没有，则需要添加cost最小的非必要质蕴涵项来覆盖所有1状态</em></strong></li>
+</ol>
+<hr>
+<h1 id="多输出电路（Multiple-Output-circuits）"><a href="#多输出电路（Multiple-Output-circuits）" class="headerlink" title="多输出电路（Multiple-Output circuits）"></a><em>多输出电路（Multiple-Output circuits）</em></h1><p>在具有多个输出的电路中，让电路共享一些逻辑门可以有效减少cost</p>
+<p>这要求在卡诺图化简中<strong>并不一定按照质蕴涵项去画圈，而是查看更多蕴含项，寻找相同的蕴含项</strong>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240114193447675.png" alt="image-20240114193447675"></p>
+<p>如上图就有两个蕴含项可以被共享。CAD工具将会自动执行这个共享的过程。在人工设计（考试）的时候，多输出电路也可以通过尽量圈出可以共享的圈圈来减少cost</p>
+<hr>
+<h1 id="多级综合（Multilevel-Synthesis）—不考"><a href="#多级综合（Multilevel-Synthesis）—不考" class="headerlink" title="多级综合（Multilevel Synthesis）—不考"></a><em>多级综合（Multilevel Synthesis）—不考</em></h1><ul>
+<li><p><strong>Fan-in (扇入):</strong> 一个逻辑门输入的数量</p>
+</li>
+<li><p><strong>Fan-out(扇出):</strong> 是指该模块直接调用的下级模块的个数。也就是一个逻辑门的输出连了几个下一级门。</p>
+</li>
+</ul>
+<p>通常来说，使用CMOS制造的芯片存在扇入限制。通常希望AND门扇入小于5。可以使用分配率，把一层极的计算化成多个层级。下图就是两个例子</p>
+<table>
+    <tr>
+        <td><center><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240114193819266.png"/></center></td>
+        <td><center><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240114193752663.png"/></center></td>
+    </tr>
+</table>
+
+<hr>
+<h1 id="立体表示法（Cubical-Representation）"><a href="#立体表示法（Cubical-Representation）" class="headerlink" title="立体表示法（Cubical Representation）"></a><em>立体表示法（Cubical Representation）</em></h1><p>卡诺图能表示的函数大小受到限制，为了处理更大的函数，需要使用立方体表示。</p>
+<h2 id="构造立方体"><a href="#构造立方体" class="headerlink" title="构造立方体"></a>构造立方体</h2><p>有几个变量，就需要构造一个几维的立方体。立方体的顶点代表不同变量组合，立方体的边必须是含有一个x的组合，x代表0或者1。而面是含有两个x的组合。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240114194225368.png" alt="image-20240114194225368"></p>
+<p><em>以这个三维的cube为例，</em>首先标注顶点，000为顶点开始的三条边（三个变量所以三条边，x在三条边上换3个位置）需要分别为00x,0x0,x00,这三条边连接的另一个顶点将会是001,010,100（也就是x取和000相反的情况）。然后将新的顶点以同样的规则向外延伸，直至构成立方体。</p>
+<h2 id="化简"><a href="#化简" class="headerlink" title="化简"></a>化简</h2><p>$f={000,010,100,101,110}$,将函数表达出来，并在顶点处标注出来。上图中的顶点围成了一个面和一条线，这个面是xx0，这条线是10x,所以这个函数可以被化简成</p>
+<script type="math/tex; mode=display">
+f=\overline x_3 +x_1x_2</script><h2 id="四维立方体："><a href="#四维立方体：" class="headerlink" title="四维立方体："></a>四维立方体：</h2><p>四维立方体可以画成在一个大立方体内囊括了一个小立方体。这样每个顶点都有4条支路，可以安装上面的方法标注顶点了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240114194642317.png" alt="image-20240114194642317"></p>
+<hr>
+<h1 id="表格法化简（Quine-McCluskey-法）"><a href="#表格法化简（Quine-McCluskey-法）" class="headerlink" title="表格法化简（Quine-McCluskey 法）"></a><strong>表格法化简（Quine-McCluskey 法）</strong></h1><h3 id="Step1-–-计算质蕴涵项"><a href="#Step1-–-计算质蕴涵项" class="headerlink" title="Step1 – 计算质蕴涵项"></a>Step1 – 计算质蕴涵项</h3><ol>
+<li>首先，把minterm表达式的项按只含0个“1”，只含1个“1”，只含2个“1”，…，只含n个“1”（n为变量个数）划分为不同的Group，并按“1”的数量排列（升序或降序均可）成表</li>
+<li>准备一张新表。从含有最少数量的“1”的Group开始依次向下，将当前Group中的每一项与下一个Group的每一项比较。若两者只有一个变量不同，则将两项提取出来，并将不同的变量处用x标记，生成一个新的项。如果新的项在新表中已存在，则不执行动作；若不存在，则将这个新的项放到新表中的相应Group中。最后，在原表的两个Group中将提取的两项对应的“Subcube Covered”打上标记（打√）</li>
+<li>在新生成的表中，重复2，直到新表中不存在只有一个变量不同的项为止</li>
+<li><strong>所有未被打√的项，就是质蕴涵项。</strong></li>
+</ol>
+<p>例如：$f_{(x_1,…x_4)}=\sum m(0,4,8,10,11,12,13,15)$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240114195340907.png" alt="image-20240114195340907"></p>
+<p>所以这个表达式的质蕴涵项就是</p>
+<script type="math/tex; mode=display">
+P={10x0,101x,110x,1x11,11x1,xx00}</script><h3 id="Step2-–-找到必要质蕴含项"><a href="#Step2-–-找到必要质蕴含项" class="headerlink" title="Step2 – 找到必要质蕴含项"></a>Step2 – 找到必要质蕴含项</h3><p>把step1中找到的质蕴涵项列成表,如下图。发现0和4只有xx00表达了，所以xx00是必要质蕴涵项。把$P_6$挑出来</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240114195622722.png" alt="image-20240114195622722"></p>
+<h3 id="Step3-–-找到最小成本非必要质蕴涵项"><a href="#Step3-–-找到最小成本非必要质蕴涵项" class="headerlink" title="Step3 – 找到最小成本非必要质蕴涵项"></a>Step3 – 找到最小成本非必要质蕴涵项</h3><p>移除p6和被p6表达的0,4,8,12(被挑走了)，得到下表</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240114195726090.png" alt="image-20240114195726090"></p>
+<p>可以看到p1和p2的cost是相同的（他们都只有一个x），但是p1只能表述10, p2可以表述10，11，因此称p2支配 (dominates) p1。因此在这里选择p2。同理，可以选择p5。可以看到p4已经被p2和p5表达，因此这是不必要的。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240114195754979.png" alt="image-20240114195754979"></p>
+<h3 id="Step4-–-完成化简"><a href="#Step4-–-完成化简" class="headerlink" title="Step4 – 完成化简"></a>Step4 – 完成化简</h3><p>取step2的必要质蕴含项，step3选取的之蕴含项，<br>所以，化简后：$C={p_2,p_5,p_6 },f=x_1\overline x_2 x_3+x_1 x_2 x_4+\overline x_1 \overline x_3$</p>
+<hr>
+<center> ---CHAPTER END--- </center>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/posts/37477dca">https://www.kaysonz.top/posts/37477dca</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E5%8C%96%E7%AD%96%E7%95%A5"><span class="toc-number">1.</span> <span class="toc-text">最小化策略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">基本概念</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E8%BE%93%E5%87%BA%E7%94%B5%E8%B7%AF%EF%BC%88Multiple-Output-circuits%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">多输出电路（Multiple-Output circuits）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E7%BB%BC%E5%90%88%EF%BC%88Multilevel-Synthesis%EF%BC%89%E2%80%94%E4%B8%8D%E8%80%83"><span class="toc-number">3.</span> <span class="toc-text">多级综合（Multilevel Synthesis）—不考</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AB%8B%E4%BD%93%E8%A1%A8%E7%A4%BA%E6%B3%95%EF%BC%88Cubical-Representation%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">立体表示法（Cubical Representation）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E7%AB%8B%E6%96%B9%E4%BD%93"><span class="toc-number">4.1.</span> <span class="toc-text">构造立方体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%96%E7%AE%80"><span class="toc-number">4.2.</span> <span class="toc-text">化简</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E7%BB%B4%E7%AB%8B%E6%96%B9%E4%BD%93%EF%BC%9A"><span class="toc-number">4.3.</span> <span class="toc-text">四维立方体：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC%E6%B3%95%E5%8C%96%E7%AE%80%EF%BC%88Quine-McCluskey-%E6%B3%95%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">表格法化简（Quine-McCluskey 法）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Step1-%E2%80%93-%E8%AE%A1%E7%AE%97%E8%B4%A8%E8%95%B4%E6%B6%B5%E9%A1%B9"><span class="toc-number">5.0.1.</span> <span class="toc-text">Step1 – 计算质蕴涵项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step2-%E2%80%93-%E6%89%BE%E5%88%B0%E5%BF%85%E8%A6%81%E8%B4%A8%E8%95%B4%E5%90%AB%E9%A1%B9"><span class="toc-number">5.0.2.</span> <span class="toc-text">Step2 – 找到必要质蕴含项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step3-%E2%80%93-%E6%89%BE%E5%88%B0%E6%9C%80%E5%B0%8F%E6%88%90%E6%9C%AC%E9%9D%9E%E5%BF%85%E8%A6%81%E8%B4%A8%E8%95%B4%E6%B6%B5%E9%A1%B9"><span class="toc-number">5.0.3.</span> <span class="toc-text">Step3 – 找到最小成本非必要质蕴涵项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step4-%E2%80%93-%E5%AE%8C%E6%88%90%E5%8C%96%E7%AE%80"><span class="toc-number">5.0.4.</span> <span class="toc-text">Step4 – 完成化简</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>

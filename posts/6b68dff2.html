@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>现代通信网络-Ch12-路由和交换 | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="阿尔戈在迷宫区搜集到的零碎攻略信息,还在整理...">
+<meta property="og:type" content="article">
+<meta property="og:title" content="现代通信网络-Ch12-路由和交换">
+<meta property="og:url" content="https://www.kaysonz.top/posts/6b68dff2">
+<meta property="og:site_name" content="風">
+<meta property="og:description" content="阿尔戈在迷宫区搜集到的零碎攻略信息,还在整理...">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.kaysonz.top/img/avatar.jpg">
+<meta property="article:published_time" content="2024-04-19T06:45:00.000Z">
+<meta property="article:modified_time" content="2024-06-06T16:40:23.845Z">
+<meta property="article:author" content="栞风">
+<meta property="article:tag" content="private">
+<meta property="article:tag" content="通信网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.kaysonz.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://www.kaysonz.top/posts/6b68dff2"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":8,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '现代通信网络-Ch12-路由和交换',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-07 00:40:23'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/notice.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">14</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">现代通信网络-Ch12-路由和交换</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-19T06:45:00.000Z" title="发表于 2024-04-19 14:45:00">2024-04-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-06T16:40:23.845Z" title="更新于 2024-06-07 00:40:23">2024-06-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/">大三下</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/%E7%8E%B0%E4%BB%A3%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C/">现代通信网络</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="看来您不属于攻略组,请等待笔记验证后发布" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="3fe8cb981fa0f3b324fb5f3b4516981eb41f811114996c9f4e458f5e783ef493">3624a8dbefab98d376ab749e8d6514139d6f195f14d4116ee8335b43574084e2e640118902ecb6a55be115e609b87a74ecb6fcc88558d973247a30aaad7ceb6c5ff9e495bea1fa21c476e402b2f1732752a9573743b46f093d038007cae082b99b92514cf9960d7d3752d1c64e81929c36c6a5841df19821a0be089800e5e4af26bc393412ffea2232be1e3a7c79a5d9f8a517ee82dbf5fd54fabe617e51d3d32634725701e9e4f70bf2c756ea69c9b23ccde897ab0941d91048b15b349a122013de2ce4b7b5d67a6e1ef66deda0f6104b8ebd621c4fe644746cc900f00a2ad84f2b5e928906630b65c01483214b7d6e582c1b89b9d28702b3eccf9daad88ac97386c623031ad6b36ce969e4d83122072e1e2fd158b0b3ef9f3da5d13e72c82e18a963d1b899d74fc261472204056d8da1f46c91ed0bfac9492af3670eaf7c9eaa96cb06bc5b682be9a8ef879bc52b6310c44fcdb39f4ac246f3386fe10435c4f1925069932db553173beecf51e5e6e36caa9318a48129724f622e39d5d4f45a29b19ec9899c851e26af07961370289f3078120e96f43e35633e40f676e4c71a467d320fa66f0661e40edf31d52487bd521a472ee274db3bc728801376799c5c20824ad4f39ece51bd239cecf92aac208686658ecb35f715c8aeb37cc275276c10996ba1414560515e585c498d468a1293f36efbb10c9727e51a9922c30b8425182a395fc09a39fff5cfc7715019edcc09533dfd37811059a262e1af50937b8a3cd59427af82a832fc0838dbcaaebc614bc0addc35a79ffc8a82bb48ff406ae243ef30c0f3f9419ccaf61cd585e3934908d4d3c6cda4587801259ff2f3359ae1c61e75b790c1eb50c2430280aacc4252a52c9a3123807aecc209f8bab28e0483f502f7813b5673cb04b8a9735885f3bbd0e7a7c37813e37ec735f47c8dd81d31fc50210ea4751516d5df224af7a26e37e5105ed60418b307ba37fbef1f0161588f1d4035df012350f4806f11edf20cb383598d78156c6e3fe7119d7eb61f7304edfe836a4869e3aae65e10a8d5e7f76f919e348e3aa4c52970fa316a2788754d760cd4ee35d14e61335aa95d4a9572d1dd51eb7956d519cb58a7f50918e668ea8662fcca1dfdaa0e3aa75920363e50a9afc35e01d54d61d1ecfb298211ec8914539403573d5d693a2309e6978a25309c706feb596b8eb4d88b19e75ccc423d61749834855df57c5c77090d7e1fab36464a987c1fb0ed8e7a8566867ca2b40d7827ac7adc3635e28b01189ba251bf3a37b9daa35ccac5648a0295440147d9316a9eefb34c5f3591a7aac6339a3e527814b9fa02d5ac7f4c0941ee47cb08639b03650eff9628714ab984a8cadd2e724824e949c5e5e28bbcbf47eb369cdcae24709b5086467acb5605735d7fbf76a69602a53e286a550e8053c5500864b259c592e98518ee5e854ae1b2d7b008f99779024d95d722a2db34539f9de0efce362656ca8811e952c0f478a691469548c1dcf10411276ce6b34b6408258efe9ce1caba6b9c338d511dcc5eace42b4f9ca6b8fe3a977ef514e4cf9b9b7f2629b085e6e98b43ee289175e9e765f365995c2e8a0de5ea45cf226afb136f1a1fb0e8ad37c59433e38efa2503f6cab1eb04844a85c5b8dc50c812d57d5ea2577f74625d56a8548471b70895d8faa094bc1a407b12aa4ddabab71aaefadf76a631271d6d8fc6de7d1f36f232bb52273ffe3792642d54c0c4fba2705b0745c8a2d6e20eaffaf2dcf32747b1ebdd6c67a2be67e3a308f6a2bbfddcfefcbbde10724a98380d365055adef87c5532ae3140f97dde704b8139a340613609999a2884181ab48be4a707c70e26c1e40965f064b83fa6934e8d22bb6a7f7b86c436081a8ae646b8e60d2fc518f681c8b457ecd14f356e86aa114b1b28e851de774b1d310b452f69639636b88309f85bc5ddd5109fe78016ce2ed6b74e72c787f437e0a1d0dfe68a6a36bfbc4c11b8012aeff9bac1f17e8e75ee4002a09a47e51605e60775974d8409c53daa9d127cadadab71ff049c259e9a5e06a101c3026bd8f85cf020d42e95222fabacbf40b28f3ae44879f4046e5925cde4aed61207f853118813553b11cfe08daf44bee05ab4bdda82cb4b765d65fb43b9247305db5ad479e443de8557a7621c2a4a8f4d63e77420568293ca07a772ac6a9df617a826092d9de538b7c108dcfe311eca0bd22af7771872d700e420c63321410aa6acf2c515db1a80822b643c99bee5a40deed06a33d8ec8f3812e4f3b1c316be1b0cd4b30352bc0c1d999ca65c4236084fd1397bc631241bcfa04605dc12ee6a05212b4333fb91d98afbea5f1025d8fe8ab8295bfc315b8b9b58116b03646aff727f2f6430cb89fe74dc289b0580469882836aabc23dd60d597b9299b62</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">阿尔戈在迷宫区搜集到的零碎攻略信息,还在整理...</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/posts/6b68dff2">https://www.kaysonz.top/posts/6b68dff2</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/private/">private</a><a class="post-meta__tags" href="/tags/%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C/">通信网络</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content toc-div-class" style="display:none"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%A0%E7%A7%8D%E8%B7%AF%E7%94%B1%E6%96%B9%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">几种路由方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Fixed"><span class="toc-number">2.1.</span> <span class="toc-text">Fixed</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flooding"><span class="toc-number">2.2.</span> <span class="toc-text">Flooding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Random"><span class="toc-number">2.3.</span> <span class="toc-text">Random</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adaptive-Routine"><span class="toc-number">2.4.</span> <span class="toc-text">Adaptive Routine</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
