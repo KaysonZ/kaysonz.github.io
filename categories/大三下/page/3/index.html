@@ -53,7 +53,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-08-20 08:37:28'
+  postUpdate: '2024-08-20 10:58:30'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -157,15 +157,7 @@
 document.addEventListener('pjax:send', () => {
   Pace.restart()
 })
-</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">15</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">大三下</h1></div></header><main class="layout hide-aside" id="content-inner"><div class="recent-posts category_ui" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/8b0e91f6" title="电信传输理论-CH4-复用技术">电信传输理论-CH4-复用技术</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-15T11:12:03.000Z" title="发表于 2024-04-15 19:12:03">2024-04-15</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-16T15:15:27.200Z" title="更新于 2024-06-16 23:15:27">2024-06-16</time></span></div><div class="content">统计时分复用和同步时分复用同步时分复用（Synchronous Time Division Multiplexing, STDM）同步时分复用：这种同步在数据的帧之间插入时间信号，让调制出的信号自带同步信息。复用是将时间分割成小份，一个用户占用特定的一份实现的。如下图ABCD对应四个用户。
-
-同步时分复用存在问题：当某个用户暂时无数据发送时，在自己的时分复用帧（时隙）上，信道是空闲的，但是参与复用的其它用户也无法使用这个暂时空闲的线路资源，这造成了资源浪费
-统计时分复用（Statistical Time Division Multiplexing）统计时分复用：这种复用比同步时分复用更高效。同样是把时间切片，但并不是一个用户占一份时间，而是每个用户带上自己的标签（地址），“赶趟”即走。
-如下图所示，虽然时间也被切片了，但是a走之后b来了，b跟着a走；b走之后b又来了，那下一个时隙又是b走。
-
-吹吹水一开始的时候，采用的是频分复用。因为一开始的时候使用的频率较低，对频率的操作性较强，因此可以对在频域切分子信道。
-后续使用时分复用时，同步是一个大问题，不良好的同步会导致滑码，丢帧等等。同步 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/acdb16ef" title="现代通信网络-LC3-数据链路控制协议">现代通信网络-LC3-数据链路控制协议</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-07T06:14:00.000Z" title="发表于 2024-04-07 14:14:00">2024-04-07</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-23T06:48:56.183Z" title="更新于 2024-06-23 14:48:56">2024-06-23</time></span></div><div class="content">
-  3624a8dbefab98d376ab749e8d6514135796b537ecc3174eaa74ea9a860fa4ff5ef13a354f6e766af7200a4cc62a7e7747ac7003a1c4cec8682db2a6a5b03d25a3aa0195d0b7f25bdf9e75c94cf3e9197c284a3837c611960e8abcbceb8e168e98a82a52f5f62f5c8845bb53274f847f359fe0a5c79ac6ed274d35efdb6e7a5962db2f261306c0aa67771286eb42446db231d7c67ae558a5abc39032eda13adb15d2661ca23c3652bce0fe59066c14353cea5c49ff09067cbd81d5930098cc5c77591d58b7905217a7aa0b10a3a0cb81aaf373ac5063886adb030f7af7c088c37401e94f25914c5604d5dc3e99f13c9f9b130194e224c3a60 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3fa30bac" title="移动通信-知识汇总">移动通信-知识汇总</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-03T03:13:24.000Z" title="发表于 2024-04-03 11:13:24">2024-04-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-08T07:47:16.183Z" title="更新于 2024-07-08 15:47:16">2024-07-08</time></span></div><div class="content">移动通信这门课Mirror上的笔记已经比较完善。加之由于各种各样的原因（指碳基人工智能念硅基人工智能辅助做的PPT的课程呈现方式），本课确实难以写出来笔记。这里只提供一个根据考点写的重点汇总和罐装知识（即，这个汇总的汇总）。
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">14</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">大三下</h1></div></header><main class="layout hide-aside" id="content-inner"><div class="recent-posts category_ui" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3fa30bac" title="移动通信-知识汇总">移动通信-知识汇总</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-03T03:13:24.000Z" title="发表于 2024-04-03 11:13:24">2024-04-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-20T00:41:17.852Z" title="更新于 2024-08-20 08:41:17">2024-08-20</time></span></div><div class="content">移动通信这门课Mirror上的笔记已经比较完善。加之由于各种各样的原因（指碳基人工智能念硅基人工智能辅助做的PPT的课程呈现方式），本课确实难以写出来笔记。这里只提供一个根据考点写的重点汇总。
 
 我是学通信工程的，这个课程是通信工程捡史（简称史）
 
@@ -178,29 +170,7 @@ Line-of-Signt 传播。
 地面和天波传播模式不能传输超过30 MHz的电磁波 ，此时必须使用LOS传播
 衰落不要问我有什么区别，我也不知道，这课就是一坨屎，黑色的sh*t和黄色的sh*t我都能解释区别，这个我解释不了。我只能说我在看南邮通信原理里面记的快衰落和慢衰落是和相干时间有关的。
 
-  衰落有两套区分方法：快衰落&lt;-&gt;慢衰落 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3fa30bac" title="移动通信-Ch3-技术基础">移动通信-Ch3-技术基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-03T03:13:24.000Z" title="发表于 2024-04-03 11:13:24">2024-04-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-08T07:47:08.832Z" title="更新于 2024-07-08 15:47:08">2024-07-08</time></span></div><div class="content">这一章有笔记是因为院长w来听课了，所以写笔记还容易一点→_→….
-
-无线信道的性质信道均衡准则在信号经过非理想信道时，会产生
-下图就展示了信道(红色)，Zero-forcing equalizer（蓝色），Minimum mean squared error (MMSE) equalizer（绿色）的频响。可以看到，大体趋势上均衡器与信道频响相反。
-
-均衡器通常加在接收端滤波器后，如下图所示
-
-错误控制编码错误控制编码可以大体上分为两类：
-
-Forward error-correction (FEC)：前向纠错
-Automatic-repeat request (ARQ)：错误重传
-
-FEC工作原理：
-
-发送端在每段数据中添加冗余的bit, 这些比特通过某些算法与数据比特关联，称为前向纠错码
-接收端根据收到的数据重新计算冗余比特
-如果受到的纠错码无法匹配，则出现错误，尝试通过冗余比特逆向计算纠错。
-
-FEC还可分为 块码(block codes) 和 卷积码(convolutional codes) 。
-块码
-对于块码而言，有编码率(code rate) 一概念：
-
-code\ rat ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/9b43b6f" title="电信传输理论-CH3-传输介质">电信传输理论-CH3-传输介质</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-21T08:42:00.000Z" title="发表于 2024-03-21 16:42:00">2024-03-21</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-16T15:30:36.407Z" title="更新于 2024-06-16 23:30:36">2024-06-16</time></span></div><div class="content">引入（听 Baoninghai 讲讲故事的小节）
+  衰落有两套区分方法：快衰落&lt;-&gt;慢衰落；大尺度衰落&lt;-&gt;小 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/9b43b6f" title="电信传输理论-CH3-传输介质">电信传输理论-CH3-传输介质</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-21T08:42:00.000Z" title="发表于 2024-03-21 16:42:00">2024-03-21</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-16T15:30:36.407Z" title="更新于 2024-06-16 23:30:36">2024-06-16</time></span></div><div class="content">引入（听 Baoninghai 讲讲故事的小节）
 
 如同Overview中介绍，用于信息传输的介质可以分为引导式(guided)和非引导式(unguided, 通常其实就是无线)。
 双绞线一直是传统通信的主力，但是双绞线对长距离高频信号的传递不行。同轴线可以弥补这个缺点，但是造价较为高昂。现在价格更低又对大容量长距离传输更友好的光纤占据了很大的市场，曾经广泛使用的双绞线和同轴线逐渐被光纤取代了。现在的趋势是将光纤向用户侧衍伸。
@@ -214,8 +184,21 @@ code\ rat ...</div></div></div><div class="recent-post-item"><div class="recent-
 
 语音通信的频带范围：300-3KHz
 双绞线传输范围: 小于$10^8Hz$，这也就是为什么说双绞线对高频信号传输不友好
-光纤和可见光都在$10^{14}%$至$10^{15}$，可见光通信（例如日光灯）现 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2f9f2f75" title="现代通信网络-LC2-基本通信协议及其应用">现代通信网络-LC2-基本通信协议及其应用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-20T09:49:00.000Z" title="发表于 2024-03-20 17:49:00">2024-03-20</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-14T08:44:49.515Z" title="更新于 2024-06-14 16:44:49">2024-06-14</time></span></div><div class="content">
-  3624a8dbefab98d376ab749e8d6514135796b537ecc3174eaa74ea9a860fa4ff5ef13a354f6e766af7200a4cc62a7e7747ac7003a1c4cec8682db2a6a5b03d253e411c0db090b8207670495832fc10cb04e07423fc55a18cea685a2558453fab5a6132bfafe9714a9daa7cf3bf05d566f0ae3dd2e2c0edb36fb9e35e1e671018d6e75e54a48d3b88df651be19dcbc762b069c6cd518781a11f1808ae6f160c193cb19ff04df560cbf4936cdc489a0896155d35fef2e374ad902281222432207eca66965609ec757fe15acbd674d056e5128d8c9794e6255669ff5ae097a04e91bc6084a8a1faed5d9e869898b7091ca11ad5c5b08428395c5 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/5b823d72" title="电信传输理论-CH2-Data Transmission">电信传输理论-CH2-Data Transmission</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-11T06:55:35.000Z" title="发表于 2024-03-11 14:55:35">2024-03-11</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-16T15:15:38.507Z" title="更新于 2024-06-16 23:15:38">2024-06-16</time></span></div><div class="content">传输技术简介数据传输是以电磁波为数据载体，在发射器和接收器之间通过传播介质进行传播。这种传播可以被分为:
+光纤和可见光都在$10^{14}%$至$10^{15}$，可见光通信（例如日光灯）现 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2f9f2f75" title="现代通信网络-LC2-基本通信协议及其应用">现代通信网络-LC2-基本通信协议及其应用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-20T09:49:00.000Z" title="发表于 2024-03-20 17:49:00">2024-03-20</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-20T01:43:04.989Z" title="更新于 2024-08-20 09:43:04">2024-08-20</time></span></div><div class="content">本节对应参考书章节CH2
+
+通信协议通信协议的功能和结构通信协议的多层级化通信协议倾向于分为很多层，每层分管不同功能。这样每次需要升级时，只需要在单独的层上做改变，保证层对外暴露的接口不变即可。我们把这样很多层的协议系统称为”纵向栈(vertical stack)”。
+通信协议的定义什么是通信协议(Protocol)？协议是允许对等层（peer layer）进行通信的一组规则或约定。
+如何理解这个对等层呢？例如我们通过QQ互相发送消息，那人与人就是对等层，QQ与QQ就是对等层。我发送消息你看到消息是人与人这个对等层的通信。我们通过软件界面与QQ交互，QQ拿到要发送的消息并显示接收到的消息，这是QQ这一对等层。
+协议必须包含（重点！）：
+五星级
+
+
+语法（Syntax） - 即，数据块由哪些组成，由什么开始，由什么结束，有效载荷如何解析等等。
+语义（Semantics）- 即，数据帧内的控制信息，纠错Header等。包含
+时序（Timing） - 即，事件顺序的详细说明
+
+其中这个Timing 单独强调一下：
+在电信传输理论与工程一课中，在中继时提到了“retiming”, 这里的tim ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/5b823d72" title="电信传输理论-CH2-Data Transmission">电信传输理论-CH2-Data Transmission</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-11T06:55:35.000Z" title="发表于 2024-03-11 14:55:35">2024-03-11</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-16T15:15:38.507Z" title="更新于 2024-06-16 23:15:38">2024-06-16</time></span></div><div class="content">传输技术简介数据传输是以电磁波为数据载体，在发射器和接收器之间通过传播介质进行传播。这种传播可以被分为:
 
 有引导（guided wave）：将波束引导至一个特定的物理路径
 无引导（unguided wave）：波束自由传播
@@ -225,5 +208,50 @@ code\ rat ...</div></div></div><div class="recent-post-item"><div class="recent-
 下面的介绍还包含：频率，频谱和带宽; 模拟信号和数字信号;
 频谱和频率是什么（一般取大于半功率点的部分作为主频分量）;
 数据速率(Data Rate)和带宽(Bandwidth) 的关系（这个关系其实就是通信原理里面那些，这里简单说了一下，特别强调了一下数字信号带宽和波形的影响（参考通信原理讲耐奎斯特带宽那节）；
-$\uarr$ 这些内容都属于基础必备知识，前面的课程都已经涉及太多太多遍了，这里就不写了。要是有不记得的去百度一下$ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/cfa858d3" title="现代通信网络-LC1-Overview">现代通信网络-LC1-Overview</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-08T06:00:00.000Z" title="发表于 2024-03-08 14:00:00">2024-03-08</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-07T02:55:48.511Z" title="更新于 2024-06-07 10:55:48">2024-06-07</time></span></div><div class="content">
-  3624a8dbefab98d376ab749e8d6514135796b537ecc3174eaa74ea9a860fa4ff5ef13a354f6e766af7200a4cc62a7e7747ac7003a1c4cec8682db2a6a5b03d253e411c0db090b8207670495832fc10cb36d9b0280f494c401bd7987df1d3eb73f62916066efe07761e4b5c48cd8c74d384bcb851cdcd2b0d21e327f5a4a31a2c5a645f463716c002313995e103fc233883ae6ceeac9617c78fb504aa12d00b946603fbe223062b45c7e1f8ce7082fbbc9b0c38aba04b8ec5427a48f6a3585323b75c4a2ebd91fae1821f8832f5dbcc0ffa5fc8258b496db2fec29739e64a05cdcd4549d4157fd30b941fbe39bebc51573afce9b86c9753a5c ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/page/2/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/">1</a><a class="page-number" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/page/2/">2</a><span class="page-number current">3</span></div></nav></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
+$\uarr$ 这些内容都属于基础必备知识，前面的课程都已经涉及太多太多遍了，这里就不写了。要是有不记得的去百度一下$ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/cfa858d3" title="现代通信网络-LC1-Overview">现代通信网络-LC1-Overview</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-08T06:00:00.000Z" title="发表于 2024-03-08 14:00:00">2024-03-08</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-20T01:08:59.079Z" title="更新于 2024-08-20 09:08:59">2024-08-20</time></span></div><div class="content">本节对应参考书章节CH1
+
+三个时代三个时代（这一部分讲了2个星期 -&gt; _ -&gt;）
+横向对比
+
+
+
+
+Generation-1
+Generation-2
+Generation-3
+
+
+
+
+描述
+仅又很少的终端，能够接入网络的用户有限。采用模拟信号，Qos不太好
+终端的价格开始逐渐下降（经历了一段时间才降下来），用户可以承担。但服务的费用很高，用户安装了终端却不舍得用。开始采用数字信号。在技术层面遇到了频率容量(capacity) 和 交移 (handover) 问题
+传统电信业务的资费下降，用户可以承受。要继续扩大市场就需要发展更多的服务。
+
+
+关注的技术
+Transmission
+Switching
+Soft-switch
+
+
+关键词
+Reachability
+Accessibility
+Realizability
+
+
+拓补结构
+mesh
+star
+hybrid (mesh + star)
+
+
+
+
+第二时代存在的两个问题的解释
+Handover:
+
+当你处于两个基站的覆盖交界地带时，在基站与基站间的切换存在问题。这个在2G的网络网络技术基础上无法解决。
+
+Capacit ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/page/2/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/">1</a><a class="page-number" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/page/2/">2</a><span class="page-number current">3</span></div></nav></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>

@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>移动通信-Ch3-技术基础 | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="这一章有笔记是因为院长w来听课了，所以写笔记还容易一点→_→….  无线信道的性质信道均衡准则在信号经过非理想信道时，会产生 下图就展示了信道(红色)，Zero-forcing equalizer（蓝色），Minimum mean squared error (MMSE) equalizer（绿色）的频响。可以看到，大体趋势上均衡器与信道频响相反。  均衡器通常加在接收端滤波器后，如下图所示  错">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>移动通信-知识汇总 | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="移动通信这门课Mirror上的笔记已经比较完善。加之由于各种各样的原因（指碳基人工智能念硅基人工智能辅助做的PPT的课程呈现方式），本课确实难以写出来笔记。这里只提供一个根据考点写的重点汇总。  我是学通信工程的，这个课程是通信工程捡史（简称史）  CH1-Overview三种传输波地波传播（Ground Wave） 地波指贴着地面，随着地表弧度弯曲传播的电磁波，它的传播距离可以远超视觉地平线。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="移动通信-Ch3-技术基础">
+<meta property="og:title" content="移动通信-知识汇总">
 <meta property="og:url" content="https://www.kaysonz.top/posts/3fa30bac">
 <meta property="og:site_name" content="風">
-<meta property="og:description" content="这一章有笔记是因为院长w来听课了，所以写笔记还容易一点→_→….  无线信道的性质信道均衡准则在信号经过非理想信道时，会产生 下图就展示了信道(红色)，Zero-forcing equalizer（蓝色），Minimum mean squared error (MMSE) equalizer（绿色）的频响。可以看到，大体趋势上均衡器与信道频响相反。  均衡器通常加在接收端滤波器后，如下图所示  错">
+<meta property="og:description" content="移动通信这门课Mirror上的笔记已经比较完善。加之由于各种各样的原因（指碳基人工智能念硅基人工智能辅助做的PPT的课程呈现方式），本课确实难以写出来笔记。这里只提供一个根据考点写的重点汇总。  我是学通信工程的，这个课程是通信工程捡史（简称史）  CH1-Overview三种传输波地波传播（Ground Wave） 地波指贴着地面，随着地表弧度弯曲传播的电磁波，它的传播距离可以远超视觉地平线。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.kaysonz.top/img/avatar.jpg">
 <meta property="article:published_time" content="2024-04-03T03:13:24.000Z">
-<meta property="article:modified_time" content="2024-07-08T07:47:08.832Z">
+<meta property="article:modified_time" content="2024-08-20T00:41:17.852Z">
 <meta property="article:author" content="栞风">
 <meta property="article:tag" content="通信网络">
 <meta name="twitter:card" content="summary">
@@ -51,12 +51,12 @@
   },
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: '移动通信-Ch3-技术基础',
+  title: '移动通信-知识汇总',
   isPost: true,
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-07-08 15:47:08'
+  postUpdate: '2024-08-20 08:41:17'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -160,51 +160,274 @@
 document.addEventListener('pjax:send', () => {
   Pace.restart()
 })
-</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">15</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">移动通信-Ch3-技术基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-03T03:13:24.000Z" title="发表于 2024-04-03 11:13:24">2024-04-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-08T07:47:08.832Z" title="更新于 2024-07-08 15:47:08">2024-07-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/">大三下</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/">移动通信</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note info flat"><p>这一章有笔记是因为院长w来听课了，所以写笔记还容易一点→_→….</p>
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">14</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">移动通信-知识汇总</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-03T03:13:24.000Z" title="发表于 2024-04-03 11:13:24">2024-04-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-20T00:41:17.852Z" title="更新于 2024-08-20 08:41:17">2024-08-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/">大三下</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/">移动通信</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note info flat"><p>移动通信这门课<a target="_blank" rel="noopener" href="https://l61012345.top/2022/04/09/学习笔记/移动通信/1.移动通信/">Mirror</a>上的笔记已经比较完善。加之由于各种各样的原因（指碳基人工智能念硅基人工智能辅助做的PPT的课程呈现方式），本课确实难以写出来笔记。这里只提供一个根据考点写的重点汇总。</p>
 </div>
-<h1 id="无线信道的性质"><a href="#无线信道的性质" class="headerlink" title="无线信道的性质"></a>无线信道的性质</h1><h2 id="信道均衡准则"><a href="#信道均衡准则" class="headerlink" title="信道均衡准则"></a>信道均衡准则</h2><p>在信号经过非理想信道时，会产生</p>
-<p>下图就展示了信道(红色)，Zero-forcing equalizer（蓝色），Minimum mean squared error (MMSE) equalizer（绿色）的频响。可以看到，大体趋势上均衡器与信道频响相反。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240407103818078.png" alt="image-20240407103818078"></p>
-<p>均衡器通常加在接收端滤波器后，如下图所示</p>
-<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240407103125702.png" alt="image-20240407103125702"></p>
-<h2 id="错误控制编码"><a href="#错误控制编码" class="headerlink" title="错误控制编码"></a>错误控制编码</h2><p>错误控制编码可以大体上分为两类：</p>
+<div class="note info flat"><p>我是学通信工程的，这个课程是通信工程捡史（简称史）</p>
+</div>
+<h1 id="CH1-Overview"><a href="#CH1-Overview" class="headerlink" title="CH1-Overview"></a>CH1-Overview</h1><h2 id="三种传输波"><a href="#三种传输波" class="headerlink" title="三种传输波"></a>三种传输波</h2><h3 id="地波传播（Ground-Wave）"><a href="#地波传播（Ground-Wave）" class="headerlink" title="地波传播（Ground Wave）"></a>地波传播（Ground Wave）</h3><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240408194113961.png" alt="image-20240408194113961"></p>
+<p>地波指贴着地面，随着地表弧度弯曲传播的电磁波，它的传播距离可以远超视觉地平线。</p>
+<p>地波的频率大约为<strong>2MHz</strong>。典型的地波通信是AM广播。</p>
+<h3 id="天波传播（Sky-Wave）"><a href="#天波传播（Sky-Wave）" class="headerlink" title="天波传播（Sky Wave）"></a>天波传播（Sky Wave）</h3><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240408194617027.png" alt="image-20240408194617027"></p>
+<p>天波依靠电离层（ionized layer）反射传播，同样可以实现NLOS传播。天波传播用于业余无线电、CB 无线电和国际广播。</p>
+<h3 id="Line-of-Signt-传播。"><a href="#Line-of-Signt-传播。" class="headerlink" title="Line-of-Signt 传播。"></a>Line-of-Signt 传播。</h3><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240408195724164.png" alt="image-20240408195724164"></p>
+<p>地面和天波传播模式不能传输超过30 MHz的电磁波 ，此时必须使用LOS传播</p>
+<h2 id="衰落"><a href="#衰落" class="headerlink" title="衰落"></a>衰落</h2><div class="note info flat"><p>不要问我有什么区别，我也不知道，这课就是一坨屎，黑色的sh*t和黄色的sh*t我都能解释区别，这个我解释不了。我只能说我在看南邮通信原理里面记的快衰落和慢衰落是和相干时间有关的。</p>
+</div>
+<p>  衰落有两套区分方法：快衰落&lt;-&gt;慢衰落；大尺度衰落&lt;-&gt;小尺度衰落</p>
 <ul>
-<li>Forward error-correction (FEC)：前向纠错</li>
-<li>Automatic-repeat request (ARQ)：错误重传</li>
+<li><strong>大尺度衰落（large scale fading）：</strong>从宏观上描述大范围运动产生的平均功率衰减或路径损耗。多受发射和接收机间的主要地貌的影响</li>
+<li><p><strong>小尺度衰落（small scale fading）</strong>：小尺度衰落，<strong>是指接收机与发射机间空间距离的小变化（如半波长）引起信号幅度和相位的急剧变化</strong>，主要由信号的多径传播（multipath effect）和收发两端的相对运动引起。</p>
+</li>
+<li><p><strong>慢衰落（fast fading）：</strong>信号强度受信号路径上的足够大的障碍物影响，这种现象被称为慢衰落，也叫做长期衰落（long term fading）或阴影效应（shadowing）。</p>
+</li>
+<li><strong>快衰落（slow fading）：</strong>信号强度在短时间或小空间范围内的快速变化。它主要由多径效应引起。快衰落在LOS下，信号功率的包络线服从莱斯分布(Rice distribution)；在NLOS下，信号功率的包络线服从瑞利(Rayleigh)分布。</li>
 </ul>
-<h3 id="FEC"><a href="#FEC" class="headerlink" title="FEC"></a>FEC</h3><p><strong>工作原理：</strong></p>
+<h2 id="无线网络的分类："><a href="#无线网络的分类：" class="headerlink" title="无线网络的分类："></a>无线网络的分类：</h2><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240624155627674.png" alt="image-20240624155627674"></p>
+<ul>
+<li>Wireless Body Area Network：提供耳机，显示之类的连接</li>
+<li>Wireless Personal Area Network：提供和周围的其他设备的连接</li>
+<li>Wireless Local Area Network：提供因特网连接</li>
+<li>Wireless Wide Area Network：提供远距离的多个主机连接</li>
+</ul>
+<hr>
+<h1 id="CH2-无线信道"><a href="#CH2-无线信道" class="headerlink" title="CH2-无线信道"></a>CH2-无线信道</h1><h2 id="dB单位："><a href="#dB单位：" class="headerlink" title="dB单位："></a>dB单位：</h2><p>这一部分在通信工程的专业课中涉及太多了，详情参见<a href="https://www.kaysonz.top/posts/7cf324fe">电信传输理论-CH1-通信传输的基本概念 | 風</a>这里面的介绍</p>
+<h2 id="噪声"><a href="#噪声" class="headerlink" title="噪声"></a>噪声</h2><h3 id="噪声的主要来源："><a href="#噪声的主要来源：" class="headerlink" title="噪声的主要来源："></a>噪声的主要来源：</h3><ul>
+<li><strong>大气噪声：</strong>大气噪声主要是由大气中的闪电放电引起的，这些闪电放电通过电离层反射在世界范围内传播。全世界每秒大约有100次闪电。大气噪声功率与频率成反比。它的强度也随着一天中的时间、天气、季节和地理位置而变化。</li>
+<li><strong>宇宙噪声：</strong>宇宙噪声是由地球大气层外的扰动引起的。宇宙噪音的主要来源是太阳和大量的“射电星（radio stars）”，这些“射电星”主要分布在银河面(银河系)。</li>
+<li><strong>人为噪声：</strong>人为的噪声是由各种电器引起的，例如:电视接收器、点火系统、电动机及其控制装置，以及来自电力线的高频元件的不稳定辐射。传播通过电力线直接传输、辐射、感应，偶尔也通过电离层反射。</li>
+</ul>
+<h3 id="热噪声"><a href="#热噪声" class="headerlink" title="热噪声"></a>热噪声</h3><p>热噪声是由导电介质中电荷(通常是电子)的随机运动引起的。每一种元件和电路都会产生热噪声，它会吸收能量(由于电子在与介质晶体结构碰撞时失去动能)。热噪声具有与频率无关的恒定功率谱，并且具有平稳高斯随机过程的分布。<br>一定带宽内的热噪声功率可以被描述为:</p>
+<script type="math/tex; mode=display">
+P_N=kTB\times F</script><p>其中：</p>
+<ul>
+<li>k：玻尔兹曼常数，$k=1.3805 * 10^{-23}J/K$</li>
+<li>T：开尔文温度</li>
+<li>B：信号带宽</li>
+<li>F：噪声系数，用于修正由于非理想接收器电子器件导致的热噪声增加，理想值为1</li>
+</ul>
+<p>代入k，化为dBm形式有：</p>
+<script type="math/tex; mode=display">
+P_N[dBm]=10log_{10}\bigg(\frac{kT}{1mW}\bigg)+10log_{10}(B)+10log_{10}(F)</script><p>室温时一般取$T=288k=15^\circ C$，因此有：</p>
+<script type="math/tex; mode=display">
+P_N[dBm]=(-174+10log_{10}(B))[dBm]+NF[dB]</script><p>其中这个NF就是前面的噪声系数（noise factor）。这里出现单位混用是由于NF常常是用于描述一个系统输入与输出的关系（即，不是dBm这个以1mW为基的单位，而是$10log(\frac{P_{out}}{P_{in}})$），因此它的单位是dB。这里直接混用即可，因为dBw是个绝对单位，而dB是放大/衰减相对单位，1dBw经过2dB的放大器最后等于3dBw，就是这样。</p>
+<h2 id="通信系统传输建模"><a href="#通信系统传输建模" class="headerlink" title="通信系统传输建模"></a>通信系统传输建模</h2><h3 id="自由空间损耗（Free-space-loss）"><a href="#自由空间损耗（Free-space-loss）" class="headerlink" title="自由空间损耗（Free space loss）"></a>自由空间损耗（Free space loss）</h3><p>这个概念和推导也涉及过很多遍了，这里只是换了个单位。推导请见：<a href="https://www.kaysonz.top/posts/9b43b6f">电信传输理论-CH3-传输介质 | 風 </a>最后一个小节。</p>
+<script type="math/tex; mode=display">
+FSL[dB]=32.4+20log_{10}(d_{[km]})+20log_{10}(f_{[MHz]})</script><h3 id="各向同性辐射有效功率（Effective-isotropic-radiated-power-EIRP-）"><a href="#各向同性辐射有效功率（Effective-isotropic-radiated-power-EIRP-）" class="headerlink" title="各向同性辐射有效功率（Effective isotropic radiated power (EIRP) ）"></a>各向同性辐射有效功率（Effective isotropic radiated power (EIRP) ）</h3><script type="math/tex; mode=display">
+EIRP_{[dBW]}=P_T-L_T+G_T</script><ul>
+<li>$P_T$：传输功率</li>
+<li>$L_T$：馈线损耗（feeder loss），指连接天线的那条线造成的损耗（一般是阻抗50欧的同轴线）</li>
+<li>$G_T$：传输天线增益</li>
+</ul>
+<h3 id="各项同性接收电平（Isotropic-receive-level-IRL-）"><a href="#各项同性接收电平（Isotropic-receive-level-IRL-）" class="headerlink" title="各项同性接收电平（Isotropic receive level (IRL) ）"></a>各项同性接收电平（Isotropic receive level (IRL) ）</h3><script type="math/tex; mode=display">
+IRL=EIRP_{[dBW]}-FSL_{[dB]}-L_g</script><ul>
+<li>$L_g$：气体吸收损耗（gaseous absorption loss）</li>
+</ul>
+<h3 id="无损接收信号电平（Unfaded-receive-signal-level-RSL-）"><a href="#无损接收信号电平（Unfaded-receive-signal-level-RSL-）" class="headerlink" title="无损接收信号电平（Unfaded receive signal level (RSL) ）"></a>无损接收信号电平（Unfaded receive signal level (RSL) ）</h3><script type="math/tex; mode=display">
+RSL=IRL+G_R-L_R</script><ul>
+<li>$G_R$：接收天线增益</li>
+<li>$L_R$：接收馈线损耗</li>
+</ul>
+<h3 id="无损载波噪声比（Unfaded-carrier-to-noise-ratio-CNR-）"><a href="#无损载波噪声比（Unfaded-carrier-to-noise-ratio-CNR-）" class="headerlink" title="无损载波噪声比（Unfaded carrier-to-noise ratio (CNR)）"></a>无损载波噪声比（Unfaded carrier-to-noise ratio (CNR)）</h3><p>这个Unfaded 主要指没有经受噪声影响</p>
+<script type="math/tex; mode=display">
+C/N_{dB}=RSL-P_N=P_T-L_T+G_T-FSL_{dB}-L_g+G_R-L_R-P_N</script><p>上面这些各个阶段对应的范围如下图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240623123405780.png" alt="image-20240623123405780"></p>
+<h3 id="灵敏度（Sensitivity）"><a href="#灵敏度（Sensitivity）" class="headerlink" title="灵敏度（Sensitivity）"></a>灵敏度（Sensitivity）</h3><p>灵敏度是一个接收器参数，表示接收天线提供可靠通信所需的最小信号电平。</p>
+<p><em>举个例子，用于数据传输的移动接收器有- 90dbm的灵敏度。假设发射功率为100mw，只考虑自由空间传播损耗，发射频率为800mhz，天线为单位增益（Gian=1），无馈线损耗，服务区域半径为多少?</em></p>
+<p>最小接收功率为：</p>
+<script type="math/tex; mode=display">
+log^{-1}(-9)=1\times10^{-9}mW</script><p>容忍损耗为：</p>
+<script type="math/tex; mode=display">
+10log_{10}(\frac{10^{-9}mW}{100mW})=-110dB</script><p>即：</p>
+<script type="math/tex; mode=display">
+-110dB=32.4+20log_{10}(d_{[km]})+20log_{10}(800_{[MHz]})\to d=9.4822km</script><h3 id="简化路径损耗模型（Simplified-path-loss-model）"><a href="#简化路径损耗模型（Simplified-path-loss-model）" class="headerlink" title="简化路径损耗模型（Simplified path loss model）"></a>简化路径损耗模型（Simplified path loss model）</h3><p>为了对信号的路径损耗进行建模，模型有很多，自由空间损耗是其中之一，除此之外还有Two ray–model, General ray-tracking models等等。这里介绍一个Simplified path loss model</p>
+<script type="math/tex; mode=display">
+P_R(d)=P_R(d_0)\bigg(\frac{d_0}{d}\bigg)^n</script><ul>
+<li>$P_R(d)$：接收功率的函数</li>
+<li>$d$：实际距离</li>
+<li>$d_0$：参考距离（$P_R(d_0)$指参考距离处测得的功率）</li>
+<li>$n$：路径损耗指数</li>
+</ul>
+<p>这个模型中，损耗的部分是$(\frac{d_0}{d})^n$，写成dB形式有：</p>
+<script type="math/tex; mode=display">
+L_{dB}=10nlog_{10}\bigg(\frac{d_0}{d}\bigg)</script><p>这是一个经验模型，比较适用于室内，但是不是很准确。</p>
+<p>对于路径损耗指数$n$，通常有以下数值：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">环境</th>
+<th style="text-align:center">n值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">自由空间</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">公寓、住宅</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">丘陵地带</td>
+<td style="text-align:center">3.5</td>
+</tr>
+<tr>
+<td style="text-align:center">郊区</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">城市</td>
+<td style="text-align:center">4.5</td>
+</tr>
+<tr>
+<td style="text-align:center">写字楼内（同一层）</td>
+<td style="text-align:center">1.6-3.5</td>
+</tr>
+<tr>
+<td style="text-align:center">写字楼内（不同层）</td>
+<td style="text-align:center">2-6</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="大尺度衰落模型"><a href="#大尺度衰落模型" class="headerlink" title="大尺度衰落模型"></a>大尺度衰落模型</h2><p>大尺度衰落（Large scale fading）：大尺度衰落是由于<strong>阴影效应</strong>和<strong>路径损耗</strong>造成的，因此也被称为shadow fading。</p>
+<ul>
+<li>路径损耗是指当无线电信号在较远的距离上通过信道传输时，波能随介质扩散。传输路径增加，导致接收信号的平均功率衰减。距离越大，衰减越大。它是发送的平均功率和接收的平均功率之间的差。</li>
+<li>阴影效应是指是建筑物、山丘、树木（甚至树叶）会削弱甚至阻挡信号。信号只能通过反射、散射等传播到阴影区域。经验测量表明，阴影通常遵循对数正态分布。</li>
+</ul>
+<h3 id="简化路径损耗模型"><a href="#简化路径损耗模型" class="headerlink" title="简化路径损耗模型"></a>简化路径损耗模型</h3><p>以简化的路径损耗模型为基础，将阴影对信号强度的影响记为函数$\psi$，可得到一个路径损耗和阴影的组合模型：</p>
+<script type="math/tex; mode=display">
+P_R(d)=P_R(d_0)\bigg(\frac{d_0}{d}\bigg)^n\psi</script><script type="math/tex; mode=display">
+P_R(d)_{dB}=P_R(d_0)_{dB}-10nlog_{10}\bigg(\frac{d}{d_0}\bigg)+\psi_{dB}=\widehat P_R(d_0)+\psi_{dB}</script><p>其中$\psi_{dB}$是一个均值为0，方差为某个特定数值的高斯分布函数</p>
+<h3 id="掉话率（Outage-probability）"><a href="#掉话率（Outage-probability）" class="headerlink" title="掉话率（Outage probability）"></a>掉话率（Outage probability）</h3><p>由于发射机和接收机之间的路径损耗和阴影呈现随机性，因此有一定概率接收机接收到的功率会小于其灵敏度。接收到的信号功率小于接收机灵敏度的概率被定义为掉话率。</p>
+<script type="math/tex; mode=display">
+P_{out}=p(P_R(d)<P_{min})=1-p(P_R(d)>P_{min})=1-(\widehat P_R(d_0)+\psi_{dB}>P_{min})</script><script type="math/tex; mode=display">
+=1-p(\psi_{dB}>P_{min}-\widehat P_R(d_0))</script><p>现在它被转化为了高斯分布落在其尾部的概率，尾部和前部的界定值就是$x_0=P_{min}-\widehat P_R(d_0)$。如下图。这里面Q是标准正态分布的概率分布函数（一般通过查表获得值）。由于$\psi_{dB}$是一个均值为$\mu=0$的函数，因此有下式</p>
+<script type="math/tex; mode=display">
+P_{out}=1-Q(\frac{P_{min}-P_R(d_0)_{dB}+10nlog_{10}(d/d_0)}{\sigma_{\psi}})</script><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240623145101149.png" alt="image-20240623145101149" style="zoom:67%;" /></p>
+<p>在掉话率中的这个路径损耗指数$n$是通过对采样的数据套用均方误差最小化的模型（minimum mean square error MMSE）拟合出来的。这里面均方误差（mean square error）的计算方法是：</p>
+<script type="math/tex; mode=display">
+MSE=\frac{1}{m}\sum_{d=1}^{m} [\widehat P(d)-P_{measured}(d)]^2</script><p>其中m表示采样m个样本</p>
+<p><em>举个例子，现采样到了下表，用MMSE拟合法求n</em></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240623152412239.png" alt="image-20240623152412239"></p>
+<p>这里取$d_0=100m$</p>
+<script type="math/tex; mode=display">
+MSE=\frac{1}{4}\sum_{d=1}^{4} [\widehat P(d)-P_{measured}(d)]^2=\frac{1}{4}\sum_{d=1}^{m} [P_R(d_0)_{dB}-10nlog_{10}\bigg(\frac{d}{d_0}\bigg)-P_{measured}(d)]^2</script><script type="math/tex; mode=display">
+=\frac{1}{4}[(0-0)^2+(0-3.01n+20)^2+(0-10n+35)^2+(0-14.77n+70)^2]</script><p>这是一个凸函数，因此当其斜率为0时，n有最小值</p>
+<script type="math/tex; mode=display">
+\frac{d}{d_n}MSE=0\to654.306n-2887.8=0\to n=4.4</script><h2 id="小尺度衰落模型"><a href="#小尺度衰落模型" class="headerlink" title="小尺度衰落模型"></a>小尺度衰落模型</h2><p>小尺度衰落 又称 多径衰落，用于描述无线电信号在短时间或短距离内幅度的快速波动。主要是由多径效应和多普勒效应引起的。</p>
+<ul>
+<li><strong>多径效应：</strong>当波在传输过程中遇到各种障碍物时，会发生反射、衍射和散射，形成多条传播路径。由于路径长度不同，波到达接收机的时间也不同，导致相移。多径效应引起信号的时间色散。</li>
+<li><strong>多普勒效应：</strong>当接收机和发射机相互相对运动时，接收到的波会发生频移。如果接收器远离源(两者都远离)，则接收频率逐渐降低。如果接收器靠近源(两者更近)，接收到的频率将逐渐增加。</li>
+</ul>
+<h3 id="半波长移动导致的信号相消"><a href="#半波长移动导致的信号相消" class="headerlink" title="半波长移动导致的信号相消"></a>半波长移动导致的信号相消</h3><p>当同一个信号抵达接收机时，如果其波长相差了一半，则会导致信号相互抵消。如下图。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240623154928752.png" alt="image-20240623154928752"></p>
+<h3 id="多普勒效应"><a href="#多普勒效应" class="headerlink" title="多普勒效应"></a>多普勒效应</h3><p>如果发射机或者接收机在移动，则会产生多普勒频移，多普勒频移会提高（靠近）或者减少（远离）载波的频率。其表达式是：</p>
+<script type="math/tex; mode=display">
+f'=f\pm f_D, f_D=\frac{v}{\lambda}cos\theta</script><ul>
+<li>靠近是+，远离是-</li>
+<li>$v$表示发送机或者接收机移动的速度</li>
+<li>$\lambda$表示载波波长</li>
+<li>$\theta$表示波传播的方向和移动方向的夹角</li>
+</ul>
+<p><strong>Clarke model</strong></p>
+<p>如果传输的信号是单一频率，那么多普勒效应会使得信号频谱展宽。Clarke模型就是用来描述信号受多普勒效应后频谱宽度的。在这个模型下，波从各个方向到达的概率是相等的，且服从瑞利衰落。</p>
+<p>Clarke model的公式为：</p>
+<script type="math/tex; mode=display">
+S_E(f)=\frac{1.5}{\pi f_m\sqrt{1-(\frac{f-f_c}{f_m})^2}}</script><p>其中：</p>
+<ul>
+<li>$S_E$是信号幅值</li>
+<li>$f_m=max(\frac{v}{\lambda}cos\theta)=\frac{v}{\lambda}$，是多普勒频移的最大频移量</li>
+<li>$f_c$是载波频率</li>
+</ul>
+<p>这个函数画出来图像长这样：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240623160908079.png" alt="image-20240623160908079" style="zoom:67%;" /></p>
+<h2 id="信道的分类"><a href="#信道的分类" class="headerlink" title="信道的分类"></a>信道的分类</h2><h3 id="时间选择和时间平坦信道"><a href="#时间选择和时间平坦信道" class="headerlink" title="时间选择和时间平坦信道"></a>时间选择和时间平坦信道</h3><p><strong>相干时间（Coherence time）：</strong>(其中$f_m$是最大多普勒频偏，$f_m=\frac{v}{\lambda}$，v是设备移动速度。)</p>
+<script type="math/tex; mode=display">
+T_{coh}=\frac{1}{f_m}</script><p>对于50%相干时间：</p>
+<script type="math/tex; mode=display">
+T_{coh}\approx\frac{9}{16\pi f_m}</script><p><strong>时间平坦（慢衰落）信道（Time-flat channel）：</strong>信号的周期远远小于信道相干时间，信道在不同时刻衰落不会经历剧变</p>
+<p><strong>时间选择（快衰落）信道（Time-selective channel）：</strong>信号周期大于等于相干时间，其不同时刻经历的衰落差异很大。</p>
+<h3 id="频率选择和频率选择信道："><a href="#频率选择和频率选择信道：" class="headerlink" title="频率选择和频率选择信道："></a>频率选择和频率选择信道：</h3><p><strong>相干带宽（Coherence bandwidth）</strong></p>
+<p>相干带宽是由多径传播过来的信号的功率时间差来计算的。首先需要计算平均延迟$\mu$，然后再计算由在$\mu$扩散的RMS delay $\sigma_\tau$。下式中$P_{av}$表示平均总功率，这个平均指的是信号功率平均，所以如果提供了平均功率，就直接加起来。</p>
+<script type="math/tex; mode=display">
+\mu=\frac{1}{P_{av}}\sum_{\tau=0}^{\infty}\tau P(\tau)</script><script type="math/tex; mode=display">
+\sigma_\tau=\sqrt{\frac{1}{P_{av}}\sum_{\tau=0}^{\infty}(\tau-\mu )^2P(\tau)}</script><p>对于0.5倍相干带宽，有：</p>
+<script type="math/tex; mode=display">
+B_{coh}\approx\frac{1}{5\sigma_\tau}</script><p><em>举个例子</em></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Power（dB）</th>
+<th>0</th>
+<th>-9.7</th>
+<th>-19.2</th>
+<th>-22.8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Delay (ns)</td>
+<td>0</td>
+<td>110</td>
+<td>190</td>
+<td>410</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>先将功率换算回去，分别是：1, 0.107，0.012，0.005</p>
+<script type="math/tex; mode=display">
+P_{av}=1,+0.107+0.012+0.005=1.124</script><script type="math/tex; mode=display">
+\mu=\frac{0\times1+110\times0.107+190\times0.012+410\times0.005}{1.124}=14.3ns</script><script type="math/tex; mode=display">
+\sigma_{\tau}=\sqrt{\frac{((0-14.3)^2\times1+(110-14.3)^2\times0.107+(190-14.3)^2\times0.012+(410-14.3)^2\times0.005}{1.124}}</script><script type="math/tex; mode=display">
+B_{coh}\approx\frac{1}{5\sigma_\tau}=4.4MHz</script><p><strong>平坦衰落信道（Frequency-flat channel）</strong>：若信道带宽小于相干带宽，不同频率所经历的衰减基本相同，称平坦衰落。</p>
+<p><strong>频率选择信道：（Frequency-selective channel）</strong>：若信号的周期大于想干带宽，则衰落呈现频率差异性，称频率选择衰落。</p>
+<hr>
+<h1 id="CH3-基本技术-Part1"><a href="#CH3-基本技术-Part1" class="headerlink" title="CH3-基本技术-Part1"></a>CH3-基本技术-Part1</h1><h2 id="无线信道中使用的基本技术"><a href="#无线信道中使用的基本技术" class="headerlink" title="无线信道中使用的基本技术"></a>无线信道中使用的基本技术</h2><p>为了控制信道中由前面介绍的衰落带来的错误，发展出了信道均衡、信道编码、分集技术。其中某一种信道均衡方法一般只适用于一种波形或调制方法，但是信道编码比普适。</p>
+<h3 id="信道均衡"><a href="#信道均衡" class="headerlink" title="信道均衡"></a>信道均衡</h3><p>由于信道的频率选择性和多径传播，这会导致不同频率的电磁波被收到的时间不同，造成电磁波色散。电信传输一课中有详细介绍：<a href="https://www.kaysonz.top/posts/3f7b092c">电信传输理论-CH5-金属传输线理论 | 風</a>。色散体现频谱上就是波形展宽，再加之信道一般是带宽有限的，会滤除掉一部分频率，这二者会导致码间干扰（inter-symbol-interferences, ISI）</p>
+<p>信道均衡就是为了针对不同频率的进行补偿。均衡的常用方法是线性电路、横向滤波器或 FIR 滤波器。例如下面这个例子：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240623163744876.png" alt="image-20240623163744876"></p>
+<p>上图这个例子以均匀的时间间隔$\Delta$对信号进行采样，采样间隔通常通常为4倍或倍符号速率。然后由各个系数控制加权相加后再输出。回顾一下DSP，这其实就是一个FIR滤波器。</p>
+<h3 id="信道编码"><a href="#信道编码" class="headerlink" title="信道编码"></a>信道编码</h3><p>信道上的差错控制编码主要有两大类：前向纠错码（Forward error-correction FEC）和 自动重传请求 （ Automatic-repeat request ARQ）</p>
+<h4 id="FEC"><a href="#FEC" class="headerlink" title="FEC"></a>FEC</h4><p>FEC的工作原理如下:</p>
 <ol>
-<li>发送端在每段数据中添加冗余的bit, 这些比特通过某些算法与数据比特关联，称为前向纠错码</li>
-<li>接收端根据收到的数据重新计算冗余比特</li>
-<li>如果受到的纠错码无法匹配，则出现错误，尝试通过冗余比特逆向计算纠错。</li>
+<li>向发送的数据添加一些额外的位，这些位是纠错码，这些位和原本数据位之间有某种函数关联。</li>
+<li>在接收端，接收端根据输入的数据位计算一个新的纠错码。如果新代码与传入代码匹配，则接收方认为该数据块中没有发生错误。</li>
+<li>如果新的纠错码不匹配，且错误数量小于一个特定值时，接收机可以定位到错误并根据纠错码纠正它们。</li>
 </ol>
-<p>FEC还可分为 块码(block codes) 和 卷积码(convolutional codes) 。</p>
-<p><strong>块码</strong></p>
-<p>对于块码而言，有编码率(code rate) 一概念：</p>
+<p>FEC可以分为</p>
+<ul>
+<li>分组码（block codes）：分组码一般写作：$(n,k)$，是指将k位数据设为一组，该组数据编码得n位编码后数据，即有$(n-k)$个冗余纠错位。实际是一组一组进行编码，每一组中的$(n-k)$位的冗余位的产生仅与k位信息位有关。其信道信息速率$R_0$，编码率（code rate）$\frac{k}{n}$，信源信息速率$R_S$的关系是:</li>
+</ul>
 <script type="math/tex; mode=display">
-code\ rate =\frac{information\ bits\ length}{encoded\ block\ length}</script><p>由此可以将信道的数据速率和信源的数据速率关联起来：</p>
-<script type="math/tex; mode=display">
-R_0=\frac{R_s}{code\ rate}</script><p>其中$R_0$是信道速率，$R_s$是信源速率</p>
-<p><strong>卷积码</strong></p>
-<p>卷积码计算可以被视为输入序列与编码器的脉冲响应的离散时间卷积。脉冲响应的持续时间等于编码器的存储器。因此，在卷积码中，信道编码器将消息比特作为连续序列，并以更高的速率生成编码比特的连续序列</p>
-<p>在离散时间系统中，通过延迟器抽头来进行卷积码计算。因此说系统有无存储器（Memory）是区分卷积码和块码的核心。下面是一个卷积码的例子：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240407105915862.png" alt="image-20240407105915862"></p>
-<h3 id="ARQ"><a href="#ARQ" class="headerlink" title="ARQ"></a>ARQ</h3><p>与FEC相反。在ARQ中，接收机尝试检测错误的存在，如果发现错误，则将请求发送回发射机以重新发送数据。因此，ARQ需要一个反馈信道。由于重传，ARQ有一定的延迟，这使得ARQ的使用不适合用于语音通信。在无线通信中，ARQ对于分组无线电网络是有用的。</p>
-<p>最常见的ARQ技术是CRC：给定一个k比特的比特块（消息），发射机生成一个（n-k）比特序列，称为帧校验序列（FCS），这样由n个比特组成的结果帧就可以被某个预定的数整除。在接收机侧，输入的比特序列除以该数字，如果没有余数，则认为没有错误。(奇偶校验位是CRC的特殊情况)。</p>
-<h2 id="分集-Diversity-技术"><a href="#分集-Diversity-技术" class="headerlink" title="分集(Diversity)技术"></a>分集(Diversity)技术</h2><p>分集的核心思想是：“不把鸡蛋放在同一个篮子里”。它使携带同一信息的多个信号<strong>衰落特性相互独立</strong>，并对这些信号进行特定的处理，从而减小衰落对信号影响的技术。也就是在发射机和接收机之间提供多个逻辑信道，然后在每个信道上发送部分信号。可以通俗地说是“<strong>分</strong>散传输，<strong>集</strong>中处理”。</p>
-<h3 id="空间分集"><a href="#空间分集" class="headerlink" title="空间分集"></a>空间分集</h3><p>空间分集（space diversity）也叫天线分集（antenna diversity），是一种在发射端或（和）接收端安装多根不同位置的天线的分集技术。若这些天线的距离足够大，则电磁波受到衰落的影响就相互独立。用人话就是：用多个天线发送或接收同一个信号，然后集中处理。</p>
-<h3 id="时间分集"><a href="#时间分集" class="headerlink" title="时间分集"></a>时间分集</h3><p>时间分集是通过对信道随时间的衰落进行平均来实现的。典型的就是交织技术。</p>
+R_0=\frac{n}{k}R_S</script><ul>
+<li>卷积码（convolutional codes）：卷积码是一种有记忆的纠错码，它可以被看成是输入序列和encoder的进行离散卷积。输入序列被卷积的长度和encoder的存储大小有关（因此说，编码器内带内存的是卷积码）。由于在卷积码内输入的比特是被当做连续比特序列来进行卷积的（即，不是打包好一块走一块那种），因此卷积码可以以较高速度编码</li>
+</ul>
+<h4 id="ARQ"><a href="#ARQ" class="headerlink" title="ARQ"></a>ARQ</h4><p>ARQ技术和FEC想要实现的能通过加入冗余位在接收端恢复受损数据不同，它旨在让接收方仅仅检测错误的存在，发现错误存在后，再要求发送方重新发送数据（因此也称为后向纠错 backward error correction）。因此ARQ需要一个反馈信道，同时还有一定延迟。ARQ对于分组交换很有用。</p>
+<p>ARQ用来判断数据是否出错的常见的错误检测技术之一是循环冗余校验(cyclic redundancy check CRC)：对于k位的数据块(message)，发送器生成一个(n-k)位冗余序列，称为帧校验序列(frame check sequence  FCS)。然后将其编码为由n位组成的编码后数据，这个数据被某个预定的数字完全整除。在接收端，用接收的比特除以该数字，如果没有余数，则认为没有错误。奇偶校验位是CRC的特殊情况。</p>
+<h3 id="分集技术"><a href="#分集技术" class="headerlink" title="分集技术"></a>分集技术</h3><p><strong>为什么需要分集：</strong></p>
+<ul>
+<li>为了解决NLOS下Raylleigh和LOS下Ricean快衰落的问题</li>
+<li>提高覆盖范围内的QoS</li>
+</ul>
+<p>分集的核心思想是：“不把鸡蛋放在同一个篮子里”。它使携带同一信息的多个信号<strong>衰落特性相互独立</strong>，并对这些信号进行特定的处理，从而减小衰落对信号影响的技术。也就是在发射机和接收机之间提供多个逻辑信道，然后在每个信道上发送部分信号。可以通俗地说是“<strong>分</strong>散传输，<strong>集</strong>中处理”。</p>
+<p>总体来看，分集技术可以分为：</p>
+<ul>
+<li>空间分集</li>
+<li>时间分集</li>
+<li>频率分集</li>
+</ul>
+<h4 id="空间分集"><a href="#空间分集" class="headerlink" title="空间分集"></a>空间分集</h4><p>空间分集（space diversity）也叫天线分集（antenna diversity），是一种在发射端或（和）接收端安装多根不同位置的天线的分集技术。若这些天线的距离足够大，则电磁波受到衰落的影响就相互独立。用人话就是：用多个天线发送或接收同一个信号，然后集中处理。</p>
+<h4 id="时间分集"><a href="#时间分集" class="headerlink" title="时间分集"></a>时间分集</h4><p>时间分集是通过对信道随时间的衰落进行平均来实现的，典型的就是交织技术（interleaving）。例如下图，假设编码有2bit的FEC纠错能力。将word1的后5个bit和word2的前5个bit交换拼接。在传输过程中拼接后的word2受到干扰错误4个bit，但是在接收逆交织后，就变成了2个bit错误，可以被更正。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240407114922778.png" alt="image-20240407114922778"></p>
-<h3 id="频率分集"><a href="#频率分集" class="headerlink" title="频率分集"></a>频率分集</h3><p>频率分集的一个典型是扩频通信，让原有信号带宽分散在更大的频带上。此处可以参考文章 [扩频通信简介]</p>
-<p>另一个例子是OFDM（Orthogonal Frequency Division Multiplexing 正交频分复用），OFDM主要思想是：将信道分成若干<strong>正交子信道</strong>，将高速数据信号转换成<strong>并行</strong>的<strong>低速子数据流</strong>，调制到在每个<strong>子信道上进行传输</strong>。正交信号可以通过在接收端采用相关技术来分开，这样可以减少子信道之间的相互干扰(ISI) 。每个子信道上的信号带宽小于信道的相关带宽，因此每个子信道上可以看成平坦性衰落，从而可以消除码间串扰，而且由于每个子信道的带宽仅仅是原信道带宽的一小部分，信道均衡变得相对容易。</p>
+<h4 id="频率分集"><a href="#频率分集" class="headerlink" title="频率分集"></a>频率分集</h4><p>频率分集的一个典型是扩频通信，让原有信号带宽分散在更大的频带上，然后利用Rake接收机（Rake接收机假设每个多径分量间隔一定时延，因此有多条接收之路，分别对不同时延迟的信号进行接扩，最后进行合并。）进行接收，以此达到分集目的。</p>
+<p>另一个例子是OFDM（Orthogonal Frequency Division Multiplexing 正交频分复用），OFDM主要思想是：将信道分成若干<strong>正交子信道</strong>，将高速数据信号转换成<strong>并行</strong>的<strong>低速子数据流</strong>，调制到在每个<strong>子信道上进行传输</strong>。正交信号可以通过在接收端采用相关技术来分开，这样可以减少子信道之间的相互干扰(ISI) 。<strong>每个子信道上的信号带宽小于信道的相干带宽（Coherence Bandwidth），因此每个子信道上可以看成平坦衰落（flat fading）</strong>，从而可以消除码间串扰，而且由于每个子信道的带宽仅仅是原信道带宽的一小部分，信道均衡变得相对容易。</p>
 <p>它的调制和解调是分别基于IFFT和FFT来实现的，是实现复杂度最低、应用最广的一种多载波传输方案。相较于频分复用（单纯使用频率划分子信道，而不正交），它可以实现更高的频谱利用率。下图是FDM的频谱和OFDM的频谱，可以看到，OFDM更为密集。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240410104225740.png" alt="image-20240410104225740"></p>
-<h2 id="合并技术-Combining-methods"><a href="#合并技术-Combining-methods" class="headerlink" title="合并技术(Combining methods)"></a>合并技术(Combining methods)</h2><p>分集技术是在发射段而言的，而合并技术就是将分集发射的信号重新合并在一起的技术。</p>
-<h3 id="最大比合并-MRC-Maximum-Ratio-Combining"><a href="#最大比合并-MRC-Maximum-Ratio-Combining" class="headerlink" title="最大比合并 (MRC: Maximum Ratio Combining)"></a>最大比合并 (MRC: Maximum Ratio Combining)</h3><p>对于来自发射端的同一个信号，由于在接收端使用多天线接收，这个信号将经过多条路径（多个天线）被接收端所接收。多个路径质量同时差的几率非常小，<strong>一般总有一条路径的信号比其他信号好</strong>。在接收端使用某种算法，<strong>对各接收路径上的信号进行加权汇总，信号好的路径分配最高的权重</strong>，实现接收端的信号改善。当多条路径上信号都不太好时，通过MRC技术能够获得较好的接收信号</p>
-<h3 id="等增益合并-EGC-Equal-Gain-Combining"><a href="#等增益合并-EGC-Equal-Gain-Combining" class="headerlink" title="等增益合并(EGC:Equal Gain Combining)"></a>等增益合并(EGC:Equal Gain Combining)</h3><p>等增益合并也称为<strong>相位均衡</strong>，仅仅对信道的<strong>相位偏移进行校正而幅度不做校正</strong>。等增益合并不是任何意义上的最佳合并方式，<strong>只有假设每一路信号的信噪比相同的情况下，在信噪比最大化的意义上，它才是最佳的</strong>。并且，由于缺少对信道幅度的了解，该技术并不适用于所有调制类型，并且其性能比MRC差。</p>
-<h3 id="均方合并-SLC-Square-Law-Combining"><a href="#均方合并-SLC-Square-Law-Combining" class="headerlink" title="均方合并(SLC:Square Law Combining)"></a>均方合并(SLC:Square Law Combining)</h3><p>如果信道是高度时变的，并且其相位不能准确估计，那么可采用SLC合并方法。SLC简单地将接收信号的平方幅度相加，而不进行相干。此技术只能应用于正交信号的合并。</p>
-<h3 id="切换合并-Switching-Combining"><a href="#切换合并-Switching-Combining" class="headerlink" title="切换合并(Switching Combining)"></a>切换合并(Switching Combining)</h3><p>接收机扫描所有的分集支路，<strong>并选择SNR 在特定的预设门限之上的特定分支</strong>。在该信号的SNR 降低到所设的门限值之下之前，<strong>选择该信号作为输出信号</strong>。当SNR 低于设定的门限时，接收机开始重新扫描并切换到另一个分支，该方案也称为扫描合并。这种方式降低了计算成本，甚至可能有比MRC更好的性能，因为SNR非常低的信道不仅不能准确还原信息，还贡献了很多噪声。</p>
-<h1 id="无线通信的复用技术"><a href="#无线通信的复用技术" class="headerlink" title="无线通信的复用技术"></a>无线通信的复用技术</h1><p>分集技术是将一个一个信号分散到不同的子信道传输，来提高该信号的传输质量。而复用技术是使用不同的子信道传输不同的信号，目的是提高频谱利用效率。</p>
+<h2 id="无线通信中的复用技术"><a href="#无线通信中的复用技术" class="headerlink" title="无线通信中的复用技术"></a>无线通信中的复用技术</h2><p>分集技术是将一个一个信号分散到不同的子信道传输，来提高该信号的传输质量。而复用技术是使用不同的子信道传输不同的信号，目的是提高频谱利用效率。</p>
 <p>复用技术主要在一下四个方向上进行复用</p>
 <ul>
 <li>时间 （时分复用 Time-Division Multiplexing TDM）</li>
@@ -212,93 +435,364 @@ R_0=\frac{R_s}{code\ rate}</script><p>其中$R_0$是信道速率，$R_s$是信�
 <li>编码 （码分复用 Code-Division Multiplexing CDM）</li>
 <li>空间 （空分服用 Space-Division Multiplexing SDM）</li>
 </ul>
-<h2 id="频分复用"><a href="#频分复用" class="headerlink" title="频分复用"></a>频分复用</h2><p>频分复用将信道在频域上划分成不同子信道，每一个信号占用一个频率。如下图是信号k1-k6在频域上的分布图。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240410111411683.png" alt="image-20240410111411683"></p>
-<h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><ul>
+<h3 id="频分复用（FDM）"><a href="#频分复用（FDM）" class="headerlink" title="频分复用（FDM）"></a>频分复用（FDM）</h3><p>描述：频分复用将信道在频域上划分成不同子信道，每一个信号占用一个频率。</p>
+<p><strong>优点：</strong></p>
+<ol>
 <li>不需要动态协调，因为一个信号固定使用一个子频，该频永远属于该信号。</li>
 <li>数字信号和模拟信号都可使用</li>
-</ul>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
-<li>信道利用率低：不同信号之间的流量可能分布不均匀，造成部分子信道闲置，此时会浪费带宽</li>
-<li>灵活性差：每一个信号的频率固定</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>信道利用率低：不同信号之间的流量可能分布不均匀，造成部分子信道闲置，此时会浪费带宽。</li>
+<li>灵活性差：每一个信号的频率固定。</li>
 <li>频率间需要设置过渡带，不同频率需要有一个小间隔，造成资源浪费</li>
-</ul>
-<h2 id="时分服用"><a href="#时分服用" class="headerlink" title="时分服用"></a>时分服用</h2><p>不同时间段发不同的信号，单一信号可占用介质中所有的可用带宽。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240410111840706.png" alt="image-20240410111840706"></p>
-<h3 id="优点：-1"><a href="#优点：-1" class="headerlink" title="优点："></a>优点：</h3><ul>
+</ol>
+<h3 id="时分复用（TDM）"><a href="#时分复用（TDM）" class="headerlink" title="时分复用（TDM）"></a>时分复用（TDM）</h3><p>描述：不同时间段发不同的信号，单一信号可占用介质中所有的可用带宽。</p>
+<p><strong>优点：</strong></p>
+<ol>
 <li>不存在频间干扰：介质中只同时存在一个频率，因此不会有FDM中频率间相互干扰的问题。</li>
 <li>对多用户场景，它有很高的吞吐量。</li>
-</ul>
-<h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><ul>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
 <li>需要非常精确的同步：需要从不同时间信道中分离出来自己的信号，因此对时间同步的要求非常高。</li>
-</ul>
-<h2 id="时频复用"><a href="#时频复用" class="headerlink" title="时频复用"></a>时频复用</h2><p>将时分复用和频分复用结合起来。如下图所示，下图k1-k6被成为资源块，每一个资源块可以划分给一个用户。</p>
+</ol>
+<h3 id="时频复用-（Time-and-Frequency-Multiplex）"><a href="#时频复用-（Time-and-Frequency-Multiplex）" class="headerlink" title="时频复用 （Time and Frequency Multiplex）"></a>时频复用 （Time and Frequency Multiplex）</h3><p>描述：将时分复用和频分复用结合起来。如下图所示，下图k1-k6被成为资源块，每一个资源块可以划分给一个用户。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240410112230934.png" alt="image-20240410112230934"></p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<p>优点</p>
+<ol>
 <li>对于频率选择性干扰有一定保护效果。因为频率选择性干扰只在一个频率上持续。</li>
-</ul>
-<h3 id="缺点：-1"><a href="#缺点：-1" class="headerlink" title="缺点："></a>缺点：</h3><ul>
+</ol>
+<p>缺点：</p>
+<ol>
 <li>在时间和频率上都需要设置间隔带，会造成资源额外开销</li>
-</ul>
-<h2 id="码分复用"><a href="#码分复用" class="headerlink" title="码分复用"></a>码分复用</h2><p>码分复用使得每一个子信道有自己的一段编码，通过该编码分离子信道信号。一个例子是直序扩频。在该复用模式下，用户可在同一时间使用同一频谱。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240410112847036.png" alt="image-20240410112847036"></p>
-<h3 id="优点：-2"><a href="#优点：-2" class="headerlink" title="优点："></a>优点：</h3><ul>
+</ol>
+<h3 id="码分复用-（CDM）"><a href="#码分复用-（CDM）" class="headerlink" title="码分复用 （CDM）"></a>码分复用 （CDM）</h3><p>描述：码分复用使得每一个子信道有自己的一段编码，通过该编码分离子信道信号。一个例子是直序扩频。在该复用模式下，用户可在同一时间使用同一频谱。</p>
+<p><strong>优点：</strong></p>
+<ol>
 <li>频谱利用率高</li>
 <li>不需要动态协调</li>
 <li>抗干扰能力强</li>
-</ul>
-<h3 id="缺点：-2"><a href="#缺点：-2" class="headerlink" title="缺点："></a>缺点：</h3><ul>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
 <li>需要在信号检测上引入更复杂的设计。</li>
-</ul>
-<h2 id="空分复用"><a href="#空分复用" class="headerlink" title="空分复用"></a>空分复用</h2><p>空分复用使用空间划分频谱资源，在一定区域内，用户使用的频谱可与另一不互相影响区域重合。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240410113336244.png" alt="image-20240410113336244"></p>
-<h2 id="一些其他的概念"><a href="#一些其他的概念" class="headerlink" title="一些其他的概念"></a>一些其他的概念</h2><h3 id="多址接入"><a href="#多址接入" class="headerlink" title="多址接入"></a>多址接入</h3><p>多址是一个MAC层的概念，<strong>蜂窝系统中是以信道来区分通信对象的</strong>，一个信道只容纳一个用户进行通信，许多同时进行通信的用户，互相以信道来区分，这就是多址。它可以采用上面几种复用来实现，称为FDMA、TDMA、CDMA和SDMA（其中 MA 是Multiple Access，而不是上面的Multiplexing）</p>
-<h3 id="双工"><a href="#双工" class="headerlink" title="双工"></a>双工</h3><p>双工（duplex）， 指二台通信设备之间，允许有双向的资料传输。也就是存在上行和下行两个信道。</p>
-<p>上面提到的复用技术同样可用于双共，给上行和下行划分不同的子信道。分别称之为：频分双工（FDD），时分双共（TDD），码分双共（CDD），其中DD是Division Duplex的缩写。</p>
-<h1 id="调制基础"><a href="#调制基础" class="headerlink" title="调制基础"></a>调制基础</h1><h2 id="基础的调制方式"><a href="#基础的调制方式" class="headerlink" title="基础的调制方式"></a>基础的调制方式</h2><div class="note info flat"><p>PSK，AM；ISI以及Raised-cosine pulse的频谱最窄，在通信原理已经学习，这里不再赘述。</p>
+</ol>
+<h3 id="空分复用-（SDM）"><a href="#空分复用-（SDM）" class="headerlink" title="空分复用 （SDM）"></a>空分复用 （SDM）</h3><p>描述：空分复用使用空间划分频谱资源，在一定区域内，用户使用的频谱可与另一不互相影响区域重合。</p>
+<p>空分复用可以非常有效地利用频谱，因此几乎所有无线系统中都在使用。</p>
+<h2 id="数字调制技术"><a href="#数字调制技术" class="headerlink" title="数字调制技术"></a>数字调制技术</h2><p><strong>为什么需要调制：</strong>信息无法被原样传递</p>
+<p><strong>什么是调制</strong>：将信息包含进电磁波内</p>
+<p><strong>如何调制</strong>：对载波的一些参数进行改变，让其承载信息</p>
+<h3 id="ASK"><a href="#ASK" class="headerlink" title="ASK"></a>ASK</h3><p>使用振幅调制二进制序列，如下图所示。</p>
+<p><img src="C:\Users\17997\AppData\Roaming\Typora\typora-user-images\image-20240623201850496.png" alt="image-20240623201850496"></p>
+<h3 id="FSK"><a href="#FSK" class="headerlink" title="FSK"></a>FSK</h3><p>使用不同的频率调制二进制序列。如下图所示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240623202032709.png" alt="image-20240623202032709"></p>
+<h3 id="PSK"><a href="#PSK" class="headerlink" title="PSK"></a>PSK</h3><p>使用不同相位调制二进制序列。如下图所示。如果是BPSK，则相位差异为$\pi$，QPSK则为$\frac{\pi}{2}$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240623202236165.png" alt="image-20240623202236165"></p>
+<h3 id="Quadrature-Amplitude-Modulation-QAM"><a href="#Quadrature-Amplitude-Modulation-QAM" class="headerlink" title="Quadrature Amplitude Modulation QAM"></a>Quadrature Amplitude Modulation QAM</h3><p>QAM是PSK和ASK的结合。使用星座图（constellation points）来映射二进制序列。例如下图是16-QAM（4bit/symbol）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240417105955875.png" alt="QAM"></p>
+<hr>
+<h1 id="CH3-基本技术-Part2"><a href="#CH3-基本技术-Part2" class="headerlink" title="CH3-基本技术-Part2"></a>CH3-基本技术-Part2</h1><h2 id="扩频通信"><a href="#扩频通信" class="headerlink" title="扩频通信"></a>扩频通信</h2><div class="note info flat"><p>如果想更深入学习，可以参考<a href="https://www.kaysonz.top/posts/76361032">扩频通信简介 | 風 (kaysonz.top)</a></p>
 </div>
-<h3 id="QAM"><a href="#QAM" class="headerlink" title="QAM"></a>QAM</h3><p>QAM(Quadrature Amplitude Modulation)：“正交振幅调制”，其幅度和相位同时变化。它将ASK和PSK汇合到一个信道。正交调幅信号有两个相同频率的载波，但是相位相差90度。QAM一般使用格雷码进行映射。</p>
-<p>如下图是16-QAM的波形图</p>
-<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/download" alt="16-QAM示意图"></p>
-<p>下图是16QAM的星座图</p>
-<table>
-    <tr>
-        <td><center><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240417105955875.png"></center></td>
-        <td><center><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240417112058124.png"></center></td>
-    </tr>
-</table>
-
-<div class="note info flat"><p>这一部分讲的比较快，因为通信原理已经讲过</p>
-</div>
-<h1 id="扩频通信"><a href="#扩频通信" class="headerlink" title="扩频通信"></a>扩频通信</h1><p><strong>扩频通信的优势：</strong></p>
-<ul>
-<li>原本窄带信号频谱被扩宽之后，具有更好的抗窄带噪声的特性</li>
+<h3 id="扩频通信的优势："><a href="#扩频通信的优势：" class="headerlink" title="扩频通信的优势："></a>扩频通信的优势：</h3><ul>
+<li>符号的频谱在传输过程中经常受到窄带信号的干扰，导致接收端无法正确识别符号。原本窄带信号频谱被扩宽之后，再接收端解扩，具有更好的抗窄带噪声的特性</li>
 <li>扩频之后频谱隐藏在噪声中，难以监听</li>
 <li>利用扩频码可以进行码分复用</li>
-<li>良好的抗多径效应</li>
+<li>良好的抗多径效应（Rake分集接收）</li>
 </ul>
 <p><strong>凡是看到码分的，就是用了扩频技术的。例如重庆邮电大学的第一颗TD-SCDMA3G芯片</strong></p>
-<div class="note info flat"><p>这一部分更详细的内容请参考<em>LoRa定位开发-扩频通信简介</em>中<strong>跳频扩频</strong>和<strong>直序扩频</strong>；传送门：<a href="https://www.kaysonz.top/2024/01/14/LoRa(%E9%80%9A%E4%BF%A1">扩频通信简介</a>%E5%AE%9A%E4%BD%8D/%E6%89%A9%E9%A2%91%E9%80%9A%E4%BF%A1%E7%AE%80%E4%BB%8B/)</p>
-</div>
-<h2 id="直序扩频"><a href="#直序扩频" class="headerlink" title="直序扩频"></a>直序扩频</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>请参考<em>LoRa定位开发-扩频通信简介</em>中<strong>直序扩频</strong>；传送门：<a href="https://www.kaysonz.top/2024/01/14/LoRa(%E9%80%9A%E4%BF%A1">扩频通信简介</a>%E5%AE%9A%E4%BD%8D/%E6%89%A9%E9%A2%91%E9%80%9A%E4%BF%A1%E7%AE%80%E4%BB%8B/)</p>
-<h3 id="Rake接收器（还在用传统接收器？）"><a href="#Rake接收器（还在用传统接收器？）" class="headerlink" title="Rake接收器（还在用传统接收器？）"></a>Rake接收器（还在用传统接收器？）</h3><p>在前面直序扩频中介绍，DSSS抗多径效应的原理是选择信号功率最强的一个解扩，而其他路径分量相当与进行了扩频。这恰好就像是在做分集接收。Rake接收器就是将这个过程认为是分集来处理。</p>
-<p>Rake接收机假设每个多径分量间隔一定时延，因此有多条接收之路，分别对不同时延迟的信号进行接扩，最后进行合并。理想来说，瑞刻接收机使用MRC的方式进行合并，但具体的方式需要根据特定场景优化。</p>
-<p>下图为瑞刻接收机模型，可以看到，支路间有一定延迟。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240419104636201.png" alt="image-20240419104636201" style="zoom:50%;" /></p>
-<h2 id="跳频扩频"><a href="#跳频扩频" class="headerlink" title="跳频扩频"></a>跳频扩频</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>请参考<em>LoRa定位开发-扩频通信简介</em>中<strong>跳频扩频</strong>；传送门：<a href="https://www.kaysonz.top/2024/01/14/LoRa(%E9%80%9A%E4%BF%A1">扩频通信简介</a>%E5%AE%9A%E4%BD%8D/%E6%89%A9%E9%A2%91%E9%80%9A%E4%BF%A1%E7%AE%80%E4%BB%8B/)</p>
-<h1 id="多址接入-Multiple-Access"><a href="#多址接入-Multiple-Access" class="headerlink" title="多址接入(Multiple Access)"></a>多址接入(Multiple Access)</h1><p>多址接入是位于MAC层，物理层之上的一种实现点到多点的通信的技术。它可以分为竞争协议和非竞争协议，如下图。</p>
+<h3 id="直序扩频（Direct-Sequency-Spreading-Spectrum-DSSS）"><a href="#直序扩频（Direct-Sequency-Spreading-Spectrum-DSSS）" class="headerlink" title="直序扩频（Direct Sequency Spreading Spectrum DSSS）"></a>直序扩频（Direct Sequency Spreading Spectrum DSSS）</h3><p><strong>是什么：</strong>将原始信号与频率更高的伪随机序列（pseudo-random number ）或者叫扩频序列（chipping sequence）进行异或运算，以此将信号的频宽提高。在接收端再使用同样的伪随机序列异或运算解扩。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240115000300778.png" alt="img"></p>
+<p><strong>优势：</strong></p>
+<ol>
+<li>减少频率选择性干扰</li>
+<li>使用扩频序列（chipping sequence），提供了码分复用的能力，基站可以使用同一频率</li>
+<li>多个基站可以检测和恢复信号(软切换增益 soft handover gain)</li>
+</ol>
+<p><strong>劣势：</strong></p>
+<ol>
+<li>需要精确的功率控制，因为不同扩频码的信号必须在大约相同的功率水平进行检测。</li>
+</ol>
+<p><strong>DSSS中的Rake Receiver（还在用传统接收机？）</strong>：DSSS抗多径效应的原理是选择信号功率最强的一个解扩，而其他路径分量相当与进行了扩频。这恰好就像是在做分集接收。Rake接收器就是将这个过程认为是分集来处理。Rake接收机假设每个多径分量间隔一定时延，因此有多条接收之路，分别对不同时延迟的信号进行接扩，最后进行合并。理想来说，瑞刻接收机使用MRC的方式进行合并，但具体的方式需要根据特定场景优化。</p>
+<h3 id="跳频扩频（Frequency-Hopping-Spreading-Spectrum-FHSS）"><a href="#跳频扩频（Frequency-Hopping-Spreading-Spectrum-FHSS）" class="headerlink" title="跳频扩频（Frequency Hopping Spreading Spectrum FHSS）"></a>跳频扩频（Frequency Hopping Spreading Spectrum FHSS）</h3><p>传统的无线通信系统，发射机和接收机工作在单次通信过程中，载频一般是保持不变；例如通信频率是900MHz, 那么通信将一直使用这个频率进行。跳频（Frequency Hopping)系统则在单次通信中，载频在多个频率上跳变。如901MHz, 902MHz etc.</p>
+<p>跳频通信通过伪随机序列（pseudo random number）确定跳频图案，即信号频率跳变的规律。然后通信频率按照跳频图案变化，如下图所示。</p>
+<p><strong>跳频可以细分为：</strong></p>
+<ul>
+<li><strong>快跳频（Fast Hopping）</strong>：跳频周期小于符号周期(是Ts的约数)，一个符号传输需要多个频率</li>
+<li><strong>慢跳频（Slow Hopping）</strong>：跳频周期大于符号周期(是Ts的倍数)，一个频率传输多个符号</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240114233026923.png" alt="FHSS"></p>
+<p><strong>优势：</strong></p>
+<ol>
+<li>频率选择性衰落的影响在众多频率跳变中被削弱</li>
+<li>提供频率分集（Frequency Diversity）</li>
+<li>实现简单</li>
+<li>任何时候都只使用一小部分频谱（即可以用不同跳频图案实现码分复用）</li>
+<li>比起DSSS更易被探测</li>
+</ol>
+<p><strong>劣势：</strong></p>
+<ol>
+<li>鲁棒性（robust）不如DSSS</li>
+</ol>
+<h3 id="跳时扩频（Time-Hopping-Spreading-Spectrum）"><a href="#跳时扩频（Time-Hopping-Spreading-Spectrum）" class="headerlink" title="跳时扩频（Time-Hopping Spreading Spectrum）"></a>跳时扩频（Time-Hopping Spreading Spectrum）</h3><p>与跳频相似，是使发射信号在时间轴上跳变。首先把时间轴分成许多时片。在一帧内哪个时片发射信号由扩频码序列去进行控制，主要用于时分多址（TDMA）通信。</p>
+<p><strong>优点：</strong>实现简单，能效好</p>
+<p><strong>缺点：</strong>同步困难</p>
+<h2 id="多址技术（Multiple-Access）"><a href="#多址技术（Multiple-Access）" class="headerlink" title="多址技术（Multiple Access）"></a>多址技术（Multiple Access）</h2><p>多址接入是位于MAC层，物理层之上的一种实现点到多点的通信的技术。多址和复用的区别在于，多址技术是要根据不同的“址”来区分用户；复用是要给用户一个很好的利用公共资源的方式。复用针对资源，多址针对用户。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240419113836159.png" alt="image-20240419113836159" style="zoom:50%;" /></p>
-<h3 id="竞争"><a href="#竞争" class="headerlink" title="竞争"></a>竞争</h3><p>网络中的节点在网络中的地位是等同的，各节点通过竞争获得信道的使用权，类似与谁喊得大谁就能发。典型的协议是Aloha。</p>
-<h3 id="非竞争"><a href="#非竞争" class="headerlink" title="非竞争"></a>非竞争</h3><p>所有设备依据某一规则，编排发信顺序。有统一调度。这里面又可以分为</p>
+<p>多址可以分为竞争协议和非竞争协议，如上图。</p>
+<p>竞争：网络中的节点在网络中的地位是等同的，各节点通过竞争获得信道的使用权，典型的协议是Aloha。</p>
+<p>非竞争：所有设备依据某一规则，编排发信顺序。有统一调度。这里面又可以分为：</p>
 <ul>
 <li>Dynamic allocation（动态分配）：有一中心节点根据当前状况，动态分配信道资源。</li>
 <li>Static allocation（静态分配）：根据某种恒定的规则发信。例如前面提到的CDMA，SDMA等。</li>
 </ul>
-<h2 id="SDMA"><a href="#SDMA" class="headerlink" title="SDMA"></a>SDMA</h2><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240419115355511.png" alt="image-20240419115355511"></p>
-<h2 id="TDMA"><a href="#TDMA" class="headerlink" title="TDMA"></a>TDMA</h2><p>时分多址允许多个用户在不同的时间片（时隙）使用相同的频率传输数据。每个用户使用他们自己的时间片</p>
-<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240424103804246.png" alt="image-20240424103804246"></p>
-<p>他的显著优势是它的共品行</p>
-<h2 id="CDMA"><a href="#CDMA" class="headerlink" title="CDMA"></a>CDMA</h2><h2 id="DS-CDMA"><a href="#DS-CDMA" class="headerlink" title="DS-CDMA"></a>DS-CDMA</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/posts/3fa30bac">https://www.kaysonz.top/posts/3fa30bac</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C/">通信网络</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-number">1.</span> <span class="toc-text">无线信道的性质</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E9%81%93%E5%9D%87%E8%A1%A1%E5%87%86%E5%88%99"><span class="toc-number">1.1.</span> <span class="toc-text">信道均衡准则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E6%8E%A7%E5%88%B6%E7%BC%96%E7%A0%81"><span class="toc-number">1.2.</span> <span class="toc-text">错误控制编码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FEC"><span class="toc-number">1.2.1.</span> <span class="toc-text">FEC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARQ"><span class="toc-number">1.2.2.</span> <span class="toc-text">ARQ</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E9%9B%86-Diversity-%E6%8A%80%E6%9C%AF"><span class="toc-number">1.3.</span> <span class="toc-text">分集(Diversity)技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%88%86%E9%9B%86"><span class="toc-number">1.3.1.</span> <span class="toc-text">空间分集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%88%86%E9%9B%86"><span class="toc-number">1.3.2.</span> <span class="toc-text">时间分集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%91%E7%8E%87%E5%88%86%E9%9B%86"><span class="toc-number">1.3.3.</span> <span class="toc-text">频率分集</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E6%8A%80%E6%9C%AF-Combining-methods"><span class="toc-number">1.4.</span> <span class="toc-text">合并技术(Combining methods)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E6%AF%94%E5%90%88%E5%B9%B6-MRC-Maximum-Ratio-Combining"><span class="toc-number">1.4.1.</span> <span class="toc-text">最大比合并 (MRC: Maximum Ratio Combining)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%89%E5%A2%9E%E7%9B%8A%E5%90%88%E5%B9%B6-EGC-Equal-Gain-Combining"><span class="toc-number">1.4.2.</span> <span class="toc-text">等增益合并(EGC:Equal Gain Combining)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%87%E6%96%B9%E5%90%88%E5%B9%B6-SLC-Square-Law-Combining"><span class="toc-number">1.4.3.</span> <span class="toc-text">均方合并(SLC:Square Law Combining)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E5%90%88%E5%B9%B6-Switching-Combining"><span class="toc-number">1.4.4.</span> <span class="toc-text">切换合并(Switching Combining)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E7%9A%84%E5%A4%8D%E7%94%A8%E6%8A%80%E6%9C%AF"><span class="toc-number">2.</span> <span class="toc-text">无线通信的复用技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%91%E5%88%86%E5%A4%8D%E7%94%A8"><span class="toc-number">2.1.</span> <span class="toc-text">频分复用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9%EF%BC%9A"><span class="toc-number">2.1.1.</span> <span class="toc-text">优点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">2.1.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E5%88%86%E6%9C%8D%E7%94%A8"><span class="toc-number">2.2.</span> <span class="toc-text">时分服用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9%EF%BC%9A-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">优点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9%EF%BC%9A"><span class="toc-number">2.2.2.</span> <span class="toc-text">缺点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%A2%91%E5%A4%8D%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">时频复用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">2.3.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9%EF%BC%9A-1"><span class="toc-number">2.3.2.</span> <span class="toc-text">缺点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A0%81%E5%88%86%E5%A4%8D%E7%94%A8"><span class="toc-number">2.4.</span> <span class="toc-text">码分复用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9%EF%BC%9A-2"><span class="toc-number">2.4.1.</span> <span class="toc-text">优点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9%EF%BC%9A-2"><span class="toc-number">2.4.2.</span> <span class="toc-text">缺点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E5%88%86%E5%A4%8D%E7%94%A8"><span class="toc-number">2.5.</span> <span class="toc-text">空分复用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%85%B6%E4%BB%96%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">2.6.</span> <span class="toc-text">一些其他的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5"><span class="toc-number">2.6.1.</span> <span class="toc-text">多址接入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E5%B7%A5"><span class="toc-number">2.6.2.</span> <span class="toc-text">双工</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%83%E5%88%B6%E5%9F%BA%E7%A1%80"><span class="toc-number">3.</span> <span class="toc-text">调制基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9A%84%E8%B0%83%E5%88%B6%E6%96%B9%E5%BC%8F"><span class="toc-number">3.1.</span> <span class="toc-text">基础的调制方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#QAM"><span class="toc-number">3.1.1.</span> <span class="toc-text">QAM</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%A9%E9%A2%91%E9%80%9A%E4%BF%A1"><span class="toc-number">4.</span> <span class="toc-text">扩频通信</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E5%BA%8F%E6%89%A9%E9%A2%91"><span class="toc-number">4.1.</span> <span class="toc-text">直序扩频</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">4.1.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rake%E6%8E%A5%E6%94%B6%E5%99%A8%EF%BC%88%E8%BF%98%E5%9C%A8%E7%94%A8%E4%BC%A0%E7%BB%9F%E6%8E%A5%E6%94%B6%E5%99%A8%EF%BC%9F%EF%BC%89"><span class="toc-number">4.1.2.</span> <span class="toc-text">Rake接收器（还在用传统接收器？）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%B3%E9%A2%91%E6%89%A9%E9%A2%91"><span class="toc-number">4.2.</span> <span class="toc-text">跳频扩频</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-1"><span class="toc-number">4.2.1.</span> <span class="toc-text">原理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5-Multiple-Access"><span class="toc-number">5.</span> <span class="toc-text">多址接入(Multiple Access)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%9E%E4%BA%89"><span class="toc-number">5.0.1.</span> <span class="toc-text">竞争</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E7%AB%9E%E4%BA%89"><span class="toc-number">5.0.2.</span> <span class="toc-text">非竞争</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SDMA"><span class="toc-number">5.1.</span> <span class="toc-text">SDMA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TDMA"><span class="toc-number">5.2.</span> <span class="toc-text">TDMA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CDMA"><span class="toc-number">5.3.</span> <span class="toc-text">CDMA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DS-CDMA"><span class="toc-number">5.4.</span> <span class="toc-text">DS-CDMA</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+<p>多址和复用技术本质上是用的同一个物理技术来实现，因此这里只简单列举优缺点</p>
+<h3 id="FDMA"><a href="#FDMA" class="headerlink" title="FDMA"></a>FDMA</h3><p><strong>优点：</strong></p>
+<ol>
+<li>低复杂度（例如：比TDMA或CDMA更容易同步）</li>
+<li>所需的bit开销较少（ Fewer bits needed for overhead purposes）</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>未使用的信道频谱会被闲置（stay idle），浪费资源</li>
+<li>需要比较严格的滤波来降低不同信道之间的干扰</li>
+</ol>
+<h3 id="TDMA"><a href="#TDMA" class="headerlink" title="TDMA"></a>TDMA</h3><p><strong>优点：</strong></p>
+<ol>
+<li>低功耗</li>
+<li>无需双工器即可实现双工（rx和tx在不同时隙）</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>burst+guard slots 之间需要同步（带来了复杂性和比FDMA更大的开销)</li>
+<li>通常需要自适应均衡，因为与 FDMA 相比，传输速率通常非常高</li>
+</ol>
+<h3 id="CDMA"><a href="#CDMA" class="headerlink" title="CDMA"></a>CDMA</h3><p>所有终端都可以使用相同频率发送，并占用信道的整个带宽。发送和接收方都有一个唯一的扩频码（spreading code），通过扩频码来对信号进行扩频和解扩。只有当扩频码相符合时，信号的频谱才能被恢复。这个扩频码就是码反复用的“码”。</p>
+<p>出现缘由：当服务数量从纯语音增加到语音+数据时，FDMA/TDMA模式缺乏对稀缺频谱的高效利用。</p>
+<p><strong>DS（Direct Sequence）-CDMA优点：</strong></p>
+<ol>
+<li>所有终端可以使用同一个频率而无需同步</li>
+<li>可以根据用户数量调整扩频码，最大用户数量不定。提高了资源利用率。</li>
+<li>更简单的载波生成（无需进行相移、时分等）</li>
+</ol>
+<p><strong>DS（Direct Sequence）-CDMA缺点：</strong></p>
+<ol>
+<li>需要功率控制来保证所有信号以相同强度到达接收器，否则较远用户可能被较近用户屏蔽（blocked），这被称为 <strong>near-far problem</strong></li>
+<li>难以获取和维持码片时序（chip timing），这导致更复杂的接收器</li>
+<li>自拥塞（self-jamming）：不同用户的扩频序列可能不完全正交（由于多径和扩频序列不同步导致），从而导致解扩问题</li>
+</ol>
+<p><strong>WCDMA</strong></p>
+<p>WCDMA是一种频宽比较宽的DS-CDMA（典型值5MHz）。UMTS（Universal Mobile Telecommunications System）就是基于WCDMA提供multiple access机制。</p>
+<p>如今，WCDMA也指UMTS的一组物理层规范(如编码类型、双工方案、检测/解调特性等)</p>
+<p>WCDMA的DS-CDMA使用扩频码扩频（在WCDMA内第一次扩频的叫信道化码）的基础上，还添加扰码（Scrambling codes）。</p>
+<ol>
+<li>Channelization Codes（也称short code）<ul>
+<li>长度取决于Spreading Factor</li>
+<li>用于来自单一源的信道分离。上行链路上将控制通道（control channel）和专用通道（dedicated channels）分离；下行链路将一个cell/sector内的不同用户分离</li>
+<li>因为不同cell内的不同用户可能有同样的short code，因此需要加扰码来区分cell</li>
+</ul>
+</li>
+<li>Scrambling codes （也称long code）<ul>
+<li>非常长（38400 chips）</li>
+<li>上行链路：用于分离不同手机</li>
+<li>下行链路：用于分离不同cell/sectors</li>
+</ul>
+</li>
+</ol>
+<h3 id="SDMA"><a href="#SDMA" class="headerlink" title="SDMA"></a>SDMA</h3><p>旨在将空间分割为cell/sectors，形成蜂窝结构（cell structure），在一个cell/sector内，只有一个对应的终端。</p>
+<p><strong>优点：</strong></p>
+<ol>
+<li>简单</li>
+<li>增加系统容量</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>不灵活，需要定向天线，而天线通常是固定的</li>
+</ol>
+<p>SDMA通常需要与TDMA，FDMA，CDMA一起联合使用。例如WCDMA里面的扰码+信道化码实现SDMA</p>
+<h3 id="OFDMA"><a href="#OFDMA" class="headerlink" title="OFDMA"></a>OFDMA</h3><p>前面在频率分集里面介绍过OFDM调制。在OFDM下，可以将子信道使用正交子载波调制，从而实现正交频分复用（Orthogonal Frequency Division Multiplex）。这里同样可以用于正交频分多址（Orthogonal Frequency Division Multiplexing）</p>
+<p><strong>导频子载波（Pilot Subcarrier）</strong></p>
+<p>导频信号是指不携带信息，双方已知的数据的一个信号。因为所有子载波会产生一定的幅度和相位偏移，在信号中插入导频是提供参考，来做接收信号时候的信道估计+补偿。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240624103747667.png" alt="image-20240624103747667" style="zoom:50%;" /></p>
+<h1 id="CH4-Part1-2G"><a href="#CH4-Part1-2G" class="headerlink" title="CH4-Part1-2G"></a>CH4-Part1-2G</h1><h2 id="蜂窝（Cellular）的概念"><a href="#蜂窝（Cellular）的概念" class="headerlink" title="蜂窝（Cellular）的概念"></a>蜂窝（Cellular）的概念</h2><h3 id="蜂窝的介绍"><a href="#蜂窝的介绍" class="headerlink" title="蜂窝的介绍"></a>蜂窝的介绍</h3><p><strong>什么是蜂窝：</strong>将无线电网络的功能（the functionality of radio network ）划分为几何上更小的区域，称为cells。无线电信号随着距离而衰减，因此相同的资源可以在一定区域外再次利用（resource reuse）。</p>
+<p><strong>蜂窝的动力：</strong>有限的频谱资源（limited radio spectrum.）</p>
+<p><strong>蜂窝的优势：</strong></p>
+<ol>
+<li><strong>更高的容量（Higher capacity）：</strong>可以更有效地利用资源，提高系统容量</li>
+<li><strong>节省传输功率（Less Transmission power）：</strong>蜂窝的区域小，减少了需要覆盖尺寸。同时也减少了对基站传输放大器的要求。这同时也给移动终端带来了更好的电池寿命。</li>
+<li><strong>被局限的干扰（Localized interface）：</strong>由于一个cell服务区域小，干扰也被局限在较小区域内</li>
+<li><strong>鲁棒性好（Robustness）</strong>：如果一个cell坏掉了，cell的重叠保证了移动终端可以通过其他基站接入网络</li>
+<li><strong>部署中技术难度小（Less technological challenges in deployment）：</strong>部署中遇到的主要问题是最小化系统的实施和运营开支（operational expenses）。因为技术上想要改进容量需要更小的cell面积带来更多的复用。</li>
+</ol>
+<p><strong>蜂窝的劣势</strong></p>
+<ol>
+<li><strong>需要大规模基础设施（Massive infrastructure）:</strong>如果需要更多的容量，基站的数量也会增(位置寄存器、交换机、管理服务器等)。</li>
+<li><strong>更复杂的移动性管理（More complex mobility management）：</strong>必须提供整个网络的无缝连接，即，需要切换（Handover）。Handover的管理可能变得很复杂。</li>
+<li><strong>资源规划和管理（Resource planning and management）：</strong>需要更严格（tight）的资源规划策略，例如对时隙（slots）和频率。</li>
+</ol>
+<h3 id="系统容量"><a href="#系统容量" class="headerlink" title="系统容量"></a>系统容量</h3><p>在蜂窝网络中，对每一个Cell分配一个频率，使用相同频率的cell被称为co-channel cells，使用不同频率的被称为adjacent cells。</p>
+<p>使用不同频率的挨在一起，构成一个大的板块，这样大的板块重复出现，如下图所示。这样一个大的板块就被称为一簇（cluster）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240624112844832.png" alt="image-20240624112844832"></p>
+<p>使用两个相同频率的cell的距离被称作复用距离（reuse distance），记作 $D$。</p>
+<p>一个簇的内包含几个cell被称作簇大小（cluster size），记作 $N$。</p>
+<p>如果一个大型蜂窝网络一共有S条全双工信道，可以给一个cell分配k条信道。那么S，k和簇大小N有如下关系：</p>
+<script type="math/tex; mode=display">
+S=kN</script><p>如果一个cell被重复用了M次，那么系统的总容量就是：</p>
+<script type="math/tex; mode=display">
+C=MkN=MS</script><p><em>举个例子：给定总带宽为10MHz，其中每个信道占用200KHz频带，计算系统使用时每个小区可用的信道数(a) 4-cell cluster，(b) 7-cell cluster，(c) 12-cell cluster。</em></p>
+<p>(a) $S=\frac{10M}{200K}=50$，$k=50/4\approx12$</p>
+<p>(b)$k=50/7=7$</p>
+<p>(c)$k=50/12=4$</p>
+<h3 id="蜂窝网络内的SIR"><a href="#蜂窝网络内的SIR" class="headerlink" title="蜂窝网络内的SIR"></a>蜂窝网络内的SIR</h3><p>SIR是指的signal interference ratio， 其中interference指相邻信道带来的干扰。如果所有cell发送功率相等，则通信到干扰与发射功率无关，仅与cell半径R和复用距离D有关。</p>
+<p>假设$I_j$是从第$j$个co-channel cell收到的干扰，总共有J个co-channel cell，则SIR可以记为：</p>
+<script type="math/tex; mode=display">
+SIR=\frac{S}{I}=\frac{S}{\sum_{j=0}^{J}I_j}</script><p>用传输功率+衰减来表达，记本cell基站（即S对应的基站）到终端的距离为$d_0$，记干扰基站到终端距离为$d_j$，记信号强度随距离衰减指数为n，有：</p>
+<script type="math/tex; mode=display">
+SIR=\frac{Pd_0^{-n}}{\sum_{j=0}^{J}Pd_j^{-n}}=\frac{d_0^{-n}}{\sum_{j=0}^{J}d_j^{-n}}</script><p>根据六边形蜂窝的距离计算公式，这个公式最终可以被化简为：<strong>(单位非dB!,dB需要转换!)</strong></p>
+<script type="math/tex; mode=display">
+SIR=\frac{(\sqrt{3N})^n}{6}</script><p>其中在自由空间下$n=2$，在密集城市环境下$n=4$</p>
+<p><em>举个例子：在路径损耗因子 n=4 的环境中，实现 SIR 高于 18 dB 的最小集群大小是多少？</em></p>
+<script type="math/tex; mode=display">
+SIR=\frac{(\sqrt{3N})^4}{6}>10^{1.8}\to N=6.48=7</script><h3 id="Handover"><a href="#Handover" class="headerlink" title="Handover"></a>Handover</h3><p>Handover是指一个基站决定将用于连接至一个终端的所有无线电资源交移给另一个基站（(all radio resources of a connection are  handed to another base station）。</p>
+<p>在蜂窝网络中，Handover是移动性（Mobility）的保证。</p>
+<p><strong>Handover过程中，需要考虑：</strong></p>
+<ul>
+<li>以什么方式触发Handover（power level, quality level, other reasons）</li>
+<li>阈值（Thresholds）是多少</li>
+<li>Target cell如何选择</li>
+</ul>
+<p><strong>切换过程如下：</strong></p>
+<ol>
+<li>终端移动到Cell边界，呼号信号（Call signal）下降到最小阈值，此时终端通知网络（network）。</li>
+<li>网络在相邻基站上找到一个未使用的信道，并将其信息发送给终端</li>
+<li>终端切换到新的信道</li>
+</ol>
+<p>这当中可能遇到：</p>
+<ul>
+<li>相邻基站满载(full capacity)：连接会被中断，因为没有可用的信道提供切换</li>
+<li>Handover期间连接可能丢失：如果在第一个基站将它交移之前相邻基站没有对通信（call）进行锁定，则会丢失。</li>
+</ul>
+<p><strong>软切换的概念和优点</strong></p>
+<p>如果是先断开和原基站的连接，再建立和新基站的连接，则称为硬切换。软切换类似于硬交接，只不过第一个基站不会先断开连接，而是等第二个基站确认已经连接之后再断开。</p>
+<p>它带来的优点有：</p>
+<ul>
+<li>提升cell边缘的性能</li>
+<li>通话中掉线数量减少</li>
+</ul>
+<h2 id="GSM（Global-System-for-Mobile-Communication）"><a href="#GSM（Global-System-for-Mobile-Communication）" class="headerlink" title="GSM（Global System for Mobile Communication）"></a>GSM（Global System for Mobile Communication）</h2><p>GSM规定网络架构如下图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240624131044840.png" alt="image-20240624131044840" style="zoom:80%;" /></p>
+<ul>
+<li><strong>移动台/移动用户（Mobile Station MS）：</strong>用户使用的设备。包括移动设备ME和SIM卡，SIM卡存储了认证用户身份所需的所有信息以及与安全保密有关的重要信息。</li>
+<li><strong>基站收发信机（base transceiver station BTS）:</strong>基站收发信机，负责无线信号的收发。</li>
+<li><strong>基站控制器 (base station controller BSC)：</strong>处理所有的与无线信号有关的工作：小区的切换、无线资源管理等。</li>
+<li><strong>转码器和速率适配单元 (transcoder and rate adaption unit TRAU)：</strong>执行转码和速率适配功能，它支持不同编解码器之间的语音通信，从而实现互操作性。</li>
+<li><strong>移动交换中心(mobile switching center MSC)：</strong>它完成最基本的交换功能。能自动无线登记进程跟踪本系统内所有的无线用户，并能不断地监视与之相连的所有蜂窝基站的运行情况。</li>
+<li><strong>归属位置寄存器(home location register HLR)：</strong>当用户选择一个网络运营商并购买了SIM卡之后，其相关的很多信息就被录入了HLR系统当中。HLR中记录了用户所有的原始开户信息，且不会因为用户从北京跑到了上海而将其号码和签约信息进行删除。</li>
+<li><strong>拜访位置寄存器(visitor location register VLR)：</strong>保存用户的动态信息和状态信息，以及从HLR下载的用户的签约信息。例如当你到上海之后，手机会自动向上海的VLR发起位置更新（登记），上海的VLR会将你现在的位置报告到北京的HLR。当他人呼你时，交换机首先向HLR查询你现在所在的位置，然后就可以呼到你了。</li>
+<li><strong>设备标识寄存器（Equipment Identity Register EIR）</strong>：手机用户发起呼叫，MSC和VLR向手机请求IMEI，并把它发送给EIR，EIR将收到的IMEI与白、黑、灰三种表进行比较，把结果发送给MSC/VLR，以便MSC/VLR决定是否允许该移动台设备进入网络。</li>
+<li><strong>鉴权中心（Authentication Center AC）：</strong>负责用户的身份验证和加密所有无线通讯(语音、短信等)</li>
+<li><strong>短信服务中心（Short Message Service Center）和语音邮件系统（Voice Mail System）：</strong>分别负责短信的存储和转发、语音邮件服务。</li>
+<li><strong>公共交换电话网络(public switched telephone network PSTN)</strong>：一种以模拟技术为基础的电路交换网络，出现在GSM内是用于连接GSM网络与传统的固定电话网络。</li>
+</ul>
+<p>这个系统可以被分为数个子系统：</p>
+<p><strong>RSS(radio system)</strong>：包含MS、BTS、BSC（BTS和BSC可以总称为BaseStation Subsystem，BSS）和TRAU。负责无线通信和信号处理。</p>
+<p><strong>NSS(network and switching subsystem)：</strong>包含MSC、HLR、VLR、 AC、EIR、SMSC、VMS，负责交换、移动性管理、与其他网络的互连、系统控制等。</p>
+<p><strong>OSS(operation subsystem)</strong>：如上图</p>
+<hr>
+<h1 id="CH4-Part2-3G-amp-4G"><a href="#CH4-Part2-3G-amp-4G" class="headerlink" title="CH4-Part2-3G&amp;4G"></a>CH4-Part2-3G&amp;4G</h1><h2 id="UMTS（Universal-Mobile-Telecommunications-System）"><a href="#UMTS（Universal-Mobile-Telecommunications-System）" class="headerlink" title="UMTS（Universal Mobile Telecommunications System）"></a>UMTS（Universal Mobile Telecommunications System）</h2><p>UMTS最初的规范是”Release 99”版本，下面介绍的都是”Release 99”。</p>
+<h3 id="系统结构"><a href="#系统结构" class="headerlink" title="系统结构"></a>系统结构</h3><p>UMTS系统分为多个域，如下图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240624134904234.png" alt="image-20240624134904234"></p>
+<p><strong>用户设备域（User Equipment Domain）</strong></p>
+<ul>
+<li><strong>Universal Subscriber Identity Module (USIM)</strong>：模块位于移动设备SIM卡内。负责用户鉴权（authentication）和通信加密（encryption）。</li>
+<li><strong>Mobile Equipment Domain</strong>：用于发射无线电波、建立和用户的连接。ME（Mobile Equipment）里面包含TE（Terminal Equipment）和MT（Mobile Terminal）</li>
+</ul>
+<p><strong>基础设施域(Infrastructure Domain)</strong></p>
+<ul>
+<li><p><strong>Access Network Domain（UTRAN）：</strong>提供接入网的相关功能，管理接入网资源，为用户提供访问核心网域机制。</p>
+</li>
+<li><p><strong>Core Network Domain：</strong>由为网络功能和电信服务提供支持的设备组成：即管理用户位置信息、控制网络功能</p>
+<ul>
+<li><p><strong>Serving Network Domain：</strong></p>
+<ul>
+<li><p>服务网络是核心网络的一部分，负责处理用户设备（UE）的连接和服务。</p>
+</li>
+<li><p>Represent the core network functions that are local to user’s access point, thus, their location changes when the user moves. (Dependent on user location)</p>
+</li>
+<li><p>Responsible for routing calls and transport user data/information from source to destination</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Home Network Domain</strong>：</p>
+<ul>
+<li>Location and access network independent functions</li>
+<li>The USIM is related by subscription to the home network domain</li>
+<li>Home network domain contains permanently user specific data and is responsible for management of subscription information</li>
+<li>May also handle some services, potentially not offered by the serving network domain.</li>
+</ul>
+</li>
+<li><p><strong>Transit Network Domain</strong>：</p>
+<ul>
+<li>Domain between Serving Network and remote party</li>
+<li>If, for a given call, the remote party is located inside the same network as the originating User Equipment (UE), then no particular instance of the transit domain is activate</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="UTRAN"><a href="#UTRAN" class="headerlink" title="UTRAN"></a>UTRAN</h3><p>在3G网络中，接入网部分叫做UTRAN（UMTS Terrestrial Radio Access Network，UMTS陆地无线接入网）</p>
+<ol>
+<li><strong>接纳控制（Admission Control）</strong>：用于有选择地将呼叫接入系统，以最小化呼叫丢失和呼叫阻塞。</li>
+<li><strong>拥塞控制（Congestion Control）</strong>：如果某个拥塞阈值被长时间超过，将标记单元为拥塞状态。</li>
+<li><strong>系统信息广播（System Information Broadcasting）</strong>：用于维护用户设备（UE）与UTRAN之间的无线连接，并控制UTRAN。</li>
+<li><strong>无线信道加密（Radio Channel Encryption）</strong>：例如，用于保护用户流量和敏感信令数据免受窃听。</li>
+<li><strong>切换（Handover）</strong>：将用户连接从一个无线信道转移到另一个信道。</li>
+<li><strong>服务无线网络子系统（SRNS）的移动/重定位</strong>：从服务无线网络子系统（SRNS）控制权转移到另一个无线网络子系统（RNS）。</li>
+<li><strong>无线网络配置/规划</strong></li>
+<li><strong>信道质量测量</strong>：用于Handover</li>
+<li><strong>宏多样性（Macro diversity）</strong>：指的是多个无线链路同时处于活动状态，例如软切换（soft handover）。</li>
+<li><strong>无线资源控制（Radio Resource Control，RRC）</strong>：执行连接建立和释放、系统信息广播、无线承载建立/重配置和释放、RRC连接移动过程、寻呼通知和释放、外环功率控制等功能。</li>
+<li><strong>无线接口上的数据传输</strong></li>
+<li><strong>外环功率控制（FDD和TDD）</strong>：UE（用户设备）能够将其输出功率设置为特定值。在UE接入网络时，用于设置初始上行和下行传输功率。</li>
+<li><strong>内环功率控制（也称为快速闭环功率控制）</strong>：在上行链路中，UE发射机根据接收到的一个或多个下行传输功率控制命令来调整其输出功率，以保持所需的上行信号干扰比（SIR）。</li>
+<li><strong>信道编码</strong>：提供减轻由无线信道传播引起的错误的机制。</li>
+<li><strong>接入控制</strong>：提供medium access control scheme</li>
+</ol>
+<h3 id="UMTS信道"><a href="#UMTS信道" class="headerlink" title="UMTS信道"></a>UMTS信道</h3><p>UMTS将信道定义为三种类型：</p>
+<ul>
+<li><strong>逻辑信道(Logical channel)：</strong>定义所传输数据的类型。（控制信息，业务信息）</li>
+<li>传输信道（Transport Channel）：定义物理层用何种方式传输数据 以及传输哪些数据</li>
+<li>物理信道(Physical channel)：真正的射频信道，具有射频物理特征</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240624151516163.png" alt="image-20240624151516163" style="zoom:50%;" /></p>
+<h3 id="UMTS的三种切换类型"><a href="#UMTS的三种切换类型" class="headerlink" title="UMTS的三种切换类型"></a>UMTS的三种切换类型</h3><ol>
+<li><strong>Intra RNC 软切换：</strong>不同RNC下提供软切换。如下图1，SRNC(Service RNC) 是当前服务.DRNC(Drift RNC) 是候选RNC，是即将切换过去的</li>
+<li><strong>intra Node B 软切换：</strong>在同一个RNC控制下，在不同基站间交移提供软切换</li>
+<li><strong>硬切换：</strong>在不同核心网之间的切换，是硬切换。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240624145401847.png" alt="image-20240624145401847" style="zoom:67%;" /></p>
+<h3 id="HSDPA"><a href="#HSDPA" class="headerlink" title="HSDPA"></a>HSDPA</h3><p>HSDPA（高速下行分组接入，High-Speed Downlink Packet Access）旨在增强第三代（3G）移动网络的数据传输能力。</p>
+<p><strong>它的主要特点是：</strong></p>
+<ol>
+<li>自适应信道编码（Adaptive Modulation and Coding），有QPSK和16QAM</li>
+<li>混合自动重复请求(Hybrid Automatic Repeat Request HARQ)</li>
+<li>基站（Node B）快速分组调度(Fast packet scheduling)</li>
+<li>短帧大小（Short frame size）</li>
+</ol>
+<p><strong>优点：</strong></p>
+<ol>
+<li>更高的处理效率</li>
+<li>由更快的纠错带来的更低延迟</li>
+<li>更高效的资源管理</li>
+<li>对环境有自适应能力</li>
+<li>Handover失败率更低</li>
+</ol>
+<h2 id="LTE（long-term-evolution）"><a href="#LTE（long-term-evolution）" class="headerlink" title="LTE（long term evolution）"></a>LTE（long term evolution）</h2><p>LTE 是电信中用于手机及数据终端的高速无线通信标准.</p>
+<ul>
+<li>它在下行链路中使用OFDM</li>
+<li>在上行链路中使用SC-FDMA（Single Carrier FDMA），利用单载波调制和正交频分复用，在发射机中使用 DFT 扩频，在接收机中使用频域均衡</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/posts/3fa30bac">https://www.kaysonz.top/posts/3fa30bac</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C/">通信网络</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CH1-Overview"><span class="toc-number">1.</span> <span class="toc-text">CH1-Overview</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E4%BC%A0%E8%BE%93%E6%B3%A2"><span class="toc-number">1.1.</span> <span class="toc-text">三种传输波</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E6%B3%A2%E4%BC%A0%E6%92%AD%EF%BC%88Ground-Wave%EF%BC%89"><span class="toc-number">1.1.1.</span> <span class="toc-text">地波传播（Ground Wave）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A9%E6%B3%A2%E4%BC%A0%E6%92%AD%EF%BC%88Sky-Wave%EF%BC%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">天波传播（Sky Wave）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Line-of-Signt-%E4%BC%A0%E6%92%AD%E3%80%82"><span class="toc-number">1.1.3.</span> <span class="toc-text">Line-of-Signt 传播。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%B0%E8%90%BD"><span class="toc-number">1.2.</span> <span class="toc-text">衰落</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E7%B1%BB%EF%BC%9A"><span class="toc-number">1.3.</span> <span class="toc-text">无线网络的分类：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CH2-%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93"><span class="toc-number">2.</span> <span class="toc-text">CH2-无线信道</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#dB%E5%8D%95%E4%BD%8D%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">dB单位：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%99%AA%E5%A3%B0"><span class="toc-number">2.2.</span> <span class="toc-text">噪声</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%99%AA%E5%A3%B0%E7%9A%84%E4%B8%BB%E8%A6%81%E6%9D%A5%E6%BA%90%EF%BC%9A"><span class="toc-number">2.2.1.</span> <span class="toc-text">噪声的主要来源：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%AD%E5%99%AA%E5%A3%B0"><span class="toc-number">2.2.2.</span> <span class="toc-text">热噪声</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E4%BC%A0%E8%BE%93%E5%BB%BA%E6%A8%A1"><span class="toc-number">2.3.</span> <span class="toc-text">通信系统传输建模</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E7%94%B1%E7%A9%BA%E9%97%B4%E6%8D%9F%E8%80%97%EF%BC%88Free-space-loss%EF%BC%89"><span class="toc-number">2.3.1.</span> <span class="toc-text">自由空间损耗（Free space loss）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E5%90%91%E5%90%8C%E6%80%A7%E8%BE%90%E5%B0%84%E6%9C%89%E6%95%88%E5%8A%9F%E7%8E%87%EF%BC%88Effective-isotropic-radiated-power-EIRP-%EF%BC%89"><span class="toc-number">2.3.2.</span> <span class="toc-text">各向同性辐射有效功率（Effective isotropic radiated power (EIRP) ）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E9%A1%B9%E5%90%8C%E6%80%A7%E6%8E%A5%E6%94%B6%E7%94%B5%E5%B9%B3%EF%BC%88Isotropic-receive-level-IRL-%EF%BC%89"><span class="toc-number">2.3.3.</span> <span class="toc-text">各项同性接收电平（Isotropic receive level (IRL) ）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E6%8D%9F%E6%8E%A5%E6%94%B6%E4%BF%A1%E5%8F%B7%E7%94%B5%E5%B9%B3%EF%BC%88Unfaded-receive-signal-level-RSL-%EF%BC%89"><span class="toc-number">2.3.4.</span> <span class="toc-text">无损接收信号电平（Unfaded receive signal level (RSL) ）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E6%8D%9F%E8%BD%BD%E6%B3%A2%E5%99%AA%E5%A3%B0%E6%AF%94%EF%BC%88Unfaded-carrier-to-noise-ratio-CNR-%EF%BC%89"><span class="toc-number">2.3.5.</span> <span class="toc-text">无损载波噪声比（Unfaded carrier-to-noise ratio (CNR)）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%81%B5%E6%95%8F%E5%BA%A6%EF%BC%88Sensitivity%EF%BC%89"><span class="toc-number">2.3.6.</span> <span class="toc-text">灵敏度（Sensitivity）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8C%96%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E6%A8%A1%E5%9E%8B%EF%BC%88Simplified-path-loss-model%EF%BC%89"><span class="toc-number">2.3.7.</span> <span class="toc-text">简化路径损耗模型（Simplified path loss model）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E5%B0%BA%E5%BA%A6%E8%A1%B0%E8%90%BD%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.4.</span> <span class="toc-text">大尺度衰落模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8C%96%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.4.1.</span> <span class="toc-text">简化路径损耗模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%89%E8%AF%9D%E7%8E%87%EF%BC%88Outage-probability%EF%BC%89"><span class="toc-number">2.4.2.</span> <span class="toc-text">掉话率（Outage probability）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E5%B0%BA%E5%BA%A6%E8%A1%B0%E8%90%BD%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.5.</span> <span class="toc-text">小尺度衰落模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8A%E6%B3%A2%E9%95%BF%E7%A7%BB%E5%8A%A8%E5%AF%BC%E8%87%B4%E7%9A%84%E4%BF%A1%E5%8F%B7%E7%9B%B8%E6%B6%88"><span class="toc-number">2.5.1.</span> <span class="toc-text">半波长移动导致的信号相消</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94"><span class="toc-number">2.5.2.</span> <span class="toc-text">多普勒效应</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E9%81%93%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">2.6.</span> <span class="toc-text">信道的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E9%80%89%E6%8B%A9%E5%92%8C%E6%97%B6%E9%97%B4%E5%B9%B3%E5%9D%A6%E4%BF%A1%E9%81%93"><span class="toc-number">2.6.1.</span> <span class="toc-text">时间选择和时间平坦信道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%91%E7%8E%87%E9%80%89%E6%8B%A9%E5%92%8C%E9%A2%91%E7%8E%87%E9%80%89%E6%8B%A9%E4%BF%A1%E9%81%93%EF%BC%9A"><span class="toc-number">2.6.2.</span> <span class="toc-text">频率选择和频率选择信道：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CH3-%E5%9F%BA%E6%9C%AC%E6%8A%80%E6%9C%AF-Part1"><span class="toc-number">3.</span> <span class="toc-text">CH3-基本技术-Part1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%8A%80%E6%9C%AF"><span class="toc-number">3.1.</span> <span class="toc-text">无线信道中使用的基本技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E9%81%93%E5%9D%87%E8%A1%A1"><span class="toc-number">3.1.1.</span> <span class="toc-text">信道均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E9%81%93%E7%BC%96%E7%A0%81"><span class="toc-number">3.1.2.</span> <span class="toc-text">信道编码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FEC"><span class="toc-number">3.1.2.1.</span> <span class="toc-text">FEC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ARQ"><span class="toc-number">3.1.2.2.</span> <span class="toc-text">ARQ</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%9B%86%E6%8A%80%E6%9C%AF"><span class="toc-number">3.1.3.</span> <span class="toc-text">分集技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%88%86%E9%9B%86"><span class="toc-number">3.1.3.1.</span> <span class="toc-text">空间分集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%88%86%E9%9B%86"><span class="toc-number">3.1.3.2.</span> <span class="toc-text">时间分集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%91%E7%8E%87%E5%88%86%E9%9B%86"><span class="toc-number">3.1.3.3.</span> <span class="toc-text">频率分集</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E4%B8%AD%E7%9A%84%E5%A4%8D%E7%94%A8%E6%8A%80%E6%9C%AF"><span class="toc-number">3.2.</span> <span class="toc-text">无线通信中的复用技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%91%E5%88%86%E5%A4%8D%E7%94%A8%EF%BC%88FDM%EF%BC%89"><span class="toc-number">3.2.1.</span> <span class="toc-text">频分复用（FDM）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E5%88%86%E5%A4%8D%E7%94%A8%EF%BC%88TDM%EF%BC%89"><span class="toc-number">3.2.2.</span> <span class="toc-text">时分复用（TDM）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%A2%91%E5%A4%8D%E7%94%A8-%EF%BC%88Time-and-Frequency-Multiplex%EF%BC%89"><span class="toc-number">3.2.3.</span> <span class="toc-text">时频复用 （Time and Frequency Multiplex）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A0%81%E5%88%86%E5%A4%8D%E7%94%A8-%EF%BC%88CDM%EF%BC%89"><span class="toc-number">3.2.4.</span> <span class="toc-text">码分复用 （CDM）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E5%88%86%E5%A4%8D%E7%94%A8-%EF%BC%88SDM%EF%BC%89"><span class="toc-number">3.2.5.</span> <span class="toc-text">空分复用 （SDM）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E6%8A%80%E6%9C%AF"><span class="toc-number">3.3.</span> <span class="toc-text">数字调制技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ASK"><span class="toc-number">3.3.1.</span> <span class="toc-text">ASK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FSK"><span class="toc-number">3.3.2.</span> <span class="toc-text">FSK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PSK"><span class="toc-number">3.3.3.</span> <span class="toc-text">PSK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quadrature-Amplitude-Modulation-QAM"><span class="toc-number">3.3.4.</span> <span class="toc-text">Quadrature Amplitude Modulation QAM</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CH3-%E5%9F%BA%E6%9C%AC%E6%8A%80%E6%9C%AF-Part2"><span class="toc-number">4.</span> <span class="toc-text">CH3-基本技术-Part2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E9%A2%91%E9%80%9A%E4%BF%A1"><span class="toc-number">4.1.</span> <span class="toc-text">扩频通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E9%A2%91%E9%80%9A%E4%BF%A1%E7%9A%84%E4%BC%98%E5%8A%BF%EF%BC%9A"><span class="toc-number">4.1.1.</span> <span class="toc-text">扩频通信的优势：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E5%BA%8F%E6%89%A9%E9%A2%91%EF%BC%88Direct-Sequency-Spreading-Spectrum-DSSS%EF%BC%89"><span class="toc-number">4.1.2.</span> <span class="toc-text">直序扩频（Direct Sequency Spreading Spectrum DSSS）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%B3%E9%A2%91%E6%89%A9%E9%A2%91%EF%BC%88Frequency-Hopping-Spreading-Spectrum-FHSS%EF%BC%89"><span class="toc-number">4.1.3.</span> <span class="toc-text">跳频扩频（Frequency Hopping Spreading Spectrum FHSS）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%B3%E6%97%B6%E6%89%A9%E9%A2%91%EF%BC%88Time-Hopping-Spreading-Spectrum%EF%BC%89"><span class="toc-number">4.1.4.</span> <span class="toc-text">跳时扩频（Time-Hopping Spreading Spectrum）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%9D%80%E6%8A%80%E6%9C%AF%EF%BC%88Multiple-Access%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">多址技术（Multiple Access）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FDMA"><span class="toc-number">4.2.1.</span> <span class="toc-text">FDMA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TDMA"><span class="toc-number">4.2.2.</span> <span class="toc-text">TDMA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CDMA"><span class="toc-number">4.2.3.</span> <span class="toc-text">CDMA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SDMA"><span class="toc-number">4.2.4.</span> <span class="toc-text">SDMA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OFDMA"><span class="toc-number">4.2.5.</span> <span class="toc-text">OFDMA</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CH4-Part1-2G"><span class="toc-number">5.</span> <span class="toc-text">CH4-Part1-2G</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%9C%82%E7%AA%9D%EF%BC%88Cellular%EF%BC%89%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">5.1.</span> <span class="toc-text">蜂窝（Cellular）的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%9C%82%E7%AA%9D%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="toc-number">5.1.1.</span> <span class="toc-text">蜂窝的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%B9%E9%87%8F"><span class="toc-number">5.1.2.</span> <span class="toc-text">系统容量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%9C%82%E7%AA%9D%E7%BD%91%E7%BB%9C%E5%86%85%E7%9A%84SIR"><span class="toc-number">5.1.3.</span> <span class="toc-text">蜂窝网络内的SIR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Handover"><span class="toc-number">5.1.4.</span> <span class="toc-text">Handover</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GSM%EF%BC%88Global-System-for-Mobile-Communication%EF%BC%89"><span class="toc-number">5.2.</span> <span class="toc-text">GSM（Global System for Mobile Communication）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CH4-Part2-3G-amp-4G"><span class="toc-number">6.</span> <span class="toc-text">CH4-Part2-3G&amp;4G</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#UMTS%EF%BC%88Universal-Mobile-Telecommunications-System%EF%BC%89"><span class="toc-number">6.1.</span> <span class="toc-text">UMTS（Universal Mobile Telecommunications System）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84"><span class="toc-number">6.1.1.</span> <span class="toc-text">系统结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UTRAN"><span class="toc-number">6.1.2.</span> <span class="toc-text">UTRAN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UMTS%E4%BF%A1%E9%81%93"><span class="toc-number">6.1.3.</span> <span class="toc-text">UMTS信道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UMTS%E7%9A%84%E4%B8%89%E7%A7%8D%E5%88%87%E6%8D%A2%E7%B1%BB%E5%9E%8B"><span class="toc-number">6.1.4.</span> <span class="toc-text">UMTS的三种切换类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HSDPA"><span class="toc-number">6.1.5.</span> <span class="toc-text">HSDPA</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LTE%EF%BC%88long-term-evolution%EF%BC%89"><span class="toc-number">6.2.</span> <span class="toc-text">LTE（long term evolution）</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
   window.MathJax = {
     tex: {
       inlineMath: [['$', '$'], ['\\(', '\\)']],

@@ -1,15 +1,14 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>现代通信网络-Ch12-路由和交换 | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="阿尔戈在迷宫区搜集到的零碎攻略信息,还在整理...">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>现代通信网络-LC5-局域网 | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="引入本章节以局域网的视角，将物理层、数据链路层、网络层三层进行链接。前面课程虽没有涉及物理层内容，但其他课程（例如通信原理）已经打下了基础。 几种路由方式寻找路由，有几种不同的方式：  集中式：有一个节点对网络所有节点和拓补状态都非常了解，中心路由找出的路径是最优的。但是集中控制代价极高，而且有同步周期问题（需要不断从整个网络收集信息，需要收集耗费的时间尽可能短） 分布式：交换由每个节点完成，路由">
 <meta property="og:type" content="article">
-<meta property="og:title" content="现代通信网络-Ch12-路由和交换">
+<meta property="og:title" content="现代通信网络-LC5-局域网">
 <meta property="og:url" content="https://www.kaysonz.top/posts/6b68dff2">
 <meta property="og:site_name" content="風">
-<meta property="og:description" content="阿尔戈在迷宫区搜集到的零碎攻略信息,还在整理...">
+<meta property="og:description" content="引入本章节以局域网的视角，将物理层、数据链路层、网络层三层进行链接。前面课程虽没有涉及物理层内容，但其他课程（例如通信原理）已经打下了基础。 几种路由方式寻找路由，有几种不同的方式：  集中式：有一个节点对网络所有节点和拓补状态都非常了解，中心路由找出的路径是最优的。但是集中控制代价极高，而且有同步周期问题（需要不断从整个网络收集信息，需要收集耗费的时间尽可能短） 分布式：交换由每个节点完成，路由">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.kaysonz.top/img/avatar.jpg">
 <meta property="article:published_time" content="2024-04-19T06:45:00.000Z">
-<meta property="article:modified_time" content="2024-06-06T16:40:23.845Z">
+<meta property="article:modified_time" content="2024-08-20T02:55:49.289Z">
 <meta property="article:author" content="栞风">
-<meta property="article:tag" content="private">
 <meta property="article:tag" content="通信网络">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://www.kaysonz.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://www.kaysonz.top/posts/6b68dff2"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
@@ -52,12 +51,12 @@
   },
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: '现代通信网络-Ch12-路由和交换',
+  title: '现代通信网络-LC5-局域网',
   isPost: true,
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-06-07 00:40:23'
+  postUpdate: '2024-08-20 10:55:49'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -161,18 +160,128 @@
 document.addEventListener('pjax:send', () => {
   Pace.restart()
 })
-</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">15</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">现代通信网络-Ch12-路由和交换</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-19T06:45:00.000Z" title="发表于 2024-04-19 14:45:00">2024-04-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-06T16:40:23.845Z" title="更新于 2024-06-07 00:40:23">2024-06-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/">大三下</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/%E7%8E%B0%E4%BB%A3%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C/">现代通信网络</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="看来您不属于攻略组,请等待笔记验证后发布" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="3fe8cb981fa0f3b324fb5f3b4516981eb41f811114996c9f4e458f5e783ef493">3624a8dbefab98d376ab749e8d6514139d6f195f14d4116ee8335b43574084e2e640118902ecb6a55be115e609b87a74ecb6fcc88558d973247a30aaad7ceb6c5ff9e495bea1fa21c476e402b2f1732752a9573743b46f093d038007cae082b99b92514cf9960d7d3752d1c64e81929c36c6a5841df19821a0be089800e5e4af26bc393412ffea2232be1e3a7c79a5d9f8a517ee82dbf5fd54fabe617e51d3d32634725701e9e4f70bf2c756ea69c9b23ccde897ab0941d91048b15b349a122013de2ce4b7b5d67a6e1ef66deda0f6104b8ebd621c4fe644746cc900f00a2ad84f2b5e928906630b65c01483214b7d6e582c1b89b9d28702b3eccf9daad88ac97386c623031ad6b36ce969e4d83122072e1e2fd158b0b3ef9f3da5d13e72c82e18a963d1b899d74fc261472204056d8da1f46c91ed0bfac9492af3670eaf7c9eaa96cb06bc5b682be9a8ef879bc52b6310c44fcdb39f4ac246f3386fe10435c4f1925069932db553173beecf51e5e6e36caa9318a48129724f622e39d5d4f45a29b19ec9899c851e26af07961370289f3078120e96f43e35633e40f676e4c71a467d320fa66f0661e40edf31d52487bd521a472ee274db3bc728801376799c5c20824ad4f39ece51bd239cecf92aac208686658ecb35f715c8aeb37cc275276c10996ba1414560515e585c498d468a1293f36efbb10c9727e51a9922c30b8425182a395fc09a39fff5cfc7715019edcc09533dfd37811059a262e1af50937b8a3cd59427af82a832fc0838dbcaaebc614bc0addc35a79ffc8a82bb48ff406ae243ef30c0f3f9419ccaf61cd585e3934908d4d3c6cda4587801259ff2f3359ae1c61e75b790c1eb50c2430280aacc4252a52c9a3123807aecc209f8bab28e0483f502f7813b5673cb04b8a9735885f3bbd0e7a7c37813e37ec735f47c8dd81d31fc50210ea4751516d5df224af7a26e37e5105ed60418b307ba37fbef1f0161588f1d4035df012350f4806f11edf20cb383598d78156c6e3fe7119d7eb61f7304edfe836a4869e3aae65e10a8d5e7f76f919e348e3aa4c52970fa316a2788754d760cd4ee35d14e61335aa95d4a9572d1dd51eb7956d519cb58a7f50918e668ea8662fcca1dfdaa0e3aa75920363e50a9afc35e01d54d61d1ecfb298211ec8914539403573d5d693a2309e6978a25309c706feb596b8eb4d88b19e75ccc423d61749834855df57c5c77090d7e1fab36464a987c1fb0ed8e7a8566867ca2b40d7827ac7adc3635e28b01189ba251bf3a37b9daa35ccac5648a0295440147d9316a9eefb34c5f3591a7aac6339a3e527814b9fa02d5ac7f4c0941ee47cb08639b03650eff9628714ab984a8cadd2e724824e949c5e5e28bbcbf47eb369cdcae24709b5086467acb5605735d7fbf76a69602a53e286a550e8053c5500864b259c592e98518ee5e854ae1b2d7b008f99779024d95d722a2db34539f9de0efce362656ca8811e952c0f478a691469548c1dcf10411276ce6b34b6408258efe9ce1caba6b9c338d511dcc5eace42b4f9ca6b8fe3a977ef514e4cf9b9b7f2629b085e6e98b43ee289175e9e765f365995c2e8a0de5ea45cf226afb136f1a1fb0e8ad37c59433e38efa2503f6cab1eb04844a85c5b8dc50c812d57d5ea2577f74625d56a8548471b70895d8faa094bc1a407b12aa4ddabab71aaefadf76a631271d6d8fc6de7d1f36f232bb52273ffe3792642d54c0c4fba2705b0745c8a2d6e20eaffaf2dcf32747b1ebdd6c67a2be67e3a308f6a2bbfddcfefcbbde10724a98380d365055adef87c5532ae3140f97dde704b8139a340613609999a2884181ab48be4a707c70e26c1e40965f064b83fa6934e8d22bb6a7f7b86c436081a8ae646b8e60d2fc518f681c8b457ecd14f356e86aa114b1b28e851de774b1d310b452f69639636b88309f85bc5ddd5109fe78016ce2ed6b74e72c787f437e0a1d0dfe68a6a36bfbc4c11b8012aeff9bac1f17e8e75ee4002a09a47e51605e60775974d8409c53daa9d127cadadab71ff049c259e9a5e06a101c3026bd8f85cf020d42e95222fabacbf40b28f3ae44879f4046e5925cde4aed61207f853118813553b11cfe08daf44bee05ab4bdda82cb4b765d65fb43b9247305db5ad479e443de8557a7621c2a4a8f4d63e77420568293ca07a772ac6a9df617a826092d9de538b7c108dcfe311eca0bd22af7771872d700e420c63321410aa6acf2c515db1a80822b643c99bee5a40deed06a33d8ec8f3812e4f3b1c316be1b0cd4b30352bc0c1d999ca65c4236084fd1397bc631241bcfa04605dc12ee6a05212b4333fb91d98afbea5f1025d8fe8ab8295bfc315b8b9b58116b03646aff727f2f6430cb89fe74dc289b0580469882836aabc23dd60d597b9299b62</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">阿尔戈在迷宫区搜集到的零碎攻略信息,还在整理...</span>
-      </label>
-    </div>
-  </div>
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">14</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">现代通信网络-LC5-局域网</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-19T06:45:00.000Z" title="发表于 2024-04-19 14:45:00">2024-04-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-20T02:55:49.289Z" title="更新于 2024-08-20 10:55:49">2024-08-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/">大三下</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/%E7%8E%B0%E4%BB%A3%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C/">现代通信网络</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>本章节以局域网的视角，将物理层、数据链路层、网络层三层进行链接。前面课程虽没有涉及物理层内容，但其他课程（例如通信原理）已经打下了基础。</p>
+<h2 id="几种路由方式"><a href="#几种路由方式" class="headerlink" title="几种路由方式"></a>几种路由方式</h2><p>寻找路由，有几种不同的方式：</p>
+<ul>
+<li>集中式：有一个节点对网络所有节点和拓补状态都非常了解，中心路由找出的路径是最优的。但是集中控制代价极高，而且有同步周期问题（需要不断从整个网络收集信息，需要收集耗费的时间尽可能短）</li>
+<li>分布式：交换由每个节点完成，路由更复杂，但是鲁棒性更高</li>
+</ul>
+<p>对于面向连接和面向无连接，决定路由的时机也不一样。</p>
+<ul>
+<li>面向连接需要在通信之前就确定路由，并固定线路。</li>
+<li>而面向无连接只有到达特定的节点后，下一条路的路由才会出现。</li>
+</ul>
+<h2 id="现有的4种路由模式"><a href="#现有的4种路由模式" class="headerlink" title="现有的4种路由模式"></a>现有的4种路由模式</h2><ul>
+<li><p>Fixed：在该模式下，某一进来的包固定得被转发至一个固定的出口</p>
+</li>
+<li><p>Flooding</p>
+</li>
+<li><p>Random</p>
+</li>
+<li><p>Adaptive Routine：这是目前分组交换网络中大量采样的路由方式。这种路由属于需要各节点的信息，根据当前的信息进行自适应路由，但在集群规模的扩大时，收集信息会导致网络时延增加、部署成本提高，无法满足算力需求和部署要求。</p>
+</li>
+</ul>
+<h1 id="物理层的视角切入局域网（基于以太网）"><a href="#物理层的视角切入局域网（基于以太网）" class="headerlink" title="物理层的视角切入局域网（基于以太网）"></a>物理层的视角切入局域网（基于以太网）</h1><h2 id="ALOHA"><a href="#ALOHA" class="headerlink" title="ALOHA"></a>ALOHA</h2><h3 id="纯ALOHA"><a href="#纯ALOHA" class="headerlink" title="纯ALOHA"></a>纯ALOHA</h3><ol>
+<li>当传输点有数据需要传送的时候，它会立即向通讯频道传送，这也就是“想说就说”。</li>
+<li>接收站通过检查帧校验序列字段来确定传入帧的正确性</li>
+</ol>
+<ul>
+<li>如果正确，会给传输站点发送ACK。传输站点等待ACK的时间是2倍物理传输时长+一个小小的增量</li>
+<li>如果接收的数据有错误，接收点会向传输点发NACK。</li>
+<li>如果网络上的两个传输点同时向频道传输数据的时候，<strong>会发生碰撞</strong>（因此说ALOHA是一个竞争协议），这种情况下，两个站点会各自等待一段随机长度的时间后，再次尝试发送。</li>
+</ul>
+<p>但是，如果站到站的传播时间比帧传输时间长，那么，在一个站发射一个帧之后，需要很长时间其他站才知道它。在此期间，其他站可能会开始传输帧，这会导致所有帧损毁。</p>
+<p>纯ALOHA非常简单，但这样也带来了缺点：随着负载的增加，碰撞次数迅速增加，通道的最大利用率仅为18%左右。</p>
+<h3 id="slotted-ALOHA（分段ALOHA）"><a href="#slotted-ALOHA（分段ALOHA）" class="headerlink" title="slotted ALOHA（分段ALOHA）"></a>slotted ALOHA（分段ALOHA）</h3><p>为了ALOHA的利用率，将信道在时间上进行<strong>分为不同的子时段</strong>，每个传输点只能在一个<strong>子时段</strong>的<strong>开始处</strong>进行传送。每次传送的数据<strong>必须少于或者等于一个子间段</strong>。这样大大的减少了传输频道的冲突。</p>
+<p>但是也提出了链路上时钟同步的要求。</p>
+<p><strong>slotted ALOHA将系统的最大利用率提高到约 37%</strong></p>
+<h2 id="CSMA"><a href="#CSMA" class="headerlink" title="CSMA"></a>CSMA</h2><p>就算是slotted ALOHA，利用率也还是太低了。无论是纯ALOHA还是slotted ALOHA，都缺少对信道当前状态的侦测，如果能不要“畅所欲言”，而是如果发现别人在说话，等别人说完了再发言，那么碰撞概率会进一步减小。</p>
+<p>因此我们引入CSMA</p>
+<p>CSMA：carrier sense multiple access，载波侦听多路访问（注意是multiple access，不是multiplex）</p>
+<ul>
+<li><strong>载波侦听</strong>（Carrier Sense）： 指任何连接到介质的设备在欲发送帧前，必须对介质进行侦听，当确认其空闲时，才可以发送。 </li>
+</ul>
+<h3 id="nonpersistent-CSMA"><a href="#nonpersistent-CSMA" class="headerlink" title="nonpersistent CSMA"></a>nonpersistent CSMA</h3><p>在该模式下：</p>
+<ol>
+<li>发信设备侦听信道是否空闲</li>
+</ol>
+<ul>
+<li>如果空闲：则立即开始发信</li>
+<li>如果不空闲：则随机或固定地等一段时间后再检查是否空闲</li>
+</ul>
+<p>nonpersistent CSMA有一个缺陷：无法确定在信道传输的信息处于什么状态，可能处于比特流的头两个字，这时候延时可能等少了。如果处于比特流最后两个字，这时候可能等多了，造成时间的浪费</p>
+<p>因此，引入 1-persistent protocol：</p>
+<h3 id="1-persistent-CSMA"><a href="#1-persistent-CSMA" class="headerlink" title="1-persistent CSMA"></a>1-persistent CSMA</h3><ol>
+<li>发信设备检查信道是否空闲</li>
+</ol>
+<ul>
+<li>如果空闲：立即发信</li>
+<li>如果忙：则持续侦听，一旦忙结束，立即发信</li>
+</ul>
+<p>但是这样又产生了一个问题：如果信道资源很紧缺，一个忙当中，有多个发信站都在等待忙结束，在忙结束之后又立即发信，在空闲瞬间的“蜂拥而至”会导致帧碰撞。</p>
+<p>因此，引入 is p-persistent：</p>
+<h3 id="p-persistent-CSMA"><a href="#p-persistent-CSMA" class="headerlink" title="p-persistent CSMA"></a>p-persistent CSMA</h3><ol>
+<li>如果信道空闲，则有概率p的可能发送，（1-p）的概率再等一个等待周期</li>
+<li>如果信道忙，则持续侦听，等到空闲时执行 1 当中的概率发送</li>
+</ol>
+<p>这个方法减少了“蜂拥而至”造成的碰撞的概率。</p>
+<h3 id="CSMA-CD"><a href="#CSMA-CD" class="headerlink" title="CSMA/CD"></a>CSMA/CD</h3><p>在前面的CSMA机制中，纵然比AHLOHA效率更高，但是对碰撞的处理并不完善：如果两帧发生碰撞，在碰撞发生后发送端仍然会发送完该帧才截止，这加剧了碰撞占用信道的时间。</p>
+<p>而CSMA/CD中的CD就是“Collision Detection”，碰撞检测。在CSMA/CD模式下，网络适配器会“边发送边侦听”。在CSMA/CD机制下：</p>
+<ul>
+<li>如果信道空闲，则直接发信</li>
+<li>如果信道忙，则遵循CSMA的规则，侦听信道直到其不忙</li>
+<li>如果在传输过程中任意站点检测到冲突，则发送一个人为的干扰信号（jamming signal），让所有站点都知道发生了冲突，然后停止传输。</li>
+<li>（问题：碰撞时的jamming signal是怎么传过去的)（解答：bnh也不知道，那就是不考罢，哎……）</li>
+<li>发送干扰信号后，等待一段随机时间（称为退避，backoff），然后尝试再次发送（回到第一步）。</li>
+</ul>
+<p>CSMA/CD的一个例子：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240515165805420.png" alt="image-20240515165805420" style="zoom:50%;" /></p>
+<p>补一下：看一下中文书的这一段</p>
+<h1 id="数据链路层的视角——拓补和交换"><a href="#数据链路层的视角——拓补和交换" class="headerlink" title="数据链路层的视角——拓补和交换"></a>数据链路层的视角——拓补和交换</h1><div class="note danger flat"><p>五星级中的五星级</p>
 </div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/posts/6b68dff2">https://www.kaysonz.top/posts/6b68dff2</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/private/">private</a><a class="post-meta__tags" href="/tags/%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C/">通信网络</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content toc-div-class" style="display:none"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%A0%E7%A7%8D%E8%B7%AF%E7%94%B1%E6%96%B9%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">几种路由方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Fixed"><span class="toc-number">2.1.</span> <span class="toc-text">Fixed</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flooding"><span class="toc-number">2.2.</span> <span class="toc-text">Flooding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Random"><span class="toc-number">2.3.</span> <span class="toc-text">Random</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adaptive-Routine"><span class="toc-number">2.4.</span> <span class="toc-text">Adaptive Routine</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+<h2 id="基本拓补形式"><a href="#基本拓补形式" class="headerlink" title="基本拓补形式"></a>基本拓补形式</h2><h3 id="Star拓补"><a href="#Star拓补" class="headerlink" title="Star拓补"></a>Star拓补</h3><p>Star拓补中这个中心节点有三种：Hub， switch，repeater。这三种设备工作在不同的层。工作的效果也不一样。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240515175041205.png" alt="image-20240515175041205" style="zoom:33%;" /></p>
+<p><strong>HUB（集线器）:物理层设备</strong></p>
+<p>HUB集线器属于纯硬件网络底层设备，基本上不具有类似于交换机的“智能记忆”能力和“学习”能力。它也不具备交换机所具有的MAC地址表，所以它发送数据时都是没有针对性的，而是采用<strong>广播方式</strong>发送。也就是说当它要向某节点发送数据时，不是直接把数据发送到目的节点，而是把数据包发送到与集线器相连的所有节点。<strong>因此，HUB下依旧需要使用CSMA/CD协议。</strong></p>
+<h2 id="Bridge"><a href="#Bridge" class="headerlink" title="Bridge"></a>Bridge</h2><p>Brige是一个</p>
+<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><h2 id="拓补"><a href="#拓补" class="headerlink" title="拓补"></a>拓补</h2><p>（spanning Tree）</p>
+<h2 id="MAC帧的结构（要求掌握！五星级）"><a href="#MAC帧的结构（要求掌握！五星级）" class="headerlink" title="MAC帧的结构（要求掌握！五星级）"></a>MAC帧的结构（要求掌握！五星级）</h2><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240522165158941.png" alt="image-20240522165158941"></p>
+<p>MAC地址用于唯一标明终端。理论上来说它不可改变，但是现在有技术可以在发送时使用虚拟的MAC地址。携带MAC地址的DPU如上图所示</p>
+<h3 id="Address-Learning"><a href="#Address-Learning" class="headerlink" title="Address Learning"></a>Address Learning</h3><p>在MAC地址下，当机器携带MAC地址开始发送信息时，交换设备就会知道：“这个MAC地址的机器在我的某个端口上”。就会将它加入自己的路由数据库。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240522171933209.png" alt="image-20240522171933209"></p>
+<p>但是这个有一个问题，假设B是新加入的。$\alpha$和$\beta$都没有对B的位置进行注册。此时，A朝B发送一个帧，首先$\alpha$和$\beta$都会收到并认为A在下方，假设$\alpha$先转发，$\alpha$转发的帧会被B同时被B和$\beta$收到，$\beta$就会认为A在B侧；同理，后续$\beta$转发的也会被A，此时$\alpha$会记录A在B侧。这样就出问题了，假设B要发生一个返回给A，那么此时无论是$\alpha$还是$\beta$都认为AB在同侧，都不进行转发。</p>
+<p>在设计Spanning Tree 算法时，需要避免这样的逻辑环路。</p>
+<h1 id="点对点协议（PPP）"><a href="#点对点协议（PPP）" class="headerlink" title="点对点协议（PPP）"></a>点对点协议（PPP）</h1><p>PPP：Point-to-point Protocol</p>
+<h1 id="连接数据链路层与网络层的协议——Address-Resolution-Protocol-ARP"><a href="#连接数据链路层与网络层的协议——Address-Resolution-Protocol-ARP" class="headerlink" title="连接数据链路层与网络层的协议——Address Resolution Protocol (ARP)"></a>连接数据链路层与网络层的协议——Address Resolution Protocol (ARP)</h1><p>(ARP高速缓存是什么东西，要求理解)</p>
+<p>（ARP的四个步骤 要求掌握）</p>
+<p>这是用来处理MAC地址和IP地址关系的协议。由于IP协议使用了ARP协议，因此常常将ARP协议划归网络层。有些地方也将其划归数据链路层，因为ARP消息直接<strong>封装MAC帧内，而非IP包</strong>。ARP本质是跨接地三层和第二层的协议。</p>
+<p>在局域网中，交换机和其对应的MAC地址工作在数据链路层（第二层），而IP工作在网络层（第三层）。</p>
+<p>在一个网络中：(这个流程要求记住)</p>
+<ul>
+<li>在局域网内，Router存储有一个路由表，将各个设备的IP地址与MAC地址相映射。如果要转发的IP包的MAC地址已经在表中，则直接将其发送到对应端口上。</li>
+<li>如果需要传输给一个已知IP地址，未知MAC地址的设备。那么路由将暂存这一帧数据，直接使用ARP在LAN上进行广播“我的IP是：xxx，硬件地址是：xxx，我想知道IP地址xxx的MAC地址”，寻找到对应IP地址的设备，让它回应自己的MAC。拿到MAC后再封包发送。</li>
+<li>当局域网内的设备发现ARP请求的IP和自己的IP地址匹配时，则应答，应答消息包含自己的IP地址和MAC地址，单播发送给请求站点。</li>
+<li>ARP 消息还可以简单地用于广播主机的 IP 地址和子网地址，以便让LAN上的其他设备可以获取。</li>
+</ul>
+<p>现在介绍的ARP和IP，都是在同一个局域网上的。那如果你身在重庆，但是要和北京的一个设备通信，那这时候又如何解决呢？ARP协议仅能在一个广播域内进行查询，而这个广播域是通过IP地址划分的（同一网段IP）。</p>
+<ul>
+<li>路由器在收到数据时会将目标IP与局域网IP检查一下，如果发现不为同一网段，则会请求网关IP地址的MAC</li>
+<li>然后将这一帧数据朝网关发送，辅助网络完成下一跳。</li>
+</ul>
+<div class="note info flat"><p>课堂问题:</p>
+<ol>
+<li>交换机每个端口需要配备自己的MAC地址吗？</li>
+</ol>
+<p>​    不需要。因为交换机工作在第二层，只看你请求的MAC是否再它已知的端口上，如果是，则朝特定端口发送；如果不是，则朝口上广播或朝特定端口发送。</p>
+<ol>
+<li>路由器的每个端口需要自己的MAC地址吗？</li>
+</ol>
+<p>​    需要。因为路由器工作在第三层，每个端口连接不同的局域网。正如上面ARP所说，需要朝路由器的某个端口发送ARP请求，将包发给这个端口，再由这个端口根据路由协议转发至另外的路由端口。</p>
+</div>
+<div class="note info flat"><p>如果大家折腾一下软路由OpenWRT系统就会发现，那里面有一张路由表。这就是由ARP协议请求出来的。表上记录了每个设备的MAC、IP、端口。此时会发现，这个路由器竟然只有两个端口！</p>
+<p>其实这是由于家用路由器的路由端口只有2个导致的，平时路由器会看到一个WAN口加数个LAN口，这些LAN口之间都工作在第二层，公用一个MAC和IP；WAN口有一个MAC和IP。我们访问路由器的后台其实就是在访问路由器LAN口的IP地址。</p>
+</div>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/posts/6b68dff2">https://www.kaysonz.top/posts/6b68dff2</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C/">通信网络</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">引入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E7%A7%8D%E8%B7%AF%E7%94%B1%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">几种路由方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E6%9C%89%E7%9A%844%E7%A7%8D%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">现有的4种路由模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E7%9A%84%E8%A7%86%E8%A7%92%E5%88%87%E5%85%A5%E5%B1%80%E5%9F%9F%E7%BD%91%EF%BC%88%E5%9F%BA%E4%BA%8E%E4%BB%A5%E5%A4%AA%E7%BD%91%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">物理层的视角切入局域网（基于以太网）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ALOHA"><span class="toc-number">2.1.</span> <span class="toc-text">ALOHA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%AFALOHA"><span class="toc-number">2.1.1.</span> <span class="toc-text">纯ALOHA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slotted-ALOHA%EF%BC%88%E5%88%86%E6%AE%B5ALOHA%EF%BC%89"><span class="toc-number">2.1.2.</span> <span class="toc-text">slotted ALOHA（分段ALOHA）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSMA"><span class="toc-number">2.2.</span> <span class="toc-text">CSMA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nonpersistent-CSMA"><span class="toc-number">2.2.1.</span> <span class="toc-text">nonpersistent CSMA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-persistent-CSMA"><span class="toc-number">2.2.2.</span> <span class="toc-text">1-persistent CSMA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p-persistent-CSMA"><span class="toc-number">2.2.3.</span> <span class="toc-text">p-persistent CSMA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSMA-CD"><span class="toc-number">2.2.4.</span> <span class="toc-text">CSMA&#x2F;CD</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E7%9A%84%E8%A7%86%E8%A7%92%E2%80%94%E2%80%94%E6%8B%93%E8%A1%A5%E5%92%8C%E4%BA%A4%E6%8D%A2"><span class="toc-number">3.</span> <span class="toc-text">数据链路层的视角——拓补和交换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%8B%93%E8%A1%A5%E5%BD%A2%E5%BC%8F"><span class="toc-number">3.1.</span> <span class="toc-text">基本拓补形式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Star%E6%8B%93%E8%A1%A5"><span class="toc-number">3.1.1.</span> <span class="toc-text">Star拓补</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bridge"><span class="toc-number">3.2.</span> <span class="toc-text">Bridge</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1"><span class="toc-number">3.3.</span> <span class="toc-text">路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%93%E8%A1%A5"><span class="toc-number">3.4.</span> <span class="toc-text">拓补</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MAC%E5%B8%A7%E7%9A%84%E7%BB%93%E6%9E%84%EF%BC%88%E8%A6%81%E6%B1%82%E6%8E%8C%E6%8F%A1%EF%BC%81%E4%BA%94%E6%98%9F%E7%BA%A7%EF%BC%89"><span class="toc-number">3.5.</span> <span class="toc-text">MAC帧的结构（要求掌握！五星级）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Address-Learning"><span class="toc-number">3.5.1.</span> <span class="toc-text">Address Learning</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%82%B9%E5%AF%B9%E7%82%B9%E5%8D%8F%E8%AE%AE%EF%BC%88PPP%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">点对点协议（PPP）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%B1%82%E7%9A%84%E5%8D%8F%E8%AE%AE%E2%80%94%E2%80%94Address-Resolution-Protocol-ARP"><span class="toc-number">5.</span> <span class="toc-text">连接数据链路层与网络层的协议——Address Resolution Protocol (ARP)</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
   window.MathJax = {
     tex: {
       inlineMath: [['$', '$'], ['\\(', '\\)']],
