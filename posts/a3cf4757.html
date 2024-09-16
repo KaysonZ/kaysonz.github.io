@@ -1,0 +1,323 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>STM32的SPI控制器 | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="[施工中..] SPI控制器SPI控制器原理 上图展示了STM32F4系列的SPI控制器框图。由波特率发生器产生时间信号，逻辑控制器进行MOSI和MISO控制，并产生片选信号。同时由Tx Rx两个缓冲寄存器+移位寄存器构成发送模块。控制寄存器主要有SPI_CR1，SPI_CR2，BR。 发送流程 数据写入Tx Buffer Tx Buffer内的的数据填入移位寄存器 移位寄存器逐个bit发至MOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32的SPI控制器">
+<meta property="og:url" content="https://www.kaysonz.top/posts/a3cf4757">
+<meta property="og:site_name" content="風">
+<meta property="og:description" content="[施工中..] SPI控制器SPI控制器原理 上图展示了STM32F4系列的SPI控制器框图。由波特率发生器产生时间信号，逻辑控制器进行MOSI和MISO控制，并产生片选信号。同时由Tx Rx两个缓冲寄存器+移位寄存器构成发送模块。控制寄存器主要有SPI_CR1，SPI_CR2，BR。 发送流程 数据写入Tx Buffer Tx Buffer内的的数据填入移位寄存器 移位寄存器逐个bit发至MOS">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.kaysonz.top/img/avatar.jpg">
+<meta property="article:published_time" content="2024-04-21T05:43:59.000Z">
+<meta property="article:modified_time" content="2024-09-16T01:59:49.085Z">
+<meta property="article:author" content="栞风">
+<meta property="article:tag" content="嵌入式开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.kaysonz.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://www.kaysonz.top/posts/a3cf4757"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":8,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'STM32的SPI控制器',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-16 09:59:49'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/notice.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">52</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">17</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">STM32的SPI控制器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-21T05:43:59.000Z" title="发表于 2024-04-21 13:43:59">2024-04-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:49.085Z" title="更新于 2024-09-16 09:59:49">2024-09-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/STM32/">STM32</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>[施工中..]</p>
+<h1 id="SPI控制器"><a href="#SPI控制器" class="headerlink" title="SPI控制器"></a>SPI控制器</h1><h2 id="SPI控制器原理"><a href="#SPI控制器原理" class="headerlink" title="SPI控制器原理"></a>SPI控制器原理</h2><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240421140451956.png" alt="image-20240421140451956"></p>
+<p>上图展示了STM32F4系列的SPI控制器框图。由波特率发生器产生时间信号，逻辑控制器进行MOSI和MISO控制，并产生片选信号。同时由Tx Rx两个缓冲寄存器+移位寄存器构成发送模块。控制寄存器主要有SPI_CR1，SPI_CR2，BR。</p>
+<h3 id="发送流程"><a href="#发送流程" class="headerlink" title="发送流程"></a>发送流程</h3><ol>
+<li>数据写入Tx Buffer</li>
+<li>Tx Buffer内的的数据填入移位寄存器</li>
+<li>移位寄存器逐个bit发至MOSI线</li>
+<li>发送完毕，SPI_SR TXE寄存器置位</li>
+</ol>
+<h3 id="接收流程"><a href="#接收流程" class="headerlink" title="接收流程"></a>接收流程</h3><ol>
+<li>数据写入移位寄存器</li>
+<li>移位寄存器写入 Rx Buffer</li>
+<li>接收完成，SPI_SR EXNE置位</li>
+<li>读取Rx Buffer内的内容</li>
+</ol>
+<h3 id="片选信号"><a href="#片选信号" class="headerlink" title="片选信号"></a>片选信号</h3><p>在SPI_CR1寄存器中的SSI信号即是该控制器内的片选信号发生器。可通过配置SPI_CR1 SSM寄存器来决定该信号是否对外输出。以此实现不同的片选效果。在NSS对外输出时，配置SPI_CR1 SSOE寄存器又可定义两种不同的硬件管理模式</p>
+<p>STM32的SPI控制器支持三种片选模式：</p>
+<ul>
+<li>软件管理：（SSM=1）外部NSS引脚空闲，可复用其他功能。自定义GPIO通过写高低电平实现片选</li>
+<li>硬件管理（输出使能模式，SSM=0 SSOE=1）:STM32此时为通信主机。当主器件开始通信时，NSS 信号驱动  为低电平，并保持到 SPI 被关闭为止。</li>
+<li>硬件管理（输出禁止模式，SSM=0 SSOE=0）：若STM32此时作为从机模式，则NSS引脚为从机片选输入。若STM32此时作为主机模式，此模式是多主机配置，多主多从SPI极少使用，此处不详细介绍。</li>
+</ul>
+<h2 id="时钟极性CPOL"><a href="#时钟极性CPOL" class="headerlink" title="时钟极性CPOL"></a>时钟极性CPOL</h2><ul>
+<li>0：SCK在空闲时低电平，第一边沿为由低变高</li>
+<li>1：SCK在空闲时高电平，第一边沿为由高变低</li>
+</ul>
+<h2 id="时钟相位CPHA"><a href="#时钟相位CPHA" class="headerlink" title="时钟相位CPHA"></a>时钟相位CPHA</h2><ul>
+<li>0：SCK在第一（奇数）边沿进行采样</li>
+<li>1：SCK在第二（偶数）边沿进行采样</li>
+</ul>
+<div class="note info flat"><p>时钟极性和相位通常使用00（CPOL=0,CPHA=0）或11的组合。</p>
+</div>
+<div class="note danger flat"><p>在使用SPI时，必须讲对应GPIO的引脚设置为复用模式。当在MspInit中进行设置。</p>
+</div>
+<h1 id="SPI相关寄存器"><a href="#SPI相关寄存器" class="headerlink" title="SPI相关寄存器"></a>SPI相关寄存器</h1><h2 id="SPI-CR1寄存器"><a href="#SPI-CR1寄存器" class="headerlink" title="SPI_CR1寄存器"></a>SPI_CR1寄存器</h2><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20240421143259090.png" alt="image-20240421143259090"></p>
+<h3 id="位-15-BIDIMODE：双向通信数据模式使能-Bidirectional-data-mode-enable"><a href="#位-15-BIDIMODE：双向通信数据模式使能-Bidirectional-data-mode-enable" class="headerlink" title="位 15 BIDIMODE：双向通信数据模式使能 (Bidirectional data mode enable)"></a>位 15 BIDIMODE：双向通信数据模式使能 (Bidirectional data mode enable)</h3><ul>
+<li>0：选择双线单向通信数据模式 </li>
+<li>1：选择单线双向通信数据模式 </li>
+</ul>
+<h3 id="位-14-BIDIOE：双向通信模式下的输出使能-Output-enable-in-bidirectional-mode"><a href="#位-14-BIDIOE：双向通信模式下的输出使能-Output-enable-in-bidirectional-mode" class="headerlink" title="位 14 BIDIOE：双向通信模式下的输出使能 (Output enable in bidirectional mode)"></a>位 14 BIDIOE：双向通信模式下的输出使能 (Output enable in bidirectional mode)</h3><p>此位结合 BIDIMODE 位，用于选择双向通信模式下的传输方向 </p>
+<ul>
+<li>0：禁止输出（只接收模式）  </li>
+<li>1：使能输出（只发送模式） </li>
+</ul>
+<p><em>注意：在主模式下，使用 MOSI 引脚；在从模式下，使用 MISO 引脚</em></p>
+<h3 id="位-13-CRCEN：硬件-CRC-计算使能-Hardware-CRC-calculation-enable"><a href="#位-13-CRCEN：硬件-CRC-计算使能-Hardware-CRC-calculation-enable" class="headerlink" title="位 13 CRCEN：硬件 CRC 计算使能 (Hardware CRC calculation enable)"></a>位 13 CRCEN：硬件 CRC 计算使能 (Hardware CRC calculation enable)</h3><ul>
+<li><p>0：禁止 CRC 计算 </p>
+</li>
+<li><p>1：使能 CRC 计算 </p>
+</li>
+</ul>
+<p>注意：为确保正确操作，只应在禁止 SPI（SPE =“0”）时对此位执行写操作 </p>
+<h3 id="位-12-CRCNEXT：下一次传输-CRC-CRC-transfer-next"><a href="#位-12-CRCNEXT：下一次传输-CRC-CRC-transfer-next" class="headerlink" title="位 12 CRCNEXT：下一次传输 CRC (CRC transfer next)"></a>位 12 CRCNEXT：下一次传输 CRC (CRC transfer next)</h3><ul>
+<li><p>0：数据阶段（无 CRC 阶段）</p>
+</li>
+<li><p>1：下一次传输为 CRC（CRC 阶段） </p>
+</li>
+</ul>
+<p>注意：当 SPI 配置为全双工或只发送模式时，只要最后一个数据写入 SPI_DR 寄存器，就必须对 CRCNEXT 执行写操作。  当 SPI 配置为只接收模式时，必须在接收到倒数第二个数据之后将 CRCNEXT 置 1。  当传输由 DMA 管理时，此位应保持清零状态。 </p>
+<h3 id="位-11-DFF：数据帧格式-Data-frame-format"><a href="#位-11-DFF：数据帧格式-Data-frame-format" class="headerlink" title="位 11 DFF：数据帧格式 (Data frame format)"></a>位 11 DFF：数据帧格式 (Data frame format)</h3><ul>
+<li><p>0：为发送/接收选择 8 位数据帧格式 </p>
+</li>
+<li><p>1：为发送/接收选择 16 位数据帧格式 </p>
+</li>
+</ul>
+<p>注意：为确保正确操作，只应在禁止 SPI（SPE =“0”）时对此位执行写操作 </p>
+<h3 id="位-10-RXONLY：只接收-Receive-only"><a href="#位-10-RXONLY：只接收-Receive-only" class="headerlink" title="位 10 RXONLY：只接收 (Receive only)"></a>位 10 RXONLY：只接收 (Receive only)</h3><p>此位结合 BIDIMODE 位，用于选择双线单向模式下的传输方向。此位也适用于多从模式系   统，在此类系统中，不会访问特定从器件，也不会损坏访问的从器件的输出。</p>
+<ul>
+<li><p>0：全双工（发送和接收） </p>
+</li>
+<li><p>1：关闭输出（只接收模式） </p>
+</li>
+</ul>
+<h3 id="位-9-SSM：软件从器件管理-Software-slave-management"><a href="#位-9-SSM：软件从器件管理-Software-slave-management" class="headerlink" title="位 9 SSM：软件从器件管理 (Software slave management)"></a>位 9 SSM：软件从器件管理 (Software slave management)</h3><p>当 SSM 位置 1 时，NSS 引脚输入替换为 SSI 位的值。 </p>
+<ul>
+<li><p>0：禁止软件从器件管理 </p>
+</li>
+<li><p>1：使能软件从器件管理 </p>
+</li>
+</ul>
+<h3 id="位-8-SSI：内部从器件选择-Internal-slave-select"><a href="#位-8-SSI：内部从器件选择-Internal-slave-select" class="headerlink" title="位 8 SSI：内部从器件选择 (Internal slave select)"></a>位 8 SSI：内部从器件选择 (Internal slave select)</h3><p>仅当 SSM 位置 1 时，此位才有效。此位的值将作用到NSS引脚上，并忽略 NSS 引脚的 IO 值。 </p>
+<h3 id="位-7-LSBFIRST：帧格式-Frame-format"><a href="#位-7-LSBFIRST：帧格式-Frame-format" class="headerlink" title="位 7 LSBFIRST：帧格式 (Frame format)"></a>位 7 LSBFIRST：帧格式 (Frame format)</h3><ul>
+<li><p>0：先发送 MSB </p>
+</li>
+<li><p>1：先发送 LSB </p>
+</li>
+</ul>
+<p>注意：正在通信时不应更改此位。 </p>
+<h3 id="位-6-SPE：SPI-使能-SPI-enable"><a href="#位-6-SPE：SPI-使能-SPI-enable" class="headerlink" title="位 6 SPE：SPI 使能 (SPI enable)"></a>位 6 SPE：SPI 使能 (SPI enable)</h3><ul>
+<li><p>0：关闭外设 </p>
+</li>
+<li><p>1：使能外设 </p>
+</li>
+</ul>
+<p>注意：2- 关闭 SPI 时，需按照后续介绍的指定步骤操作。</p>
+<h3 id="位-5-3-BR-2-0-：波特率控制-Baud-rate-control"><a href="#位-5-3-BR-2-0-：波特率控制-Baud-rate-control" class="headerlink" title="位 5:3 BR[2:0]：波特率控制 (Baud rate control)"></a>位 5:3 BR[2:0]：波特率控制 (Baud rate control)</h3><ul>
+<li>000: fPCLK/2</li>
+<li>100: fPCLK/32</li>
+<li>001: fPCLK/4</li>
+<li>010: fPCLK/8</li>
+<li>011: fPCLK/16</li>
+<li>101: fPCLK/64</li>
+<li>110: fPCLK/128</li>
+<li>111: fPCLK/256 </li>
+</ul>
+<p>注意：正在通信时不应更改这些位。 </p>
+<h3 id="位-2-MSTR：主模式选择-Master-selection"><a href="#位-2-MSTR：主模式选择-Master-selection" class="headerlink" title="位 2 MSTR：主模式选择 (Master selection)"></a>位 2 MSTR：主模式选择 (Master selection)</h3><ul>
+<li><p>0：从配置 </p>
+</li>
+<li><p>1：主配置 </p>
+</li>
+</ul>
+<p>注意：正在通信时不应更改此位。</p>
+<h3 id="位1-CPOL：时钟极性-Clock-polarity"><a href="#位1-CPOL：时钟极性-Clock-polarity" class="headerlink" title="位1 CPOL：时钟极性 (Clock polarity)"></a>位1 CPOL：时钟极性 (Clock polarity)</h3><ul>
+<li><p>0：空闲状态时，SCK保持低电平 </p>
+</li>
+<li><p>1：空闲状态时，SCK保持高电平 </p>
+</li>
+</ul>
+<h3 id="位-0-CPHA：时钟相位-Clock-phase"><a href="#位-0-CPHA：时钟相位-Clock-phase" class="headerlink" title="位 0 CPHA：时钟相位 (Clock phase)"></a>位 0 CPHA：时钟相位 (Clock phase)</h3><ul>
+<li><p>0：从第一个时钟边沿开始采样数据 </p>
+</li>
+<li><p>1：从第二个时钟边沿开始采样数据 注意：正在通信时不应更改此位。</p>
+</li>
+</ul>
+<h2 id="SPI-CR2寄存器"><a href="#SPI-CR2寄存器" class="headerlink" title="SPI_CR2寄存器"></a>SPI_CR2寄存器</h2><h1 id="配置SPI的步骤"><a href="#配置SPI的步骤" class="headerlink" title="配置SPI的步骤"></a>配置SPI的步骤</h1><h2 id="主机"><a href="#主机" class="headerlink" title="主机"></a>主机</h2><h2 id="从机"><a href="#从机" class="headerlink" title="从机"></a>从机</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/posts/a3cf4757">https://www.kaysonz.top/posts/a3cf4757</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">嵌入式开发</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SPI%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">SPI控制器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SPI%E6%8E%A7%E5%88%B6%E5%99%A8%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">SPI控制器原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">发送流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E6%94%B6%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text">接收流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%87%E9%80%89%E4%BF%A1%E5%8F%B7"><span class="toc-number">1.1.3.</span> <span class="toc-text">片选信号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E6%9E%81%E6%80%A7CPOL"><span class="toc-number">1.2.</span> <span class="toc-text">时钟极性CPOL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E7%9B%B8%E4%BD%8DCPHA"><span class="toc-number">1.3.</span> <span class="toc-text">时钟相位CPHA</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SPI%E7%9B%B8%E5%85%B3%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">SPI相关寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SPI-CR1%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.1.</span> <span class="toc-text">SPI_CR1寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D-15-BIDIMODE%EF%BC%9A%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%BC%8F%E4%BD%BF%E8%83%BD-Bidirectional-data-mode-enable"><span class="toc-number">2.1.1.</span> <span class="toc-text">位 15 BIDIMODE：双向通信数据模式使能 (Bidirectional data mode enable)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D-14-BIDIOE%EF%BC%9A%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E8%BE%93%E5%87%BA%E4%BD%BF%E8%83%BD-Output-enable-in-bidirectional-mode"><span class="toc-number">2.1.2.</span> <span class="toc-text">位 14 BIDIOE：双向通信模式下的输出使能 (Output enable in bidirectional mode)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D-13-CRCEN%EF%BC%9A%E7%A1%AC%E4%BB%B6-CRC-%E8%AE%A1%E7%AE%97%E4%BD%BF%E8%83%BD-Hardware-CRC-calculation-enable"><span class="toc-number">2.1.3.</span> <span class="toc-text">位 13 CRCEN：硬件 CRC 计算使能 (Hardware CRC calculation enable)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D-12-CRCNEXT%EF%BC%9A%E4%B8%8B%E4%B8%80%E6%AC%A1%E4%BC%A0%E8%BE%93-CRC-CRC-transfer-next"><span class="toc-number">2.1.4.</span> <span class="toc-text">位 12 CRCNEXT：下一次传输 CRC (CRC transfer next)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D-11-DFF%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%B8%A7%E6%A0%BC%E5%BC%8F-Data-frame-format"><span class="toc-number">2.1.5.</span> <span class="toc-text">位 11 DFF：数据帧格式 (Data frame format)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D-10-RXONLY%EF%BC%9A%E5%8F%AA%E6%8E%A5%E6%94%B6-Receive-only"><span class="toc-number">2.1.6.</span> <span class="toc-text">位 10 RXONLY：只接收 (Receive only)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D-9-SSM%EF%BC%9A%E8%BD%AF%E4%BB%B6%E4%BB%8E%E5%99%A8%E4%BB%B6%E7%AE%A1%E7%90%86-Software-slave-management"><span class="toc-number">2.1.7.</span> <span class="toc-text">位 9 SSM：软件从器件管理 (Software slave management)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D-8-SSI%EF%BC%9A%E5%86%85%E9%83%A8%E4%BB%8E%E5%99%A8%E4%BB%B6%E9%80%89%E6%8B%A9-Internal-slave-select"><span class="toc-number">2.1.8.</span> <span class="toc-text">位 8 SSI：内部从器件选择 (Internal slave select)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D-7-LSBFIRST%EF%BC%9A%E5%B8%A7%E6%A0%BC%E5%BC%8F-Frame-format"><span class="toc-number">2.1.9.</span> <span class="toc-text">位 7 LSBFIRST：帧格式 (Frame format)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D-6-SPE%EF%BC%9ASPI-%E4%BD%BF%E8%83%BD-SPI-enable"><span class="toc-number">2.1.10.</span> <span class="toc-text">位 6 SPE：SPI 使能 (SPI enable)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D-5-3-BR-2-0-%EF%BC%9A%E6%B3%A2%E7%89%B9%E7%8E%87%E6%8E%A7%E5%88%B6-Baud-rate-control"><span class="toc-number">2.1.11.</span> <span class="toc-text">位 5:3 BR[2:0]：波特率控制 (Baud rate control)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D-2-MSTR%EF%BC%9A%E4%B8%BB%E6%A8%A1%E5%BC%8F%E9%80%89%E6%8B%A9-Master-selection"><span class="toc-number">2.1.12.</span> <span class="toc-text">位 2 MSTR：主模式选择 (Master selection)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D1-CPOL%EF%BC%9A%E6%97%B6%E9%92%9F%E6%9E%81%E6%80%A7-Clock-polarity"><span class="toc-number">2.1.13.</span> <span class="toc-text">位1 CPOL：时钟极性 (Clock polarity)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D-0-CPHA%EF%BC%9A%E6%97%B6%E9%92%9F%E7%9B%B8%E4%BD%8D-Clock-phase"><span class="toc-number">2.1.14.</span> <span class="toc-text">位 0 CPHA：时钟相位 (Clock phase)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SPI-CR2%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.2.</span> <span class="toc-text">SPI_CR2寄存器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AESPI%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.</span> <span class="toc-text">配置SPI的步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA"><span class="toc-number">3.1.</span> <span class="toc-text">主机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E6%9C%BA"><span class="toc-number">3.2.</span> <span class="toc-text">从机</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
