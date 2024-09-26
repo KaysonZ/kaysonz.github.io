@@ -53,7 +53,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-09-26 04:33:05'
+  postUpdate: '2024-09-26 13:57:49'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -167,7 +167,27 @@ document.addEventListener('pjax:send', () => {
     delay: 3000,
     disableOnInteraction: false,
   },
-})</script></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/202924f0" title="Part1-CH4-数字的表达和算数电路">Part1-CH4-数字的表达和算数电路</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-08T19:11:18.000Z" title="发表于 2024-02-09 03:11:18">2024-02-09</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T02:03:37.856Z" title="更新于 2024-09-16 10:03:37">2024-09-16</time></span></div><div class="content">加法器半加法器半加法器接受两个输入：$x_1,x_2$ 并产生本位和进位两个输出。半加法器的真值表和实现电路如下图所示
+})</script></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/5cb49984" title="Part1-CH5-组合电路-构建快">Part1-CH5-组合电路-构建快</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-08T19:11:18.000Z" title="发表于 2024-02-09 03:11:18">2024-02-09</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T02:03:37.856Z" title="更新于 2024-09-16 10:03:37">2024-09-16</time></span></div><div class="content">多路复用器多路复用器可以使用逻辑门制造，也可以使用Transition Gate 制造。一个多路复用器具有n个输入，那么就需要$log_{2}{n}$路选择信号。考试中最多出现4 to 1多路复用器。
+
+例题：2x2交叉选择器
+
+    
+        
+        
+    
+
+
+使用多路复用器构建逻辑函数 五星级中的五星级
+如上图这个情况，使用$w_1,w_2$做为选择信号，可以把输出分为4个case：
+
+Case 0: $w_1=0,w_2=0$, 输出为0
+Case 1: $w_1=0,w_2=1$, 输出等于$w_3$
+Case 3: $w_1=1,w_2=0$,输出等于$w_3$
+Case 4: $w_1=1,w_2=1$,输出等于1
+
+这样就实现了用多路复用器来实现基础的逻辑组合。除了简单的电路外，还可以使用逻辑门的输出和多路复用器进行组合，实现更复杂的电路。
+香农拓展定理（Shannon’s Expansion Theorem）
+香农拓展定理的核心理念是：对于一个Boolean function, 可以把它写为分解为$w_1 (…)+ \overline w_1  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/202924f0" title="Part1-CH4-数字的表达和算数电路">Part1-CH4-数字的表达和算数电路</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-08T19:11:18.000Z" title="发表于 2024-02-09 03:11:18">2024-02-09</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T02:03:37.856Z" title="更新于 2024-09-16 10:03:37">2024-09-16</time></span></div><div class="content">加法器半加法器半加法器接受两个输入：$x_1,x_2$ 并产生本位和进位两个输出。半加法器的真值表和实现电路如下图所示
 
     
         
@@ -191,27 +211,7 @@ document.addEventListener('pjax:send', () => {
 
 
 当Add/Sub control 为0时，$y_i=y_i\oplus0=y_i$, 同时输入的基础进位$c_0$等于0。此时是正常调用全加法器计算加法。
-当Add/Sub control为1时，$y_ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/5cb49984" title="Part1-CH5-组合电路-构建快">Part1-CH5-组合电路-构建快</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-08T19:11:18.000Z" title="发表于 2024-02-09 03:11:18">2024-02-09</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T02:03:37.856Z" title="更新于 2024-09-16 10:03:37">2024-09-16</time></span></div><div class="content">多路复用器多路复用器可以使用逻辑门制造，也可以使用Transition Gate 制造。一个多路复用器具有n个输入，那么就需要$log_{2}{n}$路选择信号。考试中最多出现4 to 1多路复用器。
-
-例题：2x2交叉选择器
-
-    
-        
-        
-    
-
-
-使用多路复用器构建逻辑函数 五星级中的五星级
-如上图这个情况，使用$w_1,w_2$做为选择信号，可以把输出分为4个case：
-
-Case 0: $w_1=0,w_2=0$, 输出为0
-Case 1: $w_1=0,w_2=1$, 输出等于$w_3$
-Case 3: $w_1=1,w_2=0$,输出等于$w_3$
-Case 4: $w_1=1,w_2=1$,输出等于1
-
-这样就实现了用多路复用器来实现基础的逻辑组合。除了简单的电路外，还可以使用逻辑门的输出和多路复用器进行组合，实现更复杂的电路。
-香农拓展定理（Shannon’s Expansion Theorem）
-香农拓展定理的核心理念是：对于一个Boolean function, 可以把它写为分解为$w_1 (…)+ \overline w_1  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/7c92a281" title="STM32的UART通信(Register)">STM32的UART通信(Register)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-04T16:42:28.000Z" title="发表于 2024-02-05 00:42:28">2024-02-05</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.503Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">基本工作原理(F4系列)F4的USART模块支持可编程字长、自定义波特率、单线半双工模式（RX，TX使用一条线，半双工收发）、唤醒MCU、可编程的停止位长度、可启用/禁用/设置模式的就校验位。其硬件模块如下
+当Add/Sub control为1时，$y_ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/7c92a281" title="STM32的UART通信(Register)">STM32的UART通信(Register)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-04T16:42:28.000Z" title="发表于 2024-02-05 00:42:28">2024-02-05</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.503Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">基本工作原理(F4系列)F4的USART模块支持可编程字长、自定义波特率、单线半双工模式（RX，TX使用一条线，半双工收发）、唤醒MCU、可编程的停止位长度、可启用/禁用/设置模式的就校验位。其硬件模块如下
 F4系列的USART模块还支持IRDA协议和LIN协议，这里不会详细介绍
 
 USART硬件系统可以被拆分成如下几个重要部分：
@@ -400,7 +400,7 @@ log_2M ...</div></div></div><div class="recent-post-item"><div class="recent-pos
             </div>
             <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/LoRa%E5%AE%9A%E4%BD%8D%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">LoRa定位开发</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/STM32/"><span class="card-category-list-name">STM32</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/default/"><span class="card-category-list-name">default</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%B8%93%E4%B8%9A%E5%AE%9E%E8%AE%AD/"><span class="card-category-list-name">专业实训</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%90%84%E7%A7%8D%E6%8A%98%E8%85%BE/"><span class="card-category-list-name">各种折腾</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8A/"><span class="card-category-list-name">大三上</span><span class="card-category-list-count">5</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%8F%AF%E9%9D%A0%E6%80%A7%E5%B7%A5%E7%A8%8B/"><span class="card-category-list-name">数字电路设计与可靠性工程</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/"><span class="card-category-list-name">电子系统</span><span class="card-category-list-count">1</span></a></li></ul></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E9%A2%91%E5%B8%A6%E9%80%9A%E4%BF%A1/" style="font-size: 1.1em; color: #999">-频带通信</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90/" style="font-size: 1.1em; color: #999">模拟信号分析</a> <a href="/tags/default/" style="font-size: 1.1em; color: #999">default</a> <a href="/tags/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90/" style="font-size: 1.42em; color: #99a6b7">信号与系统分析</a> <a href="/tags/%E6%BB%A4%E6%B3%A2%E5%99%A8/" style="font-size: 1.1em; color: #999">滤波器</a> <a href="/tags/%E9%A2%91%E5%B8%A6%E9%80%9A%E4%BF%A1/" style="font-size: 1.1em; color: #999">频带通信</a> <a href="/tags/%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C/" style="font-size: 1.5em; color: #99a9bf">通信网络</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" style="font-size: 1.1em; color: #999">程序设计</a> <a href="/tags/private/" style="font-size: 1.26em; color: #999fa8">private</a> <a href="/tags/git/" style="font-size: 1.1em; color: #999">git</a> <a href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/" style="font-size: 1.18em; color: #999ca1">数字电路</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" style="font-size: 1.34em; color: #99a3b0">嵌入式开发</a> <a href="/tags/%E8%8B%B1%E8%AF%AD/" style="font-size: 1.1em; color: #999">英语</a> <a href="/tags/%E6%95%B0%E5%AD%97%E5%9F%BA%E5%B8%A6%E9%80%9A%E4%BF%A1/" style="font-size: 1.1em; color: #999">数字基带通信</a></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/git/" style="font-size: 1.1em; color: #999">git</a> <a href="/tags/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90/" style="font-size: 1.42em; color: #99a6b7">信号与系统分析</a> <a href="/tags/%E8%8B%B1%E8%AF%AD/" style="font-size: 1.1em; color: #999">英语</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90/" style="font-size: 1.1em; color: #999">模拟信号分析</a> <a href="/tags/default/" style="font-size: 1.1em; color: #999">default</a> <a href="/tags/%E6%BB%A4%E6%B3%A2%E5%99%A8/" style="font-size: 1.1em; color: #999">滤波器</a> <a href="/tags/%E9%A2%91%E5%B8%A6%E9%80%9A%E4%BF%A1/" style="font-size: 1.1em; color: #999">频带通信</a> <a href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/" style="font-size: 1.18em; color: #999ca1">数字电路</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" style="font-size: 1.34em; color: #99a3b0">嵌入式开发</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" style="font-size: 1.1em; color: #999">程序设计</a> <a href="/tags/private/" style="font-size: 1.26em; color: #999fa8">private</a> <a href="/tags/%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C/" style="font-size: 1.5em; color: #99a9bf">通信网络</a> <a href="/tags/%E9%A2%91%E5%B8%A6%E9%80%9A%E4%BF%A1/" style="font-size: 1.1em; color: #999">-频带通信</a> <a href="/tags/%E6%95%B0%E5%AD%97%E5%9F%BA%E5%B8%A6%E9%80%9A%E4%BF%A1/" style="font-size: 1.1em; color: #999">数字基带通信</a></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
   init: (str) => {
     window.typed = new Typed('#subtitle', Object.assign({
       strings: str,
