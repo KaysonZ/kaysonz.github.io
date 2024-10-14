@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Part1-Timer | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="Recall：RC电路的充放电公式  时间常数:$τ&#x3D;RC $ 充电：$V_c&#x3D;(1-e^{-t&#x2F;τ})$ 放电：$V_c&#x3D;V_i\cdot e^{-t&#x2F;τ}$ 充放电时间：5τ  555定时器引入555定时器内部电路结构图如下  其有以下几种工作模式：  非稳态：做为一个电子振荡器，输出PWM波。  单稳态：类似于延时开关，收到一个输入脉冲时，电平跳变一段时间，随后跳回原来电平  双稳态：受到两">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Part1-Timer">
+<meta property="og:url" content="https://www.kaysonz.top/posts/346c9b2">
+<meta property="og:site_name" content="風">
+<meta property="og:description" content="Recall：RC电路的充放电公式  时间常数:$τ&#x3D;RC $ 充电：$V_c&#x3D;(1-e^{-t&#x2F;τ})$ 放电：$V_c&#x3D;V_i\cdot e^{-t&#x2F;τ}$ 充放电时间：5τ  555定时器引入555定时器内部电路结构图如下  其有以下几种工作模式：  非稳态：做为一个电子振荡器，输出PWM波。  单稳态：类似于延时开关，收到一个输入脉冲时，电平跳变一段时间，随后跳回原来电平  双稳态：受到两">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.kaysonz.top/img/avatar.jpg">
+<meta property="article:published_time" content="2024-02-26T09:39:21.000Z">
+<meta property="article:modified_time" content="2024-10-14T13:22:51.784Z">
+<meta property="article:author" content="栞风">
+<meta property="article:tag" content="滤波器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.kaysonz.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://www.kaysonz.top/posts/346c9b2"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":8,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Part1-Timer',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-14 21:22:51'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/notice.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">18</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Part1-Timer</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-26T09:39:21.000Z" title="发表于 2024-02-26 17:39:21">2024-02-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-14T13:22:51.784Z" title="更新于 2024-10-14 21:22:51">2024-10-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8A/">大三上</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/">电子系统</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Recall：RC电路的充放电公式"><a href="#Recall：RC电路的充放电公式" class="headerlink" title="Recall：RC电路的充放电公式"></a>Recall：RC电路的充放电公式</h1><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20241014210159555.png" alt="image-20241014210159555"></p>
+<ul>
+<li>时间常数:$τ=RC $</li>
+<li>充电：$V_c=(1-e^{-t/τ})$</li>
+<li>放电：$V_c=V_i\cdot e^{-t/τ}$</li>
+<li>充放电时间：5τ</li>
+</ul>
+<h1 id="555定时器"><a href="#555定时器" class="headerlink" title="555定时器"></a>555定时器</h1><h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>555定时器内部电路结构图如下</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20241014210630457.png" alt="image-20241014210630457"></p>
+<p>其有以下几种工作模式：</p>
+<ul>
+<li><p>非稳态：做为一个电子振荡器，输出PWM波。</p>
+</li>
+<li><p>单稳态：类似于延时开关，收到一个输入脉冲时，电平跳变一段时间，随后跳回原来电平</p>
+</li>
+<li><p>双稳态：受到两个输入控制，第一个收到脉冲时使芯片保持高电平输出，第二个收到脉冲时使芯片保持低电平输出。</p>
+</li>
+<li><p>施密特触发器：稳定输入电平。</p>
+</li>
+</ul>
+<p>555timer支持流入或流出最高200ma的电流（具体的可能不一样，需要参考制造商手册），驱动更高电流需要放大电路。</p>
+<h2 id="非稳态-A-Stable-电路"><a href="#非稳态-A-Stable-电路" class="headerlink" title="非稳态(A-Stable)电路"></a>非稳态(A-Stable)电路</h2><h3 id="电路分析"><a href="#电路分析" class="headerlink" title="电路分析"></a>电路分析</h3><p>非稳态电路图如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20241014210906958.png" alt="image-20241014210906958"></p>
+<ol>
+<li>在上电一瞬间，$Vc=0,$ 比较器1输出0 (reset=0)，比较器2输出1 (set=1)；所以SR Flip-Flop输出高电平，同时Q1关闭使C充电。</li>
+<li>当充电$VTL&lt;Vc&lt;VTH$时，比较器1和2都输出0，此时SR锁存器保持。</li>
+<li>当充电vc&gt;VTH时，比较器1输出1 （reset=1），比较器2输出0 (set=0)；输出低电平，同时Q1打开使得C放电。</li>
+<li>当放电至$VTL&lt;Vc&lt;VTH$，保持。</li>
+<li>当放电至vc&lt;VTL时，比较器1输出0 (reset=0)，比较器2输出1 (set=1)；此时输出高电平，Q关闭使得C充电。</li>
+</ol>
+<p>因此，其波形为：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20241014211012792.png" alt="image-20241014211012792"></p>
+<p>电容充电时，$R=R_A+R_B$，故时间常数$τ=C(R_A+R_B)$</p>
+<p>电容放电时，$R=R_B$,故$τ=R_B C$</p>
+<p>由于$V_{TH}=\frac{2}{3} VCC,V_{TL}=\frac{1}{3} VCC$,得到充电时间$T_H$和放电时间$T_L$的公式（下式中0.69来自于$ln(2)\approx0.69$）：</p>
+<script type="math/tex; mode=display">
+T_H=0.69C(R_A+R_B )</script><script type="math/tex; mode=display">
+T_L=0.69CR_B</script><p>震荡周期T为：</p>
+<script type="math/tex; mode=display">
+T=T_H+T_L=0.69C(R_A+2R_B)</script><p>占空比D为：</p>
+<script type="math/tex; mode=display">
+Duty\ cycle=\frac{T_H}{(T_H+T_L )}=\frac{(R_A+R_B)}{(R_A+2R_B )}</script><p>如果RA和RB相等，那么67%T的时间会是高电平33%T的时间会是低电平。</p>
+<h3 id="50-占空比设计方法"><a href="#50-占空比设计方法" class="headerlink" title="50%占空比设计方法"></a>50%占空比设计方法</h3><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20241014211436645.png" alt="image-20241014211436645"></p>
+<p>上图电路在加上二极管后允许电容直接通过RA充电，但也因为二极管产生了0.7V的压降，造成RB有一定的漏电流，因此公式变为</p>
+<script type="math/tex; mode=display">
+T_H=0.8R_A C</script><script type="math/tex; mode=display">
+T_L=0.7R_B C</script><script type="math/tex; mode=display">
+T=0.7(R_A+R_B)C</script><script type="math/tex; mode=display">
+D=\frac{R_A}{R_A+R_B}</script><p>这里$T_H,T_L$充放电收到二极管影响不均，因此再改进一下:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20241014211635561.png" alt="image-20241014211635561"></p>
+<p>此时充放电都需要收到二极管的压降影响，而且杜绝了漏电流的存在。新的公式也变为：</p>
+<script type="math/tex; mode=display">
+T_H=0.8R_A C</script><script type="math/tex; mode=display">
+T_L=0.8R_B C</script><script type="math/tex; mode=display">
+T=0.8(R_A+R_B)C</script><script type="math/tex; mode=display">
+D=\frac{R_A}{R_A+R_B}</script><h2 id="单稳态-Monostable-电路："><a href="#单稳态-Monostable-电路：" class="headerlink" title="单稳态(Monostable)电路："></a>单稳态(Monostable)电路：</h2><p>单稳态电路图如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20241014211817923.png" alt="image-20241014211817923"></p>
+<ol>
+<li>在上电开始时，Vtrigger（上图中蓝色方波的位置）保持高电平，vc&lt;VTH，两个比较器都输出0；保持现状（输出0），Q打开接地，电容无法充电。</li>
+<li>当Trigger收到低电平脉冲时，比较器1输出0 （reset=0），比较器2输出1（set=1）；输出1，同时Q关闭C开始充电。</li>
+<li>当VTL&lt;vc&lt;VTH时，比较器1输出0（reset=0），同时Trigger因为脉冲时间很短已经回到0 (set=0)，保持现状（输出1）。</li>
+<li>当vc&gt;VTH，比较器1输出1 （reset=1），比较器2输出0（set=0）；输出0，同时Q打开让电容再次接地无法充电</li>
+</ol>
+<p>整个充放电波形如下图所示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20241014212127266.png" alt="image-20241014212127266"></p>
+<p><strong>电容充电时间(高电平保持时间)$T=CRln(3)≈1.1CR$</strong></p>
+<h2 id="双稳态-Bistable-电路："><a href="#双稳态-Bistable-电路：" class="headerlink" title="双稳态(Bistable)电路："></a>双稳态(Bistable)电路：</h2><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20241014212210229.png" alt="image-20241014212210229"></p>
+<p>双稳态电路非常简单。</p>
+<ol>
+<li>在没有按键按下时，两个比较器输入都等于VCC&gt;VTH&gt;VTL，所以比较器输出0；输出保持现状。</li>
+<li>在Trigger被按下时，比较器1输出0 （reset=0），比较器2输出1 （set=1），故输出高电平。释放按键后回到状态1稳定。</li>
+<li>在Reset被按下时，比较器1输出1 (reset=1)，比较器2输出0 （set=0）;故输出低电平。释放按键后回到状态1稳定。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/posts/346c9b2">https://www.kaysonz.top/posts/346c9b2</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%BB%A4%E6%B3%A2%E5%99%A8/">滤波器</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Recall%EF%BC%9ARC%E7%94%B5%E8%B7%AF%E7%9A%84%E5%85%85%E6%94%BE%E7%94%B5%E5%85%AC%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">Recall：RC电路的充放电公式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#555%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">555定时器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%85%A5"><span class="toc-number">2.1.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E7%A8%B3%E6%80%81-A-Stable-%E7%94%B5%E8%B7%AF"><span class="toc-number">2.2.</span> <span class="toc-text">非稳态(A-Stable)电路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90"><span class="toc-number">2.2.1.</span> <span class="toc-text">电路分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#50-%E5%8D%A0%E7%A9%BA%E6%AF%94%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="toc-number">2.2.2.</span> <span class="toc-text">50%占空比设计方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E7%A8%B3%E6%80%81-Monostable-%E7%94%B5%E8%B7%AF%EF%BC%9A"><span class="toc-number">2.3.</span> <span class="toc-text">单稳态(Monostable)电路：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E7%A8%B3%E6%80%81-Bistable-%E7%94%B5%E8%B7%AF%EF%BC%9A"><span class="toc-number">2.4.</span> <span class="toc-text">双稳态(Bistable)电路：</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 By 栞风</div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
