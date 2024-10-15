@@ -53,7 +53,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-10-14 21:23:12'
+  postUpdate: '2024-10-15 17:41:49'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -181,13 +181,14 @@ Chenqiao原话：但是一些文献里面认为$f_0$就是截止频率$ f_c $，
 一阶无源滤波器
 低通:一阶低通滤波器：输出的电压等于夸在电容两端的电压，输出信号的相位
 
-\psi=\phi_0-arctan⁡(R/X_C )=\phi_ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/346c9b2" title="Part1-Timer">Part1-Timer</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-26T09:39:21.000Z" title="发表于 2024-02-26 17:39:21">2024-02-26</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-14T13:22:51.784Z" title="更新于 2024-10-14 21:22:51">2024-10-14</time></span></div><div class="content">Recall：RC电路的充放电公式
+\psi=\phi_0-arctan⁡(R/X_C )=\phi_ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/346c9b2" title="Part1-Timer">Part1-Timer</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-26T09:39:21.000Z" title="发表于 2024-02-26 17:39:21">2024-02-26</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-14T13:24:23.054Z" title="更新于 2024-10-14 21:24:23">2024-10-14</time></span></div><div class="content">Recall：RC电路的充放电公式
 
 时间常数:$τ=RC $
 充电：$V_c=(1-e^{-t/τ})$
 放电：$V_c=V_i\cdot e^{-t/τ}$
 充放电时间：5τ
 
+上面这个充放电的e就是下式中提到$ln$的来源。
 555定时器引入555定时器内部电路结构图如下
 
 其有以下几种工作模式：
@@ -206,8 +207,7 @@ Chenqiao原话：但是一些文献里面认为$f_0$就是截止频率$ f_c $，
 
 
 在上电一瞬间，$Vc=0,$ 比较器1输出0 (reset=0)，比较器2输出1 (set=1)；所以SR Flip-Flop输出高电平，同时Q1关闭使C充电。
-当充电$VTL&lt;Vc&lt;VTH$时，比较器1和2都输出0，此时SR锁存器保持。
-当充电vc&gt;VTH时，比较器1输出 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/202924f0" title="Part1-CH4-数字的表达和算数电路">Part1-CH4-数字的表达和算数电路</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-08T19:11:18.000Z" title="发表于 2024-02-09 03:11:18">2024-02-09</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T02:03:37.856Z" title="更新于 2024-09-16 10:03:37">2024-09-16</time></span></div><div class="content">加法器半加法器半加法器接受两个输入：$x_1,x_2$ 并产生本位和进位两个输出。半加法器的真值表和实现电路如下图所示
+当充电$VTL&lt;Vc&lt;VTH$时，比较器1和2都输出0，此时SR锁存 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/202924f0" title="Part1-CH4-数字的表达和算数电路">Part1-CH4-数字的表达和算数电路</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-08T19:11:18.000Z" title="发表于 2024-02-09 03:11:18">2024-02-09</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T02:03:37.856Z" title="更新于 2024-09-16 10:03:37">2024-09-16</time></span></div><div class="content">加法器半加法器半加法器接受两个输入：$x_1,x_2$ 并产生本位和进位两个输出。半加法器的真值表和实现电路如下图所示
 
     
         

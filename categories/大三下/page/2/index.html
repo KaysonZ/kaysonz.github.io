@@ -53,7 +53,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-10-14 21:23:12'
+  postUpdate: '2024-10-15 17:41:49'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -194,7 +194,17 @@ IP地址被划分为了ABCDE五类，其中ABC三类为单播地址（一对一�
 没有发射设备发出单一频率的辐射。LED 的输出线宽（linewidth）通常约为 60 nm，激光器的线宽为 5 至 10 nm，而“单模激光器”的线宽可以小于 0.01 nm。这与本节中会介绍的色散有关，这代表即使信号源是单色的（单频），也会发生频率扩展。
 光纤的通信能力有如下参数来量化：
 
-光接接收度（li ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/6b68dff2" title="现代通信网络-LC5-局域网">现代通信网络-LC5-局域网</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-19T06:45:00.000Z" title="发表于 2024-04-19 14:45:00">2024-04-19</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.514Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">引入本章节以局域网的视角，将物理层、数据链路层、网络层三层进行链接。前面课程虽没有涉及物理层内容，但其他课程（例如通信原理）已经打下了基础。
+光接接收度（li ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/a8a0740e" title="现代通信网络-LC4-数据链路交换技术">现代通信网络-LC4-数据链路交换技术</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-19T06:45:00.000Z" title="发表于 2024-04-19 14:45:00">2024-04-19</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.514Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">这一章节要求：能明确地对分组交换和电路交换的特征，技术等进行明确地表述。很重要！
+
+引入讲故事部分
+最开始的时候，电话终端是需要配电源的，在需要发起一次通信时，摇动电话上的手柄，通过电磁感应产生一个信号发送给接线员。接线员知道你要和那里接通和后，人工将两根金属线连通。这便是最初的人工交换机。后面出现了机电交换机，通过机械取代人工工作。后续电路开关成熟，产生了程控交换，至此，交换技术和计算机搭上界了。
+在计算机的世界中，表示数字0-9至少需要4bit，那么就可以表示0-F（HEX）。因此键盘上后续加入了* 和 #，分别占A和B（HEX），0-9对应0-9（HEX）。后面几位保留。
+在ch1-基本交换技术中，已经对交换进行了初步的介绍，现在的交换主要电路交换和分组交换；而这里面的细分方式又分为面向连接和和面向无连接。
+
+如果带宽资源充分，分组交换的带宽资源使用率更好。但是分组交换无法确保通信持续的质量。
+在通信网络中，我们需的要通信的设备称为“station”，将交换设备称为“node”。
+
+通信网络是由一个一个node连接构成，node可以互相交换数据，也可以将数据发送给station。 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/6b68dff2" title="现代通信网络-LC5-局域网">现代通信网络-LC5-局域网</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-19T06:45:00.000Z" title="发表于 2024-04-19 14:45:00">2024-04-19</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.514Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">引入本章节以局域网的视角，将物理层、数据链路层、网络层三层进行链接。前面课程虽没有涉及物理层内容，但其他课程（例如通信原理）已经打下了基础。
 几种路由方式寻找路由，有几种不同的方式：
 
 集中式：有一个节点对网络所有节点和拓补状态都非常了解，中心路由找出的路径是最优的。但是集中控制代价极高，而且有同步周期问题（需要不断从整个网络收集信息，需要收集耗费的时间尽可能短）
@@ -215,17 +225,7 @@ Random
 Adaptive Routine：这是目前分组交换网络中大量采样的路由方式。这种路由属于需要各节点的信息，根据当前的信息进行自适应路由，但在集群规模的扩大时，收集信息会导致网络时延增加、部署成本提高，无法满足算力需求和部署要求。
 
 
-物理层的视角切入局域网（基于以太网）ALOHA纯AL ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/a8a0740e" title="现代通信网络-LC4-数据链路交换技术">现代通信网络-LC4-数据链路交换技术</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-19T06:45:00.000Z" title="发表于 2024-04-19 14:45:00">2024-04-19</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.514Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">这一章节要求：能明确地对分组交换和电路交换的特征，技术等进行明确地表述。很重要！
-
-引入讲故事部分
-最开始的时候，电话终端是需要配电源的，在需要发起一次通信时，摇动电话上的手柄，通过电磁感应产生一个信号发送给接线员。接线员知道你要和那里接通和后，人工将两根金属线连通。这便是最初的人工交换机。后面出现了机电交换机，通过机械取代人工工作。后续电路开关成熟，产生了程控交换，至此，交换技术和计算机搭上界了。
-在计算机的世界中，表示数字0-9至少需要4bit，那么就可以表示0-F（HEX）。因此键盘上后续加入了* 和 #，分别占A和B（HEX），0-9对应0-9（HEX）。后面几位保留。
-在ch1-基本交换技术中，已经对交换进行了初步的介绍，现在的交换主要电路交换和分组交换；而这里面的细分方式又分为面向连接和和面向无连接。
-
-如果带宽资源充分，分组交换的带宽资源使用率更好。但是分组交换无法确保通信持续的质量。
-在通信网络中，我们需的要通信的设备称为“station”，将交换设备称为“node”。
-
-通信网络是由一个一个node连接构成，node可以互相交换数据，也可以将数据发送给station。 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3f7b092c" title="电信传输理论-CH5-金属传输线理论">电信传输理论-CH5-金属传输线理论</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-15T11:12:31.000Z" title="发表于 2024-04-15 19:12:31">2024-04-15</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.518Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">引入这一章的传输理论知识和实例分析都非常重要。
+物理层的视角切入局域网（基于以太网）ALOHA纯AL ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3f7b092c" title="电信传输理论-CH5-金属传输线理论">电信传输理论-CH5-金属传输线理论</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-15T11:12:31.000Z" title="发表于 2024-04-15 19:12:31">2024-04-15</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.518Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">引入这一章的传输理论知识和实例分析都非常重要。
 
 
 一条传输线中，波的参考的起始点称为“The driving point”，该point非传输线的头尾两端。因为在研究传输线时，研究的不是它的头尾，而是中间这一部分的特质。头尾需要单独讨论。
