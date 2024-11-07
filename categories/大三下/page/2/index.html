@@ -53,7 +53,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-10-24 16:57:03'
+  postUpdate: '2024-11-07 13:23:19'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -168,7 +168,14 @@ IP地址的分类
 IP地址被划分为了ABCDE五类，其中ABC三类为单播地址（一对一通信），是最常用的。在ABC三类中，前8 16 24位是网络号。网络号的前三位是类别号，用于区别其是哪一类。D类地址一般用于多播（一对多通信）。
 在最初的时候，网络号的目的就是区分各个局域网。但是后面IP地址不够用了，因此产生了虚拟网（后面会讲，这里只需要知道网络号现在不完全是用来区分局域网的）。同一局域网上的主机或者路由IP地址中，网络号号段必须一样。
 主机号由局域网内自己分配。
-子网掩码(subnet masking)由于两级IP地址不够灵活，在主机号的基础 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/b1714978" title="Control Systems Part1-1-控制系统概述及其基本分析">Control Systems Part1-1-控制系统概述及其基本分析</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-05-23T11:28:41.000Z" title="发表于 2024-05-23 19:28:41">2024-05-23</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.510Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">控制系统概述
+子网掩码(subnet masking)由于两级IP地址不够灵活，在主机号的基础 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/c235a86e" title="Control Systems Part1-2&amp;3-频率响应分析法:几种图像和渐进法绘制波德图">Control Systems Part1-2&amp;3-频率响应分析法:几种图像和渐进法绘制波德图</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-05-23T11:28:41.000Z" title="发表于 2024-05-23 19:28:41">2024-05-23</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.511Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">波德图 （Bode plot）引入-什么是波德图波德图是一种用于体现系统开环传输函数(open loop transfer function)频率响应的图。波德图一般是由二张图组合而成，一张幅频图（幅度通常以dB为单位），一张相频图（相位通常以degree 为单位），两图都采用对数形式的横坐标（频率轴，单位rad/sec）。下图是一个波德图的例子
+
+采样法画波德图幅频图
+将$s=j\omega$代入求开环传输函数的幅频响应 $|H(s)|$（拉普拉斯变换$s=\sigma+j\omega,\ \sigma=\ 0$ 就等效于傅里叶变换了，详见信号与系统-拉普拉斯变换）
+将其转换为对数形式（$20log\left(\left|H\left(j\omega\right)\right|\right)$）
+变化频率$\omega$计算输出得到幅频图。（注：$|H(j\omega)|$就是开环传输函数在复平面的模长，也就是$\sqrt{\left(Real^2+Img^2\right)}$）
+
+相频图依旧代入s=j\omega，求开环传输函数的相频响应$angle(H(j\omega))$。具体 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/b1714978" title="Control Systems Part1-1-控制系统概述及其基本分析">Control Systems Part1-1-控制系统概述及其基本分析</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-05-23T11:28:41.000Z" title="发表于 2024-05-23 19:28:41">2024-05-23</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.510Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">控制系统概述
 如上图所示，根据有无feedback，控制系统被分为开环控制系统和闭环控制系统两类。在一个抽象出的系统中，使用Sensor取回需要的数据，Controller处理数据并转换为控制信号，Actuator收到控制信号后将其转化为物理上的输出
 这一门课仅涉及闭环线性时不变控制系统
 
@@ -178,14 +185,7 @@ IP地址被划分为了ABCDE五类，其中ABC三类为单播地址（一对一�
 通常来说，使用负反馈来控制一个系统。（i.e., 将系统期望的输出-现在的输出，得到error值）。在这门课中，只学习负反馈的情况。
 对系统进行建模（引入）使用拉普拉斯变换表达系统传输函数一个带有反馈的系统，其系统可以用一个差分方程来描述。通式是：
 
-\frac {d^ {n}y}{dt^ {n}} + a_ {n-1} \frac {d^ {n-1}y}{dt^ {n}1} + a_ {1}  \frac {dy}{dt} +  a_ {0} y(t)=  b_  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/c235a86e" title="Control Systems Part1-2&amp;3-频率响应分析法:几种图像和渐进法绘制波德图">Control Systems Part1-2&amp;3-频率响应分析法:几种图像和渐进法绘制波德图</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-05-23T11:28:41.000Z" title="发表于 2024-05-23 19:28:41">2024-05-23</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.511Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">波德图 （Bode plot）引入-什么是波德图波德图是一种用于体现系统开环传输函数(open loop transfer function)频率响应的图。波德图一般是由二张图组合而成，一张幅频图（幅度通常以dB为单位），一张相频图（相位通常以degree 为单位），两图都采用对数形式的横坐标（频率轴，单位rad/sec）。下图是一个波德图的例子
-
-采样法画波德图幅频图
-将$s=j\omega$代入求开环传输函数的幅频响应 $|H(s)|$（拉普拉斯变换$s=\sigma+j\omega,\ \sigma=\ 0$ 就等效于傅里叶变换了，详见信号与系统-拉普拉斯变换）
-将其转换为对数形式（$20log\left(\left|H\left(j\omega\right)\right|\right)$）
-变化频率$\omega$计算输出得到幅频图。（注：$|H(j\omega)|$就是开环传输函数在复平面的模长，也就是$\sqrt{\left(Real^2+Img^2\right)}$）
-
-相频图依旧代入s=j\omega，求开环传输函数的相频响应$angle(H(j\omega))$。具体 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/f7c4d047" title="电信传输理论-CH6-光传输线">电信传输理论-CH6-光传输线</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-05-09T08:22:31.000Z" title="发表于 2024-05-09 16:22:31">2024-05-09</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.518Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">引入对于光而言，其频率非常高，因此在讨论光时一般不直接讨论频率，而转为讨论光波的波长（通常以nm为单位）。
+\frac {d^ {n}y}{dt^ {n}} + a_ {n-1} \frac {d^ {n-1}y}{dt^ {n}1} + a_ {1}  \frac {dy}{dt} +  a_ {0} y(t)=  b_  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/f7c4d047" title="电信传输理论-CH6-光传输线">电信传输理论-CH6-光传输线</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-05-09T08:22:31.000Z" title="发表于 2024-05-09 16:22:31">2024-05-09</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.518Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">引入对于光而言，其频率非常高，因此在讨论光时一般不直接讨论频率，而转为讨论光波的波长（通常以nm为单位）。
 最开始的时候，塑料光纤作为“打通光纤通信最后一米，让用户终端使用光通信”的存在，有很多人在研究。这种光纤只能在较短距离内传输。但是它最终还是没有赶上时代，现在使用较少。
 在CH3中简略介绍过光纤，其中介绍了单模和多模光纤，其粗细有差异。一般来说，单模线芯粗细约为9um，多模线芯粗细越为50um。
 

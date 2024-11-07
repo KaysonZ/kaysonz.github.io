@@ -53,7 +53,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-10-24 16:57:03'
+  postUpdate: '2024-11-07 13:23:19'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -173,7 +173,13 @@ document.addEventListener('pjax:send', () => {
 一旦无法建立连接，通信就无法进行。
 
 在要求数据按先后顺序且以恒定速率快速传输的情况下或实时性要求较高时，使用电路交换是较为理想的选择。最典型的应用是传统电信网络。
-分组交换描述：分组交换（packet switching）是将数据打包成分组（Packets）进行传输、交换。数据包包含标头(Header)，和负载(Payload)。标头包含分组的基本信息，例如地址信息，管理信息等。分组通过最优路径（取决于 路由算法）路由到目标。分组交换可细分为虚电路和数据 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/8220cd2" title="Control-Systems-Part2-Lectrue5-PID调谐和数字补偿器设计">Control-Systems-Part2-Lectrue5-PID调谐和数字补偿器设计</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-21T11:29:31.000Z" title="发表于 2024-06-21 19:29:31">2024-06-21</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.510Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">PID控制器调谐PID三个部分对系统响应的贡献在Part1中详细介绍和分析过PID控制器，这里主要介绍一个调谐原则。回顾一下，PID的通式是：
+分组交换描述：分组交换（packet switching）是将数据打包成分组（Packets）进行传输、交换。数据包包含标头(Header)，和负载(Payload)。标头包含分组的基本信息，例如地址信息，管理信息等。分组通过最优路径（取决于 路由算法）路由到目标。分组交换可细分为虚电路和数据 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/b7f662c5" title="Control-Systems-Part2-Lectrue4-根轨迹">Control-Systems-Part2-Lectrue4-根轨迹</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-21T11:29:31.000Z" title="发表于 2024-06-21 19:29:31">2024-06-21</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.509Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">引入我们在研究系统极点的路径时，都是对闭环传递函数而言的。因为闭环传递函数的零极点可以直接反应系统的一些特性，例如稳定性，收敛速度，是否存在过冲等等。
+考虑下图这样的一个系统，其系统闭环传递函数为$\frac{KG(s)}{1+KG(s)H(s)}$。我们研究的就是$1+KG(s)H(s)=0$时产生的极点。但是，我们的分析对象其实是$G(s)H(s)$这个开环传递函数，我们是通过分析OLTF，来研究CLTF的根。
+
+而所谓根轨迹，就是随着增益K的变换，CLTF极点的移动路径。而这个轨迹可以通过CLTF，即$G(s)H(s)$的极点和零点绘制出来。
+根轨迹的基本特性Dr.Huda PPT上的规则比较基础，但下一章会用到超出这个范围外的知识。这个视频讲了更普适的规则【自动控制原理】8_根轨迹_Part2_根轨迹手绘技巧_哔哩哔哩_bilibili。下面的笔记是结合二者写的
+
+根轨迹的数种规则规则1：系统的根轨迹条数等于系统极点个数或零点个数（取最大的那个）例如$G(s)=\frac{(s+4)(s+1)}{(s+3)(s+0.5)}$，系统有2个零点2个极点，Max(2,2)=2，因此系 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/8220cd2" title="Control-Systems-Part2-Lectrue5-PID调谐和数字补偿器设计">Control-Systems-Part2-Lectrue5-PID调谐和数字补偿器设计</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-21T11:29:31.000Z" title="发表于 2024-06-21 19:29:31">2024-06-21</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.510Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">PID控制器调谐PID三个部分对系统响应的贡献在Part1中详细介绍和分析过PID控制器，这里主要介绍一个调谐原则。回顾一下，PID的通式是：
 
 u(t)=K_pe(t)+K_i\int e(t)dt+K_d\frac{de(t)}{dt}写成并联形式是：
 
@@ -197,13 +203,7 @@ $K_i$的贡献是：
 会削减系统稳定性
 
 在有系统误差和外力作用时消除偏差、提高精度，同时也会增加响应速度，产生过冲，过大会产生振荡。
-$K_d ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/b7f662c5" title="Control-Systems-Part2-Lectrue4-根轨迹">Control-Systems-Part2-Lectrue4-根轨迹</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-21T11:29:31.000Z" title="发表于 2024-06-21 19:29:31">2024-06-21</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.509Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">引入我们在研究系统极点的路径时，都是对闭环传递函数而言的。因为闭环传递函数的零极点可以直接反应系统的一些特性，例如稳定性，收敛速度，是否存在过冲等等。
-考虑下图这样的一个系统，其系统闭环传递函数为$\frac{KG(s)}{1+KG(s)H(s)}$。我们研究的就是$1+KG(s)H(s)=0$时产生的极点。但是，我们的分析对象其实是$G(s)H(s)$这个开环传递函数，我们是通过分析OLTF，来研究CLTF的根。
-
-而所谓根轨迹，就是随着增益K的变换，CLTF极点的移动路径。而这个轨迹可以通过CLTF，即$G(s)H(s)$的极点和零点绘制出来。
-根轨迹的基本特性Dr.Huda PPT上的规则比较基础，但下一章会用到超出这个范围外的知识。这个视频讲了更普适的规则【自动控制原理】8_根轨迹_Part2_根轨迹手绘技巧_哔哩哔哩_bilibili。下面的笔记是结合二者写的
-
-根轨迹的数种规则规则1：系统的根轨迹条数等于系统极点个数或零点个数（取最大的那个）例如$G(s)=\frac{(s+4)(s+1)}{(s+3)(s+0.5)}$，系统有2个零点2个极点，Max(2,2)=2，因此系 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/eb15a674" title="Control-Systems-Part2-Lectrue1~3-数字控制系统基础">Control-Systems-Part2-Lectrue1~3-数字控制系统基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-20T12:58:07.000Z" title="发表于 2024-06-20 20:58:07">2024-06-20</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.509Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">数字控制系统简介数字控制系统的核心是使用MCU、电脑之类的控制器通过软件的形式对数据进行处理。而不是模拟信号那样通过模拟器件来构成积分器微分器等等。
+$K_d ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/eb15a674" title="Control-Systems-Part2-Lectrue1~3-数字控制系统基础">Control-Systems-Part2-Lectrue1~3-数字控制系统基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-20T12:58:07.000Z" title="发表于 2024-06-20 20:58:07">2024-06-20</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-16T01:59:55.509Z" title="更新于 2024-09-16 09:59:55">2024-09-16</time></span></div><div class="content">数字控制系统简介数字控制系统的核心是使用MCU、电脑之类的控制器通过软件的形式对数据进行处理。而不是模拟信号那样通过模拟器件来构成积分器微分器等等。
 数字控制系统具有如下优点：
 
 对噪声的鲁棒性好：数字信号可以无损传输，只要不超过门限值，数字信号读取出来都是无损的。
