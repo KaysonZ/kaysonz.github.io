@@ -1,0 +1,268 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>智能系统设计-罐装知识 | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="ANNANN停止的标准 特定次数的迭代(iteration)之后 输出的误差低于阈值（threshold） 独立验证集（separate validation set）上的错误小于某些标准(criteria)。  ANN各项参数的影响学习率：过小，迭代（iteration）过多；过大，可能错过最优解，在损失函数（lossfunction）最低点震荡（oscillate） 动量（momentum）：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="智能系统设计-罐装知识">
+<meta property="og:url" content="https://www.kaysonz.top/posts/5ed0526b">
+<meta property="og:site_name" content="風">
+<meta property="og:description" content="ANNANN停止的标准 特定次数的迭代(iteration)之后 输出的误差低于阈值（threshold） 独立验证集（separate validation set）上的错误小于某些标准(criteria)。  ANN各项参数的影响学习率：过小，迭代（iteration）过多；过大，可能错过最优解，在损失函数（lossfunction）最低点震荡（oscillate） 动量（momentum）：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.kaysonz.top/img/avatar.jpg">
+<meta property="article:published_time" content="2024-09-09T11:01:18.000Z">
+<meta property="article:modified_time" content="2025-01-03T02:56:42.257Z">
+<meta property="article:author" content="栞风">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.kaysonz.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://www.kaysonz.top/posts/5ed0526b"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":8,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '智能系统设计-罐装知识',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-01-03 10:56:42'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/notice.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">19</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">智能系统设计-罐装知识</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-09-09T11:01:18.000Z" title="发表于 2024-09-09 19:01:18">2024-09-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-03T02:56:42.257Z" title="更新于 2025-01-03 10:56:42">2025-01-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E5%9B%9B%E4%B8%8A/">大四上</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E5%9B%9B%E4%B8%8A/%E6%99%BA%E8%83%BD%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">智能系统设计</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="ANN"><a href="#ANN" class="headerlink" title="ANN"></a>ANN</h1><h2 id="ANN停止的标准"><a href="#ANN停止的标准" class="headerlink" title="ANN停止的标准"></a>ANN停止的标准</h2><ul>
+<li>特定次数的迭代(iteration)之后</li>
+<li>输出的误差低于阈值（threshold）</li>
+<li>独立验证集（separate validation set）上的错误小于某些标准(criteria)。</li>
+</ul>
+<h2 id="ANN各项参数的影响"><a href="#ANN各项参数的影响" class="headerlink" title="ANN各项参数的影响"></a>ANN各项参数的影响</h2><p><strong>学习率</strong>：过小，迭代（iteration）过多；过大，可能错过最优解，在损失函数（lossfunction）最低点震荡（oscillate）</p>
+<p><strong>动量（momentum）</strong>：过小，陷入局部最优解(local minima)；过大，造成下降方向与梯度方向差异较大，产生震荡。</p>
+<p><strong>*附：动量的作用：</strong> 1.使得训练时穿过（rolling through）局部最优（local minima）*</p>
+<p>​                  <em>2.加大梯度不变时的步长（step size），提升收敛速率</em></p>
+<p><strong>迭代次数（learning iterations）</strong>：过小，欠拟合，无法捕捉数据集的通用特征（characteristic）。过多，浪费计算资源，导致过拟合(overfitting)。</p>
+<p><strong>*附：防止过拟合的方法：</strong>1. 使用验证数据集（validation data set），当误差增加时，则立即停止训练*</p>
+<p>​                    <em>2.使用预定义的迭代次数停止训练</em></p>
+<p>​                    <em>3.使用预定义的误差阈值（threshold）停止训练</em></p>
+<p><strong>数据集：</strong>越大越好，大的good for training</p>
+<p><strong>超参数（hyperparameter）</strong>：手动(manually)设置的参数，用于优化训练算法。</p>
+<h2 id="神经网络类型的数种概念"><a href="#神经网络类型的数种概念" class="headerlink" title="神经网络类型的数种概念"></a>神经网络类型的数种概念</h2><p><strong>深度学习：</strong>使用多层非线性处理单元的级联进行特征提取和转换(feature extraction and transformation)。每一层都使用前一层的输出作为输入。<strong>隐藏层的作用：</strong>可以为模型引入其他影响因子（introducing extra factors）,为网络提供了对数据中的非线性进行建模的能力。</p>
+<p><strong>迁移学习：</strong>使用其他数据进行预训练（pretrained）后的模型进行再次训练，以处理新数据。可以有效节省数据集（节省监督学习的数据标注量）。</p>
+<p><strong>单层感知机网络的局限性：</strong>单层感知机只能分类线性边界，因此XOR这样的需要多条线进行分割（requires more than one line to it），无法使用单层感知机进行建模。</p>
+<p><strong>循环神经网络(Recurrent Neutral Network)：</strong>一种常用于处理时间序列数据的深度学习网络。隐藏层包含自反馈，序列的当前输出也与前一个输出相关，因此有内部记忆（internal memory）。<strong>擅长：</strong>处理未分割的手写识别或语音识别等（unsegmented connected  handwriting recognition or speech recognition）<strong>缺点：</strong>1. 大多数RNN都存在缩放问题(scaling issue)。2. 在有大量输入数据集时，RNN不易训练。</p>
+<p><strong>*附：使用feedforward网络处理时间序列数据：</strong>需要将时间序列作为输入，例如以x(t), x(t-1), x(t-2)作为输入。训练同最正常神经网络*</p>
+<p><strong>卷积神经网络（Convolutional neural networks）：</strong>常用于图像识别的神经网络。由多层卷积层-池化层还有一个全连接层（full connected layer）构成。<strong>卷积层：</strong>提取输入数据的特征。<strong>池化层：</strong>提取卷积结果的显著特征，减少计算量。<strong>被用于：</strong>手写识别、图像分类、人脸识别（face recognition）</p>
+<h2 id="训练方式"><a href="#训练方式" class="headerlink" title="训练方式"></a>训练方式</h2><p><strong>监督学习(supervised)：</strong>需要使用被标注的数据（labeled data）进行学习。监督学习算法分析训练数据并产生一个推断函数，该函数可用于映射新样本。前馈神经网络就是一种有监督学习系统。</p>
+<p><strong>无监督学习(unsupervised)：</strong>无需使用被标注的数据，在无标签数据中寻找隐藏结构（hidden structure），只是将现有的数据进行聚类（clustering）和分类（classifying）。SOM就是典型的无监督学习。</p>
+<p><strong>常用训练算法-梯度下降（Gradient descent）：</strong>计算损失函数在当前点的梯度，并沿着梯度的相反（opposite）方向更新参数，直到找到损失函数的最小值，即朝着上升率最快的反方向行走。</p>
+<p><strong>验证数据集的意义（validation set）：</strong>验证集是用于在训练时测试网络的数据，通常用于防止过拟合（overfitting）。</p>
+<hr>
+<h1 id="Fuzzy-System"><a href="#Fuzzy-System" class="headerlink" title="Fuzzy System"></a>Fuzzy System</h1><h2 id="推理模型差异"><a href="#推理模型差异" class="headerlink" title="推理模型差异"></a>推理模型差异</h2><p><strong>Mamdani：</strong>使用连续的输出模糊集，可以能够以更直观、更人性化的方式描述专业知识。但需要更大的计算负担。</p>
+<p><strong>Sugeno：</strong>输出模糊集使用离散的特定数字。在计算上效率很高，并且可以很好地嵌入优化和自适应技术，这使得它在控制问题中非常有吸引力，特别是对于动态非线性系统。</p>
+<h2 id="归一化模糊变量的优点"><a href="#归一化模糊变量的优点" class="headerlink" title="归一化模糊变量的优点"></a>归一化模糊变量的优点</h2><ul>
+<li>更有效地利用论域（universe of discourse）的间隔</li>
+<li>将规则库推广到更大范围的模糊化（To generalize the rule base for a wide range of fuzzification）</li>
+<li>为调教(tuning)提供了更多灵活性(flexibility)</li>
+</ul>
+<hr>
+<h1 id="Genetic-Algorithm"><a href="#Genetic-Algorithm" class="headerlink" title="Genetic Algorithm"></a>Genetic Algorithm</h1><h2 id="GA的一个世代的步骤及其意义"><a href="#GA的一个世代的步骤及其意义" class="headerlink" title="GA的一个世代的步骤及其意义"></a>GA的一个世代的步骤及其意义</h2><p><strong>编码（Encoding）：</strong>将问题的可能解决方案视为种群中的个体（individuals）。如果解决方案可以分为一系列小步骤（构建块 Building blocks），那么这些步骤由基因表示，而一系列基因（染色体 chromosome）将编码整个解决方案。这样，问题的不同解决方案在遗传算法中表示为个体的染色体。</p>
+<p><strong>适应度函数（fitness function）:</strong>代表一个问题的期望解的主要要求（即最便宜的价格，最短的路线，最紧凑的安排等）。该函数计算并返回单个解决方案的适应度。</p>
+<p><strong>选择算子（Selection operator）:</strong>定义当前种群中个体被选择繁殖的方式。有许多策略（例如轮盘赌，排名，锦标赛选择等）,，选择最适合当前算法的。</p>
+<p><strong>交叉（Crossover）：</strong>定义了父母的染色体如何混合，以获得其后代的遗传密码（例如，一点，两点，均匀交叉等）。这个运算符实现了继承属性（inheritance property）（子代继承（inherit ）父代的基因）。</p>
+<p><strong>变异（Mutation）：</strong>算子会对后代的遗传密码（genetic codes）产生随机变化。这种操作符需要为遗传密码<strong>带来一些随机多样性（random diversity）</strong>。在某些情况下，如果不使用变异算子，遗传算法就无法找到全局最优解。<br><strong>下面给出算法的流程图：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20250103102623368.png" alt="image-20250103102623368"></p>
+<h2 id="表型和基因型的差异"><a href="#表型和基因型的差异" class="headerlink" title="表型和基因型的差异"></a>表型和基因型的差异</h2><p><strong>表型（phenotypes）</strong>：表型是基因型通过解码和表达所产生的实际特征或行为（actual characteristic or behaviour）。在遗传算法中，表型通常是基因型经过解码后得到的解。</p>
+<p><strong>基因型（genotypes</strong>）：基因型是个体的遗传信息（individual’s genetic information）的编码表示。在遗传算法中，基因型通常表示为一个字符串或数组，其中每个元素代表一个基因，表型经过编码(encoding)即可得到基因型。</p>
+<h2 id="GA训练停止条件："><a href="#GA训练停止条件：" class="headerlink" title="GA训练停止条件："></a>GA训练停止条件：</h2><ul>
+<li>超出允许的CPU时间（CPU time）后停止</li>
+<li>适应度超过给定阈值</li>
+<li>在一段时间内，改善不明显</li>
+<li>种群多样性（population diversity）在阈值以下</li>
+</ul>
+<h2 id="GA参数的影响"><a href="#GA参数的影响" class="headerlink" title="GA参数的影响"></a>GA参数的影响</h2><p><strong>种群大小过大：</strong>可以找到解决方案，但是计算量提高</p>
+<p><strong>交叉率过大：</strong>可能产生震荡，不收敛</p>
+<p><strong>变异率过小：</strong>激励不足(not enough excitation)，可能陷入局部最优解</p>
+<h2 id="GA是全局优化算法的原因"><a href="#GA是全局优化算法的原因" class="headerlink" title="GA是全局优化算法的原因"></a>GA是全局优化算法的原因</h2><p>GA是一种随机算法( stochastic algorithm)，它从分布在整个解空间(solution space)范围内的随机数开始，从而在整个解空间范围内寻找可行解，使算法成为一种全局优化搜索引擎。</p>
+<hr>
+<h1 id="图像处理"><a href="#图像处理" class="headerlink" title="图像处理"></a>图像处理</h1><h2 id="图像压缩的流程"><a href="#图像压缩的流程" class="headerlink" title="图像压缩的流程"></a>图像压缩的流程</h2><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20250103103405493.png" alt="image-20250103103405493"></p>
+<p><strong>mapper:</strong>将数据变换(transform)到对压缩有友好的域上。其中一些mapper与傅里叶有关，例如DCT。</p>
+<p><strong>Quantization:</strong>引入误差的主要步骤。That introduces something that helps the compression, but limits us from being able to reconstruct exactly the image.  </p>
+<p><strong>Symbol encoder：</strong>将图像使用更高效的编码（例如可变长的霍夫曼编码）进行存储。</p>
+<h2 id="JPEG使用DCT的原因"><a href="#JPEG使用DCT的原因" class="headerlink" title="JPEG使用DCT的原因"></a>JPEG使用DCT的原因</h2><p>相较于DFT，DCT的边界拓展更加连续</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20250103104836562.png" alt="image-20250103104836562"></p>
+<h2 id="直方图均衡化的已知条件"><a href="#直方图均衡化的已知条件" class="headerlink" title="直方图均衡化的已知条件"></a>直方图均衡化的已知条件</h2><script type="math/tex; mode=display">
+p_s(s)=p_r(r)|\frac{dr}{ds}|</script><h2 id="图像复原的步骤"><a href="#图像复原的步骤" class="headerlink" title="图像复原的步骤"></a>图像复原的步骤</h2><p><img src="https://cdn.jsdelivr.net/gh/kaysonz/BlogPicHost/imgs/image-20250103104458118.png" alt="image-20250103104458118"></p>
+<h3 id="逆滤波"><a href="#逆滤波" class="headerlink" title="逆滤波"></a>逆滤波</h3><p>在拍摄图像时，由于相机系统、运动干扰等引入噪声$h(x,y)$</p>
+<script type="math/tex; mode=display">
+g(x,y)=f(x,y)*h(x,y)</script><p>那么在频域上，通过除$H(u,v)$即可</p>
+<script type="math/tex; mode=display">
+F(u,v)=\frac{G(u,v)}{H(u,v)}</script><p>逆滤波的难点是如何估计退化函数H，<strong>通常情况是根据经验预测图像所经受的退化类型</strong>。</p>
+<h3 id="维纳滤波"><a href="#维纳滤波" class="headerlink" title="维纳滤波"></a>维纳滤波</h3><p>基本思想：将原图和复原图的均方差表达式最小化</p>
+<script type="math/tex; mode=display">
+MSE=E[(\hat f-f)^2]</script><p>如果将上述期望式子展开，用DCT变化到频率，则有</p>
+<script type="math/tex; mode=display">
+\hat F(u,v)=G(u,v)\frac{H^*(u,v)}{H^2(u,v)+\frac{p_\eta}{p_f}}</script><p>由于$\frac{p_\eta}{p_f}$通常是个常数，因此记为$K$。通过尝试不同的K值后，对上式进行IDFT观察图像复原的情况，从而复原图像。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/posts/5ed0526b">https://www.kaysonz.top/posts/5ed0526b</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ANN"><span class="toc-number">1.</span> <span class="toc-text">ANN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ANN%E5%81%9C%E6%AD%A2%E7%9A%84%E6%A0%87%E5%87%86"><span class="toc-number">1.1.</span> <span class="toc-text">ANN停止的标准</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ANN%E5%90%84%E9%A1%B9%E5%8F%82%E6%95%B0%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-number">1.2.</span> <span class="toc-text">ANN各项参数的影响</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%95%B0%E7%A7%8D%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.</span> <span class="toc-text">神经网络类型的数种概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E6%96%B9%E5%BC%8F"><span class="toc-number">1.4.</span> <span class="toc-text">训练方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Fuzzy-System"><span class="toc-number">2.</span> <span class="toc-text">Fuzzy System</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E7%90%86%E6%A8%A1%E5%9E%8B%E5%B7%AE%E5%BC%82"><span class="toc-number">2.1.</span> <span class="toc-text">推理模型差异</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%92%E4%B8%80%E5%8C%96%E6%A8%A1%E7%B3%8A%E5%8F%98%E9%87%8F%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-number">2.2.</span> <span class="toc-text">归一化模糊变量的优点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Genetic-Algorithm"><span class="toc-number">3.</span> <span class="toc-text">Genetic Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#GA%E7%9A%84%E4%B8%80%E4%B8%AA%E4%B8%96%E4%BB%A3%E7%9A%84%E6%AD%A5%E9%AA%A4%E5%8F%8A%E5%85%B6%E6%84%8F%E4%B9%89"><span class="toc-number">3.1.</span> <span class="toc-text">GA的一个世代的步骤及其意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E5%9E%8B%E5%92%8C%E5%9F%BA%E5%9B%A0%E5%9E%8B%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="toc-number">3.2.</span> <span class="toc-text">表型和基因型的差异</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GA%E8%AE%AD%E7%BB%83%E5%81%9C%E6%AD%A2%E6%9D%A1%E4%BB%B6%EF%BC%9A"><span class="toc-number">3.3.</span> <span class="toc-text">GA训练停止条件：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GA%E5%8F%82%E6%95%B0%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-number">3.4.</span> <span class="toc-text">GA参数的影响</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GA%E6%98%AF%E5%85%A8%E5%B1%80%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">3.5.</span> <span class="toc-text">GA是全局优化算法的原因</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">图像处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E5%8E%8B%E7%BC%A9%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="toc-number">4.1.</span> <span class="toc-text">图像压缩的流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JPEG%E4%BD%BF%E7%94%A8DCT%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">4.2.</span> <span class="toc-text">JPEG使用DCT的原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96%E7%9A%84%E5%B7%B2%E7%9F%A5%E6%9D%A1%E4%BB%B6"><span class="toc-number">4.3.</span> <span class="toc-text">直方图均衡化的已知条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E5%A4%8D%E5%8E%9F%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-number">4.4.</span> <span class="toc-text">图像复原的步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%86%E6%BB%A4%E6%B3%A2"><span class="toc-number">4.4.1.</span> <span class="toc-text">逆滤波</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%B4%E7%BA%B3%E6%BB%A4%E6%B3%A2"><span class="toc-number">4.4.2.</span> <span class="toc-text">维纳滤波</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 栞风</div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
