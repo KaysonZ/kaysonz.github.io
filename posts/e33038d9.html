@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>EE6111-5G-Communication-and-Beyond-Week2:熵与编码 | 風</title><meta name="author" content="栞风"><meta name="copyright" content="栞风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="阿尔戈在迷宫区搜集到的零碎攻略信息,还在整理...">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EE6111-5G-Communication-and-Beyond-Week2:熵与编码">
+<meta property="og:url" content="https://www.kaysonz.top/posts/e33038d9">
+<meta property="og:site_name" content="風">
+<meta property="og:description" content="阿尔戈在迷宫区搜集到的零碎攻略信息,还在整理...">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.kaysonz.top/img/avatar.jpg">
+<meta property="article:published_time" content="2025-08-19T10:38:21.000Z">
+<meta property="article:modified_time" content="2025-08-19T12:16:31.647Z">
+<meta property="article:author" content="栞风">
+<meta property="article:tag" content="移动通信">
+<meta property="article:tag" content="private">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.kaysonz.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://www.kaysonz.top/posts/e33038d9"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":8,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'EE6111-5G-Communication-and-Beyond-Week2:熵与编码',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-08-19 20:16:31'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/notice.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">课程</div><div class="length-num">23</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: rgba(0, 0, 0, .1);"><nav id="nav"><span id="blog-info"><a href="/" title="風"><img class="site-icon" src="/img/icon.png"/><span class="site-name">風</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-mortar-board"></i><span> 课程</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-star"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">EE6111-5G-Communication-and-Beyond-Week2:熵与编码</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-08-19T10:38:21.000Z" title="发表于 2025-08-19 18:38:21">2025-08-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-08-19T12:16:31.647Z" title="更新于 2025-08-19 20:16:31">2025-08-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8D%97%E6%B4%8B%E7%90%86%E5%B7%A5CE/">南洋理工CE</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8D%97%E6%B4%8B%E7%90%86%E5%B7%A5CE/EE6111-5G-Communication-and-Beyond/">EE6111_5G_Communication_and_Beyond</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="看来您不属于攻略组,请等待笔记验证后发布" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="b645cc173ec95476af0ba8a057ee2ae8658bd9cf5ad06db03dbff69d221e5724">d1639eecab8d1fa736759a9f8831105f177f612d1bf6ed75a742eca5b3ef9dbf37ac160ac4f88a80dad76ee5495b6e6649db01aae814257635aab9f24768b8f7be8baa6c72b815305a4332f6a870b8675091c3393f437e8981899a9570bc2b7e90f73793e6c3dbc6034e47679673297d9ef43e123a3fc8383f10227939f415db3a26d318a56f2799233a352852a3a9721c681ab00f2726f5a3c37799bbb25e0764dcf307682c6bf0bbf3325e2945422da3151063c226115066ea0fbd5463f00f789e636d2d345394d8cec58648c7c5f432c8ee039ec659955e642c668abaa69e9f971abf92a7f59ece91fdd538bc44f354998ac7a0e3ab6c4e70bbec19454b5c5043f6a7b7c6f8df9f697d56705ca58445bd426479aa2ee0dd3db16ca4c80420fb30f34673b918c891883602afa418f1fdbbdf96ec6bf9a4c8212d98f4d41dabd65476b10d2f25185629fafb0e4d86f0003a0b3b5981290c99f9f4b482e54fd5f4b74aa64cef73d755185b4b6e683db891be0228c0d90397a44c12fb98eb2e22a77836cd56f85531d95734612a4fc8aae8da9eb4bae7928f93b7b5bf7cceaa4fe7c7181235bde1a46dc905dfe1f9e2a8bdaab237e3299840bccc8babc28fc61a9f61585f0131e00179499f5a9bc8ab919804090577f1c7a359de2d6faeb4a0b91a4fc689da22c00fcc3d007577ff9f2b06a14333d5243212d5d920e5de86f1edb6bc99c61d438abc0ea29d4247049ebc22a4173d568bf7de8a66b7d4790df9184e15babde4e57d00bd8c2d45d9e79dbe4e4dc59f96c4369940ef1b3a88ec4b0fc2aac26690ad77629052104298a6b83a725b07a24f259d3dfa4f5ec6b28e2523a774310b059d63969c99afbe162b1b7b3c9535226a5b031f88a58ddc006fad6a15910a48021a28b37b0143608868d2cedaa5c4593e69af430e9f4c05b165f07853658494ea32275541cdb7b57937683d3d4f9df4c60b1a7409d1b206411f7f7ce09486e7b6a3d97c9610bb2e8c4d5aeeabc867454b2f24b96c5b8b2ad59a9772d7a453f1ec778d47e95a40ea940e592546ecf08667ae574b16d056d80eb772b04e97513be690825494b8cce0971198a83e5d4222e4589abd6270562a58c64ae32dfccb15b703aad7fd663ffca95fc86487d3594b709f2858f72c46a9deeb29650b9b2b6a652377b187784fac69d2b0b708bed7ecde6cfe10414616cba8a2de613eb9e9ea0dd8221e3d556a1045ed01389dfa3063675e2ed0d00626e29ab224fa9df7ed68b51375338246b78b736116d9077bcf7ed205280489da482842994d9dca977f52b6489b6a1ed5bf925819e9b5198404087f3f42784666f51ac72d747f45e65fb5a7a1f0bbbdf05553b43982d6a62f6a707e0339ac3da7219dd6b24eea7d171f5b792ddf9c7d9b8b2512f06927607f822c02851694105d4e85bca5d1ea8efc066e95285b3f82b3ebb57b71723a96bae0dfe11bafaf9cedd93834d41f5c1dd128391f269e662781de65fb0b980ceea91caf789668720f5759bccb291e24f5cc4f36dfa285d6686b614ca521e2a7318829a9455e76d20605e055dd26707d4d1306abba921f9315d678e282522ecd9c4061b79ded3982ad12b6ab08af2fbe6530ef3acc7e5e3abcb43b77d6e2aa6bd1d2527fd6be975d09f20c831fe06ed4197f730ac15dc01a5f06a17159164e8314316a81761aa6a09285155c1ed209aa3fa1a83c567d5433a821224f07f8b2c0855ac19b156eed010c7b3538b024e86b64885782e661e88f87d62c76c97a6dfef523421a9b9ed00edc3a9969c51389ddf9ccc75ffa04669462a9e527f7c7159ec3058db1b570dc7e3c90a2901f9b8f8f137e2923c857df4be7b92ad3afca2fd374eb4e24b6617966476daf9617fb65dd372f0a2295ed9fcf16877e2544afcfe5766b59c623a08585561c257a33a08643bf5ded9d75eaca1a40af2749b08257443b66772136540ea912f42a2203ef053d0634735814cc934207c4810105d333dc6a4d093b5be43a36a12bf346606c6030631f5e4e990603b5fed02a365164d3e904b6d7d036e3834d1491e3535887010c87fcf9f81121afda87134425dc84f06c95d4f1a113f96a688e946986b3a664c7486fcd3821570e9109673852c0c9714ce2f7e46c8898e6c4183ac85ff612c547dc28d4b103ab10557eb0e7d18896247f5f55f9130a492d435f792c9d6563edebaab04528f79fd4d11f98c0b7f629dabdf0669f332895e2b4eb815f18b63ec37336146ce045a8a9a0c9c3e969996be049194a59664d9290d6fcdfccc9217b478431368d8eb4d7318f13ab5380e8b69edd1cfd5393966e937e3008568d85ed7a59364466f01dbdd7e4de9ecb417ed875e175e2d2e2b5e7bd97c603ec30d099c6a3e7f26c3ea3d16e4eed12726a61f9fb27bc905e53874294ae6cf30f1e2c9c265c330c54f466741236af9b625219f15c8558153f111905fac88b86e59f57c901d8aa3e021ff1e4b73ac20d14ec3e7bf83a3c65c0e35ffc0fbcd887c1cc1fb6129dbcd0bc9f1b291e8baa23d2d1ab7a8e83f940f58cdd30f712d39bdf8739c551a18ef8bf6adc3f9f68d47b5051ae537ac7054f6885a42f730b2286bd540c0fa4144e283e5509f48544b72f861b253a83f2843e21f6fe3867ad64bc05c85a8dc47ef7085757b6536336dc7cf4c092abe1af6650cbfa04b3e620a9362428ababde95b50d98811a6dd757bfc86c6a7b434092377bfc81683ec0a0d9f25b652c2f2b74392408e2e813633748036a6d9dd4372524fcedf5c5b391aa0cea332b00732d797b8e4b6044bafbff12aed69c00e93d160b0d4c32ad474732160716047c2424815897608f3f6909d7560d797b1e002e8fd846cd4103c3e9757c0e259c80c1ee295f67dcf70be4183fbbdba933a100abce932fed1b04842cfef083d86c93fbb1aae97869d5395de81b3c4a675641bcd795c38d41fb64745c54e94c2c4b1e8af37384f9cef4ec746caab88faf6c5d46a5042ee0d7c9b6c39a069fe47f2553ac04173e9353c4aa44c6bcd2e6e1ce9a5e13004ea0c9ef31747418b726d85eba7b49e1b2234177b1bf457662e5204f3278ddd52dc7799e749cee99258937b3f299383563ce5232ed1d65ad7f4d61d1f776f3afeefc1b6f241d4681ba5e4f9509171df91a21e9cfe3c1f5117e1deb1407633c7e1bd43a7387f314ffbfa90d8007f2f1acb81b3b02905ec1affd8ff2ed3d80883e9e95fb7af10e37fb538a5e9aadb83d43b41689c6699305803aafd57487a4653fcb3b7024dc080ea4cb98627863d367794e3ef5f35d77b8642a111897c0955abf0741ace2c555d25a753b5ac28e3548bec77eefb1943f58ce54481b5f26172cbf139242345b4aa5115348c266ca68b0c58c794424158398fd12039aeaaa7753cb55e17f43e5cf61f6fbc750fef4597e54e195eec6087589ea18fb7323e15c70361dd5f27f151d96b1b7bf470cef13918c8d5adf8809c489e693e7ecdc853c4bc0b656ca0a0553deb21315c5e98d36fed7b6a86b268ad6757f1456e3e9234083da04f83864d6304af20c8b9fb7913960ee86c60687e05c6be6269d5c58e3fa949d6e35ea03b7369821e86d83c0b0256c67cf82d9281f6d768e0ae1c906d2bfa1189ce98aaf1fa9d854303bc02ac364c4c4e55323947f7470e5c3c32eb263bd80cef12ecbaa5a28f1dd3914b61a2fd641e995ba0fc9b8175e31d9b58f82306d0a0d730b39060e2df647458e1de6cf034106e815509ab7dc21e981813fb8b1ed7ee082698cf0adf4d13e700138821bf810bdf4fc48b9bb4b7283446443083f0221cc4d13b8bbfd80c21dd8559b56924cf77233c3d97928b5fcb7b0d27fdf13d5bed68f09779be8f1d4c8ba8448946eceba662cc647d42b5b66cb8f9d3e7435cd0b2f59a444135f86635cb7e923d2d95f247ab07b3c82e43df13fa97214cd93f243246543572a4c9b88b3ca1f731a497ed7272ddbf9c043694370e20132836ca7f68feda819516371fd41723fec1c1e54c77150ca1703baa91faf28603f9c6f5643e3131484dd448e219a333df8d68d993ae340b553ce879fb9ef7e7702d5c999252b905e840e035cbba85a576ac52e96c75b7b9ec52fac358bcc4cc926bb9d3bf6fb881fc9b0bcb4c1b8510079d738213dd813b93c66a60db16ad64e3b5f03495b65905a15a60dbaa49f3376391a8071841957d9681a2c7dce2170c1afea4f576f34b84a54c1111c0849ed72a229ec7b6be7b7886b953921d524d139b2566f70a9033d5dd40e796652cd1dd93b7df417f670eaa682af02f1757b922a452d17688662847cb483dd15abeaea6e08ba76fb1777670f5ffeaadc81b94c2d3b5e67d14b63a8d72f23c0cd6642c04da3c04e239a26674a0ccba4c170ca8d01dd016aeebc81ef8a357aad8a865f5343b84eeca60223cad5c99c467391adc3c22286527f33a49abf1863a77af8199ab53e87e66d1a2d8964d61ec33894e20c0c68a0adc898b7159009ba02b71ffeb7e7514cef1dbd6ff9adf4d6208430345d9e158ba0243dd8bfff9db26c8afd44b838a32fc51fd9f0176db538e41e7738aca05cfab04e31a9f39956b5798ab58612faab801fd288b8a742b81fda0a8f2ffc46a8e5fe5b59a0e1aab198261c92c4777c7b2849d86c4b081c080d8f2adbd0621527a73f3440e03cdcea443fae64aae85f4369980647b4956980d026b052e512f29b98e2cfbbffe973e73a10f5964636e23d75d2ad748b233d62c377952fe41c0fa970050b7082d39dc8a20ac92b8aa2db955c67f4e6c4a1a147e616803d29858d44f7fd47145dc5a39025d68c0487d9757e3808bb96975e12fd1bd99620b8b82b443c6732f7fad62a4cd2a2fbd1c319250772044d9a7f2537586a0743c19b7ce95bc5b3050ed99c940b8d092cfa984b92875fde31ae34f06d1f4f2f6bf9fe887c66e905bb127b31ee8f3c1311e5aae59ebf343efdbd533a53fad99597a8e9ad2f5aac32a1b5b153a059cac7997465b806f06dfbb3834e4f54fbb05063fd182094843907a8fef2be63236b90c29d4459ba3ba5a9b2e8804c2d7a52fe056b96a5ee3c655a63f27a63849cc55ba0cd94b5b97c5295af839594e0061229a6fd7ed1c77e9af7d950594ddb6faee60f4bfad3ded59ac86aeeaca997cd23152d90d410e02dc77d88384c2c050ca87e9ee3a7543f7d25ff80dd8dcd7b591771d637cd0fa3cad4e6fe2f3c02ecaf760d0f9f0238beee11104cb631eb9ce8f276b6d813dbc1ea3c3ea7cc995681dc454a33713fd0b3685906adf2da652d33a5c704fdcf1c6b2828432126ea</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">阿尔戈在迷宫区搜集到的零碎攻略信息,还在整理...</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top">栞风</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kaysonz.top/posts/e33038d9">https://www.kaysonz.top/posts/e33038d9</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.kaysonz.top" target="_blank">風</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/">移动通信</a><a class="post-meta__tags" href="/tags/private/">private</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content toc-div-class" style="display:none"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">引入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A6%99%E5%86%9C%E4%BF%A1%E9%81%93%E5%AE%B9%E9%87%8F"><span class="toc-number">1.1.</span> <span class="toc-text">香农信道容量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%BA%90%E4%B8%8E%E7%86%B5"><span class="toc-number">2.</span> <span class="toc-text">信源与熵</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%BA%90"><span class="toc-number">2.1.</span> <span class="toc-text">信源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%BB%E6%95%A3%E6%97%A0%E8%AE%B0%E5%BF%86%E4%BF%A1%E6%BA%90%EF%BC%88Discrete-Memoryless-Source-DMS%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">离散无记忆信源（Discrete Memoryless Source, DMS）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%9A%84%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%EF%BC%8C%E4%BF%A1%E6%81%AF%E9%87%8F%E5%92%8C%E7%86%B5"><span class="toc-number">2.3.</span> <span class="toc-text">信息的不确定性，信息量和熵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E9%87%8F"><span class="toc-number">2.3.1.</span> <span class="toc-text">信息量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%86%B5"><span class="toc-number">2.3.2.</span> <span class="toc-text">熵</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%BA%90%E7%BC%96%E7%A0%81%E5%8F%8A%E5%85%B6%E6%95%88%E7%8E%87"><span class="toc-number">3.</span> <span class="toc-text">信源编码及其效率</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E9%81%93%E7%BC%96%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">信道编码</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(0, 0, 0, .1);"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 栞风</div><div class="footer_custom_text">转载请注明出处,博客内容接入查重,请勿直接用于大作业/实验|ू･ω･` )</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
